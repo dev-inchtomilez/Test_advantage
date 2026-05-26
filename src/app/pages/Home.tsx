@@ -398,7 +398,7 @@ export function HomePage() {
                     transition={{ delay: 0.5, duration: 0.5 }}
                   />
                 </span>{' '}
-                AI-Powered Growth.
+                <span className="whitespace-nowrap">AI-Powered Growth.</span>
               </h1>
 
               <div className="space-y-2 mb-4">
