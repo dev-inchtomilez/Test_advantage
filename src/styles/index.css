@@ -1,0 +1,187 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+@import './minimal-theme.css';
+@import './advanced-effects.css';
+@import './hd-amoled.css';
+
+/* ============================================
+   GLOBAL BACKGROUND
+   ============================================ */
+
+html,
+body {
+  background: #ffffff;
+}
+
+#root {
+  background: transparent;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   SINGLE-AXIS SCROLL SYSTEM
+   CRITICAL: Only html scrolls (single scrollbar)
+   body must NOT create its own scroll context
+   ============================================ */
+
+html {
+  /* Native scrolling - zero overhead */
+  scroll-behavior: auto !important;
+  /* Single scrollbar on html */
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* NO height:100% - that would cause double scroll with body */
+  /* NO transform - breaks position:fixed! */
+
+  /* Optimize font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+}
+
+body {
+  /* Body must NOT have its own scroll context */
+  overflow-x: hidden;
+  overflow-y: visible; /* Not auto/scroll - prevents double scrollbar */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  /* NO transform - breaks position:fixed! */
+  /* Prevent bounce scrolling on iOS - REMOVED: was blocking scroll on some browsers */
+  /* overscroll-behavior-y: none; */
+  /* GPU without breaking fixed: */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR STYLING
+   ============================================ */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* Optimize images (no transform to avoid stacking context issues) */
+img,
+video,
+picture {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ============================================
+   INSTANT INTERACTIONS
+   ============================================ */
+
+a,
+button,
+[role="button"],
+input,
+select,
+textarea {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+a:active,
+button:active,
+[role="button"]:active {
+  transition: none;
+}
+
+/* ============================================
+   FOCUS OPTIMIZATION
+   ============================================ */
+
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  transition: none;
+}
+
+/* ============================================
+   FIXED POSITION PROTECTION
+   Prevents parent transforms from trapping
+   position:fixed children to a sub-viewport
+   ============================================ */
+
+button[aria-label*="WhatsApp"],
+button[aria-label*="chat"],
+button[aria-label*="Open chat"],
+.chatbot-fixed-button,
+.chatbot-window,
+.whatsapp-fixed-button {
+  position: fixed !important;
+}
+
+/* ============================================
+   TEXT SELECTION
+   ============================================ */
+
+::selection {
+  background: rgba(0, 0, 170, 0.15);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: rgba(0, 0, 170, 0.15);
+  text-shadow: none;
+}
+
+/* ============================================
+   PRINT OPTIMIZATION
+   ============================================ */
+
+@media print {
+  * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

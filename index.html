@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ============================================
+         PRIMARY SEO META — Updated dynamically by
+         RouteHelmet in routes.tsx on each navigation.
+         These are the fallback defaults for the home page.
+    ============================================ -->
+    <title>AdvantEdge — Strategic Marketing Consultancy</title>
+    <meta name="description" content="AdvantEdge delivers strategic marketing planning, brand development, digital marketing, and analytics services that drive measurable business growth for executive-level clients." />
+    <meta name="keywords" content="marketing consultancy, strategic planning, brand development, digital marketing, marketing ROI, B2B marketing" />
+    <meta name="author" content="AdvantEdge Marketing Consultancy" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#000131" />
+
+    <!-- Canonical URL (updated dynamically per route) -->
+    <link rel="canonical" href="https://onemen.in/" />
+
+    <!-- ============================================
+         OPEN GRAPH (Facebook / LinkedIn / WhatsApp)
+    ============================================ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AdvantEdge" />
+    <meta property="og:title" content="AdvantEdge — Strategic Marketing Consultancy" />
+    <meta property="og:description" content="Transform your brand with data-driven marketing strategies and measurable results." />
+    <meta property="og:url" content="https://onemen.in/" />
+    <meta property="og:image" content="https://onemen.in/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- ============================================
+         TWITTER CARD
+    ============================================ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AdvantEdge — Strategic Marketing Consultancy" />
+    <meta name="twitter:description" content="Transform your brand with data-driven marketing strategies and measurable results." />
+    <meta name="twitter:image" content="https://onemen.in/og-image.png" />
+
+    <!-- ============================================
+         STRUCTURED DATA — Organization (JSON-LD)
+         Static baseline for Google rich results.
+         Per-page schemas are injected by StructuredData component.
+    ============================================ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "AdvantEdge",
+      "url": "https://onemen.in",
+      "logo": "https://onemen.in/logo.png",
+      "description": "Strategic marketing consultancy delivering data-driven solutions for measurable business growth.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "hello@onemen.in"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/advantedge",
+        "https://twitter.com/advantedge"
+      ]
+    }
+    </script>
+
+    <!-- ============================================
+         STRUCTURED DATA — WebSite (enables Sitelinks Search Box)
+    ============================================ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "AdvantEdge",
+      "url": "https://onemen.in",
+      "description": "Strategic Marketing Consultancy",
+      "publisher": {
+        "@type": "Organization",
+        "name": "AdvantEdge"
+      }
+    }
+    </script>
+
+    <!-- ============================================
+         FONT & CDN PRECONNECT + PERFORMANCE HINTS
+    ============================================ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+    <!-- Preload critical assets for faster LCP -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" />
+    
+    <!-- Raleway — loaded early to prevent FOUT -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
+    />
+
+    <!-- Resource hints for faster navigation -->
+    <link rel="prefetch" href="/services" />
+    <link rel="prefetch" href="/contact" />
+    <link rel="prefetch" href="/case-studies" />
+
+    <!--
+      Inline critical CSS — prevents blank flash before JS loads.
+    -->
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+        font-family: 'Raleway', system-ui, -apple-system, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      #root {
+        min-height: 100vh;
+        background: #ffffff;
+      }
+      /* Loading spinner — shown before React mounts */
+      #initial-loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        z-index: 9999;
+        transition: opacity 0.3s ease;
+      }
+      #initial-loader.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .loader-ring {
+        width: 48px;
+        height: 48px;
+        border: 3px solid rgba(0, 1, 49, 0.12);
+        border-top-color: #000131;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+      Initial loading indicator — visible while the JS bundle
+      downloads and React hydrates. Removed by main.tsx.
+    -->
+    <div id="initial-loader" aria-hidden="true">
+      <div class="loader-ring"></div>
+    </div>
+
+    <!--
+      ROOT ELEMENT — ReactDOM.createRoot mounts here.
+      id="root" MUST match /src/main.tsx
+    -->
+    <div id="root"></div>
+
+    <!--
+      Vite entry point — type="module" required for ES modules.
+      Vite replaces this with hashed production path at build time.
+    -->
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

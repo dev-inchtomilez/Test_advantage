@@ -1,0 +1,242 @@
+/**
+ * HD FONT RENDERING & AMOLED OPTIMIZATIONS
+ * Premium text rendering with maximum clarity and contrast
+ * SAFE: No transforms on html/body (breaks position:fixed)
+ */
+
+/* ========================================
+   GLOBAL HD FONT SMOOTHING
+   ======================================== */
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+html {
+  font-kerning: normal;
+  -webkit-font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  /* NO transform here - breaks position:fixed! */
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  -webkit-tap-highlight-color: transparent;
+  /* NO transform here - breaks position:fixed! */
+}
+
+/* ========================================
+   HD TEXT SHARPENING
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* ========================================
+   PREMIUM SHADOWS
+   ======================================== */
+
+.shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+.shadow {
+  box-shadow:
+    0 2px 4px -1px rgba(0, 0, 0, 0.12),
+    0 4px 6px -1px rgba(0, 0, 0, 0.08) !important;
+}
+
+.shadow-md {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.15),
+    0 2px 4px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+.shadow-lg {
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.2),
+    0 4px 6px -2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.shadow-xl {
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.25),
+    0 10px 10px -5px rgba(0, 0, 0, 0.15) !important;
+}
+
+.shadow-2xl {
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.35),
+    0 12px 20px -8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ========================================
+   CRISP IMAGES & MEDIA
+   NOTE: Only add translateZ on specific img tags,
+   NOT globally (can affect parent stacking contexts)
+   ======================================== */
+
+img {
+  image-rendering: -webkit-optimize-contrast;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* High-quality SVG rendering */
+svg {
+  shape-rendering: geometricPrecision;
+}
+
+/* ========================================
+   BUTTON OPTIMIZATIONS
+   ======================================== */
+
+button, .btn, [role="button"] {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* ========================================
+   INPUT FIELD SHARPNESS
+   ======================================== */
+
+input, textarea, select {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+/* ========================================
+   SCROLLBAR STYLING
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 1, 49, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 1, 49, 0.35);
+}
+
+/* ========================================
+   SELECTION COLOR
+   ======================================== */
+
+::selection {
+  background-color: rgba(0, 0, 170, 0.2);
+  color: inherit;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background-color: rgba(0, 0, 170, 0.2);
+  color: inherit;
+  text-shadow: none;
+}
+
+/* ========================================
+   FOCUS STATES
+   ======================================== */
+
+:focus-visible {
+  outline: 2px solid #0000aa;
+  outline-offset: 2px;
+}
+
+/* ========================================
+   LINK OPTIMIZATIONS
+   ======================================== */
+
+a {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* ========================================
+   ICON SHARPNESS
+   ======================================== */
+
+.lucide, svg[class*="lucide"] {
+  shape-rendering: geometricPrecision;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ========================================
+   HIGH CONTRAST MODE
+   ======================================== */
+
+@media (prefers-contrast: high) {
+  .text-gray-600,
+  .text-gray-500 {
+    color: #374151 !important;
+  }
+}
+
+/* ========================================
+   RETINA & HIGH-DPI OPTIMIZATIONS
+   ======================================== */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION ACCESSIBILITY
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================
+   PRINT OPTIMIZATION
+   ======================================== */
+
+@media print {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}

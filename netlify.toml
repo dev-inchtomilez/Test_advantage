@@ -1,0 +1,77 @@
+# ============================================
+# NETLIFY CONFIGURATION - ADVANTEDGE
+# ============================================
+# Production-ready SPA configuration with:
+# - Proper redirects for client-side routing
+# - Optimized caching headers
+# - Security headers
+# - Performance optimizations
+# ============================================
+
+[build]
+  command = "pnpm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# ============================================
+# SPA ROUTING - CRITICAL FOR REACT ROUTER
+# ============================================
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
+  
+# ============================================
+# ASSET CACHING - LONG-TERM CACHE FOR HASHED ASSETS
+# ============================================
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    X-Content-Type-Options = "nosniff"
+
+# ============================================
+# STATIC ASSETS CACHING
+# ============================================
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+# ============================================
+# HTML - NO CACHE (ALWAYS FRESH)
+# ============================================
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# ============================================
+# SECURITY HEADERS - ALL ROUTES
+# ============================================
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
