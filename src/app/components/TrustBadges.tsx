@@ -53,7 +53,7 @@ export function TrustBadges() {
             Industry Recognition
           </h2>
           <p className="text-sm text-gray-600 max-w-2xl mx-auto">
-            Certified excellence and industry-leading partnerships
+            Trusted by growth-focused B2B brands across global markets
           </p>
         </motion.div>
 
