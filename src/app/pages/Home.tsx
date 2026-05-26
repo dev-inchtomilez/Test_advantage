@@ -385,9 +385,9 @@ export function HomePage() {
               </motion.div>
 
               <h1 className="text-2xl sm:text-3xl lg:text-3xl font-bold leading-tight tracking-tight mb-3" style={{ color: colors.brand.primary }}>
-                Strategic Marketing. Integrated Execution AI Powered Growth{' '}
+                Strategic Marketing.{' '}
                 <span className="relative inline-block">
-                  
+                  Integrated Execution.
                   <motion.span
                     className="absolute -bottom-1 left-0 right-0 h-1.5 -z-0"
                     style={{ backgroundColor: colors.brand.accent, opacity: 0.3 }}
@@ -395,8 +395,9 @@ export function HomePage() {
                     animate={{ width: '100%' }}
                     transition={{ delay: 0.5, duration: 0.5 }}
                   />
-                </span>{' '}
-               
+                </span>
+                <br />
+                AI-Powered Growth.
               </h1>
 
               <div className="space-y-2 mb-4">
