@@ -1207,7 +1207,7 @@ export function HomePage() {
                 </div>
                 <h3 className="text-xl font-black mb-4 tracking-tight" style={{ color: colors.brand.primary }}>{item.title}</h3>
                 <p className="text-sm text-gray-600 leading-relaxed mb-6">{item.description}</p>
-                <div className="space-y-3 mt-auto">
+                <div className="space-y-3">
                   {item.points.map((point, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <div className="w-2 h-2 rounded-full mt-1.5 shrink-0" style={{ background: colors.brand.secondary }}></div>
