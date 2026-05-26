@@ -1063,7 +1063,7 @@ export function HomePage() {
                 <br /><span style={{ background: gradients.primary, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>into one unified ecosystem.</span>
               </h3>
               <p className="text-sm text-gray-700 leading-relaxed mb-6">Online and offline — one performance-driven system.</p>
-              <div className="space-y-4 mt-auto">
+              <div className="space-y-4">
                 {["Paid media, SEO, content, and social","Email, automation, and CRM","Offline channels & sales touchpoints","Analytics and reporting systems"].map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <div className="w-2.5 h-2.5 rounded-full mt-1.5 shrink-0" style={{ background: colors.brand.secondary }}></div>
@@ -1124,7 +1124,7 @@ export function HomePage() {
                 <br /><span style={{ background: gradients.primary, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>we build and execute with you.</span>
               </h3>
               <p className="text-sm text-gray-700 leading-relaxed mb-6">End-to-end growth strategy your team can scale with.</p>
-              <div className="space-y-4 mt-auto">
+              <div className="space-y-4">
                 {["End-to-end growth strategy development","Hands-on execution support","Defined processes & systems","Playbooks your team can scale with","Continuous optimization & learning loops"].map((item, i) => (
                   <div key={i} className="flex items-start gap-3">
                     <CheckCircle2 className="w-4 h-4 mt-0.5 shrink-0" style={{ color: colors.brand.secondary }} />
