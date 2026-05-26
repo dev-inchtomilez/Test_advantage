@@ -398,7 +398,7 @@ export function HomePage() {
                     transition={{ delay: 0.5, duration: 0.5 }}
                   />
                 </span>{' '}
-                <span className="whitespace-nowrap">AI-Powered Growth.</span>
+                AI-Powered Growth.
               </h1>
 
               <div className="space-y-2 mb-4">
@@ -482,11 +482,6 @@ export function HomePage() {
       {/* ============================================
           2. TRUST STRIP
           ============================================ */}
-      <div className="py-4 text-center">
-        <p className="text-sm font-semibold text-gray-500 uppercase tracking-widest">
-          Trusted by growth-focused B2B brands across global markets
-        </p>
-      </div>
       <TrustBadges />
 
       {/* ============================================
