@@ -417,7 +417,7 @@ export function HomePage() {
                     className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-white font-bold text-sm shadow-xl hover:shadow-2xl transition-all duration-300 group"
                     style={{ background: gradients.primary }}
                   >
-                    Start Conversation
+                    Book a 30-Minute Revenue Strategy Call
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </MagneticButton>
@@ -484,9 +484,94 @@ export function HomePage() {
 
 
 
+
+
+      {/* ============================================
+          2. CLIENT LOGO CAROUSEL + TRUST STRIP
+          ============================================ */}
+      <ClientLogoCarousel />
+
+      {/* Trust Strip Tagline */}
+      <div className="py-6 text-center" style={{ background: 'rgba(0,1,49,0.03)' }}>
+        <p className="text-base lg:text-lg font-semibold italic" style={{ color: colors.brand.primary }}>
+          "Strategic. Integrated. Built for revenue — not vanity metrics."
+        </p>
+      </div>
+
+
+
+
+
+
 {/* ============================================
-  2.Who We Are (Built for Organizations That Expect More)
-  ============================================ */}
+    3. WHY YOU NEED US (Pain Points)
+============================================ */}
+<ModernSectionBackground variant="gradient-tech">
+  <Section spacing="base" animate background="transparent">
+    <Container size="xl">
+      <div className="max-w-4xl mx-auto">
+        <ScrollReveal>
+          <div className="text-center mb-10">
+            <div
+              className="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6 border"
+              style={{ borderColor: `${colors.brand.secondary}25`, backgroundColor: 'rgba(255,255,255,0.6)', color: colors.brand.primary }}
+            >
+              Why You Need Us
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight mb-6" style={{ color: colors.brand.primary }}>
+              Most marketing doesn't fail
+              <br />
+              <span style={{ color: colors.brand.secondary }}>because of ideas.</span>
+            </h2>
+            <p className="text-base lg:text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto">
+              It fails because nothing works together. You invest in campaigns. You hire agencies. You implement tools. But effort alone doesn't build a system.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <div className="grid md:grid-cols-2 gap-5 mt-8">
+          {[
+            { icon: <Target className="w-5 h-5" />, text: 'No clear strategy or market positioning' },
+            { icon: <Layers className="w-5 h-5" />, text: 'Disconnected channels, invisible results' },
+            { icon: <TrendingUp className="w-5 h-5" />, text: 'Poor traffic quality and low lead conversion' },
+            { icon: <Users className="w-5 h-5" />, text: 'Sales team chasing unqualified leads' },
+            { icon: <BarChart3 className="w-5 h-5" />, text: 'CRM that stores data but drives nothing' },
+            { icon: <RefreshCw className="w-5 h-5" />, text: 'No repeatable growth system' },
+          ].map((item, index) => (
+            <ScrollReveal key={index} delay={index * 0.07}>
+              <GlassCard variant="base" rounded="xl" padding="base" hover className="flex items-center gap-4">
+                <div className="p-2.5 rounded-lg flex-shrink-0" style={{ backgroundColor: `${colors.brand.secondary}12` }}>
+                  <div style={{ color: colors.brand.secondary }}>{item.icon}</div>
+                </div>
+                <p className="text-sm font-semibold leading-snug" style={{ color: colors.brand.primary }}>{item.text}</p>
+              </GlassCard>
+            </ScrollReveal>
+          ))}
+        </div>
+
+        <ScrollReveal delay={0.4}>
+          <div className="mt-10 text-center">
+            <GlassCard variant="base" rounded="2xl" padding="lg" className="relative overflow-hidden">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-40 bg-gradient-to-br from-[#0000aa]/8 to-transparent rounded-full blur-3xl"></div>
+              <div className="relative z-10">
+                <h3 className="text-xl lg:text-2xl font-black mb-3" style={{ color: colors.brand.primary }}>
+                  We're here to solve all of it —
+                </h3>
+                <p className="text-base font-bold" style={{ color: colors.brand.secondary }}>
+                  with one connected system.
+                </p>
+              </div>
+            </GlassCard>
+          </div>
+        </ScrollReveal>
+      </div>
+    </Container>
+  </Section>
+</ModernSectionBackground>
+
+{/* ============================================
+    4. WHO WE ARE / INTRODUCTION
+============================================ */}
 <ModernSectionBackground variant="image-overlay-team">
   <Section spacing="base" animate background="transparent">
     <Container size="xl">
@@ -494,16 +579,13 @@ export function HomePage() {
         badge="Who We Are"
         badgeIcon={<Shield className="w-4 h-4" />}
         title="Built for Organizations That Expect More"
-        description="A strategic and integrated marketing solution provider with AI capabilities - customized for every business to achieve its growth goals.
-"
+        description="A strategic and integrated marketing solution provider with AI capabilities - customized for every business to achieve its growth goals."
         align="center"
         maxWidth="3xl"
       />
 
-      {/* Main Value Proposition */}
       <ScrollReveal>
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-7xl mx-auto mb-16">
-          {/* Left: Image */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -519,8 +601,6 @@ export function HomePage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
             </div>
-
-            {/* Floating Stats Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -545,7 +625,6 @@ export function HomePage() {
             </motion.div>
           </motion.div>
 
-          {/* Right: Content */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -562,28 +641,14 @@ export function HomePage() {
             </div>
 
             <p className="text-sm leading-relaxed text-gray-700">
-              AdvantEdge partners with growth-focused businesses to transform marketing into a predictable revenue engine.
-We don’t just advise - we align strategy, execution, and technology to deliver measurable business outcomes.
-
+              AdvantEdge partners with growth-focused businesses to transform marketing into a predictable revenue engine. We don't just advise — we align strategy, execution, and technology to deliver measurable business outcomes.
             </p>
 
             <div className="space-y-4 pt-4">
               {[
-                {
-                  icon: <Target className="w-5 h-5" />,
-                  title: 'Strategic Leadership',
-                  text: 'We function as an extension of your executive team, aligning marketing initiatives directly with business priorities.'
-                },
-                {
-                  icon: <Layers className="w-5 h-5" />,
-                  title: 'Integrated Systems',
-                  text: 'Our frameworks coordinate brand, digital, content, and sales activation into unified growth systems.'
-                },
-                {
-                  icon: <BarChart3 className="w-5 h-5" />,
-                  title: 'Performance Obsession',
-                  text: 'Every initiative is measured, analyzed, and optimized for maximum business impact and ROI.'
-                }
+                { icon: <Target className="w-5 h-5" />, title: 'Strategic Leadership', text: 'We function as an extension of your executive team, aligning marketing initiatives directly with business priorities.' },
+                { icon: <Layers className="w-5 h-5" />, title: 'Integrated Systems', text: 'Our frameworks coordinate brand, digital, content, and sales activation into unified growth systems.' },
+                { icon: <BarChart3 className="w-5 h-5" />, title: 'Performance Obsession', text: 'Every initiative is measured, analyzed, and optimized for maximum business impact and ROI.' }
               ].map((item, index) => (
                 <motion.div
                   key={index}
@@ -604,16 +669,8 @@ We don’t just advise - we align strategy, execution, and technology to deliver
               ))}
             </div>
 
-            <motion.div
-              whileHover={{ x: 5 }}
-              transition={{ duration: 0.3 }}
-              className="pt-4"
-            >
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-2 text-base font-bold group"
-                style={{ color: colors.brand.secondary }}
-              >
+            <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.3 }} className="pt-4">
+              <Link to="/about" className="inline-flex items-center gap-2 text-base font-bold group" style={{ color: colors.brand.secondary }}>
                 <span>Discover Our Story</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -625,21 +682,8 @@ We don’t just advise - we align strategy, execution, and technology to deliver
   </Section>
 </ModernSectionBackground>
 
-
-
-
-      {/* ============================================
-          3. CLIENT LOGO CAROUSEL
-          ============================================ */}
-      <ClientLogoCarousel />
-
-
-
-
-
-
 {/* ============================================
-    6. THREE DISCIPLINES. ONE REVENUE ENGINE.
+    5. THREE DISCIPLINES. ONE REVENUE ENGINE.
 ============================================ */}
 <ModernSectionBackground variant="glass-blur">
   <Section spacing="base" animate background="transparent">
@@ -961,1682 +1005,262 @@ We don’t just advise - we align strategy, execution, and technology to deliver
 
 
 
-
-
-
-
-
-
-
-
-
-  {/* ============================================
-          9. CORE CAPABILITIES, UNIFIED BY STRATEGY
-          ============================================ */}
-      <ModernSectionBackground variant="mesh-gradient-purple">
-        <Section spacing="base" animate background="transparent">
-        <Container size="lg">
-          <SectionHeader
-            badge="Core Capabilities, Unified by Strategy"
-            badgeIcon={<Layers className="w-4 h-4" />}
-            title="Everything Required to Build, Activate, and Scale Marketing"
-            description="Integrated marketing is not a collection of tactics. It is an architecture."
-            align="center"
-            maxWidth="2xl"
-          />
-
-          <div className="grid md:grid-cols-3 gap-6 mt-8 mb-10">
-            <ScrollReveal>
-              <ImageFeatureCard
-                title="Digital Marketing Excellence"
-                description="Performance-driven campaigns engineered for pipeline quality and measurable ROI."
-                imageUrl="https://images.unsplash.com/photo-1759661966728-4a02e3c6ed91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwbWFya2V0aW5nJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkJTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NzQ1NDI3MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                icon={MonitorSmartphone}
-                link="/services/digital-marketing"
-                linkText="Learn More"
-              />
-            </ScrollReveal>
-            
-            <ScrollReveal delay={0.1}>
-              <ImageFeatureCard
-                title="Brand Development"
-                description="Strategic positioning and identity systems that create competitive advantage."
-                imageUrl="https://images.unsplash.com/photo-1764740109279-c7a8abd78821?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicmFuZCUyMGRlc2lnbiUyMGNyZWF0aXZlJTIwd29ya3NwYWNlfGVufDF8fHx8MTc3NDQ2Mjk0MXww&ixlib=rb-4.1.0&q=80&w=1080"
-                icon={Eye}
-                link="/services/brand-development"
-                linkText="Explore Services"
-              />
-            </ScrollReveal>
-            
-            <ScrollReveal delay={0.2}>
-              <ImageFeatureCard
-                title="Website Strategy"
-                description="High-performance digital infrastructure built for credibility and conversion."
-                imageUrl="https://images.unsplash.com/photo-1540397106260-e24a507a08ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMGNvZGluZyUyMGxhcHRvcHxlbnwxfHx8fDE3NzQ0MzcwODZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                icon={Rocket}
-                link="/services"
-                linkText="View Details"
-              />
-            </ScrollReveal>
-          </div>
-
-          <ScrollReveal>
-            <div className="max-w-4xl mx-auto text-center mb-6">
-              <p className="text-sm text-gray-700 leading-relaxed">
-                We align positioning, messaging, digital infrastructure, demand generation, brand systems, and performance measurement into one coordinated framework.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="mt-6">
-            <ExpandableServiceCards services={capabilities} />
-          </div>
-
-          <ScrollReveal delay={0.3}>
-            <div className="mt-6 text-center">
-              <GlassCard variant="base" rounded="lg" padding="base" className="max-w-3xl mx-auto">
-                <p className="text-sm font-bold mb-2" style={{ color: colors.brand.primary }}>
-                  We do not deploy disconnected activities.
-                </p>
-                <p className="text-base font-bold" style={{ color: colors.brand.secondary }}>
-                  We build coordinated systems.
-                </p>
-              </GlassCard>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.4}>
-            <div className="text-center mt-6">
-              <Link
-                to="/services"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-sm bg-transparent border-2 transition-all duration-300 hover:shadow-lg group"
-                style={{ borderColor: colors.brand.primary, color: colors.brand.primary }}
-              >
-                Explore All Services
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-          </ScrollReveal>
-        </Container>
-        </Section>
-      </ModernSectionBackground>
-
-
-
-
-
-
-
-
-
-      {/* ============================================
-    9. CORE CAPABILITIES, UNIFIED BY STRATEGY
-============================================ */}
-<ModernSectionBackground variant="mesh-gradient-purple">
-  <Section spacing="lg" animate background="transparent">
-    <Container size="xl">
-
-      {/* ============================================
-          SECTION HEADER
-      ============================================ */}
-      <SectionHeader
-        badge="Core Capabilities"
-        badgeIcon={<Layers className="w-4 h-4" />}
-        title="Everything Required to Build, Activate & Scale Growth"
-        description="Integrated marketing is not a collection of tactics. It is a coordinated business growth system."
-        align="center"
-        maxWidth="3xl"
-      />
-
-      {/* ============================================
-          NEW PREMIUM CAPABILITIES GRID
-      ============================================ */}
-      <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-7 mt-16">
-
-        {[
-          {
-            number: "01",
-            title: "Strategic Marketing",
-            description:
-              "Revenue-focused marketing systems aligned with business objectives, market positioning, and long-term growth.",
-            points: [
-              "Positioning & messaging",
-              "Campaign architecture",
-              "Pipeline-driven execution"
-            ]
-          },
-
-          {
-            number: "02",
-            title: "Brand Systems",
-            description:
-              "Distinct identity systems engineered for credibility, market authority, and competitive differentiation.",
-            points: [
-              "Brand identity systems",
-              "Communication frameworks",
-              "Market differentiation"
-            ]
-          },
-
-          {
-            number: "03",
-            title: "Digital Infrastructure",
-            description:
-              "High-performance websites, CRM ecosystems, automation workflows, and conversion systems.",
-            points: [
-              "Website strategy",
-              "CRM & automation",
-              "Conversion optimization"
-            ]
-          },
-
-          {
-            number: "04",
-            title: "AI & Growth Operations",
-            description:
-              "AI-enhanced workflows and operational systems designed for scalability, efficiency, and measurable ROI.",
-            points: [
-              "AI workflow systems",
-              "Operational automation",
-              "Performance intelligence"
-            ]
-          }
-
-        ].map((item, index) => (
-
-          <motion.div
-            key={index}
-            variants={staggerItemVariants}
-            className="h-full"
-          >
-
-            <GlassCard
-              variant="base"
-              rounded="3xl"
-              padding="none"
-              hover
-              className="h-full relative overflow-hidden border border-white/20 group backdrop-blur-xl"
-            >
-
-              {/* Hover Top Line */}
-              <div
-                className="absolute top-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ background: gradients.primary }}
-              ></div>
-
-              {/* Glow */}
-              <div className="absolute -top-10 -right-10 w-48 h-48 bg-gradient-to-br from-[#0000aa]/10 to-transparent rounded-full blur-3xl"></div>
-
-              {/* Inner */}
-              <div className="relative z-10 flex flex-col h-full p-8 lg:p-9">
-
-                {/* ============================================
-                    TOP
-                ============================================ */}
-                <div className="flex items-center justify-between mb-8">
-
-                  {/* Number Box */}
-                  <GlowEffect
-                    color={colors.brand.secondary}
-                    intensity={14}
-                  >
-                    <div
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center text-sm font-black"
-                      style={{
-                        backgroundColor: `${colors.brand.secondary}12`,
-                        color: colors.brand.secondary
-                      }}
-                    >
-                      {item.number}
-                    </div>
-                  </GlowEffect>
-
-                  {/* Mini Badge */}
-                  <div
-                    className="px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.18em]"
-                    style={{
-                      backgroundColor: `${colors.brand.secondary}10`,
-                      color: colors.brand.primary
-                    }}
-                  >
-                    Capability
-                  </div>
-
-                </div>
-
-                {/* ============================================
-                    TITLE
-                ============================================ */}
-                <h3
-                  className="text-[24px] leading-[1.2] font-black tracking-tight mb-5"
-                  style={{ color: colors.brand.primary }}
-                >
-                  {item.title}
-                </h3>
-
-                {/* ============================================
-                    DESCRIPTION
-                ============================================ */}
-                <p className="text-[15px] text-gray-600 leading-[1.9] mb-9 min-h-[125px]">
-                  {item.description}
-                </p>
-
-                {/* ============================================
-                    FEATURE LIST
-                ============================================ */}
-                <div className="space-y-5 mt-auto">
-
-                  {item.points.map((point, i) => (
-
-                    <div
-                      key={i}
-                      className="flex items-start gap-4"
-                    >
-
-                      <div
-                        className="w-2.5 h-2.5 rounded-full mt-[9px] shrink-0"
-                        style={{
-                          background: colors.brand.secondary
-                        }}
-                      ></div>
-
-                      <p className="text-[14px] text-gray-700 leading-[1.7]">
-                        {point}
-                      </p>
-
-                    </div>
-
-                  ))}
-
-                </div>
-
-              </div>
-            </GlassCard>
-          </motion.div>
-        ))}
-
-      </StaggerContainer>
-
-      {/* ============================================
-          BOTTOM STRATEGY STRIP
-      ============================================ */}
-      <ScrollReveal delay={0.3}>
-        <div className="mt-16 lg:mt-20">
-
-          <GlassCard
-            variant="strong"
-            rounded="3xl"
-            padding="none"
-            className="relative overflow-hidden border border-white/20"
-          >
-
-            {/* Glow Effects */}
-            <div className="absolute top-0 right-0 w-[420px] h-[420px] bg-gradient-to-br from-[#0000aa]/8 to-transparent rounded-full blur-3xl"></div>
-
-            <div className="absolute bottom-0 left-0 w-[420px] h-[420px] bg-gradient-to-tl from-[#ffb300]/8 to-transparent rounded-full blur-3xl"></div>
-
-            {/* Inner */}
-            <div className="relative z-10 px-8 py-10 lg:px-14 lg:py-12">
-
-              <div className="grid lg:grid-cols-[1.5fr_0.7fr] gap-10 items-center">
-
-                {/* LEFT */}
-                <div>
-
-                  <div
-                    className="inline-flex items-center px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-[0.18em] mb-6"
-                    style={{
-                      backgroundColor: `${colors.brand.secondary}10`,
-                      color: colors.brand.primary
-                    }}
-                  >
-                    Unified Growth Infrastructure
-                  </div>
-
-                  <h3
-                    className="text-3xl lg:text-[46px] font-black leading-[1.05] tracking-tight mb-5"
-                    style={{ color: colors.brand.primary }}
-                  >
-                    We Don't Deploy
-                    <br />
-
-                    <span
-                      style={{
-                        background: gradients.primary,
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                      }}
-                    >
-                      Disconnected Activities.
-                    </span>
-                  </h3>
-
-                  <p className="text-[15px] lg:text-[17px] text-gray-700 leading-[1.9] max-w-3xl">
-                    We align positioning, messaging, digital infrastructure,
-                    automation systems, AI workflows, and performance marketing
-                    into one coordinated growth architecture.
-                  </p>
-
-                </div>
-
-                {/* RIGHT */}
-                <div className="flex lg:justify-end">
-
-                  <Link
-                    to="/services"
-                    className="inline-flex items-center justify-center px-8 py-4 rounded-2xl text-sm font-bold text-white shadow-2xl hover:scale-[1.03] transition-all duration-300 group"
-                    style={{
-                      background: gradients.primary
-                    }}
-                  >
-                    Explore All Services
-
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-
-                </div>
-
-              </div>
-            </div>
-          </GlassCard>
-        </div>
-      </ScrollReveal>
-
-    </Container>
-  </Section>
-</ModernSectionBackground>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
 {/* ============================================
-    HOW WE WORK — PREMIUM PROCESS SECTION
-============================================ */}
-<ModernSectionBackground variant="gradient-abstract">
-  <Section spacing="xl" animate background="transparent">
-    <Container size="xl">
-
-      {/* ============================================
-          HEADER
-      ============================================ */}
-      <div className="max-w-4xl mx-auto text-center mb-20 lg:mb-24">
-
-        {/* Badge */}
-        <div
-          className="inline-flex items-center justify-center px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-[0.18em] mb-7 border backdrop-blur-xl"
-          style={{
-            borderColor: `${colors.brand.secondary}25`,
-            backgroundColor: "rgba(255,255,255,0.6)",
-            color: colors.brand.primary
-          }}
-        >
-          How We Work
-        </div>
-
-        {/* Title */}
-        <h2
-          className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight mb-7"
-          style={{ color: colors.brand.primary }}
-        >
-          From First Call
-          <br />
-
-          <span
-            style={{
-              background: gradients.primary,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent"
-            }}
-          >
-            To Deal Conversion
-          </span>
-        </h2>
-
-        {/* Description */}
-        <p className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-          A structured approach designed for measurable outcomes —
-          aligned to your goals, built for real growth.
-        </p>
-
-      </div>
-
-      {/* ============================================
-          PROCESS CARDS
-      ============================================ */}
-      <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-7 xl:gap-8">
-
-        {[
-          {
-            number: "01",
-            title: "Discovery & Audit",
-            description:
-              "We evaluate your current business ecosystem, positioning, marketing systems, and growth bottlenecks.",
-            points: [
-              "Business strategy & positioning",
-              "Digital & offline marketing",
-              "Lead generation systems"
-            ]
-          },
-
-          {
-            number: "02",
-            title: "Strategy Blueprint",
-            description:
-              "We architect a complete revenue-focused growth framework integrating marketing, automation, CRM, and AI workflows.",
-            points: [
-              "Strategic marketing planning",
-              "Integrated campaign systems",
-              "AI & CRM integration"
-            ]
-          },
-
-          {
-            number: "03",
-            title: "Integrated Execution",
-            description:
-              "We execute coordinated campaigns, automation workflows, CRM alignment, and reporting systems across channels.",
-            points: [
-              "Campaign execution",
-              "AI implementation",
-              "Performance reporting"
-            ]
-          },
-
-          {
-            number: "04",
-            title: "Optimize & Scale",
-            description:
-              "We continuously optimize performance, improve conversion efficiency, and scale high-performing channels.",
-            points: [
-              "Campaign optimization",
-              "Scaling winning channels",
-              "Long-term growth systems"
-            ]
-          }
-
-        ].map((item, index) => (
-
-          <motion.div
-            key={index}
-            variants={staggerItemVariants}
-            className="h-full"
-          >
-
-            <GlassCard
-              variant="base"
-              rounded="2xl"
-              padding="none"
-              hover
-              className="h-full relative overflow-hidden group border border-white/20 backdrop-blur-xl"
-            >
-
-              {/* Hover Gradient */}
-              <div
-                className="absolute top-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ background: gradients.primary }}
-              ></div>
-
-              {/* Soft Glow */}
-              <div className="absolute -top-16 -right-16 w-44 h-44 bg-gradient-to-br from-[#0000aa]/10 to-transparent rounded-full blur-3xl"></div>
-
-              {/* Card Inner */}
-              <div className="relative z-10 flex flex-col h-full p-7 lg:p-8">
-
-                {/* ============================================
-                    TOP ROW
-                ============================================ */}
-                <div className="flex items-center justify-between mb-8">
-
-                  {/* Number Box */}
-                  <GlowEffect
-                    color={colors.brand.secondary}
-                    intensity={14}
-                  >
-                    <div
-                      className="w-12 h-12 rounded-2xl flex items-center justify-center text-[13px] font-black shadow-sm"
-                      style={{
-                        backgroundColor: `${colors.brand.secondary}12`,
-                        color: colors.brand.secondary
-                      }}
-                    >
-                      {item.number}
-                    </div>
-                  </GlowEffect>
-
-                  {/* Step Badge */}
-                  <div
-                    className="px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.16em]"
-                    style={{
-                      backgroundColor: `${colors.brand.secondary}10`,
-                      color: colors.brand.primary
-                    }}
-                  >
-                    Step {item.number}
-                  </div>
-
-                </div>
-
-                {/* ============================================
-                    TITLE
-                ============================================ */}
-                <h3
-                  className="text-[22px] leading-[1.2] font-black mb-5 tracking-tight"
-                  style={{ color: colors.brand.primary }}
-                >
-                  {item.title}
-                </h3>
-
-                {/* ============================================
-                    DESCRIPTION
-                ============================================ */}
-                <p className="text-[14px] text-gray-600 leading-[1.8] mb-8 min-h-[110px]">
-                  {item.description}
-                </p>
-
-                {/* ============================================
-                    FEATURE LIST
-                ============================================ */}
-                <div className="space-y-4 mt-auto pt-2">
-
-                  {item.points.map((point, i) => (
-
-                    <div
-                      key={i}
-                      className="flex items-start gap-3"
-                    >
-
-                      {/* Dot */}
-                      <div
-                        className="w-2 h-2 rounded-full mt-[9px] shrink-0"
-                        style={{
-                          background: colors.brand.secondary
-                        }}
-                      ></div>
-
-                      {/* Text */}
-                      <p className="text-[13px] text-gray-700 leading-[1.7]">
-                        {point}
-                      </p>
-
-                    </div>
-
-                  ))}
-
-                </div>
-
-              </div>
-            </GlassCard>
-          </motion.div>
-        ))}
-
-      </StaggerContainer>
-
-      {/* ============================================
-          BOTTOM CTA STRIP
-      ============================================ */}
-      <ScrollReveal delay={0.4}>
-        <div className="mt-14 lg:mt-16">
-
-          <GlassCard
-            variant="strong"
-            rounded="3xl"
-            padding="none"
-            className="relative overflow-hidden border border-white/20"
-          >
-
-            {/* Background Glow */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[#0000aa]/8 to-transparent rounded-full blur-3xl"></div>
-
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tl from-[#ffb300]/8 to-transparent rounded-full blur-3xl"></div>
-
-            {/* Inner */}
-            <div className="relative z-10 px-8 py-9 lg:px-12 lg:py-10">
-
-              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-
-                {/* LEFT */}
-                <div className="max-w-3xl">
-
-                  <h3
-                    className="text-2xl lg:text-[38px] font-black leading-[1.08] tracking-tight mb-4"
-                    style={{ color: colors.brand.primary }}
-                  >
-                    Strategy. Execution. Optimization.
-                    <br />
-
-                    <span
-                      style={{
-                        background: gradients.primary,
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent"
-                      }}
-                    >
-                      One Connected Growth System.
-                    </span>
-                  </h3>
-
-                  <p className="text-[15px] lg:text-base text-gray-700 leading-[1.9] max-w-2xl">
-                    Every stage is engineered to remove inefficiencies,
-                    improve execution quality, and create predictable,
-                    scalable business growth.
-                  </p>
-
-                </div>
-
-                {/* RIGHT */}
-                <div className="flex lg:justify-end">
-
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center justify-center px-8 py-4 rounded-2xl text-sm font-bold text-white shadow-2xl hover:scale-[1.03] transition-all duration-300 group"
-                    style={{
-                      background: gradients.primary
-                    }}
-                  >
-                    Start Your Growth Journey
-
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-
-                </div>
-
-              </div>
-            </div>
-          </GlassCard>
-        </div>
-      </ScrollReveal>
-
-    </Container>
-  </Section>
-</ModernSectionBackground>
-
-
-
-
-
-
-
-
-
-
-{/* ============================================
-    6. WHY ORGANIZATIONS CHOOSE ADVANTEDGE
-============================================ */}
-<ModernSectionBackground variant="glass-blur">
-  <Section spacing="base" animate background="transparent">
-    <Container size="xl">
-
-      {/* ============================================
-          SECTION HEADER
-      ============================================ */}
-      <SectionHeader
-        badge="Why AdvantEdge"
-        badgeIcon={<Sparkles className="w-4 h-4" />}
-        title="Built for Businesses That Require More Than Traditional Marketing"
-        description="We combine strategic intelligence, AI-powered systems, and disciplined execution to create scalable growth infrastructures designed for measurable business performance."
-        align="center"
-        maxWidth="4xl"
-      />
-
-      {/* ============================================
-          MAIN BENTO GRID
-      ============================================ */}
-      <div className="grid lg:grid-cols-3 gap-6 mt-12">
-
-        {/* ============================================
-            LARGE FEATURE CARD
-        ============================================ */}
-        <ScrollReveal className="lg:col-span-2">
-
-          <GlassCard
-            variant="base"
-            rounded="2xl"
-            padding="lg"
-            className="h-full relative overflow-hidden"
-          >
-
-            {/* Glow */}
-            <div
-              className="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl opacity-10"
-              style={{
-                background: colors.brand.secondary
-              }}
-            ></div>
-
-            <div className="relative z-10">
-
-              {/* Top Label */}
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 border"
-                style={{
-                  borderColor: `${colors.brand.secondary}20`,
-                  backgroundColor: "rgba(255,255,255,0.65)"
-                }}
-              >
-                <Sparkles
-                  className="w-4 h-4"
-                  style={{ color: colors.brand.secondary }}
-                />
-
-                <span
-                  className="text-sm font-semibold"
-                  style={{ color: colors.brand.primary }}
-                >
-                  AI-Integrated Strategic Systems
-                </span>
-              </div>
-
-              {/* Heading */}
-              <h3
-                className="text-2xl lg:text-3xl font-black leading-tight mb-6"
-                style={{ color: colors.brand.primary }}
-              >
-                We Build Connected
-                <br />
-
-                <span
-                  style={{
-                    background: gradients.primary,
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent"
-                  }}
-                >
-                  Growth Ecosystems
-                </span>
-
-              </h3>
-
-              {/* Description */}
-              <div className="space-y-5 text-gray-700 leading-relaxed">
-
-                <p className="text-base">
-                  Traditional marketing often fails because execution becomes
-                  fragmented across channels, teams, platforms, and disconnected
-                  campaigns. We eliminate fragmentation through integrated
-                  growth systems built around strategic alignment and measurable
-                  performance.
-                </p>
-
-                <p className="text-base">
-                  Our approach combines AI-assisted intelligence, strategic
-                  positioning, automation, digital infrastructure, analytics,
-                  conversion systems, and customer acquisition into one unified
-                  operational framework.
-                </p>
-
-              </div>
-
-              {/* Metrics */}
-              <div className="grid grid-cols-3 gap-5 mt-8">
-
-                <GlassCard
-                  variant="base"
-                  rounded="xl"
-                  padding="base"
-                  className="text-center"
-                >
-                  <div
-                    className="text-2xl lg:text-3xl font-black mb-1"
-                    style={{ color: colors.brand.secondary }}
-                  >
-                    250+
-                  </div>
-
-                  <p className="text-xs text-gray-600 font-medium">
-                    Integrated Campaigns
-                  </p>
-                </GlassCard>
-
-                <GlassCard
-                  variant="base"
-                  rounded="xl"
-                  padding="base"
-                  className="text-center"
-                >
-                  <div
-                    className="text-2xl lg:text-3xl font-black mb-1"
-                    style={{ color: colors.brand.secondary }}
-                  >
-                    AI+
-                  </div>
-
-                  <p className="text-xs text-gray-600 font-medium">
-                    Intelligent Systems
-                  </p>
-                </GlassCard>
-
-                <GlassCard
-                  variant="base"
-                  rounded="xl"
-                  padding="base"
-                  className="text-center"
-                >
-                  <div
-                    className="text-2xl lg:text-3xl font-black mb-1"
-                    style={{ color: colors.brand.secondary }}
-                  >
-                    4.8x
-                  </div>
-
-                  <p className="text-xs text-gray-600 font-medium">
-                    Average ROI
-                  </p>
-                </GlassCard>
-
-              </div>
-
-            </div>
-
-          </GlassCard>
-
-        </ScrollReveal>
-
-        {/* ============================================
-            RIGHT STACKED CARDS
-        ============================================ */}
-        <div className="space-y-6">
-
-          {/* Card 1 */}
-          <ScrollReveal delay={0.1}>
-
-            <GlassCard
-              variant="base"
-              rounded="2xl"
-              padding="lg"
-              hover
-              className="relative overflow-hidden"
-            >
-
-              <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
-                style={{
-                  backgroundColor: `${colors.brand.secondary}12`
-                }}
-              >
-                <Target
-                  className="w-7 h-7"
-                  style={{ color: colors.brand.secondary }}
-                />
-              </div>
-
-              <h3
-                className="text-xl font-bold mb-4"
-                style={{ color: colors.brand.primary }}
-              >
-                Strategic Alignment
-              </h3>
-
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Every initiative is aligned with customer positioning,
-                business goals, conversion performance, and scalable
-                commercial outcomes.
-              </p>
-
-            </GlassCard>
-
-          </ScrollReveal>
-
-          {/* Card 2 */}
-          <ScrollReveal delay={0.2}>
-
-            <GlassCard
-              variant="base"
-              rounded="2xl"
-              padding="lg"
-              hover
-              className="relative overflow-hidden"
-            >
-
-              <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
-                style={{
-                  backgroundColor: `${colors.brand.secondary}12`
-                }}
-              >
-                <BarChart3
-                  className="w-7 h-7"
-                  style={{ color: colors.brand.secondary }}
-                />
-              </div>
-
-              <h3
-                className="text-xl font-bold mb-4"
-                style={{ color: colors.brand.primary }}
-              >
-                Performance Intelligence
-              </h3>
-
-              <p className="text-sm text-gray-600 leading-relaxed">
-                AI-assisted optimization, analytics, behavioral insights,
-                and conversion tracking frameworks designed for measurable
-                and continuously improving performance.
-              </p>
-
-            </GlassCard>
-
-          </ScrollReveal>
-
-        </div>
-
-      </div>
-
-    </Container>
-  </Section>
-</ModernSectionBackground>
-
-
-
-
-
-
-
-
-
-      {/* ============================================
-    8. OUR EXPERTISE (Integrated Marketing, Strategy, Execution Combined)
-    ============================================ */}
-<ModernSectionBackground variant="gradient-tech">
-  <Section spacing="base" animate background="transparent">
-    <Container size="xl">
-      <SectionHeader
-        badge="Strategic Execution Excellence"
-        badgeIcon={<Zap className="w-4 h-4" />}
-        title="Where Strategy Becomes Action"
-        description="The gap between strategy and execution is where most marketing fails. We eliminate that gap through disciplined integration."
-        align="center"
-        maxWidth="3xl"
-      />
-
-      {/* Hero Image + Content */}
-      <ScrollReveal>
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-7xl mx-auto">
-          
-          {/* Left: Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img
-                src="https://images.unsplash.com/photo-1758691736424-4b4273948341?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxleGVjdXRpdmUlMjBidXNpbmVzcyUyMG1lZXRpbmclMjBzdHJhdGVneXxlbnwxfHx8fDE3NzQ1NTg3MzF8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Executive business strategy meeting"
-                className="w-full h-[280px] lg:h-[380px] object-cover"
-              />
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-
-              {/* Floating stat badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-                className="absolute bottom-6 left-6 right-6"
-              >
-                <GlassCard
-                  variant="strong"
-                  rounded="xl"
-                  padding="base"
-                  className="backdrop-blur-md"
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-xs font-bold text-gray-700 mb-1">
-                        Execution Success Rate
-                      </p>
-
-                      <div className="flex items-baseline gap-1">
-                        <span
-                          className="text-2xl font-bold"
-                          style={{ color: colors.brand.secondary }}
-                        >
-                          97%
-                        </span>
-
-                        <span className="text-sm text-gray-600">
-                          on-time delivery
-                        </span>
-                      </div>
-                    </div>
-
-                    <Zap
-                      className="w-8 h-8"
-                      style={{ color: colors.brand.accent }}
-                    />
-                  </div>
-                </GlassCard>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Right: Content */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
-          >
-            <div>
-              <h3
-                className="text-xl lg:text-2xl font-bold mb-3"
-                style={{ color: colors.brand.primary }}
-              >
-                From Planning to{" "}
-                <span style={{ color: colors.brand.secondary }}>
-                  Performance
-                </span>
-              </h3>
-
-              <div
-                className="h-1 w-16 rounded-full mb-4"
-                style={{ background: gradients.primary }}
-              ></div>
-
-              <p className="text-sm text-gray-700 leading-relaxed mb-5">
-                We bridge strategic intent and tactical execution through
-                disciplined implementation frameworks. Every initiative includes
-                resource allocation, channel orchestration, performance
-                benchmarks, and accountability at every phase.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              {[
-                {
-                  icon: Target,
-                  title: "Strategic Clarity",
-                  desc: "Positioning defined before activation",
-                },
-                {
-                  icon: Rocket,
-                  title: "Disciplined Execution",
-                  desc: "Systematic implementation frameworks",
-                },
-                {
-                  icon: BarChart3,
-                  title: "Continuous Optimization",
-                  desc: "Performance-driven refinement",
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    delay: 0.2 + index * 0.1,
-                    duration: 0.5,
-                  }}
-                >
-                  <GlassCard
-                    variant="base"
-                    rounded="lg"
-                    padding="base"
-                    hover
-                  >
-                    <div className="flex items-start gap-4">
-                      <div
-                        className="p-2.5 rounded-lg flex-shrink-0"
-                        style={{
-                          backgroundColor: `${colors.brand.secondary}10`,
-                        }}
-                      >
-                        <item.icon
-                          className="w-6 h-6"
-                          style={{ color: colors.brand.secondary }}
-                        />
-                      </div>
-
-                      <div>
-                        <h4
-                          className="text-base font-bold mb-1"
-                          style={{ color: colors.brand.primary }}
-                        >
-                          {item.title}
-                        </h4>
-
-                        <p className="text-sm text-gray-600">
-                          {item.desc}
-                        </p>
-                      </div>
-                    </div>
-                  </GlassCard>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </ScrollReveal>
-    </Container>
-  </Section>
-</ModernSectionBackground>
-
-     
-
-
-
-
-
-{/* ============================================
-    7. HOW WE HELP YOU
+    6. HOW WE HELP YOU
 ============================================ */}
 <ModernSectionBackground variant="mesh-gradient-purple">
   <Section spacing="base" animate background="transparent">
     <Container size="xl">
 
-      {/* ============================================
-          SECTION HEADER
-      ============================================ */}
       <SectionHeader
         badge="Execution-Focused Growth Systems"
         badgeIcon={<Sparkles className="w-4 h-4" />}
-        title="How We Help You Build Scalable Revenue Growth"
+        title="How We Help You"
         description="We combine strategic marketing, integrated execution, AI-powered systems, and operational discipline into one connected growth infrastructure."
         align="center"
         maxWidth="4xl"
       />
 
-      {/* ============================================
-          PERFECT 2x2 BENTO GRID
-      ============================================ */}
       <div className="grid lg:grid-cols-2 gap-7 mt-14 items-stretch">
 
-        {/* ============================================
-            CARD 1
-        ============================================ */}
+        {/* Card 1 - Revenue-Tied Strategic Marketing */}
         <ScrollReveal>
-
-          <GlassCard
-            variant="base"
-            rounded="2xl"
-            padding="lg"
-            className="h-full relative overflow-hidden border border-white/40"
-          >
-
-            {/* Glow */}
-            <div
-              className="absolute top-0 right-0 w-80 h-80 rounded-full blur-3xl opacity-10"
-              style={{
-                background: colors.brand.secondary
-              }}
-            ></div>
-
+          <GlassCard variant="base" rounded="2xl" padding="lg" className="h-full relative overflow-hidden border border-white/40">
+            <div className="absolute top-0 right-0 w-80 h-80 rounded-full blur-3xl opacity-10" style={{ background: colors.brand.secondary }}></div>
             <div className="relative z-10 h-full flex flex-col">
-
-              {/* Label */}
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 border w-fit"
-                style={{
-                  borderColor: `${colors.brand.secondary}20`,
-                  backgroundColor: "rgba(255,255,255,0.65)"
-                }}
-              >
-                <Target
-                  className="w-4 h-4"
-                  style={{ color: colors.brand.secondary }}
-                />
-
-                <span
-                  className="text-xs font-bold uppercase tracking-wide"
-                  style={{ color: colors.brand.primary }}
-                >
-                  Revenue-Tied Strategic Marketing
-                </span>
-
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 border w-fit" style={{ borderColor: `${colors.brand.secondary}20`, backgroundColor: "rgba(255,255,255,0.65)" }}>
+                <Target className="w-4 h-4" style={{ color: colors.brand.secondary }} />
+                <span className="text-xs font-bold uppercase tracking-wide" style={{ color: colors.brand.primary }}>Revenue-Tied Strategic Marketing</span>
               </div>
-
-              {/* Heading */}
-              <h3
-                className="text-3xl font-black leading-tight mb-5"
-                style={{ color: colors.brand.primary }}
-              >
-                Every Strategic Decision
-                <br />
-
-                <span
-                  style={{
-                    background: gradients.primary,
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent"
-                  }}
-                >
-                  Connected to Revenue
-                </span>
-
+              <h3 className="text-2xl font-black leading-tight mb-4" style={{ color: colors.brand.primary }}>
+                We don't build strategies in isolation.
+                <br /><span style={{ background: gradients.primary, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Every decision maps to revenue.</span>
               </h3>
-
-              {/* Description */}
-              <p className="text-base text-gray-700 leading-relaxed mb-8">
-                We don’t build strategies in isolation.
-                Every decision is mapped to revenue,
-                pipeline growth, customer acquisition,
-                and long-term business scalability.
-              </p>
-
-              {/* Features */}
-              <div className="grid sm:grid-cols-2 gap-5 mt-auto">
-
-                {[
-                  "Clear growth roadmap aligned to business goals",
-                  "Defined target segments & positioning",
-                  "Measurable KPIs tied to revenue",
-                  "Continuous strategy refinement based on performance"
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="p-5 rounded-2xl border border-white/30 bg-white/40 backdrop-blur-sm"
-                  >
-
-                    <div className="flex items-start gap-4">
-
-                      <div
-                        className="w-3 h-3 rounded-full mt-1.5 shrink-0"
-                        style={{
-                          background: colors.brand.secondary
-                        }}
-                      ></div>
-
-                      <p className="text-sm text-gray-700 leading-relaxed">
-                        {item}
-                      </p>
-
-                    </div>
-
+              <p className="text-sm text-gray-700 leading-relaxed mb-6">Every decision is mapped to revenue, pipeline, and growth targets.</p>
+              <div className="grid sm:grid-cols-2 gap-4 mt-auto">
+                {["Clear growth roadmap aligned to business goals","Defined target segments & positioning","Measurable KPIs tied to revenue","Continuous strategy refinement based on performance"].map((item, i) => (
+                  <div key={i} className="p-4 rounded-xl border border-white/30 bg-white/40 backdrop-blur-sm flex items-start gap-3">
+                    <div className="w-2.5 h-2.5 rounded-full mt-1.5 shrink-0" style={{ background: colors.brand.secondary }}></div>
+                    <p className="text-sm text-gray-700 leading-relaxed">{item}</p>
                   </div>
                 ))}
-
               </div>
-
             </div>
-
           </GlassCard>
-
         </ScrollReveal>
 
-        {/* ============================================
-            CARD 2
-        ============================================ */}
+        {/* Card 2 - Fully Connected Marketing Stack */}
         <ScrollReveal delay={0.1}>
-
-          <GlassCard
-            variant="base"
-            rounded="2xl"
-            padding="lg"
-            className="h-full relative overflow-hidden border border-white/40"
-          >
-
-            <div
-              className="absolute top-0 right-0 w-72 h-72 rounded-full blur-3xl opacity-10"
-              style={{
-                background: colors.brand.secondary
-              }}
-            ></div>
-
+          <GlassCard variant="base" rounded="2xl" padding="lg" className="h-full relative overflow-hidden border border-white/40">
+            <div className="absolute top-0 right-0 w-72 h-72 rounded-full blur-3xl opacity-10" style={{ background: colors.brand.secondary }}></div>
             <div className="relative z-10 h-full flex flex-col">
-
-              {/* Label */}
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 border w-fit"
-                style={{
-                  borderColor: `${colors.brand.secondary}20`,
-                  backgroundColor: "rgba(255,255,255,0.65)"
-                }}
-              >
-                <Rocket
-                  className="w-4 h-4"
-                  style={{ color: colors.brand.secondary }}
-                />
-
-                <span
-                  className="text-xs font-bold uppercase tracking-wide"
-                  style={{ color: colors.brand.primary }}
-                >
-                  Fully Connected Marketing Stack
-                </span>
-
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 border w-fit" style={{ borderColor: `${colors.brand.secondary}20`, backgroundColor: "rgba(255,255,255,0.65)" }}>
+                <Rocket className="w-4 h-4" style={{ color: colors.brand.secondary }} />
+                <span className="text-xs font-bold uppercase tracking-wide" style={{ color: colors.brand.primary }}>Fully Connected Marketing Stack</span>
               </div>
-
-              {/* Heading */}
-              <h3
-                className="text-3xl font-black leading-tight mb-5"
-                style={{ color: colors.brand.primary }}
-              >
-                One Unified
-                <br />
-
-                <span
-                  style={{
-                    background: gradients.primary,
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent"
-                  }}
-                >
-                  Marketing Ecosystem
-                </span>
-
+              <h3 className="text-2xl font-black leading-tight mb-4" style={{ color: colors.brand.primary }}>
+                We connect all your marketing efforts
+                <br /><span style={{ background: gradients.primary, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>into one unified ecosystem.</span>
               </h3>
-
-              {/* Description */}
-              <p className="text-base text-gray-700 leading-relaxed mb-8">
-                We connect all your marketing efforts —
-                online and offline — into one unified,
-                performance-driven ecosystem.
-              </p>
-
-              {/* Features */}
-              <div className="space-y-5 mt-auto">
-
-                {[
-                  "Paid media, SEO, content, and social",
-                  "Email, automation, and CRM",
-                  "Offline channels & sales touchpoints",
-                  "Analytics and reporting systems"
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start gap-4"
-                  >
-
-                    <div
-                      className="w-3 h-3 rounded-full mt-1.5 shrink-0"
-                      style={{
-                        background: colors.brand.secondary
-                      }}
-                    ></div>
-
-                    <p className="text-sm text-gray-700 leading-relaxed">
-                      {item}
-                    </p>
-
+              <p className="text-sm text-gray-700 leading-relaxed mb-6">Online and offline — one performance-driven system.</p>
+              <div className="space-y-4 mt-auto">
+                {["Paid media, SEO, content, and social","Email, automation, and CRM","Offline channels & sales touchpoints","Analytics and reporting systems"].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <div className="w-2.5 h-2.5 rounded-full mt-1.5 shrink-0" style={{ background: colors.brand.secondary }}></div>
+                    <p className="text-sm text-gray-700 leading-relaxed">{item}</p>
                   </div>
                 ))}
-
               </div>
-
             </div>
-
           </GlassCard>
-
         </ScrollReveal>
 
-        {/* ============================================
-            CARD 3
-        ============================================ */}
+        {/* Card 3 - AI That Solves Revenue Problems */}
         <ScrollReveal delay={0.2}>
-
-          <GlassCard
-            variant="base"
-            rounded="2xl"
-            padding="lg"
-            className="h-full relative overflow-hidden border border-white/40"
-          >
-
-            <div
-              className="absolute bottom-0 left-0 w-72 h-72 rounded-full blur-3xl opacity-10"
-              style={{
-                background: colors.brand.secondary
-              }}
-            ></div>
-
+          <GlassCard variant="base" rounded="2xl" padding="lg" className="h-full relative overflow-hidden border border-white/40">
+            <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full blur-3xl opacity-10" style={{ background: colors.brand.secondary }}></div>
             <div className="relative z-10 h-full flex flex-col">
-
-              {/* Label */}
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 border w-fit"
-                style={{
-                  borderColor: `${colors.brand.secondary}20`,
-                  backgroundColor: "rgba(255,255,255,0.65)"
-                }}
-              >
-                <Sparkles
-                  className="w-4 h-4"
-                  style={{ color: colors.brand.secondary }}
-                />
-
-                <span
-                  className="text-xs font-bold uppercase tracking-wide"
-                  style={{ color: colors.brand.primary }}
-                >
-                  AI Revenue Systems
-                </span>
-
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 border w-fit" style={{ borderColor: `${colors.brand.secondary}20`, backgroundColor: "rgba(255,255,255,0.65)" }}>
+                <Sparkles className="w-4 h-4" style={{ color: colors.brand.secondary }} />
+                <span className="text-xs font-bold uppercase tracking-wide" style={{ color: colors.brand.primary }}>AI Revenue Systems</span>
               </div>
-
-              {/* Heading */}
-              <h3
-                className="text-3xl font-black leading-tight mb-5"
-                style={{ color: colors.brand.primary }}
-              >
+              <h3 className="text-2xl font-black leading-tight mb-4" style={{ color: colors.brand.primary }}>
                 AI That Solves
-                <br />
-
-                <span
-                  style={{
-                    background: gradients.primary,
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent"
-                  }}
-                >
-                  Revenue Problems
-                </span>
-
+                <br /><span style={{ background: gradients.primary, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Real Revenue Problems</span>
               </h3>
-
-              {/* Description */}
-              <p className="text-base text-gray-700 leading-relaxed mb-8">
-                We implement AI where it creates measurable
-                operational efficiency, lead quality,
-                and revenue outcomes.
-              </p>
-
-              {/* Problems */}
-              <div className="space-y-5 mt-auto">
-
+              <p className="text-sm text-gray-700 leading-relaxed mb-6">We implement AI where it actually drives outcomes.</p>
+              <div className="space-y-4 mt-auto">
                 {[
-                  {
-                    issue: "Low lead quality",
-                    solution: "AI-based qualification"
-                  },
-                  {
-                    issue: "Missed opportunities",
-                    solution: "Lead revival systems"
-                  },
-                  {
-                    issue: "Slow sales cycles",
-                    solution: "Intelligent automation"
-                  },
-                  {
-                    issue: "Poor customer engagement",
-                    solution: "AI-driven interactions"
-                  },
-                  {
-                    issue: "Lack of insights",
-                    solution: "Predictive analytics"
-                  }
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-start justify-between gap-4 pb-4 border-b border-white/20 last:border-none"
-                  >
-
+                  { issue: "Low lead quality", solution: "AI-based qualification" },
+                  { issue: "Missed opportunities", solution: "Lead revival systems" },
+                  { issue: "Slow sales cycles", solution: "Intelligent automation" },
+                  { issue: "Poor customer engagement", solution: "AI-driven interactions" },
+                  { issue: "Lack of insights", solution: "Predictive analytics" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center justify-between pb-3 border-b border-white/20 last:border-none">
                     <div>
-
-                      <p
-                        className="text-sm font-semibold mb-1"
-                        style={{ color: colors.brand.primary }}
-                      >
-                        {item.issue}
-                      </p>
-
-                      <p className="text-xs text-gray-500">
-                        {item.solution}
-                      </p>
-
+                      <p className="text-sm font-semibold" style={{ color: colors.brand.primary }}>{item.issue}</p>
+                      <p className="text-xs text-gray-500">{item.solution}</p>
                     </div>
-
-                    <div
-                      className="w-3 h-3 rounded-full mt-2 shrink-0"
-                      style={{
-                        background: colors.brand.secondary
-                      }}
-                    ></div>
-
+                    <div className="w-2.5 h-2.5 rounded-full shrink-0" style={{ background: colors.brand.secondary }}></div>
                   </div>
                 ))}
-
               </div>
-
             </div>
-
           </GlassCard>
-
         </ScrollReveal>
 
-        {/* ============================================
-            CARD 4
-        ============================================ */}
+        {/* Card 4 - Repeatable GTM Playbook */}
         <ScrollReveal delay={0.3}>
-
-          <GlassCard
-            variant="base"
-            rounded="2xl"
-            padding="lg"
-            className="h-full relative overflow-hidden border border-white/40"
-          >
-
-            <div
-              className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-3xl opacity-10"
-              style={{
-                background: colors.brand.secondary
-              }}
-            ></div>
-
+          <GlassCard variant="base" rounded="2xl" padding="lg" className="h-full relative overflow-hidden border border-white/40">
+            <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full blur-3xl opacity-10" style={{ background: colors.brand.secondary }}></div>
             <div className="relative z-10 h-full flex flex-col">
-
-              {/* Label */}
-              <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 border w-fit"
-                style={{
-                  borderColor: `${colors.brand.secondary}20`,
-                  backgroundColor: "rgba(255,255,255,0.65)"
-                }}
-              >
-                <BarChart3
-                  className="w-4 h-4"
-                  style={{ color: colors.brand.secondary }}
-                />
-
-                <span
-                  className="text-xs font-bold uppercase tracking-wide"
-                  style={{ color: colors.brand.primary }}
-                >
-                  Repeatable GTM Playbook
-                </span>
-
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-7 border w-fit" style={{ borderColor: `${colors.brand.secondary}20`, backgroundColor: "rgba(255,255,255,0.65)" }}>
+                <BarChart3 className="w-4 h-4" style={{ color: colors.brand.secondary }} />
+                <span className="text-xs font-bold uppercase tracking-wide" style={{ color: colors.brand.primary }}>Repeatable GTM Playbook</span>
               </div>
-
-              {/* Heading */}
-              <h3
-                className="text-3xl font-black leading-tight mb-5"
-                style={{ color: colors.brand.primary }}
-              >
-                A Repeatable System
-                <br />
-
-                <span
-                  style={{
-                    background: gradients.primary,
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent"
-                  }}
-                >
-                  Your Team Can Scale
-                </span>
-
+              <h3 className="text-2xl font-black leading-tight mb-4" style={{ color: colors.brand.primary }}>
+                We don't just plan —
+                <br /><span style={{ background: gradients.primary, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>we build and execute with you.</span>
               </h3>
-
-              {/* Description */}
-              <p className="text-base text-gray-700 leading-relaxed mb-8">
-                We don’t just plan — we build and execute with you.
-                Our frameworks are designed for operational clarity,
-                scalable execution, and continuous optimization.
-              </p>
-
-              {/* Features */}
-              <div className="grid sm:grid-cols-2 gap-5 mt-auto">
-
-                {[
-                  "End-to-end growth strategy development",
-                  "Hands-on execution support",
-                  "Defined processes & systems",
-                  "Playbooks your team can scale with",
-                  "Continuous optimization & learning loops"
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="p-5 rounded-2xl border border-white/30 bg-white/40 backdrop-blur-sm"
-                  >
-
-                    <div className="flex items-start gap-4">
-
-                      <div
-                        className="w-3 h-3 rounded-full mt-1.5 shrink-0"
-                        style={{
-                          background: colors.brand.secondary
-                        }}
-                      ></div>
-
-                      <p className="text-sm text-gray-700 leading-relaxed">
-                        {item}
-                      </p>
-
-                    </div>
-
+              <p className="text-sm text-gray-700 leading-relaxed mb-6">End-to-end growth strategy your team can scale with.</p>
+              <div className="space-y-4 mt-auto">
+                {["End-to-end growth strategy development","Hands-on execution support","Defined processes & systems","Playbooks your team can scale with","Continuous optimization & learning loops"].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-4 h-4 mt-0.5 shrink-0" style={{ color: colors.brand.secondary }} />
+                    <p className="text-sm text-gray-700 leading-relaxed">{item}</p>
                   </div>
                 ))}
-
               </div>
-
             </div>
-
           </GlassCard>
-
         </ScrollReveal>
 
+      </div>
+    </Container>
+  </Section>
+</ModernSectionBackground>
+
+
+{/* ============================================
+    7. HOW WE WORK
+============================================ */}
+<ModernSectionBackground variant="gradient-abstract">
+  <Section spacing="xl" animate background="transparent">
+    <Container size="xl">
+
+      <div className="max-w-4xl mx-auto text-center mb-16">
+        <div className="inline-flex items-center justify-center px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6 border backdrop-blur-xl" style={{ borderColor: `${colors.brand.secondary}25`, backgroundColor: "rgba(255,255,255,0.6)", color: colors.brand.primary }}>
+          How We Work
+        </div>
+        <h2 className="text-4xl sm:text-5xl font-black leading-tight mb-6" style={{ color: colors.brand.primary }}>
+          From First Call
+          <br />
+          <span style={{ background: gradients.primary, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>To Deal Conversion</span>
+        </h2>
+        <p className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+          A structured approach designed for measurable outcomes — aligned to your goals, built for real growth.
+        </p>
+      </div>
+
+      <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-7">
+        {[
+          {
+            number: "01",
+            title: "Discovery & Audit",
+            description: "We evaluate your current state across business strategy, digital & offline marketing, lead generation, CRM performance, AI readiness, and marketing ROI.",
+            points: ["Business strategy & positioning","Digital & offline marketing efforts","Lead generation & conversion systems","CRM performance & data utilization","AI readiness & automation gaps"]
+          },
+          {
+            number: "02",
+            title: "Strategy Blueprint",
+            description: "We design a complete growth system covering strategic marketing, integrated channel mix, and AI/CRM integration — with a clear execution roadmap.",
+            points: ["Positioning, portfolio & pricing strategy","Channel mix & campaign strategy","CRM integration & automation workflows","Execution roadmap with milestones"]
+          },
+          {
+            number: "03",
+            title: "Integrated Execution",
+            description: "We move from planning to action with defined timelines, responsibilities, campaign execution, AI implementation, and continuous monitoring.",
+            points: ["Defined timelines & responsibilities","Campaign execution across channels","AI implementation & CRM alignment","Continuous monitoring & reporting"]
+          },
+          {
+            number: "04",
+            title: "Optimize & Scale",
+            description: "We track performance against goals, optimize campaigns and funnels, scale high-performing channels, and build internal capabilities for long-term growth.",
+            points: ["Performance tracking against goals","Optimization of campaigns & funnels","Scaling high-performing channels","Building internal capabilities"]
+          }
+        ].map((item, index) => (
+          <motion.div key={index} variants={staggerItemVariants} className="h-full">
+            <GlassCard variant="base" rounded="2xl" padding="none" hover className="h-full relative overflow-hidden group border border-white/20 backdrop-blur-xl">
+              <div className="absolute top-0 left-0 right-0 h-[3px] opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: gradients.primary }}></div>
+              <div className="absolute -top-16 -right-16 w-44 h-44 bg-gradient-to-br from-[#0000aa]/10 to-transparent rounded-full blur-3xl"></div>
+              <div className="relative z-10 flex flex-col h-full p-7">
+                <div className="flex items-center justify-between mb-8">
+                  <GlowEffect color={colors.brand.secondary} intensity={14}>
+                    <div className="w-12 h-12 rounded-2xl flex items-center justify-center text-sm font-black shadow-sm" style={{ backgroundColor: `${colors.brand.secondary}12`, color: colors.brand.secondary }}>
+                      {item.number}
+                    </div>
+                  </GlowEffect>
+                  <div className="px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide" style={{ backgroundColor: `${colors.brand.secondary}10`, color: colors.brand.primary }}>
+                    Step {item.number}
+                  </div>
+                </div>
+                <h3 className="text-xl font-black mb-4 tracking-tight" style={{ color: colors.brand.primary }}>{item.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed mb-6">{item.description}</p>
+                <div className="space-y-3 mt-auto">
+                  {item.points.map((point, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <div className="w-2 h-2 rounded-full mt-1.5 shrink-0" style={{ background: colors.brand.secondary }}></div>
+                      <p className="text-xs text-gray-700 leading-relaxed">{point}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </GlassCard>
+          </motion.div>
+        ))}
+      </StaggerContainer>
+
+    </Container>
+  </Section>
+</ModernSectionBackground>
+
+
+{/* ============================================
+    8. WHY ADVANTEDGE
+============================================ */}
+<ModernSectionBackground variant="glass-blur">
+  <Section spacing="base" animate background="transparent">
+    <Container size="xl">
+
+      <SectionHeader
+        badge="Why AdvantEdge"
+        badgeIcon={<Sparkles className="w-4 h-4" />}
+        title="We Are Not Just Another Marketing Agency."
+        description="Global experts with business leadership and consulting experience — built for measurable outcomes, not activity."
+        align="center"
+        maxWidth="3xl"
+      />
+
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+        {[
+          { icon: <Globe className="w-6 h-6" />, title: "Global Experts", desc: "Business leadership & consulting experience across markets and industries." },
+          { icon: <Layers className="w-6 h-6" />, title: "Strategy + Execution", desc: "Deep expertise in both strategy and hands-on execution — not just advice." },
+          { icon: <Sparkles className="w-6 h-6" />, title: "Integrated Approach", desc: "Marketing, sales, and AI working as one connected revenue system." },
+          { icon: <BarChart3 className="w-6 h-6" />, title: "Measurable Outcomes", desc: "Built for revenue, pipeline, and ROI — not vanity metrics or activity reports." },
+          { icon: <Target className="w-6 h-6" />, title: "Revenue Focus", desc: "Strong focus on pipeline growth, lead quality, and commercial performance." },
+          { icon: <Rocket className="w-6 h-6" />, title: "Leadership-Level Thinking", desc: "Hands-on execution combined with executive-level strategic perspective." },
+        ].map((item, index) => (
+          <ScrollReveal key={index} delay={index * 0.08}>
+            <GlassCard variant="base" rounded="2xl" padding="lg" hover className="h-full relative overflow-hidden">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ backgroundColor: `${colors.brand.secondary}12` }}>
+                <div style={{ color: colors.brand.secondary }}>{item.icon}</div>
+              </div>
+              <h3 className="text-base font-bold mb-3" style={{ color: colors.brand.primary }}>{item.title}</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+            </GlassCard>
+          </ScrollReveal>
+        ))}
       </div>
 
     </Container>
@@ -2644,634 +1268,174 @@ We don’t just advise - we align strategy, execution, and technology to deliver
 </ModernSectionBackground>
 
 
+{/* ============================================
+    9. CASE STUDIES
+============================================ */}
+<ModernSectionBackground variant="gradient-tech">
+  <Section spacing="base" animate background="transparent">
+    <Container size="xl">
 
+      <SectionHeader
+        badge="Case Studies"
+        badgeIcon={<TrendingUp className="w-4 h-4" />}
+        title="Real Transformations. Measurable Growth."
+        description="Strategy → Execution → Measurable results. See how we've helped businesses build revenue-generating marketing systems."
+        align="center"
+        maxWidth="3xl"
+      />
 
-
-
-
-      {/* ============================================
-          11. DIGITAL EXECUTION WITH ACCOUNTABILITY
-          ============================================ */}
-      <ModernSectionBackground variant="mesh-gradient-blue">
-        <Section spacing="base" animate background="transparent">
-        <Container size="xl">
-          <SectionHeader
-            badge="Performance-Driven Digital"
-            badgeIcon={<MonitorSmartphone className="w-4 h-4" />}
-            title="Digital Execution with Accountability"
-            description="Every digital channel must deliver measurable contribution to pipeline quality and revenue growth."
-            align="center"
-            maxWidth="3xl"
-          />
-
-          {/* Hero Image Section */}
-          <ScrollReveal>
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-7xl mx-auto mb-16">
-              {/* Right: Image */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="order-2 lg:order-1"
-              >
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img
-                    src="https://images.unsplash.com/photo-1759661966728-4a02e3c6ed91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwYW5hbHl0aWNzJTIwcGVyZm9ybWFuY2UlMjBkYXNoYm9hcmR8ZW58MXx8fHwxNzc0NTU5MTUxfDA&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Digital analytics performance dashboard"
-                    className="w-full h-[280px] lg:h-[380px] object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                  
-                  {/* Floating metrics badge */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4, duration: 0.6 }}
-                    className="absolute bottom-6 left-6 right-6"
-                  >
-                    <GlassCard variant="strong" rounded="xl" padding="base" className="backdrop-blur-md">
-                      <div className="grid grid-cols-3 gap-4 text-center">
-                        <div>
-                          <p className="text-xs font-bold text-gray-700 mb-1">Avg. ROAS</p>
-                          <div className="flex items-baseline justify-center gap-1">
-                            <span className="text-xl font-bold" style={{ color: colors.brand.secondary }}>5.8</span>
-                            <span className="text-xs text-gray-600">:1</span>
-                          </div>
-                        </div>
-                        <div className="border-x border-gray-300/40">
-                          <p className="text-xs font-bold text-gray-700 mb-1">Channel Mix</p>
-                          <span className="text-xl font-bold" style={{ color: colors.brand.secondary }}>8+</span>
-                        </div>
-                        <div>
-                          <p className="text-xs font-bold text-gray-700 mb-1">Attribution</p>
-                          <span className="text-xl font-bold" style={{ color: colors.brand.secondary }}>Full</span>
-                        </div>
-                      </div>
-                    </GlassCard>
-                  </motion.div>
+      <div className="grid md:grid-cols-3 gap-7 mt-12">
+        {[
+          {
+            industry: "B2B SaaS",
+            result: "4.2x Pipeline Growth",
+            headline: "From scattered campaigns to a unified revenue engine",
+            description: "A SaaS company struggling with disconnected marketing channels and low-quality leads transformed their entire GTM approach — resulting in a 4.2x increase in qualified pipeline within 6 months.",
+            tags: ["Strategic Marketing", "AI Lead Qualification", "CRM Integration"],
+            metric: "4.2x",
+            metricLabel: "Pipeline Growth"
+          },
+          {
+            industry: "Professional Services",
+            result: "340% Brand Recall Lift",
+            headline: "Positioning-first strategy that became a market authority",
+            description: "A consulting firm with no clear market position built a differentiated brand, content engine, and lead nurturing system — establishing thought leadership and tripling inbound inquiries.",
+            tags: ["Brand Strategy", "Content Marketing", "LinkedIn Authority"],
+            metric: "340%",
+            metricLabel: "Brand Recall Lift"
+          },
+          {
+            industry: "Manufacturing",
+            result: "97% Lead Quality Score",
+            headline: "AI-powered qualification that transformed the sales pipeline",
+            description: "An industrial manufacturer with a sales team chasing unqualified leads implemented AI-driven scoring and CRM automation — dramatically improving lead quality and shortening the sales cycle.",
+            tags: ["AI Solutions", "CRM Automation", "Sales Alignment"],
+            metric: "97%",
+            metricLabel: "Lead Quality Score"
+          }
+        ].map((study, index) => (
+          <ScrollReveal key={index} delay={index * 0.1}>
+            <GlassCard variant="base" rounded="2xl" padding="lg" hover className="h-full relative overflow-hidden flex flex-col">
+              <div className="absolute top-0 right-0 w-48 h-48 rounded-full blur-3xl opacity-8" style={{ background: colors.brand.secondary }}></div>
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="flex items-center justify-between mb-5">
+                  <span className="text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full" style={{ backgroundColor: `${colors.brand.secondary}12`, color: colors.brand.secondary }}>{study.industry}</span>
+                  <div className="text-right">
+                    <div className="text-2xl font-black" style={{ color: colors.brand.secondary }}>{study.metric}</div>
+                    <div className="text-xs text-gray-500">{study.metricLabel}</div>
+                  </div>
                 </div>
-              </motion.div>
-
-              {/* Left: Content */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="order-1 lg:order-2 space-y-6"
-              >
-                <div>
-                  <h3 className="text-xl lg:text-2xl font-bold mb-3" style={{ color: colors.brand.primary }}>
-                    Transparent, Controlled,{' '}
-                    <span style={{ color: colors.brand.secondary }}>Accountable</span>
-                  </h3>
-                  <div className="h-1 w-16 rounded-full mb-4" style={{ background: gradients.primary }}></div>
-                  <p className="text-sm text-gray-700 leading-relaxed mb-5">
-                    We engineer technical SEO, multi-platform acquisition (Google, LinkedIn, Meta), conversion optimization, marketing automation, and attribution modeling. Every channel has defined objectives. Every action supports pipeline quality.
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { label: 'SEO Authority', value: 'Technical' },
-                    { label: 'Paid Media', value: 'Multi-Platform' },
-                    { label: 'Automation', value: 'Full-Stack' },
-                    { label: 'Analytics', value: 'Real-Time' }
-                  ].map((stat, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
-                    >
-                      <GlassCard variant="base" rounded="lg" padding="sm" hover>
-                        <p className="text-xs text-gray-600 mb-1">{stat.label}</p>
-                        <p className="text-base font-bold" style={{ color: colors.brand.primary }}>
-                          {stat.value}
-                        </p>
-                      </GlassCard>
-                    </motion.div>
+                <h3 className="text-base font-black mb-3 leading-snug" style={{ color: colors.brand.primary }}>{study.headline}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed mb-6 flex-grow">{study.description}</p>
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {study.tags.map((tag, i) => (
+                    <span key={i} className="text-xs px-2.5 py-1 rounded-full border" style={{ borderColor: `${colors.brand.secondary}20`, color: colors.brand.primary, backgroundColor: "rgba(255,255,255,0.5)" }}>{tag}</span>
                   ))}
-                </div>
-              </motion.div>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid md:grid-cols-3 gap-6 mt-8 mb-10">
-          </div>
-
-          <ScrollReveal>
-            <GlassCard variant="base" rounded="lg" padding="none" className="mt-10 overflow-hidden">
-              <div className="grid lg:grid-cols-2">
-                <div className="p-8 lg:p-10 bg-gradient-to-br from-[#0000aa]/5 to-transparent">
-                  <div className="flex items-center gap-3 mb-5">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#000131] to-[#0000aa] flex items-center justify-center flex-shrink-0">
-                      <Search className="w-7 h-7 text-white" />
-                    </div>
-                    <h3 className="text-base font-bold" style={{ color: colors.brand.primary }}>
-                      We Engineer
-                    </h3>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center flex-shrink-0">
-                        <CheckCircle2 className="w-5 h-5" style={{ color: colors.brand.secondary }} />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-sm mb-1" style={{ color: colors.brand.primary }}>Technical SEO and authority growth</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center flex-shrink-0">
-                        <CheckCircle2 className="w-5 h-5" style={{ color: colors.brand.secondary }} />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-sm mb-1" style={{ color: colors.brand.primary }}>Multi-platform acquisition (Google, LinkedIn, Meta)</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center flex-shrink-0">
-                        <CheckCircle2 className="w-5 h-5" style={{ color: colors.brand.secondary }} />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-sm mb-1" style={{ color: colors.brand.primary }}>Conversion rate optimization</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center flex-shrink-0">
-                        <CheckCircle2 className="w-5 h-5" style={{ color: colors.brand.secondary }} />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-sm mb-1" style={{ color: colors.brand.primary }}>Marketing automation and lead scoring</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-white shadow-sm flex items-center justify-center flex-shrink-0">
-                        <CheckCircle2 className="w-5 h-5" style={{ color: colors.brand.secondary }} />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-sm mb-1" style={{ color: colors.brand.primary }}>Attribution modeling and ROI analysis</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="p-8 lg:p-10 bg-gradient-to-bl from-[#ffb300]/5 to-transparent border-l border-gray-300/40 flex items-center justify-center">
-                  <div className="text-center">
-                    <BarChart3 className="w-10 h-10 mx-auto mb-3" style={{ color: colors.brand.secondary }} />
-                    <p className="text-sm font-bold mb-2 leading-tight" style={{ color: colors.brand.primary }}>
-                      Every channel has defined objectives.
-                    </p>
-                    <p className="text-sm text-gray-700 leading-relaxed">
-                      Every action supports pipeline quality and revenue growth.
-                    </p>
-                    <div className="mt-4 pt-4 border-t border-gray-300/40">
-                      <p className="text-sm font-bold" style={{ color: colors.brand.secondary }}>
-                        Digital becomes transparent. Controlled. Accountable.
-                      </p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </GlassCard>
           </ScrollReveal>
+        ))}
+      </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-10">
-            <ScrollReveal delay={0.1}>
-              <GlassCard variant="base" rounded="lg" padding="base" className="text-center">
-                <MonitorSmartphone className="w-7 h-7 mx-auto mb-2" style={{ color: colors.brand.secondary }} />
-                <p className="text-base font-bold mb-1" style={{ color: colors.brand.primary }}>100%</p>
-                <p className="text-sm text-gray-600">Channel Accountability</p>
-              </GlassCard>
-            </ScrollReveal>
-            <ScrollReveal delay={0.2}>
-              <GlassCard variant="base" rounded="lg" padding="base" className="text-center border-2" style={{ borderColor: colors.brand.secondary }}>
-                <LineChart className="w-7 h-7 mx-auto mb-2" style={{ color: colors.brand.accent }} />
-                <p className="text-base font-bold mb-1" style={{ color: colors.brand.primary }}>Real-Time</p>
-                <p className="text-sm text-gray-600">Performance Tracking</p>
-              </GlassCard>
-            </ScrollReveal>
-            <ScrollReveal delay={0.3}>
-              <GlassCard variant="base" rounded="lg" padding="base" className="text-center">
-                <TrendingUp className="w-7 h-7 mx-auto mb-2" style={{ color: colors.brand.secondary }} />
-                <p className="text-base font-bold mb-1" style={{ color: colors.brand.primary }}>Continuous</p>
-                <p className="text-sm text-gray-600">Optimization Cycles</p>
-              </GlassCard>
-            </ScrollReveal>
-          </div>
-        </Container>
-        </Section>
-      </ModernSectionBackground>
+      <ScrollReveal delay={0.4}>
+        <div className="text-center mt-10">
+          <Link to="/case-studies" className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-sm border-2 transition-all duration-300 hover:shadow-lg group" style={{ borderColor: colors.brand.primary, color: colors.brand.primary }}>
+            View All Case Studies
+            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      </ScrollReveal>
 
-      {/* ============================================
-          12. BRAND PRESENCE THAT CREATES RECALL
-          ============================================ */}
-      <ModernSectionBackground variant="glass-blur">
-        <Section spacing="base" animate background="transparent">
-        <Container size="xl">
-          <SectionHeader
-            badge="Strategic Brand Building"
-            badgeIcon={<Eye className="w-4 h-4" />}
-            title="Brand Presence That Creates Recall"
-            description="Brand is leverage. Strategic positioning, visual identity, and consistent presence compound recognition into revenue-generating advantage."
-            align="center"
-            maxWidth="3xl"
-          />
+    </Container>
+  </Section>
+</ModernSectionBackground>
 
-          {/* Hero Image Section */}
-          <ScrollReveal>
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-7xl mx-auto mb-16">
-              {/* Left: Image */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img
-                    src="https://images.unsplash.com/photo-1764383381195-5daa5902c3f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBicmFuZCUyMGlkZW50aXR5JTIwZGVzaWdufGVufDF8fHx8MTc3NDU1OTE1MHww&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Corporate brand identity design"
-                    className="w-full h-[280px] lg:h-[380px] object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                  
-                  {/* Floating brand stat */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4, duration: 0.6 }}
-                    className="absolute bottom-6 left-6 right-6"
-                  >
-                    <GlassCard variant="strong" rounded="xl" padding="base" className="backdrop-blur-md">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-xs font-bold text-gray-700 mb-1">Brand Recall Increase</p>
-                          <div className="flex items-baseline gap-1">
-                            <span className="text-2xl font-bold" style={{ color: colors.brand.secondary }}>340%</span>
-                            <span className="text-sm text-gray-600">avg. lift</span>
-                          </div>
-                        </div>
-                        <Eye className="w-8 h-8" style={{ color: colors.brand.accent }} />
-                      </div>
-                    </GlassCard>
-                  </motion.div>
+
+{/* ============================================
+    10. CTA SECTION — AI MARKETING READINESS ASSESSMENT
+============================================ */}
+<ModernSectionBackground variant="gradient-abstract">
+  <Section spacing="base" animate background="transparent">
+    <Container size="xl">
+      <ScrollReveal>
+        <GlassCard variant="strong" rounded="3xl" padding="none" className="relative overflow-hidden border border-white/20">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-[#0000aa]/10 to-transparent rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tl from-[#ffb300]/8 to-transparent rounded-full blur-3xl"></div>
+
+          <div className="relative z-10 px-8 py-12 lg:px-16 lg:py-16">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+
+              {/* Left */}
+              <div>
+                <div className="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6 border" style={{ borderColor: `${colors.brand.accent}40`, backgroundColor: `${colors.brand.accent}10`, color: colors.brand.primary }}>
+                  Free Assessment
                 </div>
-              </motion.div>
-
-              {/* Right: Content */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="space-y-6"
-              >
-                <div>
-                  <h3 className="text-xl lg:text-2xl font-bold mb-3" style={{ color: colors.brand.primary }}>
-                    Recognition Becomes{' '}
-                    <span style={{ color: colors.brand.secondary }}>Revenue Advantage</span>
-                  </h3>
-                  <div className="h-1 w-16 rounded-full mb-4" style={{ background: gradients.primary }}></div>
-                  <p className="text-sm text-gray-700 leading-relaxed mb-5">
-                    We develop strategic positioning, visual identity systems, brand architecture, messaging frameworks, and market presence that transform recognition into competitive advantage. Brand creates preference before the conversation begins.
-                  </p>
-                </div>
-
-                <div className="space-y-4">
+                <h2 className="text-3xl lg:text-4xl font-black leading-tight mb-5" style={{ color: colors.brand.primary }}>
+                  Get Your Free AI Marketing
+                  <br />
+                  <span style={{ background: gradients.primary, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Readiness Assessment</span>
+                </h2>
+                <p className="text-base text-gray-700 leading-relaxed mb-6">
+                  In one focused session, we evaluate your marketing, CRM, and AI readiness — and identify exactly where you're losing revenue.
+                </p>
+                <div className="space-y-3 mb-8">
                   {[
-                    { icon: Target, title: 'Strategic Positioning', desc: 'Market differentiation & value definition' },
-                    { icon: Palette, title: 'Identity Systems', desc: 'Cohesive visual & verbal language' },
-                    { icon: TrendingUp, title: 'Market Presence', desc: 'Consistent multi-channel visibility' }
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
-                    >
-                      <GlassCard variant="base" rounded="lg" padding="base" hover>
-                        <div className="flex items-start gap-4">
-                          <div 
-                            className="p-2.5 rounded-lg flex-shrink-0"
-                            style={{ backgroundColor: `${colors.brand.accent}10` }}
-                          >
-                            <item.icon className="w-6 h-6" style={{ color: colors.brand.accent }} />
-                          </div>
-                          <div>
-                            <h4 className="text-base font-bold mb-1" style={{ color: colors.brand.primary }}>
-                              {item.title}
-                            </h4>
-                            <p className="text-sm text-gray-600">{item.desc}</p>
-                          </div>
-                        </div>
-                      </GlassCard>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          </ScrollReveal>
-
-          <div className="mt-10 grid md:grid-cols-4 gap-6">
-            <ScrollReveal className="md:col-span-2 md:row-span-2">
-              <GlassCard variant="base" rounded="lg" padding="lg" hover className="h-full relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#0000aa]/10 to-transparent rounded-full blur-3xl"></div>
-                <div className="relative z-10">
-                  <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-[#000131] to-[#0000aa] flex items-center justify-center mb-4">
-                    <Eye className="w-7 h-7 text-white" />
-                  </div>
-                  <p className="text-sm font-bold mb-3" style={{ color: colors.brand.primary }}>
-                    When positioning, messaging, and identity align across all touchpoints, organizations command attention and earn trust.
-                  </p>
-                  <div className="space-y-3 text-sm">
-                    <p className="font-bold" style={{ color: colors.brand.secondary }}>We build:</p>
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.secondary }} />
-                        <span className="text-gray-700">Strategic market positioning</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.secondary }} />
-                        <span className="text-gray-700">Messaging systems with narrative consistency</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.secondary }} />
-                        <span className="text-gray-700">Visual identity frameworks with governance</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="flex items-center gap-3 pt-4 mt-4 border-t border-gray-300/40">
-                    <Award className="w-6 h-6" style={{ color: colors.brand.accent }} />
-                    <p className="text-sm font-semibold" style={{ color: colors.brand.secondary }}>
-                      Strong brands compete on clarity, not noise.
-                    </p>
-                  </div>
-                </div>
-              </GlassCard>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.1} className="md:col-span-2">
-              <GlassCard variant="base" rounded="lg" padding="base" hover className="h-full">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#0000aa]/10 to-[#000131]/10 flex items-center justify-center">
-                    <Target className="w-6 h-6" style={{ color: colors.brand.secondary }} />
-                  </div>
-                  <h3 className="text-base font-bold" style={{ color: colors.brand.primary }}>
-                    Positioning Strategy
-                  </h3>
-                </div>
-                <p className="text-gray-700 leading-relaxed text-sm">
-                  Distinct market position rooted in competitive differentiation and authentic value propositions.
-                </p>
-              </GlassCard>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.2}>
-              <GlassCard variant="base" rounded="lg" padding="sm" hover className="h-full text-center">
-                <Megaphone className="w-8 h-8 mx-auto mb-2" style={{ color: colors.brand.secondary }} />
-                <h3 className="text-base font-bold mb-2" style={{ color: colors.brand.primary }}>
-                  Messaging Architecture
-                </h3>
-                <p className="text-xs text-gray-600">
-                  Unified voice across all touchpoints
-                </p>
-              </GlassCard>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.3}>
-              <GlassCard variant="base" rounded="lg" padding="sm" hover className="h-full text-center bg-gradient-to-br from-[#ffb300]/5 to-transparent">
-                <PenTool className="w-8 h-8 mx-auto mb-2" style={{ color: colors.brand.accent }} />
-                <h3 className="text-base font-bold mb-2" style={{ color: colors.brand.primary }}>
-                  Visual Identity
-                </h3>
-                <p className="text-xs text-gray-600">
-                  Cohesive design systems
-                </p>
-              </GlassCard>
-            </ScrollReveal>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-4 mt-6">
-            <ScrollReveal delay={0.4}>
-              <GlassCard variant="base" rounded="lg" padding="base" hover className="text-center">
-                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-br from-[#000131]/10 to-[#0000aa]/10 flex items-center justify-center">
-                  <span className="text-xl font-bold" style={{ color: colors.brand.secondary }}>01</span>
-                </div>
-                <p className="text-sm font-semibold" style={{ color: colors.brand.primary }}>Brand Guidelines</p>
-              </GlassCard>
-            </ScrollReveal>
-            <ScrollReveal delay={0.5}>
-              <GlassCard variant="base" rounded="lg" padding="base" hover className="text-center">
-                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-br from-[#0000aa]/10 to-[#000131]/10 flex items-center justify-center">
-                  <span className="text-xl font-bold" style={{ color: colors.brand.secondary }}>02</span>
-                </div>
-                <p className="text-sm font-semibold" style={{ color: colors.brand.primary }}>Voice & Tone</p>
-              </GlassCard>
-            </ScrollReveal>
-            <ScrollReveal delay={0.6}>
-              <GlassCard variant="base" rounded="lg" padding="base" hover className="text-center">
-                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-br from-[#ffb300]/10 to-[#ff8c00]/10 flex items-center justify-center">
-                  <span className="text-xl font-bold" style={{ color: colors.brand.accent }}>03</span>
-                </div>
-                <p className="text-sm font-semibold" style={{ color: colors.brand.primary }}>Asset Management</p>
-              </GlassCard>
-            </ScrollReveal>
-            <ScrollReveal delay={0.7}>
-              <GlassCard variant="base" rounded="lg" padding="base" hover className="text-center">
-                <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-br from-[#000131]/10 to-[#0000aa]/10 flex items-center justify-center">
-                  <span className="text-xl font-bold" style={{ color: colors.brand.secondary }}>04</span>
-                </div>
-                <p className="text-sm font-semibold" style={{ color: colors.brand.primary }}>Brand Governance</p>
-              </GlassCard>
-            </ScrollReveal>
-          </div>
-        </Container>
-        </Section>
-      </ModernSectionBackground>
-
-      {/* ============================================
-          13. A DISCIPLINED OPERATING MODEL
-          ============================================ */}
-      <ModernSectionBackground variant="animated-dots">
-        <Section spacing="base" animate background="transparent">
-        <Container size="xl">
-          <SectionHeader
-            badge="Proven Methodology"
-            badgeIcon={<RefreshCw className="w-4 h-4" />}
-            title="A Disciplined Operating Model"
-            description="Sustainable growth requires structure. Our operating model delivers strategic clarity, execution discipline, and measurable outcomes."
-            align="center"
-            maxWidth="3xl"
-          />
-
-          {/* Hero Image Section */}
-          <ScrollReveal>
-            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-7xl mx-auto mb-16">
-              {/* Right: Image */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="order-2 lg:order-1"
-              >
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img
-                    src="https://images.unsplash.com/photo-1758518729706-b1810dd39cc6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHJhdGVnaWMlMjBidXNpbmVzcyUyMHBsYW5uaW5nJTIwcHJvZmVzc2lvbmFsfGVufDF8fHx8MTc3NDU1OTE1MXww&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Strategic business planning professional"
-                    className="w-full h-[280px] lg:h-[380px] object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                  
-                  {/* Floating process badge */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4, duration: 0.6 }}
-                    className="absolute bottom-6 left-6 right-6"
-                  >
-                    <GlassCard variant="strong" rounded="xl" padding="base" className="backdrop-blur-md">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-xs font-bold text-gray-700 mb-1">Operating Framework</p>
-                          <div className="flex items-baseline gap-1">
-                            <span className="text-2xl font-bold" style={{ color: colors.brand.secondary }}>4-Phase</span>
-                            <span className="text-sm text-gray-600">repeatable model</span>
-                          </div>
-                        </div>
-                        <RefreshCw className="w-8 h-8" style={{ color: colors.brand.accent }} />
-                      </div>
-                    </GlassCard>
-                  </motion.div>
-                </div>
-              </motion.div>
-
-              {/* Left: Content */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="order-1 lg:order-2 space-y-6"
-              >
-                <div>
-                  <h3 className="text-xl lg:text-2xl font-bold mb-3" style={{ color: colors.brand.primary }}>
-                    Structure Produces{' '}
-                    <span style={{ color: colors.brand.secondary }}>Sustainable Results</span>
-                  </h3>
-                  <div className="h-1 w-16 rounded-full mb-4" style={{ background: gradients.primary }}></div>
-                  <p className="text-sm text-gray-700 leading-relaxed mb-5">
-                    Our repeatable four-phase methodology integrates strategic planning, disciplined execution, performance measurement, and systematic optimization. Every engagement follows this proven framework to ensure accountability and results.
-                  </p>
-                </div>
-
-                <div className="space-y-4">
-                  {[
-                    { icon: Target, title: 'Strategic Foundation', desc: 'Discovery, positioning, planning' },
-                    { icon: Rocket, title: 'Tactical Execution', desc: 'Coordinated implementation & launch' },
-                    { icon: BarChart3, title: 'Performance Measurement', desc: 'Analytics, reporting, attribution' },
-                    { icon: RefreshCw, title: 'Continuous Optimization', desc: 'Testing, refinement, scaling' }
-                  ].map((item, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
-                    >
-                      <GlassCard variant="base" rounded="lg" padding="base" hover>
-                        <div className="flex items-start gap-4">
-                          <div 
-                            className="p-2.5 rounded-lg flex-shrink-0"
-                            style={{ backgroundColor: `${colors.brand.secondary}10` }}
-                          >
-                            <item.icon className="w-6 h-6" style={{ color: colors.brand.secondary }} />
-                          </div>
-                          <div>
-                            <h4 className="text-base font-bold mb-1" style={{ color: colors.brand.primary }}>
-                              {item.title}
-                            </h4>
-                            <p className="text-sm text-gray-600">{item.desc}</p>
-                          </div>
-                        </div>
-                      </GlassCard>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          </ScrollReveal>
-
-          <div className="mt-12 relative">
-            <div className="hidden lg:block absolute top-28 left-0 right-0 h-2 bg-gradient-to-r from-[#000131] via-[#0000aa] via-[#ffb300] to-[#000131] opacity-20 rounded-full"></div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-6">
-              {processSteps.map((step, index) => (
-                <ScrollReveal key={index} delay={index * 0.1}>
-                  <div className="relative">
-                    <div className="relative mb-5">
-                      <div className="w-12 h-12 mx-auto rounded-full bg-gradient-to-br from-[#000131] to-[#0000aa] flex items-center justify-center shadow-2xl relative z-10">
-                        <span className="text-white font-bold text-base">{step.number}</span>
-                      </div>
-                      {index < processSteps.length - 1 && (
-                        <div className="hidden lg:block absolute top-1/2 left-full w-12 h-0.5 bg-gradient-to-r from-[#0000aa] to-transparent"></div>
-                      )}
+                    "CRM health & data utilization audit",
+                    "Channel-wise performance & ROI insights",
+                    "AI readiness score with quick-win opportunities",
+                    "Custom 90-day growth roadmap"
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <CheckCircle2 className="w-5 h-5 shrink-0" style={{ color: colors.brand.secondary }} />
+                      <p className="text-sm font-medium" style={{ color: colors.brand.primary }}>{item}</p>
                     </div>
+                  ))}
+                </div>
+                <MagneticButton strength={0.3}>
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center justify-center px-8 py-4 rounded-xl text-white font-bold text-base shadow-xl hover:shadow-2xl transition-all duration-300 group"
+                    style={{ background: gradients.primary }}
+                  >
+                    Claim Your Free Assessment
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </MagneticButton>
+                <p className="text-xs text-gray-500 mt-4">We onboard a limited number of clients each quarter to ensure execution quality.</p>
+              </div>
 
-                    <GlassCard variant="base" rounded="lg" padding="base" hover className="h-full text-center">
-                      <div className="w-12 h-12 mx-auto mb-3 rounded-lg bg-gradient-to-br from-[#0000aa]/10 to-[#000131]/10 flex items-center justify-center">
-                        {step.icon}
+              {/* Right - Focus Areas */}
+              <div>
+                <p className="text-sm font-bold uppercase tracking-widest mb-5" style={{ color: colors.brand.secondary }}>Focus Areas</p>
+                <div className="space-y-3">
+                  {[
+                    { icon: <TrendingUp className="w-5 h-5" />, label: "More qualified leads / pipeline" },
+                    { icon: <Sparkles className="w-5 h-5" />, label: "AI & CRM implementation" },
+                    { icon: <Layers className="w-5 h-5" />, label: "Integrated marketing strategy" },
+                    { icon: <Users className="w-5 h-5" />, label: "Sales & marketing alignment" },
+                    { icon: <Target className="w-5 h-5" />, label: "All of the above" },
+                  ].map((item, i) => (
+                    <GlassCard key={i} variant="base" rounded="xl" padding="base" hover className="flex items-center gap-4">
+                      <div className="p-2 rounded-lg" style={{ backgroundColor: `${colors.brand.secondary}12` }}>
+                        <div style={{ color: colors.brand.secondary }}>{item.icon}</div>
                       </div>
-                      <h3 className="text-base font-bold mb-2 leading-tight" style={{ color: colors.brand.primary }}>
-                        {step.title}
-                      </h3>
-                      <p className="text-gray-700 leading-relaxed text-sm mb-3">
-                        {step.description}
-                      </p>
-                      
-                      <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-gradient-to-r from-[#0000aa]/10 to-[#000131]/10">
-                        <span className="text-xs font-bold tracking-wide uppercase" style={{ color: colors.brand.secondary }}>
-                          Phase {step.number}
-                        </span>
-                      </div>
+                      <p className="text-sm font-semibold" style={{ color: colors.brand.primary }}>{item.label}</p>
                     </GlassCard>
-                  </div>
-                </ScrollReveal>
-              ))}
+                  ))}
+                </div>
+              </div>
+
             </div>
           </div>
-
-          <ScrollReveal delay={0.5}>
-            <div className="mt-12 max-w-5xl mx-auto">
-              <GlassCard variant="base" rounded="lg" padding="lg" className="text-center relative overflow-hidden">
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-gradient-to-br from-[#0000aa]/5 via-[#ffb300]/5 to-transparent rounded-full blur-3xl"></div>
-                <div className="relative z-10">
-                  <RefreshCw className="w-9 h-9 mx-auto mb-3 text-[#0000aa]" />
-                  <p className="text-sm font-bold mb-2" style={{ color: colors.brand.primary }}>
-                    Process creates predictability.
-                  </p>
-                  <p className="text-sm font-bold" style={{ color: colors.brand.secondary }}>
-                    Discipline creates momentum.
-                  </p>
-                </div>
-              </GlassCard>
-            </div>
-          </ScrollReveal>
-        </Container>
-        </Section>
-      </ModernSectionBackground>
-
+        </GlassCard>
+      </ScrollReveal>
+    </Container>
+  </Section>
+</ModernSectionBackground>
 
 
       
-
       {/* ============================================
           17. TESTIMONIALS (Single Combined Section)
           ============================================ */}
