@@ -553,7 +553,7 @@ export function ServicesPage() {
                           >
                             <span className="text-white font-bold text-lg">{step.number}</span>
                           </div>
-                          <div className="pt-8">
+                          <div className="pt-12">
                             <h3 className="text-lg font-bold mb-2 leading-tight" style={{ color: colors.brand.primary }}>
                               {step.title}
                             </h3>
