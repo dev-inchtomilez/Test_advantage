@@ -63,99 +63,144 @@ import { colors, gradients } from '../../styles/design-tokens';
 const coreServices = [
   {
     icon: <Rocket className="w-7 h-7" />,
-    title: 'Strategic Marketing Planning',
-    description: 'Comprehensive marketing strategy development, competitive analysis, market positioning, and integrated go-to-market roadmaps aligned with business objectives.',
+    title: 'Strategic Marketing',
+    description: 'Growth without strategy creates activity — not market leadership. We build revenue-aligned marketing strategies designed around positioning, demand generation, customer acquisition, and scalable business growth.',
     sectionId: 'strategic-planning',
   },
   {
     icon: <MonitorSmartphone className="w-7 h-7" />,
-    title: 'Digital Marketing & Growth',
-    description: 'SEO/SEM, paid advertising, social media, content marketing, conversion optimization, and performance-driven digital strategies.',
+    title: 'Integrated Marketing',
+    description: 'Disconnected channels create inconsistent growth. We connect digital, offline, content, media, and automation into one integrated marketing ecosystem aligned to revenue goals.',
     sectionId: 'digital-marketing',
   },
   {
     icon: <Brain className="w-7 h-7" />,
-    title: 'AI Marketing Solutions',
-    description: 'AI-powered marketing automation, predictive analytics, machine learning optimization, and intelligent personalization at scale.',
+    title: 'AI Solutions',
+    description: 'AI should improve revenue operations — not just automate tasks. We implement AI-powered systems across customer engagement, lead qualification, CRM workflows, and sales processes to improve efficiency, conversion, and pipeline velocity.',
     sectionId: 'ai-marketing-solutions',
   },
   {
     icon: <Award className="w-7 h-7" />,
     title: 'Brand Development',
-    description: 'Brand strategy, identity design, messaging frameworks, visual systems, and consistent brand experiences across all customer touchpoints.',
+    description: 'Strong positioning creates pricing power, market clarity, and sales confidence. We help businesses define how they compete, communicate, and scale through differentiated brand strategy and identity systems.',
     sectionId: 'brand-development',
   },
   {
     icon: <Megaphone className="w-7 h-7" />,
     title: 'PR & Communications',
-    description: 'Media relations, thought leadership, crisis communication, press strategy, and comprehensive reputation management programs.',
+    description: 'Executive thought leadership and strategic communication that strengthen authority, build industry positioning, and create consistent brand narratives across all touchpoints.',
     sectionId: 'pr-communications',
   },
   {
     icon: <FileText className="w-7 h-7" />,
-    title: 'Content Production',
-    description: 'Content strategy, copywriting, design, video production, asset creation, and multi-channel content distribution.',
+    title: 'Content Strategy',
+    description: 'Strategic content systems that strengthen authority, improve visibility, and position your business leadership as industry experts — aligned to revenue goals and customer journeys.',
     sectionId: 'content-strategy',
   },
   {
     icon: <BarChart3 className="w-7 h-7" />,
     title: 'Analytics & Optimization',
-    description: 'Performance tracking, data analysis, A/B testing, marketing attribution, and continuous optimization for maximum ROI.',
+    description: 'Unified reporting systems that connect marketing performance directly to pipeline growth, customer acquisition, and revenue outcomes — with continuous optimization for maximum impact.',
     sectionId: 'analytics-optimization',
   },
 ];
 
-const digitalMarketingDetails = [
+const positioningDetails = [
   {
-    id: 'digital-1',
-    title: 'Search Engine Optimization (SEO)',
-    icon: <Search className="w-5 h-5" style={{ color: colors.brand.primary }} />,
-    content: 'Technical SEO, on-page optimization, content strategy, link building, and local SEO to improve organic visibility and drive qualified traffic to your website.',
-  },
-  {
-    id: 'digital-2',
-    title: 'Performance Advertising (PPC)',
+    id: 'pos-1',
+    title: 'Positioning Strategy',
     icon: <Target className="w-5 h-5" style={{ color: colors.brand.primary }} />,
-    content: 'Google Ads, Microsoft Advertising, social media ads, display advertising, and retargeting campaigns optimized for maximum ROI and conversion performance.',
+    content: 'Define a differentiated market position aligned to customer needs, competitive gaps, and long-term business growth. Strong positioning creates pricing power, market clarity, and sales confidence.',
   },
   {
-    id: 'digital-3',
-    title: 'Social Media Marketing',
-    icon: <Share2 className="w-5 h-5" style={{ color: colors.brand.primary }} />,
-    content: 'Strategy development, content creation, community management, influencer partnerships, and paid social campaigns across all major platforms.',
+    id: 'pos-2',
+    title: 'Value Proposition & Market Differentiation',
+    icon: <Lightbulb className="w-5 h-5" style={{ color: colors.brand.primary }} />,
+    content: 'Define how your business competes, communicates value, and stands apart in crowded markets through clear positioning and differentiated messaging frameworks.',
   },
   {
-    id: 'digital-4',
-    title: 'Email Marketing & Automation',
-    icon: <Zap className="w-5 h-5" style={{ color: colors.brand.primary }} />,
-    content: 'Email strategy, list segmentation, campaign design, marketing automation workflows, and performance optimization for nurturing and conversion.',
+    id: 'pos-3',
+    title: 'Messaging Frameworks',
+    icon: <Edit3 className="w-5 h-5" style={{ color: colors.brand.primary }} />,
+    content: 'Create consistent communication systems across campaigns, sales conversations, digital platforms, and customer touchpoints — ensuring one unified brand narrative.',
+  },
+  {
+    id: 'pos-4',
+    title: 'Executive Thought Leadership',
+    icon: <Eye className="w-5 h-5" style={{ color: colors.brand.primary }} />,
+    content: 'Strengthen authority through leadership-driven content, strategic communication, and industry positioning that builds credibility and competitive advantage.',
   },
 ];
 
-const brandingDetails = [
+const executionDetails = [
   {
-    id: 'brand-1',
-    title: 'Brand Strategy & Positioning',
+    id: 'exec-1',
+    title: 'Paid Media & Performance Marketing',
     icon: <Target className="w-5 h-5" style={{ color: colors.brand.primary }} />,
-    content: 'Strategic brand architecture, competitive positioning, value proposition development, and comprehensive brand guidelines that differentiate your organization.',
+    content: 'Performance-focused campaigns designed to generate qualified traffic, improve conversion rates, and maximize return on ad spend across Google, LinkedIn, Meta, and other high-impact platforms.',
   },
   {
-    id: 'brand-2',
-    title: 'Visual Identity Design',
-    icon: <Edit3 className="w-5 h-5" style={{ color: colors.brand.primary }} />,
-    content: 'Logo design, color systems, typography, graphic standards, and complete visual identity systems that ensure brand consistency across all touchpoints.',
+    id: 'exec-2',
+    title: 'SEO, AEO & GEO',
+    icon: <Search className="w-5 h-5" style={{ color: colors.brand.primary }} />,
+    content: 'Search visibility strategies designed for modern search behavior — from traditional SEO to Answer Engine Optimization (AEO) and Generative Engine Optimization (GEO).',
   },
   {
-    id: 'brand-3',
-    title: 'Messaging & Voice',
-    icon: <Megaphone className="w-5 h-5" style={{ color: colors.brand.primary }} />,
-    content: 'Brand messaging frameworks, tone of voice guidelines, key messages, taglines, and narrative development that resonates with your target audience.',
+    id: 'exec-3',
+    title: 'Email Marketing & Automation',
+    icon: <Zap className="w-5 h-5" style={{ color: colors.brand.primary }} />,
+    content: 'Automated customer journeys, lead nurturing systems, and lifecycle campaigns designed to improve engagement and accelerate conversions across the entire funnel.',
   },
   {
-    id: 'brand-4',
-    title: 'Brand Experience Design',
-    icon: <Eye className="w-5 h-5" style={{ color: colors.brand.primary }} />,
-    content: 'Customer journey mapping, touchpoint design, experiential branding, and ensuring cohesive brand experiences across digital and physical channels.',
+    id: 'exec-4',
+    title: 'LinkedIn Management & Personal Branding',
+    icon: <Users className="w-5 h-5" style={{ color: colors.brand.primary }} />,
+    content: 'Executive positioning and LinkedIn growth strategies that strengthen professional credibility, thought leadership, and B2B visibility for business leaders.',
+  },
+  {
+    id: 'exec-5',
+    title: 'CRM & Funnel Integration',
+    icon: <Layers className="w-5 h-5" style={{ color: colors.brand.primary }} />,
+    content: 'Integrated CRM systems aligned with marketing, sales, lead tracking, customer journeys, and conversion workflows — connecting every growth channel into one system.',
+  },
+  {
+    id: 'exec-6',
+    title: 'Reporting & Attribution',
+    icon: <BarChart3 className="w-5 h-5" style={{ color: colors.brand.primary }} />,
+    content: 'Unified reporting systems that connect marketing performance directly to pipeline growth, customer acquisition, and revenue outcomes — enabling continuous optimization.',
+  },
+];
+
+const aiDetails = [
+  {
+    id: 'ai-1',
+    title: 'Industry-Specific AI Systems',
+    icon: <Brain className="w-5 h-5" style={{ color: colors.brand.primary }} />,
+    content: 'AI solutions customized around your industry dynamics, go-to-market model, operational challenges, and market requirements — ensuring every workflow aligns with real business outcomes instead of generic automation.',
+  },
+  {
+    id: 'ai-2',
+    title: 'AI-Powered Go-To-Market Execution',
+    icon: <Rocket className="w-5 h-5" style={{ color: colors.brand.primary }} />,
+    content: 'AI-integrated GTM systems designed to support product launches, market expansion, customer acquisition, lead nurturing, and demand generation across multiple channels and customer touchpoints.',
+  },
+  {
+    id: 'ai-3',
+    title: 'AI-Driven Customer Engagement',
+    icon: <Sparkles className="w-5 h-5" style={{ color: colors.brand.primary }} />,
+    content: 'Real-time AI interactions designed to engage customers, answer queries, guide decision-making, recommend solutions, and improve customer experience across digital touchpoints.',
+  },
+  {
+    id: 'ai-4',
+    title: 'Lead Qualification, CRM & Conversion Optimization',
+    icon: <Target className="w-5 h-5" style={{ color: colors.brand.primary }} />,
+    content: 'AI-powered systems designed to identify high-intent prospects, automate lead qualification, optimize CRM workflows, prioritize sales opportunities, and improve conversion rates across the entire customer journey.',
+  },
+  {
+    id: 'ai-5',
+    title: 'Average Order Value & Revenue Growth',
+    icon: <TrendingUp className="w-5 h-5" style={{ color: colors.brand.primary }} />,
+    content: 'AI-driven recommendation systems, upsell workflows, cross-sell strategies, and customer intelligence models designed to increase average order value and maximize customer lifetime value.',
   },
 ];
 
@@ -163,26 +208,20 @@ const processSteps = [
   {
     id: 'step-1',
     number: '01',
-    title: 'Discovery & Analysis',
-    description: 'Deep dive into your business, market, competition, and objectives',
+    title: 'Discovery & Revenue Audit',
+    description: 'We assess your market positioning, demand generation systems, marketing performance, CRM workflows, customer journeys, and growth bottlenecks.',
     content: (
       <div className="space-y-3">
         <p className="text-sm text-gray-700 leading-relaxed">
-          We begin with comprehensive discovery - understanding your business model, market position, competitive landscape, and strategic objectives.
+          A comprehensive audit across your entire growth system — identifying gaps, opportunities, and the highest-leverage areas for improvement.
         </p>
         <ul className="space-y-2">
-          <li className="flex items-start gap-2 text-sm">
-            <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
-            <span>Business & market analysis</span>
-          </li>
-          <li className="flex items-start gap-2 text-sm">
-            <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
-            <span>Competitive research</span>
-          </li>
-          <li className="flex items-start gap-2 text-sm">
-            <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
-            <span>Stakeholder interviews</span>
-          </li>
+          {['Business & market analysis', 'Competitive research', 'Funnel & CRM evaluation', 'Channel performance review', 'Customer journey analysis'].map((item, i) => (
+            <li key={i} className="flex items-start gap-2 text-sm">
+              <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
+              <span>{item}</span>
+            </li>
+          ))}
         </ul>
       </div>
     ),
@@ -190,26 +229,20 @@ const processSteps = [
   {
     id: 'step-2',
     number: '02',
-    title: 'Strategy Development',
-    description: 'Create integrated marketing strategy aligned with business goals',
+    title: 'Growth System Blueprint',
+    description: 'We design a connected strategy integrating positioning, channel execution, AI workflows, and revenue operations.',
     content: (
       <div className="space-y-3">
         <p className="text-sm text-gray-700 leading-relaxed">
-          Strategy development translates insights into action - defining clear positioning, messaging, and integrated marketing approaches.
+          Strategy that connects every growth lever — from positioning and messaging to channel execution and AI integration — into one scalable system.
         </p>
         <ul className="space-y-2">
-          <li className="flex items-start gap-2 text-sm">
-            <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
-            <span>Strategic positioning</span>
-          </li>
-          <li className="flex items-start gap-2 text-sm">
-            <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
-            <span>Channel strategy</span>
-          </li>
-          <li className="flex items-start gap-2 text-sm">
-            <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
-            <span>Campaign planning</span>
-          </li>
+          {['Growth roadmap creation', 'Go-to-market planning', 'Messaging & positioning strategy', 'AI & automation planning', 'KPI & reporting framework'].map((item, i) => (
+            <li key={i} className="flex items-start gap-2 text-sm">
+              <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
+              <span>{item}</span>
+            </li>
+          ))}
         </ul>
       </div>
     ),
@@ -217,26 +250,20 @@ const processSteps = [
   {
     id: 'step-3',
     number: '03',
-    title: 'Implementation',
-    description: 'Execute campaigns with precision across all marketing channels',
+    title: 'Integrated Execution',
+    description: 'Campaigns, automation, CRM alignment, content, and performance systems implemented through a unified execution framework.',
     content: (
       <div className="space-y-3">
         <p className="text-sm text-gray-700 leading-relaxed">
-          Implementation brings strategy to life - creating content, launching campaigns, and executing across all relevant channels.
+          Execution across every growth channel — aligned to one strategy, one message, and one revenue objective.
         </p>
         <ul className="space-y-2">
-          <li className="flex items-start gap-2 text-sm">
-            <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
-            <span>Content creation</span>
-          </li>
-          <li className="flex items-start gap-2 text-sm">
-            <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
-            <span>Campaign launch</span>
-          </li>
-          <li className="flex items-start gap-2 text-sm">
-            <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
-            <span>Multi-channel execution</span>
-          </li>
+          {['Campaign deployment', 'Omnichannel execution', 'CRM & AI implementation', 'Automation workflows', 'Content & communication systems'].map((item, i) => (
+            <li key={i} className="flex items-start gap-2 text-sm">
+              <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
+              <span>{item}</span>
+            </li>
+          ))}
         </ul>
       </div>
     ),
@@ -244,26 +271,20 @@ const processSteps = [
   {
     id: 'step-4',
     number: '04',
-    title: 'Measurement & Optimization',
-    description: 'Track performance and continuously improve results',
+    title: 'Optimization & Scale',
+    description: 'We continuously optimize conversion performance, channel efficiency, customer journeys, and pipeline growth.',
     content: (
       <div className="space-y-3">
         <p className="text-sm text-gray-700 leading-relaxed">
-          Continuous measurement and optimization ensure marketing delivers maximum impact and ROI over time.
+          Continuous optimization ensures your growth system improves over time — scaling what works and refining what doesn't.
         </p>
         <ul className="space-y-2">
-          <li className="flex items-start gap-2 text-sm">
-            <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
-            <span>Performance tracking</span>
-          </li>
-          <li className="flex items-start gap-2 text-sm">
-            <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
-            <span>Data analysis</span>
-          </li>
-          <li className="flex items-start gap-2 text-sm">
-            <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
-            <span>Ongoing optimization</span>
-          </li>
+          {['Performance monitoring', 'Conversion optimization', 'Reporting & insights', 'Funnel refinement', 'Scaling high-performing channels'].map((item, i) => (
+            <li key={i} className="flex items-start gap-2 text-sm">
+              <CheckCircle2 className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
+              <span>{item}</span>
+            </li>
+          ))}
         </ul>
       </div>
     ),
@@ -272,24 +293,24 @@ const processSteps = [
 
 const benefits = [
   {
-    icon: <Layers className="w-6 h-6" />,
-    title: 'Integrated Approach',
-    description: 'All services work together as one cohesive system',
+    icon: <Lightbulb className="w-6 h-6" />,
+    title: 'Business-Led Thinking',
+    description: 'Built by leaders with business, strategy, and operational experience — not just campaign execution.',
   },
   {
-    icon: <Users className="w-6 h-6" />,
-    title: 'Expert Team',
-    description: 'Senior-level strategists and executors on every account',
+    icon: <Layers className="w-6 h-6" />,
+    title: 'Strategy + Execution + AI',
+    description: 'One integrated system instead of disconnected vendors, tools, and agencies.',
   },
   {
     icon: <BarChart3 className="w-6 h-6" />,
-    title: 'Measurable Results',
-    description: 'Data-driven optimization and transparent reporting',
+    title: 'Revenue-Focused Approach',
+    description: 'Every initiative is aligned to pipeline growth, customer acquisition, and measurable business outcomes.',
   },
   {
     icon: <Globe className="w-6 h-6" />,
-    title: 'Scalable Solutions',
-    description: 'Services that grow with your business needs',
+    title: 'Built for Scale',
+    description: 'Processes, automation, and reporting frameworks designed for long-term operational growth.',
   },
 ];
 
@@ -324,7 +345,7 @@ export function ServicesPage() {
                 >
                   <Rocket className="w-3.5 h-3.5 mr-2" style={{ color: colors.brand.accent }} />
                   <span className="text-xs font-bold tracking-wide" style={{ color: colors.brand.primary }}>
-                    OUR SERVICES
+                    OUR CAPABILITIES
                   </span>
                 </span>
               </motion.div>
@@ -336,7 +357,7 @@ export function ServicesPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                Integrated Marketing Solutions
+                Three Disciplines. One Revenue Engine.
               </motion.h1>
 
               <motion.p 
@@ -345,15 +366,33 @@ export function ServicesPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                Strategic clarity meets operational excellence. We deliver end-to-end marketing services that drive measurable business growth.
+                We integrate strategic marketing, connected execution, and AI-powered systems into one scalable growth engine — built to drive pipeline, revenue, and long-term market positioning.
               </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                className="mt-6"
+              >
+                <MagneticButton strength={0.3}>
+                  <a
+                    href="#core-services"
+                    className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-white font-bold text-sm shadow-2xl transition-all duration-300 group"
+                    style={{ background: gradients.primary }}
+                  >
+                    Explore Our Services
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </MagneticButton>
+              </motion.div>
             </div>
           </Container>
         </Section>
       </ModernSectionBackground>
 
       {/* ============================================
-          1B. HERO IMAGE - SERVICES IN ACTION
+          1B. HERO IMAGE
           ============================================ */}
       <Section spacing="compact" animate>
         <Container size="lg">
@@ -368,10 +407,10 @@ export function ServicesPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12 text-white">
                 <h3 className="text-2xl lg:text-3xl font-bold mb-2">
-                  Full-Service Marketing Capabilities
+                  Built for Growth-Focused Businesses
                 </h3>
                 <p className="text-base lg:text-lg opacity-95 max-w-3xl">
-                  From strategic planning to execution and optimization, we deliver integrated marketing solutions that drive measurable business growth.
+                  From strategy and execution to CRM and AI integration, we help businesses build connected marketing systems designed for measurable business growth.
                 </p>
               </div>
             </div>
@@ -380,18 +419,18 @@ export function ServicesPage() {
       </Section>
 
       {/* ============================================
-          2. CORE SERVICES GRID - COMPACT
+          2. CORE SERVICES GRID
           ============================================ */}
       <ModernSectionBackground variant="image-overlay-workspace">
-        <Section spacing="compact" animate id="strategic-planning" background="transparent">
+        <Section spacing="compact" animate id="core-services" background="transparent">
           <Container size="lg">
             <SectionHeader
               badge="What We Do"
               badgeIcon={<Layers className="w-4 h-4" />}
-              title="Core Services"
-              description="Comprehensive marketing capabilities designed to drive business growth and market leadership."
+              title="Integrated Services Designed for Revenue Growth"
+              description="Most agencies focus on isolated execution. We build connected growth systems where strategy, marketing, sales, CRM, and AI work together to drive measurable business outcomes."
               align="center"
-              maxWidth="md"
+              maxWidth="2xl"
             />
 
             <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -420,60 +459,82 @@ export function ServicesPage() {
       </ModernSectionBackground>
 
       {/* ============================================
-          3. DIGITAL MARKETING - ACCORDION - COMPACT
+          3. STRATEGIC POSITIONING & MESSAGING
           ============================================ */}
       <ModernSectionBackground variant="mesh-gradient-purple">
-        <Section spacing="compact" animate id="digital-marketing" background="transparent">
+        <Section spacing="compact" animate background="transparent">
           <Container size="md">
             <SectionHeader
-              badge="Digital Expertise"
-              badgeIcon={<MonitorSmartphone className="w-4 h-4" />}
-              title="Digital Marketing Services"
-              description="Performance-driven digital strategies that generate visibility, engagement, and conversion."
+              badge="Market Positioning"
+              badgeIcon={<Target className="w-4 h-4" />}
+              title="Positioning That Creates Competitive Advantage"
+              description="Strong positioning creates pricing power, market clarity, and sales confidence. We help businesses define how they compete, communicate, and scale."
               align="center"
               maxWidth="md"
             />
 
             <ScrollReveal>
-              <Accordion items={digitalMarketingDetails} />
+              <Accordion items={positioningDetails} />
             </ScrollReveal>
           </Container>
         </Section>
       </ModernSectionBackground>
 
       {/* ============================================
-          4. BRANDING - ACCORDION - COMPACT
+          4. INTEGRATED EXECUTION
           ============================================ */}
       <ModernSectionBackground variant="gradient-abstract">
-        <Section spacing="compact" animate id="brand-development" background="transparent">
+        <Section spacing="compact" animate background="transparent">
           <Container size="md">
             <SectionHeader
-              badge="Brand Development"
-              badgeIcon={<Award className="w-4 h-4" />}
-              title="Branding & Identity"
-              description="Strategic brand development that creates differentiation and builds lasting market presence."
+              badge="Connected Execution"
+              badgeIcon={<Zap className="w-4 h-4" />}
+              title="Integrated Execution Across Every Growth Channel"
+              description="Execution only works when every channel supports the same growth objective. We align messaging, campaigns, content, CRM, and customer journeys into one connected system."
               align="center"
               maxWidth="md"
             />
 
             <ScrollReveal>
-              <Accordion items={brandingDetails} />
+              <Accordion items={executionDetails} />
             </ScrollReveal>
           </Container>
         </Section>
       </ModernSectionBackground>
 
       {/* ============================================
-          5. PROCESS - CAROUSEL - COMPACT
+          5. AI INTEGRATED EXECUTION
           ============================================ */}
       <ModernSectionBackground variant="glass-white">
         <Section spacing="compact" animate background="transparent">
+          <Container size="md">
+            <SectionHeader
+              badge="AI-Powered Execution"
+              badgeIcon={<Brain className="w-4 h-4" />}
+              title="AI Integrated Execution Across Your Revenue System"
+              description="AI delivers the highest impact when it is aligned with your industry, customer journey, workflows, and growth objectives. We build customized AI execution systems that integrate across marketing, sales, CRM, customer engagement, and operational workflows."
+              align="center"
+              maxWidth="2xl"
+            />
+
+            <ScrollReveal>
+              <Accordion items={aiDetails} />
+            </ScrollReveal>
+          </Container>
+        </Section>
+      </ModernSectionBackground>
+
+      {/* ============================================
+          6. HOW WE WORK - PROCESS CAROUSEL
+          ============================================ */}
+      <ModernSectionBackground variant="animated-dots">
+        <Section spacing="compact" animate background="transparent">
           <Container size="lg">
             <SectionHeader
-              badge="Our Methodology"
+              badge="Our Process"
               badgeIcon={<TrendingUp className="w-4 h-4" />}
-              title="How We Work"
-              description="A proven 4-step process that delivers strategic clarity and measurable results."
+              title="From Strategy to Scalable Growth"
+              description="A structured execution framework designed to align strategy, marketing, AI, and revenue operations into one connected growth system."
               align="center"
               maxWidth="md"
             />
@@ -554,15 +615,16 @@ export function ServicesPage() {
       </Section>
 
       {/* ============================================
-          6. SERVICE BENEFITS - COMPACT
+          7. WHY ADVANTEDGE
           ============================================ */}
-      <ModernSectionBackground variant="animated-dots">
+      <ModernSectionBackground variant="image-overlay-workspace">
         <Section spacing="compact" animate background="transparent">
           <Container size="lg">
             <SectionHeader
-              badge="Our Advantages"
-              badgeIcon={<Zap className="w-4 h-4" />}
-              title="Why Our Services Work"
+              badge="Why AdvantEdge"
+              badgeIcon={<Sparkles className="w-4 h-4" />}
+              title="Built for Businesses That Want Scalable Growth"
+              description="Most marketing partners deliver isolated execution. We build connected revenue systems designed for long-term business growth."
               align="center"
               maxWidth="md"
             />
@@ -587,24 +649,24 @@ export function ServicesPage() {
             <div className="grid md:grid-cols-3 gap-6 mt-8">
               <ScrollReveal>
                 <ImageFeatureCard
-                  title="Digital Marketing Excellence"
-                  description="Comprehensive digital strategies that drive qualified traffic, engagement, and conversion."
+                  title="Integrated Marketing Systems"
+                  description="Connected growth systems where strategy, marketing, sales, CRM, and AI work together for measurable outcomes."
                   imageUrl="https://images.unsplash.com/photo-1682336869523-2c6859f781cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwbWFya2V0aW5nJTIwd29ya3NwYWNlfGVufDF8fHx8MTc3NDUwMTQzMHww&ixlib=rb-4.1.0&q=80&w=1080"
                 />
               </ScrollReveal>
               
               <ScrollReveal delay={0.1}>
                 <ImageFeatureCard
-                  title="Brand Strategy & Development"
-                  description="Strategic positioning and identity systems that create lasting competitive advantage."
+                  title="Revenue-Focused Strategy"
+                  description="Every initiative aligned to pipeline growth, customer acquisition, and measurable business outcomes."
                   imageUrl="https://images.unsplash.com/photo-1634671495197-fb9ec3230ef5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicmFuZCUyMGRlc2lnbiUyMGNyZWF0aXZlfGVufDF8fHx8MTc3NDQ5Mjc0MHww&ixlib=rb-4.1.0&q=80&w=1080"
                 />
               </ScrollReveal>
               
               <ScrollReveal delay={0.2}>
                 <ImageFeatureCard
-                  title="Analytics & Optimization"
-                  description="Data-driven insights and continuous improvement for maximum marketing ROI."
+                  title="AI-Powered Growth"
+                  description="Customized AI execution systems integrated across marketing, sales, CRM, and operational workflows."
                   imageUrl="https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkfGVufDF8fHx8MTc3NDU0NTk5MHww&ixlib=rb-4.1.0&q=80&w=1080"
                 />
               </ScrollReveal>
@@ -614,7 +676,7 @@ export function ServicesPage() {
       </ModernSectionBackground>
 
       {/* ============================================
-          7. CTA SECTION - COMPACT
+          8. FINAL CTA SECTION
           ============================================ */}
       <ModernSectionBackground variant="image-overlay-team">
         <section className="relative px-4 sm:px-6 lg:px-8 py-10 overflow-hidden bg-transparent">
@@ -631,11 +693,15 @@ export function ServicesPage() {
                   />
 
                   <h2 className="text-xl sm:text-2xl font-bold mb-3 leading-tight" style={{ color: colors.brand.primary }}>
-                    Ready to Get Started?
+                    Build a Smarter Revenue Engine
                   </h2>
 
-                  <p className="text-sm text-gray-700 mb-5 max-w-2xl mx-auto leading-relaxed">
-                    Let's discuss which services align with your business objectives and how we can drive measurable results.
+                  <p className="text-sm text-gray-700 mb-2 max-w-2xl mx-auto leading-relaxed">
+                    Let's identify where your marketing, sales, CRM, and AI systems are disconnected — and build a growth strategy designed for measurable business outcomes.
+                  </p>
+
+                  <p className="text-xs text-gray-500 mb-5 italic">
+                    We work with a limited number of businesses to ensure strategic focus, execution quality, and measurable impact.
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -645,7 +711,7 @@ export function ServicesPage() {
                         className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-white font-bold text-sm shadow-2xl hover:shadow-3xl transition-all duration-300 group border-2 border-transparent"
                         style={{ background: gradients.primary }}
                       >
-                        Contact Us
+                        Book a Strategy Call
                         <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                       </Link>
                     </MagneticButton>
@@ -656,7 +722,7 @@ export function ServicesPage() {
                         className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-sm border-2 transition-all duration-300 hover:shadow-lg bg-transparent"
                         style={{ borderColor: colors.brand.primary, color: colors.brand.primary }}
                       >
-                        Build Your Package
+                        Explore Growth Solutions
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </MagneticButton>
