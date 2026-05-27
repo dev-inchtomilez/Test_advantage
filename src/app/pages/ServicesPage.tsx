@@ -548,10 +548,10 @@ export function ServicesPage() {
                       <GlassCard variant="base" rounded="xl" padding="base" className="h-full shadow-xl border border-gray-200/60">
                         <div className="relative">
                           <div 
-                            className="absolute -top-2 -left-2 w-12 h-12 rounded-lg flex items-center justify-center shadow-sm"
-                            style={{ backgroundColor: `${colors.brand.primary}18`, border: `1.5px solid ${colors.brand.primary}30` }}
+                            className="absolute -top-2 -left-2 w-12 h-12 rounded-lg flex items-center justify-center shadow-md"
+                            style={{ background: gradients.primary, opacity: 0.65 }}
                           >
-                            <span className="text-base font-black" style={{ color: colors.brand.primary }}>{parseInt(step.number)}</span>
+                            <span className="text-white font-black text-base">{parseInt(step.number)}</span>
                           </div>
                           <div className="pt-12">
                             <h3 className="text-xl font-black mb-2 leading-tight tracking-tight" style={{ color: colors.brand.primary }}>
