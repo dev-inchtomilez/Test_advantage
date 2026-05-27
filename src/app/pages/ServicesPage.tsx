@@ -632,7 +632,7 @@ export function ServicesPage() {
             <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {benefits.map((benefit, index) => (
                 <motion.div key={index} variants={staggerItemVariants}>
-                  <GlassCard variant="base" rounded="lg" padding="sm" hover className="h-full text-center">
+                  <GlassCard variant="base" rounded="lg" padding="sm" hover className="h-full text-center flex flex-col items-center">
                     <IconBadge icon={benefit.icon} size="md" variant="gradient" animated className="mx-auto" />
                     <h3 className="text-base font-bold mt-6 mb-3 leading-tight" style={{ color: colors.brand.primary }}>
                       {benefit.title}
@@ -684,17 +684,17 @@ export function ServicesPage() {
             <div className="text-center">
               <ScrollReveal>
                 <GlassCard variant="base" rounded="2xl" padding="base" className="shadow-xl border border-gray-200/60">
-                  <IconBadge 
-                    icon={<Rocket className="w-6 h-6" />}
-                    size="md"
-                    variant="gradient"
-                    animated
-                    className="mx-auto mb-4"
-                  />
-
-                  <h2 className="text-xl sm:text-2xl font-bold mb-3 leading-tight" style={{ color: colors.brand.primary }}>
-                    Build a Smarter Revenue Engine
-                  </h2>
+                  <div className="flex items-center gap-3 justify-center mb-3">
+                    <IconBadge 
+                      icon={<Rocket className="w-6 h-6" />}
+                      size="md"
+                      variant="gradient"
+                      animated
+                    />
+                    <h2 className="text-xl sm:text-2xl font-bold leading-tight" style={{ color: colors.brand.primary }}>
+                      Build a Smarter Revenue Engine
+                    </h2>
+                  </div>
 
                   <p className="text-sm text-gray-700 mb-2 max-w-2xl mx-auto leading-relaxed">
                     Let's identify where your marketing, sales, CRM, and AI systems are disconnected — and build a growth strategy designed for measurable business outcomes.
