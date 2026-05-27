@@ -551,10 +551,10 @@ export function ServicesPage() {
                             className="absolute -top-2 -left-2 w-12 h-12 rounded-lg flex items-center justify-center shadow-lg"
                             style={{ background: gradients.primary }}
                           >
-                            <span className="text-white font-bold text-lg">{step.number}</span>
+                            <span className="text-white font-bold text-xl">{parseInt(step.number)}</span>
                           </div>
                           <div className="pt-12">
-                            <h3 className="text-lg font-bold mb-2 leading-tight" style={{ color: colors.brand.primary }}>
+                            <h3 className="text-xl font-black mb-2 leading-tight tracking-tight" style={{ color: colors.brand.primary }}>
                               {step.title}
                             </h3>
                             <p className="text-sm text-gray-600 mb-5 leading-relaxed">
