@@ -389,7 +389,9 @@ export function IndustriesPage() {
               {whyIndustryExpertise.map((item, index) => (
                 <motion.div key={index} variants={staggerItemVariants}>
                   <GlassCard variant="base" rounded="lg" padding="sm" hover className="h-full text-center border border-gray-200/60">
-                    <IconBadge icon={item.icon} size="md" variant="gradient" animated className="mx-auto" />
+                    <div className="flex justify-center">
+                      <IconBadge icon={item.icon} size="md" variant="gradient" animated />
+                    </div>
                     <h3 className="text-base font-bold mt-6 mb-3 leading-tight" style={{ color: colors.brand.primary }}>
                       {item.title}
                     </h3>
