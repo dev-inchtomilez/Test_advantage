@@ -60,7 +60,7 @@ import { colors, gradients } from '../../styles/design-tokens';
 
 const industries = [
   {
-    id: '01',
+    id: '1',
     icon: <Factory className="w-7 h-7" />,
     title: 'Manufacturing & Industrial',
     tagline: 'Complex products need clear positioning and connected demand generation.',
@@ -87,7 +87,7 @@ const industries = [
     ],
   },
   {
-    id: '02',
+    id: '2',
     icon: <ShoppingBag className="w-7 h-7" />,
     title: 'FMCG & Consumer Brands',
     tagline: 'Growth depends on visibility, distribution, and customer engagement.',
@@ -114,7 +114,7 @@ const industries = [
     ],
   },
   {
-    id: '03',
+    id: '3',
     icon: <Hospital className="w-7 h-7" />,
     title: 'Healthcare & Medical',
     tagline: 'Trust, credibility, and communication drive healthcare growth.',
@@ -141,7 +141,7 @@ const industries = [
     ],
   },
   {
-    id: '04',
+    id: '4',
     icon: <Building2 className="w-7 h-7" />,
     title: 'Hospitality & Tourism',
     tagline: 'Customer experience starts before the booking happens.',
@@ -168,7 +168,7 @@ const industries = [
     ],
   },
   {
-    id: '05',
+    id: '5',
     icon: <UtensilsCrossed className="w-7 h-7" />,
     title: 'Food & Beverage (F&B)',
     tagline: 'Visibility, experience, and customer loyalty drive growth.',
@@ -195,7 +195,7 @@ const industries = [
     ],
   },
   {
-    id: '06',
+    id: '6',
     icon: <HardHat className="w-7 h-7" />,
     title: 'Infrastructure & Construction',
     tagline: 'Complex industries require strategic communication and market credibility.',
@@ -222,7 +222,7 @@ const industries = [
     ],
   },
   {
-    id: '07',
+    id: '7',
     icon: <Briefcase className="w-7 h-7" />,
     title: 'Professional Services',
     tagline: 'Expertise only creates growth when the market sees it.',
@@ -435,8 +435,8 @@ export function IndustriesPage() {
                       {/* Icon & Title */}
                       <div className="flex-shrink-0">
                         <div className="flex items-center gap-3 mb-2">
-                          <span className="text-xs font-bold tracking-widest" style={{ color: colors.brand.accent }}>
-                            INDUSTRY {industry.id}
+                          <span className="text-[11px] font-semibold tracking-[0.2em] uppercase" style={{ color: colors.brand.accent, fontFamily: "'Inter', 'DM Sans', sans-serif", letterSpacing: '0.18em' }}>
+                            Industry {industry.id}
                           </span>
                         </div>
                         <IconBadge icon={industry.icon} size="xl" variant="gradient" animated />
