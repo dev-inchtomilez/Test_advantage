@@ -1,10 +1,9 @@
 /**
  * ============================================
- * INDUSTRIES PAGE - Enhanced & Comprehensive
+ * INDUSTRIES PAGE - Updated with Approved Content
  * ============================================
- * Deep industry expertise with realistic insights
- * Focused on value, methodology, and outcomes
- * Last Updated: March 2026
+ * Industry-aligned growth systems content
+ * Last Updated: May 2026
  * ============================================
  */
 
@@ -13,14 +12,11 @@ import { motion } from 'motion/react';
 import { 
   ArrowRight, 
   Building2, 
-  MonitorSmartphone, 
   Hospital, 
-  GraduationCap, 
   Briefcase, 
   Factory,
   Target,
   BarChart3,
-  Globe,
   TrendingUp,
   Zap,
   CheckCircle2,
@@ -28,20 +24,14 @@ import {
   Award,
   Rocket,
   Shield,
-  Database,
-  FileText,
-  LineChart,
-  Settings,
-  Code,
   Layers,
-  Book,
-  Lock,
   Search,
   MessageSquare,
-  HeartPulse,
-  DollarSign,
   Brain,
-  Megaphone
+  Megaphone,
+  UtensilsCrossed,
+  HardHat,
+  ShoppingBag
 } from 'lucide-react';
 
 // Primitive Components
@@ -55,12 +45,11 @@ import { PageSEO } from '../components/seo';
 import { PAGE_SEO } from '../utils/seo-config';
 
 // UI Components
-import { BentoGrid, BentoCard } from '../components/BentoGrid';
-import { Accordion } from '../components/Accordion';
 import { ScrollReveal, StaggerContainer, staggerItemVariants } from '../components/ScrollReveal';
 import { MagneticButton } from '../components/MagneticButton';
 import { ModernSectionBackground } from '../components/ModernSectionBackground';
 import { ImageFeatureCard } from '../components/ImageFeatureCard';
+import { Accordion } from '../components/Accordion';
 
 // Design Tokens
 import { colors, gradients } from '../../styles/design-tokens';
@@ -71,148 +60,216 @@ import { colors, gradients } from '../../styles/design-tokens';
 
 const industries = [
   {
-    icon: <MonitorSmartphone className="w-7 h-7" />,
-    title: 'B2B Technology & SaaS',
-    tagline: 'Complex solutions require clear messaging',
-    description: 'Strategic marketing for software companies, SaaS platforms, cloud services, and enterprise technology providers. We help translate technical complexity into clear value propositions.',
-    challenges: [
-      'Long sales cycles and complex buying committees',
-      'Technical differentiation that buyers understand',
-      'Product-led growth vs. sales-led strategies',
-      'Competitive markets with noise and saturation',
-    ],
-    solutions: [
-      'Clear positioning and messaging frameworks',
-      'Demand generation programs that qualify leads',
-      'Technical content that educates and converts',
-      'Product marketing aligned to buyer journeys',
-    ],
-    outcomes: [
-      'Improved lead quality and conversion rates',
-      'Shortened sales cycles through education',
-      'Clear competitive differentiation',
-      'Scalable demand generation systems',
-    ],
-  },
-  {
-    icon: <Briefcase className="w-7 h-7" />,
-    title: 'Professional Services',
-    tagline: 'Expertise must be visible to be valued',
-    description: 'Marketing for consulting firms, legal practices, accounting firms, and advisory services. We build thought leadership platforms and client acquisition systems.',
-    challenges: [
-      'Differentiation in crowded professional markets',
-      'Building credibility with sophisticated buyers',
-      'Partner involvement in marketing efforts',
-      'Maintaining quality while scaling growth',
-    ],
-    solutions: [
-      'Thought leadership content and positioning',
-      'Executive visibility and speaking programs',
-      'Strategic client acquisition frameworks',
-      'Professional brand building and authority',
-    ],
-    outcomes: [
-      'Enhanced market reputation and authority',
-      'Higher-quality client inquiries',
-      'Improved win rates and project margins',
-      'Sustainable referral and network growth',
-    ],
-  },
-  {
-    icon: <Hospital className="w-7 h-7" />,
-    title: 'Healthcare & Medical Devices',
-    tagline: 'Patient trust meets regulatory compliance',
-    description: 'Marketing for healthcare providers, medical device manufacturers, health technology, and clinical services. Strategy that balances patient needs with compliance requirements.',
-    challenges: [
-      'Strict regulatory and compliance requirements',
-      'Building patient trust and confidence',
-      'Complex provider and payer relationships',
-      'Balancing education with promotion',
-    ],
-    solutions: [
-      'Compliant marketing frameworks and review',
-      'Patient education and trust-building content',
-      'Provider relationship and referral programs',
-      'Digital marketing within regulatory bounds',
-    ],
-    outcomes: [
-      'Compliant marketing that drives results',
-      'Improved patient acquisition and retention',
-      'Stronger provider and referral networks',
-      'Clear differentiation in competitive markets',
-    ],
-  },
-  {
+    id: '01',
     icon: <Factory className="w-7 h-7" />,
     title: 'Manufacturing & Industrial',
-    tagline: 'Engineering excellence requires strategic marketing',
-    description: 'B2B marketing for manufacturers, industrial equipment providers, and engineering firms. We help technical organizations communicate value to business buyers.',
+    tagline: 'Complex products need clear positioning and connected demand generation.',
+    description: 'We help manufacturers, engineering companies, industrial product businesses, and B2B suppliers modernize their marketing systems, strengthen market positioning, and improve lead generation across traditional and digital channels.',
     challenges: [
-      'Technical products with complex specifications',
-      'Long buying cycles and multiple stakeholders',
-      'Distributor and channel partner coordination',
-      'Digital transformation of traditional sales',
+      'Long sales cycles and multiple decision-makers',
+      'Technical products difficult to communicate',
+      'Weak digital presence in competitive markets',
+      'Disconnected distributor and channel communication',
     ],
     solutions: [
-      'Technical marketing and specifications content',
-      'Channel partner enablement and support',
-      'Digital transformation and web presence',
-      'Trade show and industry event strategies',
+      'Strategic positioning for industrial markets',
+      'Technical content & product communication',
+      'B2B lead generation systems',
+      'SEO, LinkedIn & performance marketing',
+      'CRM integration & lead tracking',
+      'Trade show & offline-online integration',
     ],
     outcomes: [
-      'Improved lead generation and qualification',
-      'Stronger channel partner performance',
-      'Modernized digital presence and capabilities',
-      'Clear product differentiation and positioning',
+      'Improved lead quality',
+      'Stronger distributor engagement',
+      'Better visibility in competitive markets',
+      'Increased pipeline consistency',
     ],
   },
   {
-    icon: <DollarSign className="w-7 h-7" />,
-    title: 'Financial Services',
-    tagline: 'Trust is the foundation of financial relationships',
-    description: 'Marketing for banks, insurance companies, wealth management, and FinTech firms. Strategy that builds trust while driving client acquisition.',
+    id: '02',
+    icon: <ShoppingBag className="w-7 h-7" />,
+    title: 'FMCG & Consumer Brands',
+    tagline: 'Growth depends on visibility, distribution, and customer engagement.',
+    description: 'We help FMCG and consumer-focused brands improve market visibility, strengthen customer engagement, and create integrated campaigns that support brand growth and sales performance.',
     challenges: [
-      'Regulatory compliance and disclosure requirements',
-      'Building trust in competitive markets',
-      'Digital transformation and technology adoption',
-      'Client education on complex products',
+      'Highly competitive and crowded markets',
+      'Low customer retention & loyalty',
+      'Inconsistent omnichannel presence',
+      'Difficulty measuring campaign effectiveness',
     ],
     solutions: [
-      'Trust-building brand and content strategies',
-      'Compliant digital marketing and advertising',
-      'Client education and financial literacy content',
-      'Multi-channel acquisition and retention programs',
+      'Omnichannel campaign execution',
+      'Consumer engagement strategies',
+      'Performance marketing & media buying',
+      'Brand positioning & communication',
+      'Retail & digital integration',
+      'Marketing analytics & reporting',
     ],
     outcomes: [
-      'Increased client acquisition and deposits',
-      'Improved client retention and lifetime value',
-      'Compliant marketing across all channels',
-      'Enhanced brand trust and market position',
+      'Improved customer engagement',
+      'Higher campaign performance',
+      'Stronger brand recall',
+      'Better conversion across channels',
     ],
   },
   {
-    icon: <Megaphone className="w-7 h-7" />,
-    title: 'Business Services & Platforms',
-    tagline: 'B2B solutions that solve real business problems',
-    description: 'Marketing for business service providers, B2B platforms, and enterprise solution vendors. Clear value proposition for buyers seeking operational improvements.',
+    id: '03',
+    icon: <Hospital className="w-7 h-7" />,
+    title: 'Healthcare & Medical',
+    tagline: 'Trust, credibility, and communication drive healthcare growth.',
+    description: 'We support healthcare providers, medical manufacturers, wellness brands, and healthcare service businesses with compliant, trust-focused marketing and patient engagement systems.',
     challenges: [
-      'Articulating ROI and business value clearly',
-      'Differentiating in crowded solution markets',
-      'Educating buyers on new approaches',
-      'Building credibility with enterprise buyers',
+      'Building patient trust & credibility',
+      'Complex healthcare communication',
+      'Compliance-sensitive marketing',
+      'Low digital engagement & visibility',
     ],
     solutions: [
-      'Value-based positioning and messaging',
-      'ROI calculators and business case content',
-      'Enterprise marketing and account-based strategies',
-      'Customer success stories and proof points',
+      'Patient-focused communication systems',
+      'Healthcare positioning & visibility',
+      'SEO & local search optimization',
+      'CRM & patient engagement workflows',
+      'Reputation & trust-building strategies',
+      'Content-led authority building',
     ],
     outcomes: [
-      'Clear articulation of business value',
-      'Higher enterprise deal velocity',
-      'Improved sales and marketing alignment',
-      'Stronger competitive positioning',
+      'Increased patient engagement',
+      'Improved brand trust',
+      'Better digital visibility',
+      'Higher inquiry & appointment quality',
     ],
+  },
+  {
+    id: '04',
+    icon: <Building2 className="w-7 h-7" />,
+    title: 'Hospitality & Tourism',
+    tagline: 'Customer experience starts before the booking happens.',
+    description: 'We help hospitality brands, hotels, travel businesses, and tourism companies improve customer acquisition, digital engagement, and brand visibility through integrated marketing systems.',
+    challenges: [
+      'Seasonal demand fluctuations',
+      'High competition across platforms',
+      'Low direct bookings',
+      'Inconsistent customer engagement',
+    ],
+    solutions: [
+      'Performance-driven booking campaigns',
+      'Social media & visual storytelling',
+      'SEO & local search optimization',
+      'Customer engagement automation',
+      'Review & reputation management',
+      'Brand positioning & experience marketing',
+    ],
+    outcomes: [
+      'Increased direct bookings',
+      'Stronger customer retention',
+      'Improved online visibility',
+      'Better customer engagement',
+    ],
+  },
+  {
+    id: '05',
+    icon: <UtensilsCrossed className="w-7 h-7" />,
+    title: 'Food & Beverage (F&B)',
+    tagline: 'Visibility, experience, and customer loyalty drive growth.',
+    description: 'We help restaurants, café chains, food brands, and F&B businesses build stronger customer engagement systems, improve digital visibility, and drive repeat business.',
+    challenges: [
+      'High customer acquisition costs',
+      'Low repeat customer rates',
+      'Intense local competition',
+      'Inconsistent digital communication',
+    ],
+    solutions: [
+      'Local SEO & discovery optimization',
+      'Social media & content strategy',
+      'Performance marketing campaigns',
+      'Loyalty & retention automation',
+      'Brand storytelling & positioning',
+      'Customer engagement systems',
+    ],
+    outcomes: [
+      'Increased customer retention',
+      'Higher footfall & online orders',
+      'Better local visibility',
+      'Stronger brand engagement',
+    ],
+  },
+  {
+    id: '06',
+    icon: <HardHat className="w-7 h-7" />,
+    title: 'Infrastructure & Construction',
+    tagline: 'Complex industries require strategic communication and market credibility.',
+    description: 'We work with infrastructure companies, construction businesses, industrial contractors, and engineering firms to strengthen positioning, improve visibility, and support business development initiatives.',
+    challenges: [
+      'Low market visibility',
+      'Traditional sales dependency',
+      'Weak digital positioning',
+      'Difficulty communicating capabilities clearly',
+    ],
+    solutions: [
+      'Corporate positioning strategies',
+      'Project-focused communication systems',
+      'LinkedIn & B2B visibility campaigns',
+      'Industry branding & thought leadership',
+      'Website & digital transformation',
+      'Lead generation & CRM systems',
+    ],
+    outcomes: [
+      'Improved industry visibility',
+      'Better project inquiries',
+      'Stronger stakeholder confidence',
+      'Enhanced market positioning',
+    ],
+  },
+  {
+    id: '07',
+    icon: <Briefcase className="w-7 h-7" />,
+    title: 'Professional Services',
+    tagline: 'Expertise only creates growth when the market sees it.',
+    description: 'We help consulting firms, advisory businesses, legal firms, and professional service providers build authority, strengthen positioning, and improve client acquisition through thought leadership and strategic visibility.',
+    challenges: [
+      'Differentiating in crowded markets',
+      'Low visibility for expertise',
+      'Inconsistent lead generation',
+      'Difficulty scaling through referrals alone',
+    ],
+    solutions: [
+      'Executive thought leadership',
+      'LinkedIn management & visibility',
+      'Authority-driven content strategy',
+      'Lead generation systems',
+      'Positioning & messaging frameworks',
+      'CRM & client nurturing workflows',
+    ],
+    outcomes: [
+      'Improved market authority',
+      'Higher-quality inbound inquiries',
+      'Better client acquisition consistency',
+      'Stronger executive visibility',
+    ],
+  },
+];
+
+const whyIndustryExpertise = [
+  {
+    icon: <Zap className="w-6 h-6" />,
+    title: 'Faster Market Understanding',
+    description: 'Industry familiarity reduces learning curves and accelerates strategic execution.',
+  },
+  {
+    icon: <Users className="w-6 h-6" />,
+    title: 'Better Buyer Alignment',
+    description: 'Messaging, channels, and campaigns aligned to real buyer behavior improve engagement and conversion quality.',
+  },
+  {
+    icon: <Search className="w-6 h-6" />,
+    title: 'Smarter Positioning',
+    description: 'Competitive landscape understanding helps create stronger market differentiation and clearer value communication.',
+  },
+  {
+    icon: <TrendingUp className="w-6 h-6" />,
+    title: 'Revenue-Focused Execution',
+    description: 'Every strategy is aligned to industry-specific sales processes, customer journeys, and growth objectives.',
   },
 ];
 
@@ -255,98 +312,6 @@ const industryApproach = [
   },
 ];
 
-const crossIndustryCapabilities = [
-  {
-    icon: <Target className="w-7 h-7" />,
-    title: 'Strategic Positioning',
-    description: 'Market analysis, competitive differentiation, and clear positioning that resonates with target buyers.',
-    details: [
-      'Market and competitive analysis',
-      'Value proposition development',
-      'Messaging and positioning frameworks',
-      'Brand architecture and strategy',
-    ],
-  },
-  {
-    icon: <Megaphone className="w-7 h-7" />,
-    title: 'Demand Generation',
-    description: 'Integrated campaigns that generate qualified leads and support sales pipeline development.',
-    details: [
-      'Multi-channel campaign development',
-      'Lead generation and nurturing',
-      'Marketing automation implementation',
-      'Performance tracking and optimization',
-    ],
-  },
-  {
-    icon: <FileText className="w-7 h-7" />,
-    title: 'Content Strategy',
-    description: 'Strategic content that educates buyers, builds authority, and supports the sales process.',
-    details: [
-      'Content strategy and planning',
-      'Thought leadership development',
-      'Sales enablement content',
-      'SEO and organic visibility',
-    ],
-  },
-  {
-    icon: <Code className="w-7 h-7" />,
-    title: 'Digital Marketing',
-    description: 'Modern digital presence, performance marketing, and technology enablement.',
-    details: [
-      'Website strategy and optimization',
-      'Digital advertising and PPC',
-      'Marketing technology stack',
-      'Analytics and measurement',
-    ],
-  },
-  {
-    icon: <Award className="w-7 h-7" />,
-    title: 'Brand Building',
-    description: 'Consistent brand experiences that build recognition, trust, and preference.',
-    details: [
-      'Brand identity and guidelines',
-      'Brand messaging and voice',
-      'Customer experience design',
-      'Brand consistency and governance',
-    ],
-  },
-  {
-    icon: <MessageSquare className="w-7 h-7" />,
-    title: 'Public Relations',
-    description: 'Strategic PR that builds credibility, visibility, and industry reputation.',
-    details: [
-      'Media relations and outreach',
-      'Executive positioning programs',
-      'Crisis communication planning',
-      'Industry awards and recognition',
-    ],
-  },
-];
-
-const whyIndustryExpertise = [
-  {
-    icon: <Zap className="w-6 h-6" />,
-    title: 'Faster Time to Value',
-    description: 'Industry knowledge reduces learning curves and accelerates strategy development and execution.',
-  },
-  {
-    icon: <Shield className="w-6 h-6" />,
-    title: 'Reduced Risk',
-    description: 'Understanding industry-specific challenges and compliance requirements minimizes costly mistakes.',
-  },
-  {
-    icon: <TrendingUp className="w-6 h-6" />,
-    title: 'Better Performance',
-    description: 'Industry benchmarks and proven frameworks improve campaign performance and ROI.',
-  },
-  {
-    icon: <Brain className="w-6 h-6" />,
-    title: 'Strategic Insight',
-    description: 'Deep sector knowledge enables more sophisticated strategic thinking and competitive positioning.',
-  },
-];
-
 export function IndustriesPage() {
   return (
     <PageBackground>
@@ -357,6 +322,7 @@ export function IndustriesPage() {
         ogImage={PAGE_SEO.industries.ogImage}
         path="/industries"
       />
+
       {/* ============================================
           1. HERO SECTION
           ============================================ */}
@@ -388,7 +354,7 @@ export function IndustriesPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                Industry Expertise That Drives Results
+                Industry Expertise Built for Scalable Growth
               </motion.h1>
 
               <motion.p 
@@ -397,7 +363,7 @@ export function IndustriesPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
               >
-                Deep knowledge of B2B sectors, buyer behaviors, competitive dynamics, and regulatory requirements. Industry expertise accelerates strategy development and improves marketing performance.
+                Every industry has different buying behaviors, sales cycles, customer expectations, and competitive pressures. We build industry-aligned growth systems that connect strategy, marketing, sales, CRM, and AI to drive measurable business outcomes.
               </motion.p>
             </div>
           </Container>
@@ -411,10 +377,10 @@ export function IndustriesPage() {
         <Section spacing="compact" animate background="transparent">
           <Container size="lg">
             <SectionHeader
-              badge="The Value of Expertise"
+              badge="Why Industry Expertise Matters"
               badgeIcon={<Award className="w-4 h-4" />}
-              title="Why Industry Knowledge Matters"
-              description="Specific sector experience delivers tangible advantages in strategy, execution, and results."
+              title="Growth Strategies Work Better When Built for Your Industry"
+              description="Generic marketing creates disconnected execution. Industry-specific strategy creates stronger positioning, better lead quality, faster decision-making, and higher conversion efficiency."
               align="center"
               maxWidth="md"
             />
@@ -445,10 +411,10 @@ export function IndustriesPage() {
         <Section spacing="compact" animate background="transparent">
           <Container size="lg">
             <SectionHeader
-              badge="Our Sectors"
+              badge="Focused Industry Expertise"
               badgeIcon={<Building2 className="w-4 h-4" />}
-              title="Industries We Serve"
-              description="Focused B2B expertise with proven frameworks and deep market understanding."
+              title="Industries We Help Scale"
+              description="We work with growth-focused businesses across sectors where strategic positioning, integrated execution, and operational alignment directly impact revenue growth."
               align="center"
               maxWidth="md"
             />
@@ -466,6 +432,11 @@ export function IndustriesPage() {
                     <div className="flex flex-col md:flex-row gap-6">
                       {/* Icon & Title */}
                       <div className="flex-shrink-0">
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="text-xs font-bold tracking-widest" style={{ color: colors.brand.accent }}>
+                            INDUSTRY {industry.id}
+                          </span>
+                        </div>
                         <IconBadge icon={industry.icon} size="xl" variant="gradient" animated />
                       </div>
 
@@ -474,7 +445,7 @@ export function IndustriesPage() {
                         <h3 className="text-2xl font-bold mb-1" style={{ color: colors.brand.primary }}>
                           {industry.title}
                         </h3>
-                        <p className="text-sm font-semibold mb-3" style={{ color: colors.brand.secondary }}>
+                        <p className="text-sm font-semibold mb-3 italic" style={{ color: colors.brand.secondary }}>
                           {industry.tagline}
                         </p>
                         <p className="text-gray-600 leading-relaxed mb-6">
@@ -498,11 +469,11 @@ export function IndustriesPage() {
                             </ul>
                           </div>
 
-                          {/* Solutions */}
+                          {/* How We Help */}
                           <div>
                             <div className="flex items-center gap-2 mb-3">
                               <Layers className="w-4 h-4" style={{ color: colors.brand.secondary }} />
-                              <h4 className="text-sm font-bold text-gray-900">Our Solutions</h4>
+                              <h4 className="text-sm font-bold text-gray-900">How We Help</h4>
                             </div>
                             <ul className="space-y-2">
                               {industry.solutions.map((solution, idx) => (
@@ -513,11 +484,11 @@ export function IndustriesPage() {
                             </ul>
                           </div>
 
-                          {/* Outcomes */}
+                          {/* Business Outcomes */}
                           <div>
                             <div className="flex items-center gap-2 mb-3">
                               <TrendingUp className="w-4 h-4" style={{ color: colors.brand.primary }} />
-                              <h4 className="text-sm font-bold text-gray-900">Expected Outcomes</h4>
+                              <h4 className="text-sm font-bold text-gray-900">Business Outcomes</h4>
                             </div>
                             <ul className="space-y-2">
                               {industry.outcomes.map((outcome, idx) => (
@@ -539,16 +510,16 @@ export function IndustriesPage() {
             <div className="grid md:grid-cols-3 gap-6 mt-8 max-w-6xl mx-auto">
               <ScrollReveal>
                 <ImageFeatureCard
-                  title="B2B Technology & SaaS"
-                  description="Strategic marketing for complex software solutions, cloud platforms, and enterprise technology."
-                  imageUrl="https://images.unsplash.com/photo-1631624217902-d14c634ab17c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobm9sb2d5JTIwc29mdHdhcmUlMjBkZXZlbG9wbWVudHxlbnwxfHx8fDE3NzQ1MDgzODN8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                  title="Manufacturing & Industrial"
+                  description="Modernize marketing systems, strengthen market positioning, and improve lead generation across channels."
+                  imageUrl="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
                 />
               </ScrollReveal>
               
               <ScrollReveal delay={0.1}>
                 <ImageFeatureCard
-                  title="Healthcare & Medical Devices"
-                  description="Compliant marketing strategies for healthcare providers and medical device manufacturers."
+                  title="Healthcare & Medical"
+                  description="Compliant, trust-focused marketing and patient engagement systems for healthcare businesses."
                   imageUrl="https://images.unsplash.com/photo-1758691463610-3c2ecf5fb3fa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoZWFsdGhjYXJlJTIwdGVjaG5vbG9neSUyMG1lZGljYWx8ZW58MXx8fHwxNzc0NTQ2MzI0fDA&ixlib=rb-4.1.0&q=80&w=1080"
                 />
               </ScrollReveal>
@@ -556,7 +527,7 @@ export function IndustriesPage() {
               <ScrollReveal delay={0.2}>
                 <ImageFeatureCard
                   title="Professional Services"
-                  description="Thought leadership and expertise marketing for consulting, legal, and advisory firms."
+                  description="Build authority, strengthen positioning, and improve client acquisition through thought leadership."
                   imageUrl="https://images.unsplash.com/photo-1774195044152-19c8c002bb6a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBzZXJ2aWNlcyUyMG9mZmljZXxlbnwxfHx8fDE3NzQ0Mjc2OTV8MA&ixlib=rb-4.1.0&q=80&w=1080"
                 />
               </ScrollReveal>
@@ -566,9 +537,34 @@ export function IndustriesPage() {
       </ModernSectionBackground>
 
       {/* ============================================
-          4. INDUSTRY APPROACH - ACCORDION
+          4. TRANSITION PARAGRAPH
           ============================================ */}
       <ModernSectionBackground variant="mesh-gradient-purple">
+        <Section spacing="compact" animate background="transparent">
+          <Container size="md">
+            <div className="text-center max-w-3xl mx-auto">
+              <ScrollReveal>
+                <GlassCard variant="base" rounded="xl" padding="base" className="border border-gray-200/60">
+                  <h2 className="text-xl sm:text-2xl font-bold mb-4 leading-tight" style={{ color: colors.brand.primary }}>
+                    Turning Industry Complexity Into Competitive Advantage
+                  </h2>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                    Every industry operates differently — from customer expectations and buying behavior to sales cycles and market competition. That's why we build tailored growth systems designed around the realities of your business, helping you create stronger positioning, improve customer acquisition, and scale with greater operational clarity.
+                  </p>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Whether you're modernizing traditional processes, strengthening digital visibility, or integrating AI into your growth ecosystem, our focus remains the same: building systems that support long-term business performance and measurable impact.
+                  </p>
+                </GlassCard>
+              </ScrollReveal>
+            </div>
+          </Container>
+        </Section>
+      </ModernSectionBackground>
+
+      {/* ============================================
+          5. INDUSTRY APPROACH - ACCORDION
+          ============================================ */}
+      <ModernSectionBackground variant="animated-dots">
         <Section spacing="compact" animate background="transparent">
           <Container size="md">
             <SectionHeader
@@ -583,54 +579,6 @@ export function IndustriesPage() {
             <ScrollReveal>
               <Accordion items={industryApproach} />
             </ScrollReveal>
-          </Container>
-        </Section>
-      </ModernSectionBackground>
-
-      {/* ============================================
-          5. CROSS-INDUSTRY CAPABILITIES
-          ============================================ */}
-      <ModernSectionBackground variant="animated-dots">
-        <Section spacing="compact" animate background="transparent">
-          <Container size="lg">
-            <SectionHeader
-              badge="Core Capabilities"
-              badgeIcon={<Rocket className="w-4 h-4" />}
-              title="Cross-Industry Marketing Capabilities"
-              description="Strategic and tactical capabilities that drive success across all sectors we serve."
-              align="center"
-              maxWidth="md"
-            />
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              {crossIndustryCapabilities.map((capability, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <GlassCard variant="base" rounded="lg" padding="base" hover className="h-full border border-gray-200/60">
-                    <IconBadge icon={capability.icon} size="md" variant="gradient" animated className="mb-4" />
-                    <h3 className="text-lg font-bold mb-2" style={{ color: colors.brand.primary }}>
-                      {capability.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                      {capability.description}
-                    </p>
-                    <div className="space-y-2">
-                      {capability.details.map((detail, idx) => (
-                        <div key={idx} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: colors.brand.secondary }} />
-                          <span className="text-xs text-gray-700">{detail}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </GlassCard>
-                </motion.div>
-              ))}
-            </div>
           </Container>
         </Section>
       </ModernSectionBackground>
@@ -653,11 +601,11 @@ export function IndustriesPage() {
                   />
 
                   <h2 className="text-xl sm:text-2xl font-bold mb-3 leading-tight" style={{ color: colors.brand.primary }}>
-                    Ready to Leverage Industry Expertise?
+                    Build a Growth Strategy Designed for Your Industry
                   </h2>
 
                   <p className="text-sm text-gray-700 mb-5 max-w-2xl mx-auto leading-relaxed">
-                    Let's discuss how deep industry knowledge can accelerate your marketing strategy, improve campaign performance, and drive measurable business results.
+                    Let's identify where your positioning, marketing, CRM, and customer engagement systems are limiting growth — and build a connected strategy designed for measurable business outcomes.
                   </p>
 
                   <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
@@ -678,7 +626,7 @@ export function IndustriesPage() {
                         className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-sm border-2 transition-all duration-300 hover:shadow-lg bg-white"
                         style={{ borderColor: colors.brand.primary, color: colors.brand.primary }}
                       >
-                        View Case Studies
+                        Explore Case Studies
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </MagneticButton>
@@ -686,20 +634,20 @@ export function IndustriesPage() {
 
                   <div className="pt-6 border-t border-gray-200">
                     <p className="text-sm text-gray-600 font-medium mb-3">
-                      Industry expertise across B2B sectors
+                      We partner with growth-focused businesses that want strategic clarity, integrated execution, and scalable revenue growth.
                     </p>
                     <div className="flex justify-center gap-8 flex-wrap">
                       <div className="flex items-center gap-2 text-gray-700">
                         <CheckCircle2 className="w-4 h-4" style={{ color: colors.brand.accent }} />
-                        <span className="text-sm font-semibold">Proven Frameworks</span>
+                        <span className="text-sm font-semibold">Strategic Clarity</span>
                       </div>
                       <div className="flex items-center gap-2 text-gray-700">
                         <CheckCircle2 className="w-4 h-4" style={{ color: colors.brand.accent }} />
-                        <span className="text-sm font-semibold">Compliance Knowledge</span>
+                        <span className="text-sm font-semibold">Integrated Execution</span>
                       </div>
                       <div className="flex items-center gap-2 text-gray-700">
                         <CheckCircle2 className="w-4 h-4" style={{ color: colors.brand.accent }} />
-                        <span className="text-sm font-semibold">Faster Results</span>
+                        <span className="text-sm font-semibold">Scalable Revenue Growth</span>
                       </div>
                     </div>
                   </div>
