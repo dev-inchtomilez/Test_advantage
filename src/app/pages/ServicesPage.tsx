@@ -64,44 +64,55 @@ const coreServices = [
   {
     icon: <Rocket className="w-7 h-7" />,
     title: 'Strategic Marketing',
-    description: 'Growth without strategy creates activity — not market leadership. We build revenue-aligned marketing strategies designed around positioning, demand generation, customer acquisition, and scalable business growth.',
+    introLine: 'Growth without strategy creates activity — not market leadership.',
+    description: 'We build revenue-aligned marketing strategies designed around positioning, demand generation, customer acquisition, and scalable business growth.',
     sectionId: 'strategic-planning',
+    services: [
+      'Market positioning & competitive analysis',
+      'Strategic brand positioning',
+      'Customer segmentation & ICP definition',
+      'Go-to-market strategy',
+      'Portfolio & pricing strategy',
+      'Demand generation strategy',
+      'Revenue-focused funnel architecture',
+      'KPI & growth measurement systems',
+    ],
   },
   {
     icon: <MonitorSmartphone className="w-7 h-7" />,
     title: 'Integrated Marketing',
-    description: 'Disconnected channels create inconsistent growth. We connect digital, offline, content, media, and automation into one integrated marketing ecosystem aligned to revenue goals.',
+    introLine: 'Disconnected channels create inconsistent growth.',
+    description: 'We connect digital, offline, content, media, and automation into one integrated marketing ecosystem aligned to revenue goals.',
     sectionId: 'digital-marketing',
+    services: [
+      'Omnichannel campaign strategy & execution',
+      'Social media management & optimization',
+      'SEO, AEO & GEO',
+      'Paid media (Google, LinkedIn, Meta)',
+      'LinkedIn management & thought leadership',
+      'Content strategy & production',
+      'Email marketing & automation',
+      'CRM & marketing integration',
+      'Conversion optimization',
+      'Analytics, attribution & reporting',
+    ],
   },
   {
     icon: <Brain className="w-7 h-7" />,
     title: 'AI Solutions',
-    description: 'AI should improve revenue operations — not just automate tasks. We implement AI-powered systems across customer engagement, lead qualification, CRM workflows, and sales processes to improve efficiency, conversion, and pipeline velocity.',
+    introLine: 'AI should improve revenue operations — not just automate tasks.',
+    description: 'We implement AI-powered systems across customer engagement, lead qualification, CRM workflows, and sales processes to improve efficiency, conversion, and pipeline velocity.',
     sectionId: 'ai-marketing-solutions',
-  },
-  {
-    icon: <Award className="w-7 h-7" />,
-    title: 'Brand Development',
-    description: 'Strong positioning creates pricing power, market clarity, and sales confidence. We help businesses define how they compete, communicate, and scale through differentiated brand strategy and identity systems.',
-    sectionId: 'brand-development',
-  },
-  {
-    icon: <Megaphone className="w-7 h-7" />,
-    title: 'PR & Communications',
-    description: 'Executive thought leadership and strategic communication that strengthen authority, build industry positioning, and create consistent brand narratives across all touchpoints.',
-    sectionId: 'pr-communications',
-  },
-  {
-    icon: <FileText className="w-7 h-7" />,
-    title: 'Content Strategy',
-    description: 'Strategic content systems that strengthen authority, improve visibility, and position your business leadership as industry experts — aligned to revenue goals and customer journeys.',
-    sectionId: 'content-strategy',
-  },
-  {
-    icon: <BarChart3 className="w-7 h-7" />,
-    title: 'Analytics & Optimization',
-    description: 'Unified reporting systems that connect marketing performance directly to pipeline growth, customer acquisition, and revenue outcomes — with continuous optimization for maximum impact.',
-    sectionId: 'analytics-optimization',
+    services: [
+      'Lead qualification through customer engagement systems',
+      'AI-driven CRM integration',
+      'Sales workflow automation',
+      'Lead nurturing & revival systems',
+      'Automated upselling, cross-selling & negotiation',
+      'Predictive analytics & insights',
+      'Pipeline acceleration systems',
+      'AI-powered reporting & intelligence',
+    ],
   },
 ];
 
@@ -165,9 +176,21 @@ const executionDetails = [
   },
   {
     id: 'exec-6',
+    title: 'Content & Thought Leadership',
+    icon: <FileText className="w-5 h-5" style={{ color: colors.brand.primary }} />,
+    content: 'Strategic content systems that strengthen authority, improve visibility, and position your business leadership as industry experts — aligned to revenue goals and customer journeys.',
+  },
+  {
+    id: 'exec-7',
     title: 'Reporting & Attribution',
     icon: <BarChart3 className="w-5 h-5" style={{ color: colors.brand.primary }} />,
     content: 'Unified reporting systems that connect marketing performance directly to pipeline growth, customer acquisition, and revenue outcomes — enabling continuous optimization.',
+  },
+  {
+    id: 'exec-8',
+    title: 'Customer Perception Alignment',
+    icon: <Eye className="w-5 h-5" style={{ color: colors.brand.primary }} />,
+    content: 'Ensure your positioning, messaging, customer experience, and marketing execution communicate one consistent brand narrative across every touchpoint.',
   },
 ];
 
@@ -433,18 +456,34 @@ export function ServicesPage() {
               maxWidth="2xl"
             />
 
-            <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <StaggerContainer className="grid md:grid-cols-3 gap-6">
               {coreServices.map((service, index) => (
                 <motion.div key={index} variants={staggerItemVariants}>
-                  <Link to={`/services/${service.sectionId}`} className="block h-full">
-                    <GlassCard variant="base" rounded="lg" padding="sm" hover className="h-full transition-all duration-300">
+                  <Link to={`/services/${service.sectionId}`} className="block h-full group">
+                    <GlassCard variant="base" rounded="lg" padding="base" hover className="h-full transition-all duration-300 flex flex-col">
                       <IconBadge icon={service.icon} size="md" variant="gradient" animated />
-                      <h3 className="text-base font-bold mt-6 mb-4 leading-tight" style={{ color: colors.brand.primary }}>
+                      <h3 className="text-base font-bold mt-5 mb-2 leading-tight" style={{ color: colors.brand.primary }}>
                         {service.title}
                       </h3>
-                      <p className="text-gray-600 leading-relaxed text-sm mb-4">
+                      <p className="text-xs font-semibold italic mb-3 leading-snug" style={{ color: colors.brand.secondary }}>
+                        {service.introLine}
+                      </p>
+                      <p className="text-gray-600 leading-relaxed text-sm mb-5">
                         {service.description}
                       </p>
+                      <div className="border-t pt-4 mb-5" style={{ borderColor: 'rgba(0,0,0,0.08)' }}>
+                        <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: colors.brand.primary }}>
+                          Services Included
+                        </p>
+                        <ul className="space-y-1.5">
+                          {service.services.map((item, i) => (
+                            <li key={i} className="flex items-start gap-2 text-xs text-gray-600 leading-snug">
+                              <CheckCircle2 className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: colors.brand.secondary }} />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                       <div className="flex items-center text-sm font-semibold mt-auto" style={{ color: colors.brand.secondary }}>
                         Learn More
                         <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
@@ -545,7 +584,7 @@ export function ServicesPage() {
                   id: step.id,
                   content: (
                     <TiltCard className="h-full">
-                      <GlassCard variant="base" rounded="xl" padding="base" className="h-full shadow-xl border border-gray-200/60">
+                      <GlassCard variant="base" rounded="xl" padding="lg" className="h-full shadow-xl border border-gray-200/60 min-h-[320px]">
                         <div className="relative">
                           <div 
                             className="absolute -top-2 -left-2 w-12 h-12 rounded-lg flex items-center justify-center shadow-lg"
@@ -568,7 +607,7 @@ export function ServicesPage() {
                   ),
                 }))}
                 autoPlay={false}
-                className="max-w-xl mx-auto"
+                className="max-w-3xl mx-auto px-10"
               />
             </ScrollReveal>
           </Container>
@@ -576,46 +615,7 @@ export function ServicesPage() {
       </ModernSectionBackground>
 
       {/* ============================================
-          5B. CONSULTATION & COLLABORATION IMAGES
-          ============================================ */}
-      <Section spacing="compact" animate>
-        <Container size="lg">
-          <div className="grid md:grid-cols-2 gap-6">
-            <ScrollReveal>
-              <div className="relative rounded-2xl overflow-hidden shadow-xl h-[300px]">
-                <OptimizedImage
-                  src="https://images.unsplash.com/photo-1765020553734-2c050ddb9494?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGNvbnN1bHRhdGlvbiUyMG1lZXRpbmclMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNzc0NTMyOTY2fDA&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Client consultation meeting"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h4 className="text-lg font-bold mb-1">Strategic Consultation</h4>
-                  <p className="text-sm opacity-90">Direct access to senior strategists</p>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.1}>
-              <div className="relative rounded-2xl overflow-hidden shadow-xl h-[300px]">
-                <OptimizedImage
-                  src="https://images.unsplash.com/photo-1769740333462-9a63bfa914bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjB0ZWFtJTIwcHJlc2VudGF0aW9uJTIwY29uZmVyZW5jZSUyMHJvb218ZW58MXx8fHwxNzc0NTYwNDY1fDA&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Team presentation and collaboration"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <h4 className="text-lg font-bold mb-1">Collaborative Approach</h4>
-                  <p className="text-sm opacity-90">Working together for measurable results</p>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        </Container>
-      </Section>
-
-      {/* ============================================
-          7. WHY ADVANTEDGE
+          7. WHY ADVANTEDGE + ALL 5 IMAGES
           ============================================ */}
       <ModernSectionBackground variant="image-overlay-workspace">
         <Section spacing="compact" animate background="transparent">
@@ -629,46 +629,84 @@ export function ServicesPage() {
               maxWidth="md"
             />
 
-            <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {benefits.map((benefit, index) => (
-                <motion.div key={index} variants={staggerItemVariants}>
-                  <GlassCard variant="base" rounded="lg" padding="sm" hover className="h-full text-center flex flex-col items-center">
-                    <IconBadge icon={benefit.icon} size="md" variant="gradient" animated className="mx-auto" />
-                    <h3 className="text-base font-bold mt-6 mb-3 leading-tight" style={{ color: colors.brand.primary }}>
-                      {benefit.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {benefit.description}
-                    </p>
-                  </GlassCard>
-                </motion.div>
-              ))}
-            </StaggerContainer>
-
-            {/* Service Images */}
-            <div className="grid md:grid-cols-3 gap-6 mt-8">
+            {/* Top 2 — Consultation & Collaboration */}
+            <div className="grid md:grid-cols-2 gap-6 mt-8">
               <ScrollReveal>
-                <ImageFeatureCard
-                  title="Integrated Marketing Systems"
-                  description="Connected growth systems where strategy, marketing, sales, CRM, and AI work together for measurable outcomes."
-                  imageUrl="https://images.unsplash.com/photo-1682336869523-2c6859f781cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwbWFya2V0aW5nJTIwd29ya3NwYWNlfGVufDF8fHx8MTc3NDUwMTQzMHww&ixlib=rb-4.1.0&q=80&w=1080"
-                />
+                <div className="relative rounded-2xl overflow-hidden shadow-xl h-[300px]">
+                  <OptimizedImage
+                    src="https://images.unsplash.com/photo-1765020553734-2c050ddb9494?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGNvbnN1bHRhdGlvbiUyMG1lZXRpbmclMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNzc0NTMyOTY2fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                    alt="Client consultation meeting"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h4 className="text-lg font-bold mb-1">Strategic Consultation</h4>
+                    <p className="text-sm opacity-90">Direct access to senior strategists</p>
+                  </div>
+                </div>
               </ScrollReveal>
-              
+
               <ScrollReveal delay={0.1}>
-                <ImageFeatureCard
-                  title="Revenue-Focused Strategy"
-                  description="Every initiative aligned to pipeline growth, customer acquisition, and measurable business outcomes."
-                  imageUrl="https://images.unsplash.com/photo-1634671495197-fb9ec3230ef5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicmFuZCUyMGRlc2lnbiUyMGNyZWF0aXZlfGVufDF8fHx8MTc3NDQ5Mjc0MHww&ixlib=rb-4.1.0&q=80&w=1080"
-                />
+                <div className="relative rounded-2xl overflow-hidden shadow-xl h-[300px]">
+                  <OptimizedImage
+                    src="https://images.unsplash.com/photo-1769740333462-9a63bfa914bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjB0ZWFtJTIwcHJlc2VudGF0aW9uJTIwY29uZmVyZW5jZSUyMHJvb218ZW58MXx8fHwxNzc0NTYwNDY1fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                    alt="Team presentation and collaboration"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h4 className="text-lg font-bold mb-1">Collaborative Approach</h4>
+                    <p className="text-sm opacity-90">Working together for measurable results</p>
+                  </div>
+                </div>
               </ScrollReveal>
-              
+            </div>
+
+            {/* Bottom 3 — Service Images */}
+            <div className="grid md:grid-cols-3 gap-6 mt-6">
+              <ScrollReveal>
+                <div className="relative rounded-2xl overflow-hidden shadow-xl h-[300px]">
+                  <OptimizedImage
+                    src="https://images.unsplash.com/photo-1682336869523-2c6859f781cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwbWFya2V0aW5nJTIwd29ya3NwYWNlfGVufDF8fHx8MTc3NDUwMTQzMHww&ixlib=rb-4.1.0&q=80&w=1080"
+                    alt="Integrated Marketing Systems"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h4 className="text-lg font-bold mb-1">Integrated Marketing Systems</h4>
+                    <p className="text-sm opacity-90">Connected growth systems for measurable outcomes</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.1}>
+                <div className="relative rounded-2xl overflow-hidden shadow-xl h-[300px]">
+                  <OptimizedImage
+                    src="https://images.unsplash.com/photo-1634671495197-fb9ec3230ef5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxicmFuZCUyMGRlc2lnbiUyMGNyZWF0aXZlfGVufDF8fHx8MTc3NDQ5Mjc0MHww&ixlib=rb-4.1.0&q=80&w=1080"
+                    alt="Revenue-Focused Strategy"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h4 className="text-lg font-bold mb-1">Revenue-Focused Strategy</h4>
+                    <p className="text-sm opacity-90">Every initiative aligned to pipeline growth</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+
               <ScrollReveal delay={0.2}>
-                <ImageFeatureCard
-                  title="AI-Powered Growth"
-                  description="Customized AI execution systems integrated across marketing, sales, CRM, and operational workflows."
-                  imageUrl="https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkfGVufDF8fHx8MTc3NDU0NTk5MHww&ixlib=rb-4.1.0&q=80&w=1080"
-                />
+                <div className="relative rounded-2xl overflow-hidden shadow-xl h-[300px]">
+                  <OptimizedImage
+                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXRhJTIwYW5hbHl0aWNzJTIwZGFzaGJvYXJkfGVufDF8fHx8MTc3NDU0NTk5MHww&ixlib=rb-4.1.0&q=80&w=1080"
+                    alt="AI-Powered Growth"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h4 className="text-lg font-bold mb-1">AI-Powered Growth</h4>
+                    <p className="text-sm opacity-90">Customized AI systems across every workflow</p>
+                  </div>
+                </div>
               </ScrollReveal>
             </div>
           </Container>
