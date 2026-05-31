@@ -7,8 +7,9 @@
  * ============================================
  */
 
+import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
   ArrowRight, 
   Building2, 
@@ -60,7 +61,7 @@ import { colors, gradients } from '../../styles/design-tokens';
 
 const industries = [
   {
-    id: '1',
+    id: '01',
     icon: <Factory className="w-7 h-7" />,
     title: 'Manufacturing & Industrial',
     tagline: 'Complex products need clear positioning and connected demand generation.',
@@ -87,7 +88,7 @@ const industries = [
     ],
   },
   {
-    id: '2',
+    id: '02',
     icon: <ShoppingBag className="w-7 h-7" />,
     title: 'FMCG & Consumer Brands',
     tagline: 'Growth depends on visibility, distribution, and customer engagement.',
@@ -114,7 +115,7 @@ const industries = [
     ],
   },
   {
-    id: '3',
+    id: '03',
     icon: <Hospital className="w-7 h-7" />,
     title: 'Healthcare & Medical',
     tagline: 'Trust, credibility, and communication drive healthcare growth.',
@@ -141,7 +142,7 @@ const industries = [
     ],
   },
   {
-    id: '4',
+    id: '04',
     icon: <Building2 className="w-7 h-7" />,
     title: 'Hospitality & Tourism',
     tagline: 'Customer experience starts before the booking happens.',
@@ -168,7 +169,7 @@ const industries = [
     ],
   },
   {
-    id: '5',
+    id: '05',
     icon: <UtensilsCrossed className="w-7 h-7" />,
     title: 'Food & Beverage (F&B)',
     tagline: 'Visibility, experience, and customer loyalty drive growth.',
@@ -195,7 +196,7 @@ const industries = [
     ],
   },
   {
-    id: '6',
+    id: '06',
     icon: <HardHat className="w-7 h-7" />,
     title: 'Infrastructure & Construction',
     tagline: 'Complex industries require strategic communication and market credibility.',
@@ -222,7 +223,7 @@ const industries = [
     ],
   },
   {
-    id: '7',
+    id: '07',
     icon: <Briefcase className="w-7 h-7" />,
     title: 'Professional Services',
     tagline: 'Expertise only creates growth when the market sees it.',
@@ -312,7 +313,68 @@ const industryApproach = [
   },
 ];
 
+const heroSlides = [
+  {
+    title: 'Manufacturing & Industrial',
+    tagline: 'Complex products need clear positioning and connected demand generation.',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1400',
+  },
+  {
+    title: 'FMCG & Consumer Brands',
+    tagline: 'Growth depends on visibility, distribution, and customer engagement.',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1400',
+  },
+  {
+    title: 'Healthcare & Medical',
+    tagline: 'Trust, credibility, and communication drive healthcare growth.',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1400',
+  },
+  {
+    title: 'Hospitality & Tourism',
+    tagline: 'Customer experience starts before the booking happens.',
+    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1400',
+  },
+  {
+    title: 'Food & Beverage',
+    tagline: 'Visibility, experience, and customer loyalty drive growth.',
+    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1400',
+  },
+  {
+    title: 'Professional Services',
+    tagline: 'Authority and trust are the foundation of professional growth.',
+    image: 'https://images.unsplash.com/photo-1664575198308-3959904fa430?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1400',
+  },
+  {
+    title: 'Real Estate & Construction',
+    tagline: 'Visibility and trust convert prospects into long-term clients.',
+    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1400',
+  },
+];
+
 export function IndustriesPage() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  const goTo = useCallback((index: number) => {
+    setDirection(index > currentSlide ? 1 : -1);
+    setCurrentSlide(index);
+  }, [currentSlide]);
+
+  const next = useCallback(() => {
+    setDirection(1);
+    setCurrentSlide(prev => (prev + 1) % heroSlides.length);
+  }, []);
+
+  const prev = useCallback(() => {
+    setDirection(-1);
+    setCurrentSlide(prev => (prev - 1 + heroSlides.length) % heroSlides.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, [next]);
+
   return (
     <PageBackground>
       <PageSEO
@@ -324,51 +386,106 @@ export function IndustriesPage() {
       />
 
       {/* ============================================
-          1. HERO SECTION
+          1. HERO SLIDER
           ============================================ */}
-      <ModernSectionBackground variant="mesh-gradient-blue">
-        <Section spacing="base" animate background="transparent">
-          <Container size="lg">
-            <div className="text-center max-w-4xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="mb-4"
-              >
-                <span 
-                  className="inline-flex items-center px-3 py-1.5 rounded-full border-2 shadow-lg"
-                  style={{ backgroundColor: '#ffffff', borderColor: colors.brand.accent }}
+      <div className="relative w-full overflow-hidden" style={{ height: '520px' }}>
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.div
+            key={currentSlide}
+            custom={direction}
+            variants={{
+              enter: (d: number) => ({ x: d > 0 ? '100%' : '-100%', opacity: 0 }),
+              center: { x: 0, opacity: 1 },
+              exit: (d: number) => ({ x: d > 0 ? '-100%' : '100%', opacity: 0 }),
+            }}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-0"
+          >
+            <img
+              src={heroSlides[currentSlide].image}
+              alt={heroSlides[currentSlide].title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(0,0,80,0.82) 0%, rgba(0,0,60,0.5) 60%, rgba(0,0,0,0.15) 100%)' }} />
+
+            <div className="absolute inset-0 flex items-center">
+              <Container size="lg">
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="max-w-2xl"
                 >
-                  <Building2 className="w-3.5 h-3.5 mr-2" style={{ color: colors.brand.accent }} />
-                  <span className="text-xs font-bold tracking-wide" style={{ color: colors.brand.primary }}>
-                    INDUSTRIES WE SERVE
+                  <span
+                    className="inline-flex items-center px-3 py-1.5 rounded-full border-2 mb-5"
+                    style={{ backgroundColor: 'rgba(255,255,255,0.12)', borderColor: colors.brand.accent, backdropFilter: 'blur(8px)' }}
+                  >
+                    <Building2 className="w-3.5 h-3.5 mr-2" style={{ color: colors.brand.accent }} />
+                    <span className="text-xs font-bold tracking-wide text-white">INDUSTRIES WE SERVE</span>
                   </span>
-                </span>
-              </motion.div>
-
-              <motion.h1 
-                className="text-2xl sm:text-3xl lg:text-3xl font-bold leading-[1.1] tracking-tight mb-4"
-                style={{ color: colors.brand.primary }}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              >
-                Industry Expertise Built for Scalable Growth
-              </motion.h1>
-
-              <motion.p 
-                className="text-sm text-gray-600 leading-relaxed"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              >
-                Every industry has different buying behaviors, sales cycles, customer expectations, and competitive pressures. We build industry-aligned growth systems that connect strategy, marketing, sales, CRM, and AI to drive measurable business outcomes.
-              </motion.p>
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white mb-4">
+                    {heroSlides[currentSlide].title}
+                  </h1>
+                  <p className="text-base text-white/80 leading-relaxed mb-8 max-w-xl">
+                    {heroSlides[currentSlide].tagline}
+                  </p>
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center px-6 py-3 rounded-xl text-white font-bold text-sm shadow-xl transition-all duration-300 hover:opacity-90"
+                    style={{ background: gradients.primary }}
+                  >
+                    Discuss Your Industry
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </motion.div>
+              </Container>
             </div>
-          </Container>
-        </Section>
-      </ModernSectionBackground>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Prev / Next arrows */}
+        <button
+          onClick={prev}
+          className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
+          style={{ background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.25)' }}
+          aria-label="Previous slide"
+        >
+          <ArrowRight className="w-4 h-4 text-white rotate-180" />
+        </button>
+        <button
+          onClick={next}
+          className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
+          style={{ background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.25)' }}
+          aria-label="Next slide"
+        >
+          <ArrowRight className="w-4 h-4 text-white" />
+        </button>
+
+        {/* Dot indicators */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+          {heroSlides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => goTo(idx)}
+              className="transition-all duration-300 rounded-full"
+              style={{
+                width: idx === currentSlide ? '24px' : '8px',
+                height: '8px',
+                background: idx === currentSlide ? colors.brand.accent : 'rgba(255,255,255,0.45)',
+              }}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Slide counter */}
+        <div className="absolute top-6 right-6 text-white/70 text-xs font-semibold">
+          {String(currentSlide + 1).padStart(2, '0')} / {String(heroSlides.length).padStart(2, '0')}
+        </div>
+      </div>
 
       {/* ============================================
           2. WHY INDUSTRY EXPERTISE MATTERS
@@ -434,11 +551,6 @@ export function IndustriesPage() {
                     <div className="flex flex-col md:flex-row gap-6">
                       {/* Icon & Title */}
                       <div className="flex-shrink-0">
-                        <div className="flex items-center gap-3 mb-2">
-                          <span className="text-[11px] font-semibold tracking-[0.2em] uppercase" style={{ color: colors.brand.accent, fontFamily: "'Inter', 'DM Sans', sans-serif", letterSpacing: '0.18em' }}>
-                            Industry {industry.id}
-                          </span>
-                        </div>
                         <IconBadge icon={industry.icon} size="xl" variant="gradient" animated />
                       </div>
 
