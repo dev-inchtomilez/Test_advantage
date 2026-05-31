@@ -452,10 +452,7 @@ export function IndustriesPage() {
           ))}
         </div>
 
-        {/* Slide counter */}
-        <div className="absolute top-6 right-6 text-white/70 text-xs font-semibold">
-          {String(currentSlide + 1).padStart(2, '0')} / {String(heroSlides.length).padStart(2, '0')}
-        </div>
+
       </div>
 
       {/* ============================================
