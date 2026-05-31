@@ -695,7 +695,6 @@ export function HomePage() {
       <SectionHeader
         badge="Three Disciplines. One Revenue Engine."
         badgeIcon={<Sparkles className="w-4 h-4" />}
-        title="Strategy, Execution, and AI Unified Into One Growth System"
         description="Most agencies specialize in one piece. We connect strategic marketing, integrated execution, and AI-powered systems into one coordinated framework designed to drive measurable revenue growth."
         align="center"
         maxWidth="4xl"
@@ -704,19 +703,7 @@ export function HomePage() {
       {/* ============================================
           INTRO CONTENT
       ============================================ */}
-      <ScrollReveal>
-        <div className="max-w-5xl mx-auto text-center mt-8 mb-12">
 
-          <p className="text-base lg:text-lg text-gray-700 leading-relaxed">
-            Sustainable growth happens when strategic direction, integrated
-            marketing execution, and AI-powered intelligence operate together.
-            We eliminate fragmented systems and build connected revenue
-            ecosystems designed for scalability, efficiency, and measurable
-            business impact.
-          </p>
-
-        </div>
-      </ScrollReveal>
 
       {/* ============================================
           THREE CORE DISCIPLINES
@@ -764,7 +751,7 @@ export function HomePage() {
                 className="text-2xl font-black mb-3"
                 style={{ color: colors.brand.primary }}
               >
-                🎯 Strategic Marketing
+                Strategic Marketing
               </h3>
 
               {/* Intro */}
@@ -853,7 +840,7 @@ export function HomePage() {
                 className="text-2xl font-black mb-3"
                 style={{ color: colors.brand.primary }}
               >
-                ⚡ Integrated Marketing
+                Integrated Marketing
               </h3>
 
               {/* Intro */}
@@ -943,7 +930,7 @@ export function HomePage() {
                 className="text-2xl font-black mb-3"
                 style={{ color: colors.brand.primary }}
               >
-                🤖 AI Solutions
+                AI Solutions
               </h3>
 
               {/* Intro */}
