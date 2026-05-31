@@ -353,25 +353,17 @@ const heroSlides = [
 
 export function IndustriesPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [direction, setDirection] = useState(1);
 
   const goTo = useCallback((index: number) => {
-    setDirection(index > currentSlide ? 1 : -1);
     setCurrentSlide(index);
-  }, [currentSlide]);
+  }, []);
 
   const next = useCallback(() => {
-    setDirection(1);
     setCurrentSlide(prev => (prev + 1) % heroSlides.length);
   }, []);
 
-  const prev = useCallback(() => {
-    setDirection(-1);
-    setCurrentSlide(prev => (prev - 1 + heroSlides.length) % heroSlides.length);
-  }, []);
-
   useEffect(() => {
-    const timer = setInterval(next, 5000);
+    const timer = setInterval(next, 2000);
     return () => clearInterval(timer);
   }, [next]);
 
@@ -389,82 +381,61 @@ export function IndustriesPage() {
           1. HERO SLIDER
           ============================================ */}
       <div className="relative w-full overflow-hidden" style={{ height: '520px' }}>
-        <AnimatePresence initial={false} custom={direction}>
+        <AnimatePresence initial={false}>
           <motion.div
             key={currentSlide}
-            custom={direction}
-            variants={{
-              enter: (d: number) => ({ x: d > 0 ? '100%' : '-100%', opacity: 0 }),
-              center: { x: 0, opacity: 1 },
-              exit: (d: number) => ({ x: d > 0 ? '-100%' : '100%', opacity: 0 }),
-            }}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: 'easeInOut' }}
             className="absolute inset-0"
           >
             <img
               src={heroSlides[currentSlide].image}
               alt={heroSlides[currentSlide].title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-center"
+              style={{ transform: 'scale(1.03)' }}
             />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(0,0,80,0.82) 0%, rgba(0,0,60,0.5) 60%, rgba(0,0,0,0.15) 100%)' }} />
+            {/* Gradient overlay — no blue tint, pure dark */}
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.1) 100%)' }} />
 
             <div className="absolute inset-0 flex items-center">
               <Container size="lg">
                 <motion.div
-                  initial={{ opacity: 0, y: 24 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  transition={{ duration: 0.7, delay: 0.3 }}
                   className="max-w-2xl"
                 >
                   <span
                     className="inline-flex items-center px-3 py-1.5 rounded-full border-2 mb-5"
-                    style={{ backgroundColor: 'rgba(255,255,255,0.12)', borderColor: colors.brand.accent, backdropFilter: 'blur(8px)' }}
+                    style={{ backgroundColor: 'rgba(255,255,255,0.1)', borderColor: colors.brand.accent, backdropFilter: 'blur(8px)' }}
                   >
                     <Building2 className="w-3.5 h-3.5 mr-2" style={{ color: colors.brand.accent }} />
                     <span className="text-xs font-bold tracking-wide text-white">INDUSTRIES WE SERVE</span>
                   </span>
-                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white mb-4">
+
+                  {/* Title with subtle text shadow instead of background highlight */}
+                  <h1
+                    className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white mb-4"
+                    style={{ textShadow: '0 2px 20px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.8)' }}
+                  >
                     {heroSlides[currentSlide].title}
                   </h1>
-                  <p className="text-base text-white/80 leading-relaxed mb-8 max-w-xl">
+
+                  <p
+                    className="text-base leading-relaxed max-w-xl"
+                    style={{ color: 'rgba(255,255,255,0.88)', textShadow: '0 1px 8px rgba(0,0,0,0.6)' }}
+                  >
                     {heroSlides[currentSlide].tagline}
                   </p>
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center px-6 py-3 rounded-xl text-white font-bold text-sm shadow-xl transition-all duration-300 hover:opacity-90"
-                    style={{ background: gradients.primary }}
-                  >
-                    Discuss Your Industry
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Link>
                 </motion.div>
               </Container>
             </div>
           </motion.div>
         </AnimatePresence>
 
-        {/* Prev / Next arrows */}
-        <button
-          onClick={prev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-          style={{ background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.25)' }}
-          aria-label="Previous slide"
-        >
-          <ArrowRight className="w-4 h-4 text-white rotate-180" />
-        </button>
-        <button
-          onClick={next}
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-          style={{ background: 'rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.25)' }}
-          aria-label="Next slide"
-        >
-          <ArrowRight className="w-4 h-4 text-white" />
-        </button>
-
-        {/* Dot indicators */}
+        {/* Dot indicators only */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
           {heroSlides.map((_, idx) => (
             <button
