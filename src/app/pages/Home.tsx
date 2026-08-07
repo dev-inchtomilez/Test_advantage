@@ -349,703 +349,1376 @@ export function HomePage() {
         faqKey="home"
       />
       
-      {/* ============================================
-          1. HERO SECTION
-          ============================================ */}
-      <ModernSectionBackground variant="image-overlay-office" className="relative overflow-hidden py-12 lg:py-16">
-        <Container size="xl">
-          <div className="grid lg:grid-cols-2 gap-6 items-center">
-            {/* Left Column - Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+
+
+
+
+
+
+
+
+{/* ============================================
+    1. HOME MEGA HERO SECTION
+    ============================================ */}
+
+<ModernSectionBackground
+  variant="image-overlay-office"
+  className="mega-home-hero relative isolate min-h-[calc(100vh-72px)] w-full overflow-hidden"
+>
+  {/* ============================================
+      SELF-CONTAINED HERO ANIMATIONS
+      ============================================ */}
+
+  <style>
+    {`
+      .mega-home-hero .mega-bg-slide {
+        opacity: 0;
+        transform: scale(1.07);
+        animation: megaHeroBackground 32s infinite;
+        will-change: opacity, transform;
+      }
+
+      .mega-home-hero .mega-bg-slide:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .mega-home-hero .mega-bg-slide:nth-child(2) {
+        animation-delay: 8s;
+      }
+
+      .mega-home-hero .mega-bg-slide:nth-child(3) {
+        animation-delay: 16s;
+      }
+
+      .mega-home-hero .mega-bg-slide:nth-child(4) {
+        animation-delay: 24s;
+      }
+
+      @keyframes megaHeroBackground {
+        0% {
+          opacity: 0;
+          transform: scale(1.07);
+        }
+
+        5% {
+          opacity: 1;
+        }
+
+        24% {
+          opacity: 1;
+        }
+
+        31% {
+          opacity: 0;
+          transform: scale(1);
+        }
+
+        100% {
+          opacity: 0;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes megaHeroOrbit {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes megaHeroOrbitReverse {
+        from {
+          transform: rotate(360deg);
+        }
+
+        to {
+          transform: rotate(0deg);
+        }
+      }
+
+      @keyframes megaHeroFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-7px);
+        }
+      }
+
+      @keyframes megaHeroFloatReverse {
+        0%,
+        100% {
+          transform: translateY(-4px);
+        }
+
+        50% {
+          transform: translateY(5px);
+        }
+      }
+
+      @keyframes megaHeroPulse {
+        0%,
+        100% {
+          opacity: 0.45;
+          transform: scale(1);
+        }
+
+        50% {
+          opacity: 1;
+          transform: scale(1.35);
+        }
+      }
+
+      @keyframes megaHeroGlow {
+        0%,
+        100% {
+          opacity: 0.55;
+          transform: scale(1);
+        }
+
+        50% {
+          opacity: 0.9;
+          transform: scale(1.06);
+        }
+      }
+
+      @keyframes megaHeroLine {
+        0% {
+          transform: scaleX(0);
+          transform-origin: left;
+        }
+
+        45%,
+        100% {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+      }
+
+      .mega-home-hero .mega-orbit {
+        animation: megaHeroOrbit 52s linear infinite;
+      }
+
+      .mega-home-hero .mega-orbit-reverse {
+        animation: megaHeroOrbitReverse 68s linear infinite;
+      }
+
+      .mega-home-hero .mega-float {
+        animation: megaHeroFloat 6s ease-in-out infinite;
+      }
+
+      .mega-home-hero .mega-float-reverse {
+        animation: megaHeroFloatReverse 7s ease-in-out infinite;
+      }
+
+      .mega-home-hero .mega-pulse {
+        animation: megaHeroPulse 2.8s ease-in-out infinite;
+      }
+
+      .mega-home-hero .mega-glow {
+        animation: megaHeroGlow 9s ease-in-out infinite;
+      }
+
+      .mega-home-hero .mega-progress {
+        animation: megaHeroLine 8s linear infinite;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .mega-home-hero .mega-bg-slide,
+        .mega-home-hero .mega-orbit,
+        .mega-home-hero .mega-orbit-reverse,
+        .mega-home-hero .mega-float,
+        .mega-home-hero .mega-float-reverse,
+        .mega-home-hero .mega-pulse,
+        .mega-home-hero .mega-glow,
+        .mega-home-hero .mega-progress {
+          animation: none !important;
+        }
+
+        .mega-home-hero .mega-bg-slide:first-child {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    `}
+  </style>
+
+  {/* ============================================
+      FULL WIDTH CINEMATIC BACKGROUND SLIDER
+      ============================================ */}
+
+  <div
+    aria-hidden="true"
+    className="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-[#080915]"
+  >
+    <div className="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2400&q=90"
+        alt=""
+        loading="eager"
+        decoding="async"
+        className="mega-bg-slide absolute inset-0 h-full w-full object-cover object-center"
+      />
+
+      <img
+        src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2400&q=90"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="mega-bg-slide absolute inset-0 h-full w-full object-cover object-center"
+      />
+
+      <img
+        src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2400&q=90"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="mega-bg-slide absolute inset-0 h-full w-full object-cover object-center"
+      />
+
+      <img
+        src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=2400&q=90"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="mega-bg-slide absolute inset-0 h-full w-full object-cover object-center"
+      />
+    </div>
+
+    {/* Cinematic overlays */}
+
+    <div className="absolute inset-0 bg-black/[0.42]" />
+
+    <div
+      className="absolute inset-0"
+      style={{
+        background:
+          "linear-gradient(90deg, rgba(7,8,18,0.90) 0%, rgba(7,8,18,0.78) 35%, rgba(7,8,18,0.48) 63%, rgba(7,8,18,0.60) 100%)",
+      }}
+    />
+
+    <div
+      className="absolute inset-0"
+      style={{
+        background:
+          "linear-gradient(180deg, rgba(5,6,14,0.22) 0%, rgba(5,6,14,0.08) 45%, rgba(5,6,14,0.75) 100%)",
+      }}
+    />
+
+    {/* Brand atmospheric glow */}
+
+    <div
+      className="mega-glow absolute -left-64 top-[15%] h-[520px] w-[520px] rounded-full opacity-[0.10] blur-[160px]"
+      style={{
+        backgroundColor: colors.brand.secondary,
+      }}
+    />
+
+    <div
+      className="mega-glow absolute -right-52 bottom-[4%] h-[500px] w-[500px] rounded-full opacity-[0.10] blur-[150px]"
+      style={{
+        backgroundColor: colors.brand.accent,
+      }}
+    />
+
+    {/* Technical grid */}
+
+    <div
+      className="absolute inset-0 opacity-[0.035]"
+      style={{
+        backgroundImage:
+          "linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)",
+        backgroundSize: "76px 76px",
+      }}
+    />
+
+    {/* Top radial lighting */}
+
+    <div
+      className="absolute inset-0"
+      style={{
+        background:
+          "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12), transparent 42%)",
+      }}
+    />
+  </div>
+
+  {/* ============================================
+      TOP ACCENT LINE
+      ============================================ */}
+
+  <motion.div
+    className="absolute left-0 top-0 z-40 h-[3px]"
+    style={{
+      background: gradients.primary,
+    }}
+    initial={{ width: 0 }}
+    animate={{ width: "100%" }}
+    transition={{
+      duration: 1.2,
+      ease: [0.22, 1, 0.36, 1],
+    }}
+  />
+
+  {/* ============================================
+      MAIN MEGA HERO
+      ============================================ */}
+
+  <div
+    className="
+      relative
+      z-10
+      flex
+      min-h-[calc(100vh-72px)]
+      w-full
+      items-center
+      py-9
+      lg:py-10
+    "
+  >
+    <Container size="xl">
+      <div className="relative mx-auto w-full max-w-7xl">
+
+        {/* ============================================
+            UPPER META ROW
+            ============================================ */}
+
+        <motion.div
+          className="
+            mb-4
+            hidden
+            items-center
+            justify-between
+            border-b
+            border-white/15
+            pb-3
+            lg:flex
+          "
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.1,
+          }}
+        >
+          <div className="flex items-center gap-3">
+            <span
+              className="text-[9px] font-bold uppercase tracking-[0.18em]"
+              style={{
+                color: colors.brand.accent,
+              }}
             >
+              AdvantEdge
+            </span>
+
+            <span className="h-3 w-px bg-white/20" />
+
+            <span className="text-[9px] font-medium uppercase tracking-[0.16em] text-white/55">
+              Strategy • Execution • Intelligence • Growth
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span
+              className="mega-pulse h-1.5 w-1.5 rounded-full"
+              style={{
+                backgroundColor: colors.brand.accent,
+              }}
+            />
+
+            <span className="text-[9px] font-semibold uppercase tracking-[0.14em] text-white/55">
+              Growth Systems Active
+            </span>
+          </div>
+        </motion.div>
+
+        {/* ============================================
+            PRIMARY MEGA GRID
+            ============================================ */}
+
+        <div
+          className="
+            grid
+            items-stretch
+            gap-5
+            lg:grid-cols-12
+          "
+        >
+          {/* ============================================
+              LEFT — LARGE GLASS CONTENT PANEL
+              ============================================ */}
+
+          <motion.div
+            className="
+              relative
+              overflow-hidden
+              rounded-[26px]
+              border
+              border-white/30
+              bg-white/[0.92]
+              shadow-[0_30px_90px_rgba(0,0,0,0.30)]
+              backdrop-blur-2xl
+              lg:col-span-6
+            "
+            initial={{
+              opacity: 0,
+              x: -45,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
+            transition={{
+              duration: 0.8,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            {/* Premium accent */}
+
+            <div
+              className="absolute left-0 top-0 h-[3px] w-full"
+              style={{
+                background: gradients.primary,
+              }}
+            />
+
+            {/* subtle inner wash */}
+
+            <div
+              className="pointer-events-none absolute -right-24 -top-28 h-[300px] w-[300px] rounded-full blur-[100px]"
+              style={{
+                backgroundColor: `${colors.brand.accent}14`,
+              }}
+            />
+
+            <div className="relative z-10 p-5 sm:p-6 lg:p-7 xl:p-8">
+
+              {/* Badge */}
+
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.6 }}
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: 0.2,
+                  duration: 0.6,
+                }}
                 className="mb-3"
               >
-                <GlowEffect color={colors.brand.accent} intensity={20}>
-                  <motion.span 
-                    className="inline-flex items-center px-3 py-1.5 rounded-full shadow-lg border-2"
-                    style={{ 
-                      backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                      backdropFilter: 'blur(12px)',
-                      borderColor: colors.brand.accent 
+                <GlowEffect
+                  color={colors.brand.accent}
+                  intensity={20}
+                >
+                  <motion.span
+                    className="
+                      inline-flex
+                      items-center
+                      rounded-full
+                      border-2
+                      px-3
+                      py-1.5
+                      shadow-lg
+                    "
+                    style={{
+                      backgroundColor:
+                        "rgba(255,255,255,0.95)",
+                      backdropFilter: "blur(12px)",
+                      borderColor: colors.brand.accent,
                     }}
-                    whileHover={{ scale: 1.05, borderColor: colors.brand.primary }}
-                    transition={{ duration: 0.3 }}
+                    whileHover={{
+                      scale: 1.05,
+                      borderColor: colors.brand.primary,
+                    }}
+                    transition={{
+                      duration: 0.3,
+                    }}
                   >
-                    <Sparkles className="w-3.5 h-3.5 mr-2" style={{ color: colors.brand.accent }} />
-                    <span className="text-xs font-bold tracking-wide" style={{ color: colors.brand.primary }}>Strategic Growth Partner</span>
+                    <Sparkles
+                      className="mr-2 h-3.5 w-3.5"
+                      style={{
+                        color: colors.brand.accent,
+                      }}
+                    />
+
+                    <span
+                      className="text-xs font-bold tracking-wide"
+                      style={{
+                        color: colors.brand.primary,
+                      }}
+                    >
+                      Strategic Growth Partner
+                    </span>
                   </motion.span>
                 </GlowEffect>
               </motion.div>
 
-              <h1 className="text-2xl sm:text-3xl lg:text-3xl font-bold leading-tight tracking-tight mb-3" style={{ color: colors.brand.primary }}>
-                Strategic Marketing.{' '}
+              {/* ============================================
+                  SAME TYPOGRAPHY
+                  ============================================ */}
+
+              <h1
+                className="
+                  mb-3
+                  text-2xl
+                  font-bold
+                  leading-tight
+                  tracking-tight
+                  sm:text-3xl
+                  lg:text-3xl
+                "
+                style={{
+                  color: colors.brand.primary,
+                }}
+              >
+                Strategic Marketing.{" "}
+
                 <span className="relative inline-block">
                   Integrated Execution.
+
                   <motion.span
-                    className="absolute -bottom-1 left-0 right-0 h-1.5 -z-0"
-                    style={{ backgroundColor: colors.brand.accent, opacity: 0.3 }}
-                    initial={{ width: 0 }}
-                    animate={{ width: '100%' }}
-                    transition={{ delay: 0.5, duration: 0.5 }}
+                    className="absolute -bottom-1 left-0 right-0 -z-0 h-1.5"
+                    style={{
+                      backgroundColor: colors.brand.accent,
+                      opacity: 0.3,
+                    }}
+                    initial={{
+                      width: 0,
+                    }}
+                    animate={{
+                      width: "100%",
+                    }}
+                    transition={{
+                      delay: 0.5,
+                      duration: 0.5,
+                    }}
                   />
                 </span>
+
                 <br />
+
                 AI-Powered Growth.
               </h1>
 
-              <div className="space-y-2 mb-4">
-                <p className="text-sm font-semibold leading-snug" style={{ color: colors.brand.primary }}>
+              {/* Copy */}
+
+              <div className="mb-4 space-y-2">
+                <p
+                  className="text-sm font-semibold leading-snug"
+                  style={{
+                    color: colors.brand.primary,
+                  }}
+                >
                   Growth is not accidental. It is engineered.
                 </p>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                 We build revenue-driven marketing systems that connect strategy, execution, and AI - so every effort drives measurable growth.
 
+                <p className="max-w-[610px] text-sm leading-relaxed text-gray-700">
+                  We build revenue-driven marketing systems that connect
+                  strategy, execution, and AI - so every effort drives
+                  measurable growth.
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 mb-5">
+              {/* CTA */}
+
+              <div className="mb-5 flex flex-col gap-3 sm:flex-row">
                 <MagneticButton strength={0.3}>
                   <Link
                     to="/contact"
-                    className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-white font-bold text-sm shadow-xl hover:shadow-2xl transition-all duration-300 group"
-                    style={{ background: gradients.primary }}
+                    className="
+                      group
+                      inline-flex
+                      items-center
+                      justify-center
+                      rounded-xl
+                      px-6
+                      py-3
+                      text-sm
+                      font-bold
+                      text-white
+                      shadow-xl
+                      transition-all
+                      duration-300
+                      hover:-translate-y-0.5
+                      hover:shadow-2xl
+                    "
+                    style={{
+                      background: gradients.primary,
+                    }}
                   >
                     Book a 30-Minute Revenue Strategy Call
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </MagneticButton>
 
                 <MagneticButton strength={0.2}>
                   <Link
                     to="/services"
-                    className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-sm border-2 transition-all duration-300 hover:shadow-lg hover:bg-white/70 bg-white/50 backdrop-blur-md"
-                    style={{ borderColor: colors.brand.primary, color: colors.brand.primary }}
+                    className="
+                      inline-flex
+                      items-center
+                      justify-center
+                      rounded-xl
+                      border-2
+                      bg-white/70
+                      px-6
+                      py-3
+                      text-sm
+                      font-bold
+                      backdrop-blur-md
+                      transition-all
+                      duration-300
+                      hover:bg-white
+                      hover:shadow-lg
+                    "
+                    style={{
+                      borderColor: colors.brand.primary,
+                      color: colors.brand.primary,
+                    }}
                   >
                     Explore Services
                   </Link>
                 </MagneticButton>
               </div>
 
-              <div className="grid grid-cols-3 gap-3 pt-3 border-t border-gray-300/50">
-                <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-                  <div className="flex items-baseline gap-0.5">
-                    <AnimatedCounter end={350} duration={2} className="text-xl font-bold" style={{ color: colors.brand.primary }} />
-                    <span className="text-lg font-bold" style={{ color: colors.brand.accent }}>+</span>
-                  </div>
-                  <p className="text-xs text-gray-600 font-medium mt-0.5">Clients</p>
-                </motion.div>
-                <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-                  <div className="flex items-baseline gap-0.5">
-                    <AnimatedCounter end={94} duration={2} className="text-xl font-bold" style={{ color: colors.brand.primary }} />
-                    <span className="text-lg font-bold" style={{ color: colors.brand.accent }}>%</span>
-                  </div>
-                  <p className="text-xs text-gray-600 font-medium mt-0.5">Satisfaction</p>
-                </motion.div>
-                <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-                  <div className="flex items-baseline gap-0.5">
-                    <AnimatedCounter end={4.1} decimals={1} duration={2} className="text-xl font-bold" style={{ color: colors.brand.primary }} />
-                    <span className="text-lg font-bold" style={{ color: colors.brand.accent }}>x</span>
-                  </div>
-                  <p className="text-xs text-gray-600 font-medium mt-0.5">ROI</p>
-                </motion.div>
-              </div>
-            </motion.div>
+              {/* ============================================
+                  METRICS
+                  ============================================ */}
 
-            {/* Right Column - Globe */}
-            <motion.div
-              className="relative flex items-center justify-center w-full mt-4 lg:mt-0 overflow-hidden rounded-2xl"
-              style={{ height: 'clamp(200px, 50vw, 380px)' }}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-            >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="scale-[0.52] sm:scale-[0.75] lg:scale-100 origin-center">
-                  <ParticleGlobe 
-                    width={450}
-                    height={450}
-                    particleCount={1200}
-                    rotationSpeed={0.0015}
-                    radius={160}
-                  />
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </Container>
-      </ModernSectionBackground>
-
-
-
-
-      
-
-
-
-{/* ============================================
-    2. WHO WE ARE — PREMIUM INTRODUCTION
-============================================ */}
-<ModernSectionBackground
-  variant="image-overlay-team"
-  className="relative overflow-hidden"
->
-  <Section
-    spacing="base"
-    animate
-    background="transparent"
-    className="who-we-are-section relative overflow-hidden"
-  >
-    {/* ============================================
-        SELF-CONTAINED ANIMATION CSS
-    ============================================ */}
-    <style>
-      {`
-        .who-we-are-section .who-image-slide {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          opacity: 0;
-          transform: scale(1.07);
-          animation: whoImageSlider 15s infinite;
-          will-change: opacity, transform;
-        }
-
-        .who-we-are-section .who-image-slide:nth-child(1) {
-          animation-delay: 0s;
-        }
-
-        .who-we-are-section .who-image-slide:nth-child(2) {
-          animation-delay: 5s;
-        }
-
-        .who-we-are-section .who-image-slide:nth-child(3) {
-          animation-delay: 10s;
-        }
-
-        @keyframes whoImageSlider {
-          0% {
-            opacity: 0;
-            transform: scale(1.07);
-          }
-
-          5% {
-            opacity: 1;
-          }
-
-          31% {
-            opacity: 1;
-          }
-
-          38% {
-            opacity: 0;
-            transform: scale(1);
-          }
-
-          100% {
-            opacity: 0;
-            transform: scale(1);
-          }
-        }
-
-        .who-we-are-section .who-slider-progress {
-          transform-origin: left;
-          animation: whoSliderProgress 5s linear infinite;
-        }
-
-        @keyframes whoSliderProgress {
-          from {
-            transform: scaleX(0);
-          }
-
-          to {
-            transform: scaleX(1);
-          }
-        }
-
-        .who-we-are-section .who-value-card {
-          transition:
-            transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-            border-color 0.35s ease,
-            background-color 0.35s ease,
-            box-shadow 0.35s ease;
-        }
-
-        .who-we-are-section .who-value-card:hover {
-          transform: translateY(-4px);
-        }
-
-        .who-we-are-section .who-value-line {
-          transform: scaleY(0);
-          transform-origin: top;
-          transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .who-we-are-section
-          .who-value-card:hover
-          .who-value-line {
-          transform: scaleY(1);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .who-we-are-section .who-image-slide {
-            animation: none;
-            transform: none;
-          }
-
-          .who-we-are-section .who-image-slide:first-child {
-            opacity: 1;
-          }
-
-          .who-we-are-section .who-slider-progress {
-            animation: none;
-            transform: scaleX(1);
-          }
-        }
-      `}
-    </style>
-
-    {/* ============================================
-        SECTION BACKGROUND DETAILS
-    ============================================ */}
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 overflow-hidden"
-    >
-      <div
-        className="absolute -left-44 top-16 h-[420px] w-[420px] rounded-full opacity-[0.08] blur-[130px]"
-        style={{ backgroundColor: colors.brand.secondary }}
-      />
-
-      <div
-        className="absolute -right-40 bottom-10 h-[420px] w-[420px] rounded-full opacity-[0.09] blur-[140px]"
-        style={{ backgroundColor: colors.brand.accent }}
-      />
-
-      <div
-        className="absolute inset-0 opacity-[0.035]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(0,1,49,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(0,1,49,0.18) 1px, transparent 1px)",
-          backgroundSize: "72px 72px",
-        }}
-      />
-    </div>
-
-    <Container size="xl">
-      <div className="relative z-10 mx-auto max-w-7xl">
-        {/* ============================================
-            TOP SECTION HEADER
-        ============================================ */}
-        <ScrollReveal>
-          <div className="mx-auto max-w-4xl text-center">
-            <div
-              className="inline-flex items-center gap-2 rounded-full border px-4 py-2 shadow-sm backdrop-blur-xl"
-              style={{
-                color: colors.brand.secondary,
-                borderColor: `${colors.brand.secondary}18`,
-                backgroundColor: "rgba(255,255,255,0.76)",
-              }}
-            >
-              <Shield className="h-3.5 w-3.5" />
-
-              <span className="text-[10px] font-bold uppercase tracking-[0.18em]">
-                Who We Are
-              </span>
-            </div>
-
-            <h2
-              className="mt-5 text-2xl font-bold leading-[1.12] tracking-[-0.035em] sm:text-3xl lg:text-[42px]"
-              style={{ color: colors.brand.primary }}
-            >
-              Built for Organizations
-              <span
-                className="block"
-                style={{ color: colors.brand.secondary }}
+              <div
+                className="
+                  overflow-hidden
+                  rounded-2xl
+                  border
+                  border-gray-200
+                  bg-white/75
+                  shadow-[0_12px_35px_rgba(0,1,49,0.05)]
+                "
               >
-                That Expect More
-              </span>
-            </h2>
+                <div className="grid grid-cols-3">
 
-            <p className="mx-auto mt-5 max-w-3xl text-sm leading-[1.8] text-gray-600 sm:text-base">
-              AdvantEdge is a strategic and integrated marketing solutions
-              partner combining business leadership, execution expertise, and
-              AI capabilities to build customized growth systems.
-            </p>
-          </div>
-        </ScrollReveal>
-
-        {/* ============================================
-            MAIN EDITORIAL SPLIT
-        ============================================ */}
-        <div className="mt-10 grid items-stretch gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
-          {/* ============================================
-              LEFT — AUTOMATIC IMAGE STORY
-          ============================================ */}
-          <ScrollReveal>
-            <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.75,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="relative h-full min-h-[480px] overflow-hidden rounded-[26px] border border-white/80 bg-[#000131] shadow-[0_30px_90px_rgba(0,1,49,0.18)] sm:min-h-[540px]"
-            >
-              {/* Automatic image slider */}
-              <div className="absolute inset-0">
-                <img
-                  src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=90"
-                  alt="Executive team collaborating on business strategy"
-                  loading="eager"
-                  decoding="async"
-                  className="who-image-slide object-center"
-                />
-
-                <img
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1800&q=90"
-                  alt="Leadership team developing a strategic roadmap"
-                  loading="lazy"
-                  decoding="async"
-                  className="who-image-slide object-center"
-                />
-
-                <img
-                  src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=90"
-                  alt="Business consultants discussing integrated growth"
-                  loading="lazy"
-                  decoding="async"
-                  className="who-image-slide object-center"
-                />
-              </div>
-
-              {/* Image overlays */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#000131]/96 via-[#000131]/40 to-[#000131]/08" />
-
-              <div className="absolute inset-0 bg-gradient-to-r from-[#000131]/42 via-transparent to-transparent" />
-
-              {/* Top badge */}
-              <div className="absolute left-5 top-5 z-10 sm:left-6 sm:top-6">
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#000131]/40 px-3 py-2 text-white shadow-lg backdrop-blur-xl">
-                  <Sparkles
-                    className="h-3.5 w-3.5"
-                    style={{ color: colors.brand.accent }}
-                  />
-
-                  <span className="text-[9px] font-bold uppercase tracking-[0.16em]">
-                    Strategic Growth Partner
-                  </span>
-                </div>
-              </div>
-
-              {/* Experience badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.35, duration: 0.55 }}
-                className="absolute right-5 top-5 z-10 sm:right-6 sm:top-6"
-              >
-                <div className="rounded-2xl border border-white/20 bg-white/[0.13] px-4 py-3 text-right shadow-xl backdrop-blur-xl">
-                  <div className="flex items-center justify-end gap-2">
-                    <Award
-                      className="h-4 w-4"
-                      style={{ color: colors.brand.accent }}
-                    />
-
-                    <span className="text-[9px] font-bold uppercase tracking-[0.14em] text-white/55">
-                      Experience
-                    </span>
-                  </div>
-
-                  <p className="mt-1 text-2xl font-black tracking-[-0.04em] text-white">
-                    15+
-                    <span
-                      className="ml-1 text-xs font-bold"
-                      style={{ color: colors.brand.accent }}
-                    >
-                      Years
-                    </span>
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Bottom story content */}
-              <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-7">
-                <p
-                  className="text-[9px] font-bold uppercase tracking-[0.17em]"
-                  style={{ color: colors.brand.accent }}
-                >
-                  Leadership Meets Execution
-                </p>
-
-                <h3 className="mt-3 max-w-xl text-2xl font-bold leading-[1.18] tracking-[-0.025em] text-white sm:text-3xl">
-                  Strategy Should Not End With a Presentation.
-                </h3>
-
-                <p className="mt-3 max-w-xl text-sm leading-[1.7] text-white/65">
-                  We convert leadership priorities into coordinated marketing,
-                  technology, content, and sales execution—supported by
-                  measurement and continuous improvement.
-                </p>
-
-                {/* Slider status */}
-                <div className="mt-5 flex items-center gap-3">
-                  <div className="h-1 w-24 overflow-hidden rounded-full bg-white/20">
-                    <span
-                      className="who-slider-progress block h-full w-full"
-                      style={{ background: gradients.primary }}
-                    />
-                  </div>
-
-                  <span className="text-[9px] font-bold uppercase tracking-[0.14em] text-white/40">
-                    Our People. Our Process. Our Perspective.
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          </ScrollReveal>
-
-          {/* ============================================
-              RIGHT — BRAND POSITIONING
-          ============================================ */}
-          <ScrollReveal delay={0.08}>
-            <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.75,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="flex h-full flex-col rounded-[26px] border border-white/85 bg-white/72 p-5 shadow-[0_28px_85px_rgba(0,1,49,0.10)] backdrop-blur-2xl sm:p-7 lg:p-8"
-            >
-              {/* Main positioning */}
-              <div>
-                <p
-                  className="text-[9px] font-bold uppercase tracking-[0.17em]"
-                  style={{ color: colors.brand.secondary }}
-                >
-                  The AdvantEdge Approach
-                </p>
-
-                <h3
-                  className="mt-3 text-xl font-bold leading-[1.2] tracking-[-0.025em] sm:text-2xl lg:text-[30px]"
-                  style={{ color: colors.brand.primary }}
-                >
-                  We Don&apos;t Execute Tasks.
-                  <span
-                    className="mt-1 block"
-                    style={{ color: colors.brand.secondary }}
-                  >
-                    We Engineer Growth.
-                  </span>
-                </h3>
-
-                <div
-                  className="mt-4 h-1 w-20 rounded-full"
-                  style={{ background: gradients.primary }}
-                />
-
-                <p className="mt-5 text-sm leading-[1.8] text-gray-600">
-                  AdvantEdge partners with growth-focused organizations to turn
-                  marketing into a coordinated and accountable business
-                  function. We align strategy, execution, data, technology, and
-                  commercial priorities around measurable outcomes.
-                </p>
-              </div>
-
-              {/* Value cards */}
-              <div className="mt-6 space-y-3">
-                {[
-                  {
-                    number: "01",
-                    icon: <Target className="h-5 w-5" />,
-                    title: "Strategic Leadership",
-                    text: "We work as an extension of leadership, connecting every marketing priority with the wider business strategy.",
-                  },
-                  {
-                    number: "02",
-                    icon: <Layers className="h-5 w-5" />,
-                    title: "Integrated Growth Systems",
-                    text: "Brand, digital, content, technology, automation, and sales activation operate as one connected system.",
-                  },
-                  {
-                    number: "03",
-                    icon: <BarChart3 className="h-5 w-5" />,
-                    title: "Performance Accountability",
-                    text: "Every initiative is measured, analyzed, and optimized around commercial impact, pipeline, conversion, and ROI.",
-                  },
-                ].map((item, index) => (
                   <motion.div
-                    key={item.number}
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      delay: 0.18 + index * 0.09,
-                      duration: 0.45,
+                    className="px-4 py-3"
+                    whileHover={{
+                      backgroundColor:
+                        "rgba(248,249,252,0.95)",
                     }}
-                    className="who-value-card group relative overflow-hidden rounded-2xl border border-gray-200/80 bg-white/70 p-4 shadow-[0_12px_35px_rgba(0,1,49,0.045)] hover:border-white hover:bg-white hover:shadow-[0_20px_55px_rgba(0,1,49,0.10)]"
                   >
-                    <div
-                      aria-hidden="true"
-                      className="who-value-line absolute bottom-0 left-0 top-0 w-1"
-                      style={{ background: gradients.primary }}
-                    />
-
-                    <div className="flex items-start gap-4">
-                      <div
-                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-105"
+                    <div className="flex items-baseline gap-0.5">
+                      <AnimatedCounter
+                        end={350}
+                        duration={2}
+                        className="text-xl font-bold"
                         style={{
-                          color: colors.brand.secondary,
-                          backgroundColor: `${colors.brand.secondary}0D`,
+                          color: colors.brand.primary,
+                        }}
+                      />
+
+                      <span
+                        className="text-lg font-bold"
+                        style={{
+                          color: colors.brand.accent,
                         }}
                       >
-                        {item.icon}
-                      </div>
-
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-start justify-between gap-3">
-                          <h4
-                            className="text-sm font-bold sm:text-base"
-                            style={{ color: colors.brand.primary }}
-                          >
-                            {item.title}
-                          </h4>
-
-                          <span className="text-[9px] font-bold tracking-[0.14em] text-gray-300">
-                            {item.number}
-                          </span>
-                        </div>
-
-                        <p className="mt-1.5 text-xs leading-[1.7] text-gray-600 sm:text-[13px]">
-                          {item.text}
-                        </p>
-                      </div>
+                        +
+                      </span>
                     </div>
+
+                    <p className="mt-0.5 text-xs font-medium text-gray-600">
+                      Clients
+                    </p>
                   </motion.div>
-                ))}
-              </div>
-
-              {/* CTA */}
-              <div className="mt-auto pt-6">
-                <div className="flex flex-col gap-4 border-t border-gray-200/80 pt-5 sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                    <p
-                      className="text-xs font-bold"
-                      style={{ color: colors.brand.primary }}
-                    >
-                      Built around your business.
-                    </p>
-
-                    <p className="mt-1 text-[11px] text-gray-500">
-                      Not a fixed package. Not a generic agency model.
-                    </p>
-                  </div>
 
                   <motion.div
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.25 }}
+                    className="border-l border-gray-200 px-4 py-3"
+                    whileHover={{
+                      backgroundColor:
+                        "rgba(248,249,252,0.95)",
+                    }}
                   >
-                    <Link
-                      to="/about"
-                      className="group inline-flex items-center gap-2 text-sm font-bold"
-                      style={{ color: colors.brand.secondary }}
-                    >
-                      Discover Our Story
+                    <div className="flex items-baseline gap-0.5">
+                      <AnimatedCounter
+                        end={94}
+                        duration={2}
+                        className="text-xl font-bold"
+                        style={{
+                          color: colors.brand.primary,
+                        }}
+                      />
 
-                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
+                      <span
+                        className="text-lg font-bold"
+                        style={{
+                          color: colors.brand.accent,
+                        }}
+                      >
+                        %
+                      </span>
+                    </div>
+
+                    <p className="mt-0.5 text-xs font-medium text-gray-600">
+                      Satisfaction
+                    </p>
                   </motion.div>
+
+                  <motion.div
+                    className="border-l border-gray-200 px-4 py-3"
+                    whileHover={{
+                      backgroundColor:
+                        "rgba(248,249,252,0.95)",
+                    }}
+                  >
+                    <div className="flex items-baseline gap-0.5">
+                      <AnimatedCounter
+                        end={4.1}
+                        decimals={1}
+                        duration={2}
+                        className="text-xl font-bold"
+                        style={{
+                          color: colors.brand.primary,
+                        }}
+                      />
+
+                      <span
+                        className="text-lg font-bold"
+                        style={{
+                          color: colors.brand.accent,
+                        }}
+                      >
+                        x
+                      </span>
+                    </div>
+
+                    <p className="mt-0.5 text-xs font-medium text-gray-600">
+                      ROI
+                    </p>
+                  </motion.div>
+
                 </div>
               </div>
-            </motion.div>
-          </ScrollReveal>
+
+              {/* Bottom process */}
+
+              <div
+                className="
+                  mt-4
+                  flex
+                  flex-wrap
+                  items-center
+                  gap-2
+                  border-t
+                  border-gray-200
+                  pt-4
+                  text-[10px]
+                  font-semibold
+                  text-gray-500
+                "
+              >
+                <span>Strategy</span>
+
+                <ArrowRight className="h-3 w-3 text-gray-300" />
+
+                <span>Execution</span>
+
+                <ArrowRight className="h-3 w-3 text-gray-300" />
+
+                <span>AI</span>
+
+                <ArrowRight className="h-3 w-3 text-gray-300" />
+
+                <span
+                  style={{
+                    color: colors.brand.primary,
+                  }}
+                >
+                  Measurable Growth
+                </span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ============================================
+              RIGHT — LARGE GLOBE COMMAND CENTER
+              ============================================ */}
+
+          <motion.div
+            className="
+              relative
+              min-h-[430px]
+              overflow-hidden
+              rounded-[26px]
+              border
+              border-white/25
+              bg-black/[0.18]
+              shadow-[0_30px_90px_rgba(0,0,0,0.32)]
+              backdrop-blur-xl
+              sm:min-h-[480px]
+              lg:col-span-6
+              lg:min-h-full
+            "
+            initial={{
+              opacity: 0,
+              x: 45,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
+            transition={{
+              duration: 0.8,
+              ease: [0.22, 1, 0.36, 1],
+              delay: 0.15,
+            }}
+          >
+            {/* Accent */}
+
+            <div
+              className="absolute left-0 top-0 z-30 h-[3px] w-full"
+              style={{
+                background: gradients.primary,
+              }}
+            />
+
+            {/* Header */}
+
+            <div
+              className="
+                absolute
+                left-5
+                right-5
+                top-5
+                z-30
+                flex
+                items-start
+                justify-between
+                gap-4
+              "
+            >
+              <div>
+                <p
+                  className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                  style={{
+                    color: colors.brand.accent,
+                  }}
+                >
+                  Global Growth Infrastructure
+                </p>
+
+                <p className="mt-1 text-xs font-semibold text-white/70">
+                  Connected strategy. Intelligent execution.
+                </p>
+              </div>
+
+              <div
+                className="
+                  flex
+                  items-center
+                  gap-2
+                  rounded-full
+                  border
+                  border-white/20
+                  bg-black/20
+                  px-3
+                  py-1.5
+                  backdrop-blur-xl
+                "
+              >
+                <span
+                  className="mega-pulse h-1.5 w-1.5 rounded-full"
+                  style={{
+                    backgroundColor: colors.brand.accent,
+                  }}
+                />
+
+                <span className="text-[8px] font-bold uppercase tracking-[0.12em] text-white/70">
+                  Live
+                </span>
+              </div>
+            </div>
+
+            {/* Globe glow */}
+
+            <div
+              className="
+                mega-glow
+                absolute
+                left-1/2
+                top-1/2
+                h-[310px]
+                w-[310px]
+                -translate-x-1/2
+                -translate-y-1/2
+                rounded-full
+                blur-[95px]
+              "
+              style={{
+                background: `radial-gradient(
+                  circle,
+                  ${colors.brand.secondary}30 0%,
+                  ${colors.brand.primary}20 46%,
+                  transparent 72%
+                )`,
+              }}
+            />
+
+            {/* Main system ring */}
+
+            <div
+              className="
+                absolute
+                left-1/2
+                top-1/2
+                h-[300px]
+                w-[300px]
+                -translate-x-1/2
+                -translate-y-1/2
+                rounded-full
+                border
+                border-white/15
+                sm:h-[370px]
+                sm:w-[370px]
+              "
+            />
+
+            {/* Outer orbit */}
+
+            <div
+              className="
+                mega-orbit
+                absolute
+                left-1/2
+                top-1/2
+                h-[330px]
+                w-[330px]
+                -translate-x-1/2
+                -translate-y-1/2
+                rounded-full
+                border
+                border-white/15
+                sm:h-[405px]
+                sm:w-[405px]
+              "
+            >
+              <span
+                className="
+                  absolute
+                  left-1/2
+                  top-[-4px]
+                  h-2
+                  w-2
+                  -translate-x-1/2
+                  rounded-full
+                "
+                style={{
+                  backgroundColor: colors.brand.accent,
+                  boxShadow:
+                    `0 0 18px ${colors.brand.accent}`,
+                }}
+              />
+            </div>
+
+            {/* Elliptical orbit */}
+
+            <div
+              className="
+                mega-orbit-reverse
+                absolute
+                left-1/2
+                top-1/2
+                h-[260px]
+                w-[360px]
+                -translate-x-1/2
+                -translate-y-1/2
+                rounded-[50%]
+                border
+                border-white/10
+                sm:h-[315px]
+                sm:w-[440px]
+              "
+            />
+
+            {/* Axis */}
+
+            <div
+              className="
+                absolute
+                left-[8%]
+                right-[8%]
+                top-1/2
+                h-px
+                bg-gradient-to-r
+                from-transparent
+                via-white/15
+                to-transparent
+              "
+            />
+
+            <div
+              className="
+                absolute
+                bottom-[10%]
+                left-1/2
+                top-[10%]
+                w-px
+                bg-gradient-to-b
+                from-transparent
+                via-white/10
+                to-transparent
+              "
+            />
+
+            {/* ============================================
+                EXACT SAME PARTICLE GLOBE
+                ============================================ */}
+
+            <div className="absolute inset-0 z-20 flex items-center justify-center">
+              <div className="origin-center scale-[0.58] sm:scale-[0.76] lg:scale-[0.88] xl:scale-[0.92]">
+                <ParticleGlobe
+                  width={450}
+                  height={450}
+                  particleCount={1200}
+                  rotationSpeed={0.0015}
+                  radius={160}
+                />
+              </div>
+            </div>
+
+            {/* Intelligence card */}
+
+            <div
+              className="
+                mega-float
+                absolute
+                right-4
+                top-[27%]
+                z-30
+                hidden
+                min-w-[165px]
+                rounded-2xl
+                border
+                border-white/25
+                bg-black/[0.24]
+                px-4
+                py-3
+                shadow-xl
+                backdrop-blur-xl
+                sm:block
+              "
+            >
+              <p className="text-[8px] font-bold uppercase tracking-[0.14em] text-white/45">
+                Intelligence
+              </p>
+
+              <div className="mt-2 flex items-center gap-2">
+                <span
+                  className="mega-pulse h-1.5 w-1.5 rounded-full"
+                  style={{
+                    backgroundColor: colors.brand.accent,
+                  }}
+                />
+
+                <span className="text-[10px] font-bold text-white">
+                  AI Execution Layer
+                </span>
+              </div>
+
+              <p className="mt-1 text-[8px] text-white/50">
+                Always-on optimization
+              </p>
+            </div>
+
+            {/* ROI card */}
+
+            <div
+              className="
+                mega-float-reverse
+                absolute
+                bottom-[18%]
+                left-4
+                z-30
+                hidden
+                rounded-2xl
+                border
+                border-white/25
+                bg-black/[0.24]
+                px-4
+                py-3
+                shadow-xl
+                backdrop-blur-xl
+                md:block
+              "
+            >
+              <p className="text-[8px] font-bold uppercase tracking-[0.14em] text-white/45">
+                Performance
+              </p>
+
+              <div className="mt-1 flex items-baseline gap-1">
+                <span
+                  className="text-2xl font-black tracking-[-0.04em]"
+                  style={{
+                    color: colors.brand.accent,
+                  }}
+                >
+                  4.1x
+                </span>
+
+                <span className="text-[9px] font-semibold text-white/60">
+                  ROI
+                </span>
+              </div>
+
+              <p className="mt-1 text-[8px] text-white/45">
+                Average growth performance
+              </p>
+            </div>
+
+            {/* Bottom network status */}
+
+            <div
+              className="
+                absolute
+                bottom-4
+                left-4
+                right-4
+                z-30
+                flex
+                items-center
+                justify-between
+                border-t
+                border-white/15
+                pt-3
+              "
+            >
+              <span className="text-[8px] font-semibold uppercase tracking-[0.14em] text-white/40">
+                Strategy Network
+              </span>
+
+              <div className="flex items-center gap-1.5">
+                <span className="h-1 w-1 rounded-full bg-white/30" />
+                <span className="h-1 w-1 rounded-full bg-white/45" />
+                <span
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{
+                    backgroundColor: colors.brand.accent,
+                  }}
+                />
+              </div>
+            </div>
+          </motion.div>
         </div>
 
         {/* ============================================
-            BUSINESS POSITIONING STRIP
-        ============================================ */}
-        <ScrollReveal delay={0.16}>
-          <div className="mt-6 overflow-hidden rounded-2xl border border-white/85 bg-white/72 shadow-[0_20px_65px_rgba(0,1,49,0.08)] backdrop-blur-2xl">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                {
-                  number: "01",
-                  title: "Business-Led",
-                  text: "Marketing aligned with commercial priorities",
-                },
-                {
-                  number: "02",
-                  title: "Integrated",
-                  text: "Strategy and execution under one system",
-                },
-                {
-                  number: "03",
-                  title: "AI-Enabled",
-                  text: "Technology improving speed and precision",
-                },
-                {
-                  number: "04",
-                  title: "Outcome-Focused",
-                  text: "Performance measured through business impact",
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={item.number}
-                  whileHover={{
-                    backgroundColor: "rgba(255,255,255,0.92)",
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className={[
-                    "px-5 py-5 text-center",
-                    index === 0
-                      ? "border-b border-gray-200/80 sm:border-r lg:border-b-0"
-                      : "",
-                    index === 1
-                      ? "border-b border-gray-200/80 lg:border-r lg:border-b-0"
-                      : "",
-                    index === 2
-                      ? "border-b border-gray-200/80 sm:border-r sm:border-b-0 lg:border-r"
-                      : "",
-                  ].join(" ")}
-                >
-                  <p
-                    className="text-[9px] font-bold uppercase tracking-[0.16em]"
-                    style={{ color: colors.brand.secondary }}
+            MEGA CAPABILITY RAIL
+            ============================================ */}
+
+        <motion.div
+          className="
+            mt-5
+            overflow-hidden
+            rounded-2xl
+            border
+            border-white/25
+            bg-black/[0.20]
+            shadow-[0_20px_60px_rgba(0,0,0,0.22)]
+            backdrop-blur-xl
+          "
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            delay: 0.45,
+            duration: 0.7,
+          }}
+        >
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4">
+
+            {[
+              {
+                number: "01",
+                title: "Strategic Marketing",
+                text: "Commercial strategy aligned to growth.",
+              },
+              {
+                number: "02",
+                title: "Integrated Execution",
+                text: "Channels operating as one system.",
+              },
+              {
+                number: "03",
+                title: "AI & Automation",
+                text: "Intelligence improving speed and precision.",
+              },
+              {
+                number: "04",
+                title: "Revenue Growth",
+                text: "Performance measured against business outcomes.",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={item.number}
+                className={[
+                  "group relative px-5 py-4",
+                  index < 3
+                    ? "border-b border-white/15 sm:border-b-0 lg:border-r"
+                    : "",
+                  index === 1
+                    ? "sm:border-l lg:border-l-0"
+                    : "",
+                ].join(" ")}
+                whileHover={{
+                  backgroundColor: "rgba(255,255,255,0.07)",
+                }}
+                transition={{
+                  duration: 0.3,
+                }}
+              >
+                <div className="flex items-start gap-3">
+                  <span
+                    className="text-[9px] font-black tracking-[0.14em]"
+                    style={{
+                      color: colors.brand.accent,
+                    }}
                   >
                     {item.number}
-                  </p>
+                  </span>
 
-                  <p
-                    className="mt-1.5 text-sm font-bold"
-                    style={{ color: colors.brand.primary }}
-                  >
-                    {item.title}
-                  </p>
+                  <div>
+                    <p className="text-xs font-bold text-white">
+                      {item.title}
+                    </p>
 
-                  <p className="mt-1 text-[11px] leading-relaxed text-gray-500">
-                    {item.text}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+                    <p className="mt-1 text-[9px] leading-[1.55] text-white/50">
+                      {item.text}
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  className="
+                    absolute
+                    bottom-0
+                    left-0
+                    h-[2px]
+                    w-full
+                    origin-left
+                    scale-x-0
+                    transition-transform
+                    duration-500
+                    group-hover:scale-x-100
+                  "
+                  style={{
+                    background: gradients.primary,
+                  }}
+                />
+              </motion.div>
+            ))}
+
           </div>
-        </ScrollReveal>
+        </motion.div>
+
+        {/* ============================================
+            BACKGROUND SLIDER INDICATOR
+            ============================================ */}
+
+        <div className="mt-4 hidden items-center justify-center gap-2 sm:flex">
+          {[0, 1, 2, 3].map((item) => (
+            <span
+              key={item}
+              className="
+                relative
+                h-1
+                w-8
+                overflow-hidden
+                rounded-full
+                bg-white/20
+              "
+            >
+              <motion.span
+                className="block h-full w-full origin-left"
+                style={{
+                  background: gradients.primary,
+                }}
+                animate={{
+                  scaleX: [0, 1, 1, 0],
+                  opacity: [0.25, 1, 1, 0.25],
+                }}
+                transition={{
+                  duration: 8,
+                  delay: item * 8,
+                  repeat: Infinity,
+                  repeatDelay: 24,
+                  ease: "linear",
+                }}
+              />
+            </span>
+          ))}
+        </div>
       </div>
     </Container>
-  </Section>
+  </div>
+
+  {/* ============================================
+      BOTTOM CINEMATIC FADE
+      ============================================ */}
+
+  <div
+    className="pointer-events-none absolute bottom-0 left-0 right-0 z-[2] h-24"
+    style={{
+      background:
+        "linear-gradient(to bottom, transparent, rgba(8,9,21,0.70))",
+    }}
+  />
 </ModernSectionBackground>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1689,6 +2362,579 @@ Because of Ideas.`}
     </Container>
   </Section>
 </ModernSectionBackground>
+
+
+
+
+
+
+
+
+{/* ============================================
+    2. WHO WE ARE — PREMIUM INTRODUCTION
+============================================ */}
+<ModernSectionBackground
+  variant="image-overlay-team"
+  className="relative overflow-hidden"
+>
+  <Section
+    spacing="base"
+    animate
+    background="transparent"
+    className="who-we-are-section relative overflow-hidden"
+  >
+    {/* ============================================
+        SELF-CONTAINED ANIMATION CSS
+    ============================================ */}
+    <style>
+      {`
+        .who-we-are-section .who-image-slide {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0;
+          transform: scale(1.07);
+          animation: whoImageSlider 15s infinite;
+          will-change: opacity, transform;
+        }
+
+        .who-we-are-section .who-image-slide:nth-child(1) {
+          animation-delay: 0s;
+        }
+
+        .who-we-are-section .who-image-slide:nth-child(2) {
+          animation-delay: 5s;
+        }
+
+        .who-we-are-section .who-image-slide:nth-child(3) {
+          animation-delay: 10s;
+        }
+
+        @keyframes whoImageSlider {
+          0% {
+            opacity: 0;
+            transform: scale(1.07);
+          }
+
+          5% {
+            opacity: 1;
+          }
+
+          31% {
+            opacity: 1;
+          }
+
+          38% {
+            opacity: 0;
+            transform: scale(1);
+          }
+
+          100% {
+            opacity: 0;
+            transform: scale(1);
+          }
+        }
+
+        .who-we-are-section .who-slider-progress {
+          transform-origin: left;
+          animation: whoSliderProgress 5s linear infinite;
+        }
+
+        @keyframes whoSliderProgress {
+          from {
+            transform: scaleX(0);
+          }
+
+          to {
+            transform: scaleX(1);
+          }
+        }
+
+        .who-we-are-section .who-value-card {
+          transition:
+            transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+            border-color 0.35s ease,
+            background-color 0.35s ease,
+            box-shadow 0.35s ease;
+        }
+
+        .who-we-are-section .who-value-card:hover {
+          transform: translateY(-4px);
+        }
+
+        .who-we-are-section .who-value-line {
+          transform: scaleY(0);
+          transform-origin: top;
+          transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .who-we-are-section
+          .who-value-card:hover
+          .who-value-line {
+          transform: scaleY(1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .who-we-are-section .who-image-slide {
+            animation: none;
+            transform: none;
+          }
+
+          .who-we-are-section .who-image-slide:first-child {
+            opacity: 1;
+          }
+
+          .who-we-are-section .who-slider-progress {
+            animation: none;
+            transform: scaleX(1);
+          }
+        }
+      `}
+    </style>
+
+    {/* ============================================
+        SECTION BACKGROUND DETAILS
+    ============================================ */}
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      <div
+        className="absolute -left-44 top-16 h-[420px] w-[420px] rounded-full opacity-[0.08] blur-[130px]"
+        style={{ backgroundColor: colors.brand.secondary }}
+      />
+
+      <div
+        className="absolute -right-40 bottom-10 h-[420px] w-[420px] rounded-full opacity-[0.09] blur-[140px]"
+        style={{ backgroundColor: colors.brand.accent }}
+      />
+
+      <div
+        className="absolute inset-0 opacity-[0.035]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(0,1,49,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(0,1,49,0.18) 1px, transparent 1px)",
+          backgroundSize: "72px 72px",
+        }}
+      />
+    </div>
+
+    <Container size="xl">
+      <div className="relative z-10 mx-auto max-w-7xl">
+        {/* ============================================
+            TOP SECTION HEADER
+        ============================================ */}
+        <ScrollReveal>
+          <div className="mx-auto max-w-4xl text-center">
+            <div
+              className="inline-flex items-center gap-2 rounded-full border px-4 py-2 shadow-sm backdrop-blur-xl"
+              style={{
+                color: colors.brand.secondary,
+                borderColor: `${colors.brand.secondary}18`,
+                backgroundColor: "rgba(255,255,255,0.76)",
+              }}
+            >
+              <Shield className="h-3.5 w-3.5" />
+
+              <span className="text-[10px] font-bold uppercase tracking-[0.18em]">
+                Who We Are
+              </span>
+            </div>
+
+            <h2
+              className="mt-5 text-2xl font-bold leading-[1.12] tracking-[-0.035em] sm:text-3xl lg:text-[42px]"
+              style={{ color: colors.brand.primary }}
+            >
+              Built for Organizations
+              <span
+                className="block"
+                style={{ color: colors.brand.secondary }}
+              >
+                That Expect More
+              </span>
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-3xl text-sm leading-[1.8] text-gray-600 sm:text-base">
+              AdvantEdge is a strategic and integrated marketing solutions
+              partner combining business leadership, execution expertise, and
+              AI capabilities to build customized growth systems.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        {/* ============================================
+            MAIN EDITORIAL SPLIT
+        ============================================ */}
+        <div className="mt-10 grid items-stretch gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
+          {/* ============================================
+              LEFT — AUTOMATIC IMAGE STORY
+          ============================================ */}
+          <ScrollReveal>
+            <motion.div
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.75,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="relative h-full min-h-[480px] overflow-hidden rounded-[26px] border border-white/80 bg-[#000131] shadow-[0_30px_90px_rgba(0,1,49,0.18)] sm:min-h-[540px]"
+            >
+              {/* Automatic image slider */}
+              <div className="absolute inset-0">
+                <img
+                  src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=90"
+                  alt="Executive team collaborating on business strategy"
+                  loading="eager"
+                  decoding="async"
+                  className="who-image-slide object-center"
+                />
+
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1800&q=90"
+                  alt="Leadership team developing a strategic roadmap"
+                  loading="lazy"
+                  decoding="async"
+                  className="who-image-slide object-center"
+                />
+
+                <img
+                  src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=90"
+                  alt="Business consultants discussing integrated growth"
+                  loading="lazy"
+                  decoding="async"
+                  className="who-image-slide object-center"
+                />
+              </div>
+
+              {/* Image overlays */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#000131]/96 via-[#000131]/40 to-[#000131]/08" />
+
+              <div className="absolute inset-0 bg-gradient-to-r from-[#000131]/42 via-transparent to-transparent" />
+
+              {/* Top badge */}
+              <div className="absolute left-5 top-5 z-10 sm:left-6 sm:top-6">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-[#000131]/40 px-3 py-2 text-white shadow-lg backdrop-blur-xl">
+                  <Sparkles
+                    className="h-3.5 w-3.5"
+                    style={{ color: colors.brand.accent }}
+                  />
+
+                  <span className="text-[9px] font-bold uppercase tracking-[0.16em]">
+                    Strategic Growth Partner
+                  </span>
+                </div>
+              </div>
+
+              {/* Experience badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.35, duration: 0.55 }}
+                className="absolute right-5 top-5 z-10 sm:right-6 sm:top-6"
+              >
+                <div className="rounded-2xl border border-white/20 bg-white/[0.13] px-4 py-3 text-right shadow-xl backdrop-blur-xl">
+                  <div className="flex items-center justify-end gap-2">
+                    <Award
+                      className="h-4 w-4"
+                      style={{ color: colors.brand.accent }}
+                    />
+
+                    <span className="text-[9px] font-bold uppercase tracking-[0.14em] text-white/55">
+                      Experience
+                    </span>
+                  </div>
+
+                  <p className="mt-1 text-2xl font-black tracking-[-0.04em] text-white">
+                    15+
+                    <span
+                      className="ml-1 text-xs font-bold"
+                      style={{ color: colors.brand.accent }}
+                    >
+                      Years
+                    </span>
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Bottom story content */}
+              <div className="absolute inset-x-0 bottom-0 z-10 p-5 sm:p-7">
+                <p
+                  className="text-[9px] font-bold uppercase tracking-[0.17em]"
+                  style={{ color: colors.brand.accent }}
+                >
+                  Leadership Meets Execution
+                </p>
+
+                <h3 className="mt-3 max-w-xl text-2xl font-bold leading-[1.18] tracking-[-0.025em] text-white sm:text-3xl">
+                  Strategy Should Not End With a Presentation.
+                </h3>
+
+                <p className="mt-3 max-w-xl text-sm leading-[1.7] text-white/65">
+                  We convert leadership priorities into coordinated marketing,
+                  technology, content, and sales execution—supported by
+                  measurement and continuous improvement.
+                </p>
+
+                {/* Slider status */}
+                <div className="mt-5 flex items-center gap-3">
+                  <div className="h-1 w-24 overflow-hidden rounded-full bg-white/20">
+                    <span
+                      className="who-slider-progress block h-full w-full"
+                      style={{ background: gradients.primary }}
+                    />
+                  </div>
+
+                  <span className="text-[9px] font-bold uppercase tracking-[0.14em] text-white/40">
+                    Our People. Our Process. Our Perspective.
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          </ScrollReveal>
+
+          {/* ============================================
+              RIGHT — BRAND POSITIONING
+          ============================================ */}
+          <ScrollReveal delay={0.08}>
+            <motion.div
+              initial={{ opacity: 0, x: 24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.75,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="flex h-full flex-col rounded-[26px] border border-white/85 bg-white/72 p-5 shadow-[0_28px_85px_rgba(0,1,49,0.10)] backdrop-blur-2xl sm:p-7 lg:p-8"
+            >
+              {/* Main positioning */}
+              <div>
+                <p
+                  className="text-[9px] font-bold uppercase tracking-[0.17em]"
+                  style={{ color: colors.brand.secondary }}
+                >
+                  The AdvantEdge Approach
+                </p>
+
+                <h3
+                  className="mt-3 text-xl font-bold leading-[1.2] tracking-[-0.025em] sm:text-2xl lg:text-[30px]"
+                  style={{ color: colors.brand.primary }}
+                >
+                  We Don&apos;t Execute Tasks.
+                  <span
+                    className="mt-1 block"
+                    style={{ color: colors.brand.secondary }}
+                  >
+                    We Engineer Growth.
+                  </span>
+                </h3>
+
+                <div
+                  className="mt-4 h-1 w-20 rounded-full"
+                  style={{ background: gradients.primary }}
+                />
+
+                <p className="mt-5 text-sm leading-[1.8] text-gray-600">
+                  AdvantEdge partners with growth-focused organizations to turn
+                  marketing into a coordinated and accountable business
+                  function. We align strategy, execution, data, technology, and
+                  commercial priorities around measurable outcomes.
+                </p>
+              </div>
+
+              {/* Value cards */}
+              <div className="mt-6 space-y-3">
+                {[
+                  {
+                    number: "01",
+                    icon: <Target className="h-5 w-5" />,
+                    title: "Strategic Leadership",
+                    text: "We work as an extension of leadership, connecting every marketing priority with the wider business strategy.",
+                  },
+                  {
+                    number: "02",
+                    icon: <Layers className="h-5 w-5" />,
+                    title: "Integrated Growth Systems",
+                    text: "Brand, digital, content, technology, automation, and sales activation operate as one connected system.",
+                  },
+                  {
+                    number: "03",
+                    icon: <BarChart3 className="h-5 w-5" />,
+                    title: "Performance Accountability",
+                    text: "Every initiative is measured, analyzed, and optimized around commercial impact, pipeline, conversion, and ROI.",
+                  },
+                ].map((item, index) => (
+                  <motion.div
+                    key={item.number}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      delay: 0.18 + index * 0.09,
+                      duration: 0.45,
+                    }}
+                    className="who-value-card group relative overflow-hidden rounded-2xl border border-gray-200/80 bg-white/70 p-4 shadow-[0_12px_35px_rgba(0,1,49,0.045)] hover:border-white hover:bg-white hover:shadow-[0_20px_55px_rgba(0,1,49,0.10)]"
+                  >
+                    <div
+                      aria-hidden="true"
+                      className="who-value-line absolute bottom-0 left-0 top-0 w-1"
+                      style={{ background: gradients.primary }}
+                    />
+
+                    <div className="flex items-start gap-4">
+                      <div
+                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-105"
+                        style={{
+                          color: colors.brand.secondary,
+                          backgroundColor: `${colors.brand.secondary}0D`,
+                        }}
+                      >
+                        {item.icon}
+                      </div>
+
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-start justify-between gap-3">
+                          <h4
+                            className="text-sm font-bold sm:text-base"
+                            style={{ color: colors.brand.primary }}
+                          >
+                            {item.title}
+                          </h4>
+
+                          <span className="text-[9px] font-bold tracking-[0.14em] text-gray-300">
+                            {item.number}
+                          </span>
+                        </div>
+
+                        <p className="mt-1.5 text-xs leading-[1.7] text-gray-600 sm:text-[13px]">
+                          {item.text}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <div className="mt-auto pt-6">
+                <div className="flex flex-col gap-4 border-t border-gray-200/80 pt-5 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p
+                      className="text-xs font-bold"
+                      style={{ color: colors.brand.primary }}
+                    >
+                      Built around your business.
+                    </p>
+
+                    <p className="mt-1 text-[11px] text-gray-500">
+                      Not a fixed package. Not a generic agency model.
+                    </p>
+                  </div>
+
+                  <motion.div
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.25 }}
+                  >
+                    <Link
+                      to="/about"
+                      className="group inline-flex items-center gap-2 text-sm font-bold"
+                      style={{ color: colors.brand.secondary }}
+                    >
+                      Discover Our Story
+
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </Link>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          </ScrollReveal>
+        </div>
+
+        {/* ============================================
+            BUSINESS POSITIONING STRIP
+        ============================================ */}
+        <ScrollReveal delay={0.16}>
+          <div className="mt-6 overflow-hidden rounded-2xl border border-white/85 bg-white/72 shadow-[0_20px_65px_rgba(0,1,49,0.08)] backdrop-blur-2xl">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                {
+                  number: "01",
+                  title: "Business-Led",
+                  text: "Marketing aligned with commercial priorities",
+                },
+                {
+                  number: "02",
+                  title: "Integrated",
+                  text: "Strategy and execution under one system",
+                },
+                {
+                  number: "03",
+                  title: "AI-Enabled",
+                  text: "Technology improving speed and precision",
+                },
+                {
+                  number: "04",
+                  title: "Outcome-Focused",
+                  text: "Performance measured through business impact",
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={item.number}
+                  whileHover={{
+                    backgroundColor: "rgba(255,255,255,0.92)",
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className={[
+                    "px-5 py-5 text-center",
+                    index === 0
+                      ? "border-b border-gray-200/80 sm:border-r lg:border-b-0"
+                      : "",
+                    index === 1
+                      ? "border-b border-gray-200/80 lg:border-r lg:border-b-0"
+                      : "",
+                    index === 2
+                      ? "border-b border-gray-200/80 sm:border-r sm:border-b-0 lg:border-r"
+                      : "",
+                  ].join(" ")}
+                >
+                  <p
+                    className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                    style={{ color: colors.brand.secondary }}
+                  >
+                    {item.number}
+                  </p>
+
+                  <p
+                    className="mt-1.5 text-sm font-bold"
+                    style={{ color: colors.brand.primary }}
+                  >
+                    {item.title}
+                  </p>
+
+                  <p className="mt-1 text-[11px] leading-relaxed text-gray-500">
+                    {item.text}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+    </Container>
+  </Section>
+</ModernSectionBackground>
+
+
+
+
+
+
+
+
 
 
 
@@ -2840,7 +4086,7 @@ Because of Ideas.`}
                 </span>
 
                 <span className="whitespace-nowrap">
-                  Integrated Marketing
+                  AI Solutions
                 </span>
               </label>
             </div>
@@ -3488,7 +4734,7 @@ Because of Ideas.`}
                 </div>
 
                 <h3 className="text-3xl font-bold leading-[1.06] tracking-[-0.04em] text-white sm:text-4xl lg:text-[46px]">
-                  Integrated Marketing
+                  AI Solutions
                 </h3>
 
                 <p className="mt-5 max-w-xl text-sm leading-[1.8] text-white/72">
@@ -4290,6 +5536,1495 @@ Because of Ideas.`}
     </Container>
   </Section>
 </ModernSectionBackground>
+
+
+
+
+
+
+
+
+
+{/* ============================================
+    18. INDUSTRIES WE SERVE — IMAGE-LED BENTO
+============================================ */}
+<ModernSectionBackground
+  variant="glass-blur"
+  className="relative overflow-hidden"
+>
+  <Section
+    spacing="base"
+    animate
+    background="transparent"
+    className="industries-section-v2 relative isolate overflow-hidden"
+  >
+    {/* ============================================
+        SECTION-SPECIFIC STYLES
+    ============================================ */}
+    <style>
+      {`
+        .industries-section-v2 .industry-image-v2 {
+          transition:
+            transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+            filter 0.6s ease;
+        }
+
+        .industries-section-v2 .industry-card-v2:hover .industry-image-v2 {
+          transform: scale(1.04);
+          filter: saturate(1.06);
+        }
+
+        .industries-section-v2 .industry-accent-v2 {
+          transform: scaleX(0.14);
+          transform-origin: left;
+          transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .industries-section-v2 .industry-card-v2:hover .industry-accent-v2 {
+          transform: scaleX(1);
+        }
+
+        .industries-section-v2 .industry-arrow-v2 {
+          transition:
+            transform 0.3s ease,
+            background-color 0.3s ease;
+        }
+
+        .industries-section-v2 .industry-card-v2:hover .industry-arrow-v2 {
+          transform: translateX(4px);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .industries-section-v2 .industry-image-v2,
+          .industries-section-v2 .industry-accent-v2,
+          .industries-section-v2 .industry-arrow-v2 {
+            transition: none;
+          }
+        }
+      `}
+    </style>
+
+    {/* ============================================
+        LIGHT EDITORIAL BACKGROUND
+    ============================================ */}
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-[#f7f8fc]"
+    >
+      {/* Soft architectural image */}
+      <img
+        src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=2400&q=84"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="absolute right-0 top-0 h-full w-[58%] object-cover opacity-[0.055] grayscale"
+      />
+
+      <div className="absolute inset-0 bg-gradient-to-r from-[#f7f8fc] via-[#f7f8fc]/95 to-[#f7f8fc]/80" />
+
+      {/* Brand atmospheres */}
+      <div
+        className="absolute -left-56 top-[-100px] h-[500px] w-[500px] rounded-full opacity-[0.055] blur-[150px]"
+        style={{ backgroundColor: colors.brand.secondary }}
+      />
+
+      <div
+        className="absolute -right-52 bottom-[-140px] h-[480px] w-[480px] rounded-full opacity-[0.09] blur-[150px]"
+        style={{ backgroundColor: colors.brand.accent }}
+      />
+
+      {/* Subtle grid */}
+      <div
+        className="absolute inset-0 opacity-[0.32]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(0,1,49,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,1,49,0.04) 1px, transparent 1px)",
+          backgroundSize: "76px 76px",
+        }}
+      />
+
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(247,248,252,0.84)_100%)]" />
+    </div>
+
+    <Container size="xl">
+      <div className="mx-auto max-w-7xl">
+        {/* ============================================
+            SECTION HEADER
+        ============================================ */}
+        <ScrollReveal>
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <div
+                className="inline-flex items-center gap-2 rounded-full border px-4 py-2"
+                style={{
+                  color: colors.brand.secondary,
+                  borderColor: `${colors.brand.secondary}22`,
+                  backgroundColor: `${colors.brand.secondary}08`,
+                }}
+              >
+                <Building2 className="h-3.5 w-3.5" />
+
+                <span className="text-[10px] font-bold uppercase tracking-[0.18em]">
+                  Industry-Specific Expertise
+                </span>
+              </div>
+
+              <h2
+                className="mt-5 text-2xl font-bold leading-[1.1] tracking-[-0.035em] sm:text-3xl lg:text-[42px]"
+                style={{ color: colors.brand.primary }}
+              >
+                Industries We Understand.
+                <span className="mt-1 block text-gray-500">
+                  Growth Systems We Know How to Build.
+                </span>
+              </h2>
+
+              <p className="mt-5 max-w-2xl text-sm leading-[1.8] text-gray-600 sm:text-base">
+                Every sector has different buyers, sales cycles, regulations,
+                competitive pressures, and routes to growth. Our approach is
+                designed around those realities.
+              </p>
+            </div>
+
+            {/* Framework panel */}
+            <div className="max-w-sm rounded-2xl border border-gray-200 bg-white/75 px-5 py-4 shadow-[0_16px_45px_rgba(0,1,49,0.07)] backdrop-blur-xl">
+              <p
+                className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                style={{ color: colors.brand.secondary }}
+              >
+                Our Sector Approach
+              </p>
+
+              <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-semibold text-gray-600">
+                <span>Market Context</span>
+                <ArrowRight className="h-3 w-3 text-gray-400" />
+
+                <span>Buyer Journey</span>
+                <ArrowRight className="h-3 w-3 text-gray-400" />
+
+                <span>Growth System</span>
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* ============================================
+            INDUSTRY BENTO GRID
+        ============================================ */}
+        <div className="mt-9 grid gap-5 lg:grid-cols-12">
+          {[
+            {
+              number: "01",
+              title: "Healthcare & Life Sciences",
+              description:
+                "Strategic marketing for medical devices, pharmaceuticals, biotechnology, healthcare services, and digital health businesses.",
+              image:
+                "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1800&q=92",
+              icon: Hospital,
+              eyebrow: "Regulated Growth Environments",
+              linkText: "Explore Healthcare Expertise",
+              sectors: [
+                "Medical Devices",
+                "Pharmaceuticals",
+                "Digital Health",
+              ],
+              className: "lg:col-span-7 lg:row-span-2",
+              cardHeight: "min-h-[470px] lg:min-h-[520px]",
+              featured: true,
+            },
+            {
+              number: "02",
+              title: "Professional Services",
+              description:
+                "Positioning, authority building, and qualified demand generation for expertise-led organizations.",
+              image:
+                "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=92",
+              icon: Briefcase,
+              eyebrow: "Expertise-Led Businesses",
+              linkText: "Professional Services",
+              sectors: ["Consulting", "Legal", "Advisory"],
+              className: "lg:col-span-5",
+              cardHeight: "min-h-[310px] lg:min-h-[250px]",
+              featured: false,
+            },
+            {
+              number: "03",
+              title: "Retail & E-Commerce",
+              description:
+                "Connected acquisition, brand, content, and conversion systems for consumer-focused growth.",
+              image:
+                "https://images.unsplash.com/photo-1441986300917-64674bd6008?auto=format&fit=crop&w=1400&q=92",
+              icon: Store,
+              eyebrow: "Consumer Growth Systems",
+              linkText: "Retail & Commerce",
+              sectors: ["D2C", "Omnichannel", "Marketplaces"],
+              className: "lg:col-span-5",
+              cardHeight: "min-h-[310px] lg:min-h-[250px]",
+              featured: false,
+            },
+            {
+              number: "04",
+              title: "Manufacturing & Industrial",
+              description:
+                "Complex B2B marketing for manufacturers, industrial technology providers, equipment companies, and supply-chain organizations.",
+              image:
+                "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1900&q=92",
+              icon: Factory,
+              eyebrow: "Complex B2B Markets",
+              linkText: "Explore Industrial Expertise",
+              sectors: [
+                "Industrial Equipment",
+                "Advanced Manufacturing",
+                "Supply Chain",
+              ],
+              className: "lg:col-span-12",
+              cardHeight: "min-h-[350px] lg:min-h-[330px]",
+              featured: false,
+            },
+          ].map((industry, index) => {
+            const IndustryIcon = industry.icon;
+
+            return (
+              <ScrollReveal
+                key={industry.title}
+                delay={index * 0.08}
+                className={industry.className}
+              >
+                <Link
+                  to="/industries"
+                  className={[
+                    "industry-card-v2 group relative block h-full overflow-hidden rounded-[24px]",
+                    "border border-white/80 bg-[#11131a]",
+                    "shadow-[0_24px_75px_rgba(0,1,49,0.14)]",
+                    "transition-all duration-500",
+                    "hover:-translate-y-1.5",
+                    "hover:shadow-[0_36px_105px_rgba(0,1,49,0.23)]",
+                    industry.cardHeight,
+                  ].join(" ")}
+                >
+                  {/* Clearly visible image */}
+                  <img
+                    src={industry.image}
+                    alt={industry.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="industry-image-v2 absolute inset-0 h-full w-full object-cover object-center"
+                  />
+
+                  {/* Only the content area receives a strong overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/[0.94] via-black/[0.36] via-[54%] to-black/[0.03]" />
+
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/[0.36] via-transparent to-transparent" />
+
+                  {/* Accent line */}
+                  <div
+                    className="industry-accent-v2 absolute left-0 top-0 z-20 h-1 w-full"
+                    style={{ background: gradients.primary }}
+                  />
+
+                  <div
+                    className={[
+                      "relative z-10 flex h-full flex-col p-5 sm:p-6",
+                      industry.cardHeight,
+                    ].join(" ")}
+                  >
+                    {/* Top row */}
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/30 bg-black/20 text-white shadow-xl backdrop-blur-xl">
+                        <IndustryIcon className="h-5 w-5" />
+                      </div>
+
+                      <span className="text-[10px] font-bold tracking-[0.16em] text-white/65">
+                        {industry.number}
+                      </span>
+                    </div>
+
+                    {/* Bottom content */}
+                    <div
+                      className={[
+                        "mt-auto",
+                        industry.featured ? "max-w-2xl pt-24" : "max-w-3xl pt-16",
+                      ].join(" ")}
+                    >
+                      <p
+                        className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                        style={{ color: colors.brand.accent }}
+                      >
+                        {industry.eyebrow}
+                      </p>
+
+                      <h3
+                        className={[
+                          "mt-2 font-bold leading-[1.18] tracking-[-0.025em] text-white",
+                          industry.featured
+                            ? "text-2xl sm:text-3xl"
+                            : "text-xl sm:text-2xl",
+                        ].join(" ")}
+                      >
+                        {industry.title}
+                      </h3>
+
+                      <p className="mt-3 max-w-2xl text-xs leading-[1.75] text-white/[0.76] sm:text-sm">
+                        {industry.description}
+                      </p>
+
+                      {/* Sector tags */}
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {industry.sectors.map((sector) => (
+                          <span
+                            key={sector}
+                            className="rounded-full border border-white/25 bg-black/20 px-2.5 py-1.5 text-[9px] font-semibold text-white/80 backdrop-blur-md"
+                          >
+                            {sector}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Card footer */}
+                      <div className="mt-5 flex items-center justify-between border-t border-white/20 pt-4">
+                        <span className="text-xs font-bold text-white">
+                          {industry.linkText}
+                        </span>
+
+                        <span
+                          className="industry-arrow-v2 flex h-9 w-9 items-center justify-center rounded-full text-white shadow-lg"
+                          style={{ background: gradients.primary }}
+                        >
+                          <ArrowRight className="h-4 w-4" />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </ScrollReveal>
+            );
+          })}
+        </div>
+
+        {/* ============================================
+            INDUSTRY EXPERTISE STRIP
+        ============================================ */}
+        <ScrollReveal delay={0.28}>
+          <div className="mt-7 overflow-hidden rounded-2xl border border-gray-200 bg-white/80 shadow-[0_18px_60px_rgba(0,1,49,0.08)] backdrop-blur-xl">
+            <div className="grid sm:grid-cols-3">
+              {[
+                {
+                  number: "01",
+                  title: "Sector Context",
+                  text: "We understand the commercial forces shaping each market.",
+                },
+                {
+                  number: "02",
+                  title: "Audience Precision",
+                  text: "Messaging is built around real buyer needs and behaviour.",
+                },
+                {
+                  number: "03",
+                  title: "Relevant Execution",
+                  text: "Channels and campaigns reflect how each sector buys.",
+                },
+              ].map((item, index) => (
+                <div
+                  key={item.number}
+                  className={[
+                    "px-5 py-5",
+                    index < 2
+                      ? "border-b border-gray-200 sm:border-b-0 sm:border-r"
+                      : "",
+                  ].join(" ")}
+                >
+                  <div className="flex items-start gap-3">
+                    <span
+                      className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                      style={{ color: colors.brand.secondary }}
+                    >
+                      {item.number}
+                    </span>
+
+                    <div>
+                      <p
+                        className="text-sm font-bold"
+                        style={{ color: colors.brand.primary }}
+                      >
+                        {item.title}
+                      </p>
+
+                      <p className="mt-1 text-[10px] leading-[1.65] text-gray-500">
+                        {item.text}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* ============================================
+            FINAL CTA
+        ============================================ */}
+        <ScrollReveal delay={0.34}>
+          <div
+            className="mt-5 overflow-hidden rounded-2xl shadow-[0_22px_65px_rgba(0,1,49,0.16)]"
+            style={{ backgroundColor: colors.brand.primary }}
+          >
+            <div className="grid items-center lg:grid-cols-[1fr_auto]">
+              <div className="flex items-start gap-4 px-5 py-5 sm:px-7">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/[0.08]">
+                  <Building2
+                    className="h-5 w-5"
+                    style={{ color: colors.brand.accent }}
+                  />
+                </div>
+
+                <div>
+                  <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-white/45">
+                    Industry Knowledge Connected to Growth
+                  </p>
+
+                  <p className="mt-1 text-sm font-bold leading-relaxed text-white sm:text-base">
+                    Your marketing system should reflect how your market
+                    actually works—not follow a generic agency formula.
+                  </p>
+
+                  <p className="mt-1 text-xs leading-relaxed text-white/50">
+                    Explore our sector expertise and industry-specific
+                    capabilities.
+                  </p>
+                </div>
+              </div>
+
+              <Link
+                to="/industries"
+                className="group flex h-full items-center justify-center gap-2 border-t border-white/15 px-7 py-5 text-sm font-bold text-white transition-all duration-300 hover:bg-white/[0.08] lg:border-l lg:border-t-0"
+              >
+                Explore All Industries
+
+                <ArrowRight
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  style={{ color: colors.brand.accent }}
+                />
+              </Link>
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+    </Container>
+  </Section>
+</ModernSectionBackground>
+
+
+
+{/* ============================================
+    2. HOW WE WORK — GROWTH OPERATING SYSTEM
+============================================ */}
+<ModernSectionBackground
+  variant="gradient-tech"
+  className="relative overflow-hidden"
+>
+  <Section
+    spacing="base"
+    animate
+    background="transparent"
+    className="relative overflow-hidden"
+  >
+    {/* ============================================
+        BACKGROUND SYSTEM
+    ============================================ */}
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      {/* Technical Grid */}
+      <div
+        className="absolute inset-0 opacity-[0.35]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(0,0,170,0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,0,170,0.035) 1px, transparent 1px)
+          `,
+          backgroundSize: "52px 52px",
+          maskImage:
+            "linear-gradient(to bottom, transparent, black 12%, black 88%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent, black 12%, black 88%, transparent)",
+        }}
+      />
+
+      {/* Left Blue Glow */}
+      <div
+        className="absolute -left-52 top-24 h-[520px] w-[520px] rounded-full opacity-[0.08] blur-[140px]"
+        style={{ backgroundColor: colors.brand.secondary }}
+      />
+
+      {/* Right Yellow Glow */}
+      <div
+        className="absolute -right-48 bottom-4 h-[500px] w-[500px] rounded-full opacity-[0.10] blur-[140px]"
+        style={{ backgroundColor: colors.brand.accent }}
+      />
+
+      {/* Central Soft Glow */}
+      <div
+        className="absolute left-1/2 top-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.035] blur-[150px]"
+        style={{ backgroundColor: colors.brand.secondary }}
+      />
+    </div>
+
+    <Container size="xl">
+      <div className="relative z-10 mx-auto max-w-7xl">
+
+        {/* ============================================
+            TOP HEADER
+        ============================================ */}
+        <ScrollReveal>
+          <div className="mx-auto max-w-4xl text-center">
+            {/* Badge */}
+            <div
+              className="
+                inline-flex
+                items-center
+                gap-2
+                rounded-full
+                border
+                px-4
+                py-2
+                shadow-[0_8px_28px_rgba(0,1,49,0.06)]
+                backdrop-blur-xl
+              "
+              style={{
+                color: colors.brand.secondary,
+                borderColor: `${colors.brand.secondary}20`,
+                backgroundColor: "rgba(255,255,255,0.78)",
+              }}
+            >
+              <RefreshCw className="h-3.5 w-3.5" />
+
+              <span className="text-[10px] font-bold uppercase tracking-[0.18em]">
+                How We Work
+              </span>
+            </div>
+
+            {/* Heading */}
+            <h2
+              className="
+                mt-5
+                text-2xl
+                font-bold
+                leading-[1.12]
+                tracking-[-0.035em]
+                sm:text-3xl
+                lg:text-[42px]
+              "
+              style={{ color: colors.brand.primary }}
+            >
+              From First Call to
+              <span
+                className="relative ml-2 inline-block"
+                style={{ color: colors.brand.secondary }}
+              >
+                Your Deal Conversion
+
+                <motion.span
+                  className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full"
+                  style={{
+                    backgroundColor: colors.brand.accent,
+                    opacity: 0.28,
+                  }}
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    delay: 0.35,
+                    duration: 0.7,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  transformOrigin="left"
+                />
+              </span>
+            </h2>
+
+            {/* Description */}
+            <p className="mx-auto mt-5 max-w-3xl text-sm leading-[1.8] text-gray-600 sm:text-base">
+              A structured approach designed for measurable outcomes - aligned
+              to your goals, built for real growth.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        {/* ============================================
+            PROCESS INTRO STRIP
+        ============================================ */}
+        <ScrollReveal delay={0.08}>
+          <div
+            className="
+              mt-9
+              flex
+              flex-col
+              gap-4
+              rounded-2xl
+              border
+              border-white/85
+              bg-white/65
+              px-5
+              py-4
+              shadow-[0_14px_42px_rgba(0,1,49,0.055)]
+              backdrop-blur-xl
+              sm:flex-row
+              sm:items-center
+              sm:justify-between
+              sm:px-6
+            "
+          >
+            <div className="flex items-center gap-3">
+              <div
+                className="
+                  flex
+                  h-10
+                  w-10
+                  shrink-0
+                  items-center
+                  justify-center
+                  rounded-xl
+                "
+                style={{
+                  color: colors.brand.secondary,
+                  backgroundColor: `${colors.brand.secondary}0D`,
+                }}
+              >
+                <Layers className="h-5 w-5" />
+              </div>
+
+              <div>
+                <p
+                  className="text-[9px] font-bold uppercase tracking-[0.17em]"
+                  style={{ color: colors.brand.secondary }}
+                >
+                  Growth Operating System
+                </p>
+
+                <p
+                  className="mt-1 text-sm font-bold"
+                  style={{ color: colors.brand.primary }}
+                >
+                  Strategy → Execution → Optimization → Scale
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <span
+                className="h-2 w-2 animate-pulse rounded-full"
+                style={{
+                  backgroundColor: colors.brand.accent,
+                  boxShadow: `0 0 14px ${colors.brand.accent}`,
+                }}
+              />
+
+              <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-gray-400">
+                Continuous Growth Cycle
+              </span>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* ============================================
+            MAIN PROCESS SYSTEM
+        ============================================ */}
+        {(() => {
+          const workSteps = [
+            {
+              number: "01",
+              label: "Discovery & Audit",
+              icon: Search,
+              intro: "We evaluate your current state across:",
+              items: [
+                "Business strategy & positioning",
+                "Digital & offline marketing efforts",
+                "Lead generation & conversion systems",
+                "CRM performance & data utilization",
+                "AI readiness & automation gaps",
+                "Marketing ROI & efficiency",
+              ],
+            },
+            {
+              number: "02",
+              label: "Strategy Blueprint",
+              icon: Target,
+              intro: "We design a complete growth system:",
+              groups: [
+                {
+                  title: "Strategic Marketing",
+                  text: "Positioning, portfolio & pricing strategy",
+                },
+                {
+                  title: "Integrated Marketing",
+                  text: "Channel mix, campaign strategy, communication framework",
+                },
+                {
+                  title: "AI Strategy",
+                  text: "CRM integration, automation workflows, lead intelligence",
+                },
+              ],
+              footer:
+                "Includes execution roadmap with clear milestones.",
+            },
+            {
+              number: "03",
+              label: "Integrated Execution",
+              icon: Layers,
+              intro: "We move from planning to action:",
+              items: [
+                "Defined timelines, responsibilities & resources",
+                "Campaign execution across channels",
+                "AI implementation & CRM alignment",
+                "Continuous monitoring & reporting",
+              ],
+            },
+            {
+              number: "04",
+              label: "Optimize & Scale",
+              icon: BarChart3,
+              intro: "We continuously improve performance:",
+              items: [
+                "Performance tracking against goals",
+                "Optimization of campaigns & funnels",
+                "Scaling high-performing channels",
+              ],
+            },
+          ];
+
+          return (
+            <div className="relative mt-8">
+              {/* ============================================
+                  DESKTOP PROCESS LINE
+              ============================================ */}
+              <div
+                aria-hidden="true"
+                className="
+                  absolute
+                  left-[50%]
+                  top-8
+                  hidden
+                  h-[calc(100%-64px)]
+                  w-px
+                  -translate-x-1/2
+                  lg:block
+                "
+                style={{
+                  background: `linear-gradient(
+                    to bottom,
+                    transparent,
+                    ${colors.brand.secondary}30 8%,
+                    ${colors.brand.secondary}30 92%,
+                    transparent
+                  )`,
+                }}
+              />
+
+              <div className="space-y-5 lg:space-y-7">
+                {workSteps.map((step, index) => {
+                  const StepIcon = step.icon;
+                  const reverse = index % 2 !== 0;
+
+                  return (
+                    <ScrollReveal
+                      key={step.number}
+                      delay={index * 0.08}
+                    >
+                      <motion.div
+                        initial={{
+                          opacity: 0,
+                          y: 20,
+                        }}
+                        whileInView={{
+                          opacity: 1,
+                          y: 0,
+                        }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.65,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className={`
+                          relative
+                          grid
+                          items-stretch
+                          gap-5
+                          lg:grid-cols-[1fr_90px_1fr]
+                          lg:gap-5
+                        `}
+                      >
+                        {/* ============================================
+                            LEFT SIDE
+                        ============================================ */}
+                        <div
+                          className={`
+                            ${
+                              reverse
+                                ? "lg:col-start-3"
+                                : "lg:col-start-1"
+                            }
+                          `}
+                        >
+                          <motion.div
+                            whileHover={{
+                              y: -4,
+                            }}
+                            transition={{
+                              duration: 0.3,
+                              ease: [0.22, 1, 0.36, 1],
+                            }}
+                            className="
+                              group
+                              relative
+                              h-full
+                              overflow-hidden
+                              rounded-[24px]
+                              border
+                              border-white/85
+                              bg-white/72
+                              p-5
+                              shadow-[0_18px_55px_rgba(0,1,49,0.07)]
+                              backdrop-blur-xl
+                              transition-all
+                              duration-300
+                              hover:bg-white/92
+                              hover:shadow-[0_25px_70px_rgba(0,1,49,0.13)]
+                              sm:p-6
+                            "
+                          >
+                            {/* Accent Top */}
+                            <div
+                              className="
+                                absolute
+                                left-0
+                                top-0
+                                h-1
+                                w-full
+                                origin-left
+                                scale-x-0
+                                transition-transform
+                                duration-500
+                                group-hover:scale-x-100
+                              "
+                              style={{
+                                background: gradients.primary,
+                              }}
+                            />
+
+                            {/* Large Background Number */}
+                            <span
+                              className="
+                                pointer-events-none
+                                absolute
+                                -right-3
+                                -top-8
+                                text-[105px]
+                                font-black
+                                leading-none
+                                tracking-[-0.08em]
+                                opacity-[0.035]
+                              "
+                              style={{
+                                color: colors.brand.primary,
+                              }}
+                            >
+                              {step.number}
+                            </span>
+
+                            {/* Card Header */}
+                            <div className="relative z-10 flex items-start gap-4">
+                              <div
+                                className="
+                                  flex
+                                  h-12
+                                  w-12
+                                  shrink-0
+                                  items-center
+                                  justify-center
+                                  rounded-xl
+                                  border
+                                  transition-transform
+                                  duration-300
+                                  group-hover:scale-105
+                                "
+                                style={{
+                                  color: colors.brand.secondary,
+                                  borderColor: `${colors.brand.secondary}15`,
+                                  backgroundColor: `${colors.brand.secondary}0C`,
+                                }}
+                              >
+                                <StepIcon className="h-5 w-5" />
+                              </div>
+
+                              <div>
+                                <div className="flex items-center gap-2">
+                                  <span
+                                    className="
+                                      text-[10px]
+                                      font-bold
+                                      uppercase
+                                      tracking-[0.16em]
+                                    "
+                                    style={{
+                                      color: colors.brand.secondary,
+                                    }}
+                                  >
+                                    Step {step.number}
+                                  </span>
+                                </div>
+
+                                <h3
+                                  className="
+                                    mt-1
+                                    text-lg
+                                    font-bold
+                                    leading-[1.2]
+                                    tracking-[-0.02em]
+                                    sm:text-xl
+                                  "
+                                  style={{
+                                    color: colors.brand.primary,
+                                  }}
+                                >
+                                  {step.label}
+                                </h3>
+                              </div>
+                            </div>
+
+                            {/* Description */}
+                            <p
+                              className="
+                                relative
+                                z-10
+                                mt-5
+                                text-xs
+                                font-bold
+                                sm:text-[13px]
+                              "
+                              style={{
+                                color: colors.brand.primary,
+                              }}
+                            >
+                              {step.intro}
+                            </p>
+
+                            {/* Standard Items */}
+                            {step.items && (
+                              <div className="relative z-10 mt-4 grid gap-2.5 sm:grid-cols-2">
+                                {step.items.map((item) => (
+                                  <div
+                                    key={item}
+                                    className="
+                                      flex
+                                      items-start
+                                      gap-2.5
+                                      rounded-xl
+                                      border
+                                      border-gray-100/80
+                                      bg-white/55
+                                      px-3
+                                      py-2.5
+                                      transition-all
+                                      duration-300
+                                      hover:bg-white
+                                    "
+                                  >
+                                    <CheckCircle2
+                                      className="mt-0.5 h-3.5 w-3.5 shrink-0"
+                                      style={{
+                                        color: colors.brand.secondary,
+                                      }}
+                                    />
+
+                                    <span className="text-[11px] leading-[1.55] text-gray-600 sm:text-xs">
+                                      {item}
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+
+                            {/* Strategy Groups */}
+                            {step.groups && (
+                              <div className="relative z-10 mt-4 space-y-2.5">
+                                {step.groups.map((group) => (
+                                  <div
+                                    key={group.title}
+                                    className="
+                                      group/item
+                                      rounded-xl
+                                      border
+                                      border-gray-100/80
+                                      bg-white/55
+                                      px-4
+                                      py-3
+                                      transition-all
+                                      duration-300
+                                      hover:bg-white
+                                    "
+                                  >
+                                    <div className="flex items-start gap-3">
+                                      <span
+                                        className="
+                                          mt-1.5
+                                          h-2
+                                          w-2
+                                          shrink-0
+                                          rounded-full
+                                        "
+                                        style={{
+                                          backgroundColor:
+                                            colors.brand.accent,
+                                        }}
+                                      />
+
+                                      <div>
+                                        <p
+                                          className="text-xs font-bold"
+                                          style={{
+                                            color: colors.brand.primary,
+                                          }}
+                                        >
+                                          {group.title}:
+                                        </p>
+
+                                        <p className="mt-0.5 text-[11px] leading-[1.6] text-gray-600 sm:text-xs">
+                                          {group.text}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+
+                            {/* Optional Footer */}
+                            {step.footer && (
+                              <div
+                                className="
+                                  relative
+                                  z-10
+                                  mt-4
+                                  flex
+                                  items-center
+                                  gap-2
+                                  rounded-xl
+                                  px-3.5
+                                  py-3
+                                "
+                                style={{
+                                  backgroundColor: `${colors.brand.accent}12`,
+                                }}
+                              >
+                                <Sparkles
+                                  className="h-3.5 w-3.5 shrink-0"
+                                  style={{
+                                    color: colors.brand.accent,
+                                  }}
+                                />
+
+                                <p
+                                  className="text-[11px] font-bold sm:text-xs"
+                                  style={{
+                                    color: colors.brand.primary,
+                                  }}
+                                >
+                                  {step.footer}
+                                </p>
+                              </div>
+                            )}
+                          </motion.div>
+                        </div>
+
+                        {/* ============================================
+                            CENTER PROCESS NODE
+                        ============================================ */}
+                        <div
+                          className="
+                            relative
+                            z-20
+                            hidden
+                            items-center
+                            justify-center
+                            lg:col-start-2
+                            lg:row-start-1
+                            lg:flex
+                          "
+                        >
+                          <motion.div
+                            whileHover={{
+                              scale: 1.08,
+                            }}
+                            transition={{
+                              duration: 0.25,
+                            }}
+                            className="relative"
+                          >
+                            {/* Pulse Ring */}
+                            <motion.div
+                              className="
+                                absolute
+                                inset-[-9px]
+                                rounded-full
+                              "
+                              style={{
+                                border: `1px solid ${colors.brand.secondary}25`,
+                              }}
+                              animate={{
+                                scale: [1, 1.18, 1],
+                                opacity: [0.5, 0, 0.5],
+                              }}
+                              transition={{
+                                duration: 3,
+                                repeat: Infinity,
+                                delay: index * 0.3,
+                              }}
+                            />
+
+                            <div
+                              className="
+                                relative
+                                flex
+                                h-[58px]
+                                w-[58px]
+                                items-center
+                                justify-center
+                                rounded-full
+                                border-[5px]
+                                border-white
+                                text-sm
+                                font-black
+                                text-white
+                                shadow-[0_10px_30px_rgba(0,1,49,0.2)]
+                              "
+                              style={{
+                                background: gradients.primary,
+                              }}
+                            >
+                              {step.number}
+                            </div>
+                          </motion.div>
+                        </div>
+
+                        {/* ============================================
+                            OPPOSITE SIDE — PROCESS CONTEXT
+                        ============================================ */}
+                        <div
+                          className={`
+                            hidden
+                            items-center
+                            lg:flex
+
+                            ${
+                              reverse
+                                ? "lg:col-start-1 lg:row-start-1 lg:justify-end"
+                                : "lg:col-start-3 lg:row-start-1 lg:justify-start"
+                            }
+                          `}
+                        >
+                          <div
+                            className={`
+                              max-w-[310px]
+
+                              ${
+                                reverse
+                                  ? "text-right"
+                                  : "text-left"
+                              }
+                            `}
+                          >
+                            <p
+                              className="
+                                text-[9px]
+                                font-bold
+                                uppercase
+                                tracking-[0.18em]
+                              "
+                              style={{
+                                color: colors.brand.secondary,
+                              }}
+                            >
+                              {index === 0 && "Understand"}
+                              {index === 1 && "Design"}
+                              {index === 2 && "Activate"}
+                              {index === 3 && "Scale"}
+                            </p>
+
+                            <p
+                              className="
+                                mt-2
+                                text-lg
+                                font-bold
+                                leading-[1.3]
+                              "
+                              style={{
+                                color: colors.brand.primary,
+                              }}
+                            >
+                              {index === 0 &&
+                                "Know exactly where growth is being blocked."}
+
+                              {index === 1 &&
+                                "Build the system before increasing activity."}
+
+                              {index === 2 &&
+                                "Turn strategy into coordinated execution."}
+
+                              {index === 3 &&
+                                "Invest more where performance is proven."}
+                            </p>
+
+                            <div
+                              className={`
+                                mt-3
+                                h-1
+                                w-12
+                                rounded-full
+
+                                ${reverse ? "ml-auto" : ""}
+                              `}
+                              style={{
+                                background: gradients.primary,
+                              }}
+                            />
+                          </div>
+                        </div>
+                      </motion.div>
+                    </ScrollReveal>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* ============================================
+            BOTTOM GROWTH LOOP
+        ============================================ */}
+        <ScrollReveal delay={0.15}>
+          <div
+            className="
+              relative
+              mt-9
+              overflow-hidden
+              rounded-[26px]
+              bg-[#000131]
+              px-5
+              py-6
+              shadow-[0_24px_70px_rgba(0,1,49,0.22)]
+              sm:px-7
+              lg:px-8
+            "
+          >
+            {/* Background Glow */}
+            <div
+              className="
+                pointer-events-none
+                absolute
+                -right-28
+                -top-28
+                h-72
+                w-72
+                rounded-full
+                opacity-25
+                blur-[100px]
+              "
+              style={{
+                backgroundColor: colors.brand.secondary,
+              }}
+            />
+
+            <div
+              className="
+                pointer-events-none
+                absolute
+                -bottom-32
+                left-[20%]
+                h-72
+                w-72
+                rounded-full
+                opacity-15
+                blur-[100px]
+              "
+              style={{
+                backgroundColor: colors.brand.accent,
+              }}
+            />
+
+            <div
+              className="
+                relative
+                z-10
+                flex
+                flex-col
+                gap-6
+                lg:flex-row
+                lg:items-center
+                lg:justify-between
+              "
+            >
+              {/* Left */}
+              <div className="max-w-xl">
+                <div className="flex items-center gap-2">
+                  <span
+                    className="h-2 w-2 rounded-full"
+                    style={{
+                      backgroundColor: colors.brand.accent,
+                      boxShadow: `0 0 14px ${colors.brand.accent}`,
+                    }}
+                  />
+
+                  <p
+                    className="
+                      text-[9px]
+                      font-bold
+                      uppercase
+                      tracking-[0.18em]
+                    "
+                    style={{
+                      color: colors.brand.accent,
+                    }}
+                  >
+                    The Growth Loop
+                  </p>
+                </div>
+
+                <h3
+                  className="
+                    mt-3
+                    text-xl
+                    font-bold
+                    leading-[1.2]
+                    tracking-[-0.025em]
+                    text-white
+                    sm:text-2xl
+                  "
+                >
+                  Every stage feeds intelligence into the next.
+                </h3>
+
+                <p className="mt-2 max-w-lg text-xs leading-[1.7] text-white/55 sm:text-sm">
+                  Strategy informs execution. Execution creates data. Data
+                  improves decisions. Better decisions create more predictable
+                  growth.
+                </p>
+              </div>
+
+              {/* Flow */}
+              <div
+                className="
+                  grid
+                  grid-cols-2
+                  gap-2
+                  sm:grid-cols-4
+                  lg:min-w-[500px]
+                "
+              >
+                {[
+                  {
+                    number: "01",
+                    title: "Discover",
+                    icon: Search,
+                  },
+                  {
+                    number: "02",
+                    title: "Strategize",
+                    icon: Target,
+                  },
+                  {
+                    number: "03",
+                    title: "Execute",
+                    icon: Layers,
+                  },
+                  {
+                    number: "04",
+                    title: "Scale",
+                    icon: BarChart3,
+                  },
+                ].map((item, index) => {
+                  const FlowIcon = item.icon;
+
+                  return (
+                    <motion.div
+                      key={item.number}
+                      whileHover={{
+                        y: -3,
+                        backgroundColor: "rgba(255,255,255,0.10)",
+                      }}
+                      transition={{
+                        duration: 0.25,
+                      }}
+                      className="
+                        relative
+                        rounded-xl
+                        border
+                        border-white/10
+                        bg-white/[0.055]
+                        px-3
+                        py-4
+                        text-center
+                        backdrop-blur-xl
+                      "
+                    >
+                      <div
+                        className="
+                          mx-auto
+                          flex
+                          h-9
+                          w-9
+                          items-center
+                          justify-center
+                          rounded-lg
+                        "
+                        style={{
+                          backgroundColor: `${colors.brand.accent}18`,
+                          color: colors.brand.accent,
+                        }}
+                      >
+                        <FlowIcon className="h-4 w-4" />
+                      </div>
+
+                      <p className="mt-2 text-[9px] font-bold uppercase tracking-[0.14em] text-white/35">
+                        {item.number}
+                      </p>
+
+                      <p className="mt-1 text-xs font-bold text-white">
+                        {item.title}
+                      </p>
+
+                      {index < 3 && (
+                        <ArrowRight
+                          className="
+                            absolute
+                            -right-[13px]
+                            top-1/2
+                            z-20
+                            hidden
+                            h-3.5
+                            w-3.5
+                            -translate-y-1/2
+                            sm:block
+                          "
+                          style={{
+                            color: colors.brand.accent,
+                          }}
+                        />
+                      )}
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+    </Container>
+  </Section>
+</ModernSectionBackground>
+
+
+
 
 {/* ============================================
     8. WHY ADVANTEDGE — AUTO-SLIDING BACKGROUND
@@ -6053,477 +8788,6 @@ Because of Ideas.`}
   </Section>
 </ModernSectionBackground>
 
-
-
-
-
-{/* ============================================
-    18. INDUSTRIES WE SERVE — IMAGE-LED BENTO
-============================================ */}
-<ModernSectionBackground
-  variant="glass-blur"
-  className="relative overflow-hidden"
->
-  <Section
-    spacing="base"
-    animate
-    background="transparent"
-    className="industries-section-v2 relative isolate overflow-hidden"
-  >
-    {/* ============================================
-        SECTION-SPECIFIC STYLES
-    ============================================ */}
-    <style>
-      {`
-        .industries-section-v2 .industry-image-v2 {
-          transition:
-            transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-            filter 0.6s ease;
-        }
-
-        .industries-section-v2 .industry-card-v2:hover .industry-image-v2 {
-          transform: scale(1.04);
-          filter: saturate(1.06);
-        }
-
-        .industries-section-v2 .industry-accent-v2 {
-          transform: scaleX(0.14);
-          transform-origin: left;
-          transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .industries-section-v2 .industry-card-v2:hover .industry-accent-v2 {
-          transform: scaleX(1);
-        }
-
-        .industries-section-v2 .industry-arrow-v2 {
-          transition:
-            transform 0.3s ease,
-            background-color 0.3s ease;
-        }
-
-        .industries-section-v2 .industry-card-v2:hover .industry-arrow-v2 {
-          transform: translateX(4px);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .industries-section-v2 .industry-image-v2,
-          .industries-section-v2 .industry-accent-v2,
-          .industries-section-v2 .industry-arrow-v2 {
-            transition: none;
-          }
-        }
-      `}
-    </style>
-
-    {/* ============================================
-        LIGHT EDITORIAL BACKGROUND
-    ============================================ */}
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-[#f7f8fc]"
-    >
-      {/* Soft architectural image */}
-      <img
-        src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=2400&q=84"
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className="absolute right-0 top-0 h-full w-[58%] object-cover opacity-[0.055] grayscale"
-      />
-
-      <div className="absolute inset-0 bg-gradient-to-r from-[#f7f8fc] via-[#f7f8fc]/95 to-[#f7f8fc]/80" />
-
-      {/* Brand atmospheres */}
-      <div
-        className="absolute -left-56 top-[-100px] h-[500px] w-[500px] rounded-full opacity-[0.055] blur-[150px]"
-        style={{ backgroundColor: colors.brand.secondary }}
-      />
-
-      <div
-        className="absolute -right-52 bottom-[-140px] h-[480px] w-[480px] rounded-full opacity-[0.09] blur-[150px]"
-        style={{ backgroundColor: colors.brand.accent }}
-      />
-
-      {/* Subtle grid */}
-      <div
-        className="absolute inset-0 opacity-[0.32]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(0,1,49,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,1,49,0.04) 1px, transparent 1px)",
-          backgroundSize: "76px 76px",
-        }}
-      />
-
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(247,248,252,0.84)_100%)]" />
-    </div>
-
-    <Container size="xl">
-      <div className="mx-auto max-w-7xl">
-        {/* ============================================
-            SECTION HEADER
-        ============================================ */}
-        <ScrollReveal>
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-3xl">
-              <div
-                className="inline-flex items-center gap-2 rounded-full border px-4 py-2"
-                style={{
-                  color: colors.brand.secondary,
-                  borderColor: `${colors.brand.secondary}22`,
-                  backgroundColor: `${colors.brand.secondary}08`,
-                }}
-              >
-                <Building2 className="h-3.5 w-3.5" />
-
-                <span className="text-[10px] font-bold uppercase tracking-[0.18em]">
-                  Industry-Specific Expertise
-                </span>
-              </div>
-
-              <h2
-                className="mt-5 text-2xl font-bold leading-[1.1] tracking-[-0.035em] sm:text-3xl lg:text-[42px]"
-                style={{ color: colors.brand.primary }}
-              >
-                Industries We Understand.
-                <span className="mt-1 block text-gray-500">
-                  Growth Systems We Know How to Build.
-                </span>
-              </h2>
-
-              <p className="mt-5 max-w-2xl text-sm leading-[1.8] text-gray-600 sm:text-base">
-                Every sector has different buyers, sales cycles, regulations,
-                competitive pressures, and routes to growth. Our approach is
-                designed around those realities.
-              </p>
-            </div>
-
-            {/* Framework panel */}
-            <div className="max-w-sm rounded-2xl border border-gray-200 bg-white/75 px-5 py-4 shadow-[0_16px_45px_rgba(0,1,49,0.07)] backdrop-blur-xl">
-              <p
-                className="text-[9px] font-bold uppercase tracking-[0.16em]"
-                style={{ color: colors.brand.secondary }}
-              >
-                Our Sector Approach
-              </p>
-
-              <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-semibold text-gray-600">
-                <span>Market Context</span>
-                <ArrowRight className="h-3 w-3 text-gray-400" />
-
-                <span>Buyer Journey</span>
-                <ArrowRight className="h-3 w-3 text-gray-400" />
-
-                <span>Growth System</span>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
-
-        {/* ============================================
-            INDUSTRY BENTO GRID
-        ============================================ */}
-        <div className="mt-9 grid gap-5 lg:grid-cols-12">
-          {[
-            {
-              number: "01",
-              title: "Healthcare & Life Sciences",
-              description:
-                "Strategic marketing for medical devices, pharmaceuticals, biotechnology, healthcare services, and digital health businesses.",
-              image:
-                "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1800&q=92",
-              icon: Hospital,
-              eyebrow: "Regulated Growth Environments",
-              linkText: "Explore Healthcare Expertise",
-              sectors: [
-                "Medical Devices",
-                "Pharmaceuticals",
-                "Digital Health",
-              ],
-              className: "lg:col-span-7 lg:row-span-2",
-              cardHeight: "min-h-[470px] lg:min-h-[520px]",
-              featured: true,
-            },
-            {
-              number: "02",
-              title: "Professional Services",
-              description:
-                "Positioning, authority building, and qualified demand generation for expertise-led organizations.",
-              image:
-                "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=92",
-              icon: Briefcase,
-              eyebrow: "Expertise-Led Businesses",
-              linkText: "Professional Services",
-              sectors: ["Consulting", "Legal", "Advisory"],
-              className: "lg:col-span-5",
-              cardHeight: "min-h-[310px] lg:min-h-[250px]",
-              featured: false,
-            },
-            {
-              number: "03",
-              title: "Retail & E-Commerce",
-              description:
-                "Connected acquisition, brand, content, and conversion systems for consumer-focused growth.",
-              image:
-                "https://images.unsplash.com/photo-1441986300917-64674bd6008?auto=format&fit=crop&w=1400&q=92",
-              icon: Store,
-              eyebrow: "Consumer Growth Systems",
-              linkText: "Retail & Commerce",
-              sectors: ["D2C", "Omnichannel", "Marketplaces"],
-              className: "lg:col-span-5",
-              cardHeight: "min-h-[310px] lg:min-h-[250px]",
-              featured: false,
-            },
-            {
-              number: "04",
-              title: "Manufacturing & Industrial",
-              description:
-                "Complex B2B marketing for manufacturers, industrial technology providers, equipment companies, and supply-chain organizations.",
-              image:
-                "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1900&q=92",
-              icon: Factory,
-              eyebrow: "Complex B2B Markets",
-              linkText: "Explore Industrial Expertise",
-              sectors: [
-                "Industrial Equipment",
-                "Advanced Manufacturing",
-                "Supply Chain",
-              ],
-              className: "lg:col-span-12",
-              cardHeight: "min-h-[350px] lg:min-h-[330px]",
-              featured: false,
-            },
-          ].map((industry, index) => {
-            const IndustryIcon = industry.icon;
-
-            return (
-              <ScrollReveal
-                key={industry.title}
-                delay={index * 0.08}
-                className={industry.className}
-              >
-                <Link
-                  to="/industries"
-                  className={[
-                    "industry-card-v2 group relative block h-full overflow-hidden rounded-[24px]",
-                    "border border-white/80 bg-[#11131a]",
-                    "shadow-[0_24px_75px_rgba(0,1,49,0.14)]",
-                    "transition-all duration-500",
-                    "hover:-translate-y-1.5",
-                    "hover:shadow-[0_36px_105px_rgba(0,1,49,0.23)]",
-                    industry.cardHeight,
-                  ].join(" ")}
-                >
-                  {/* Clearly visible image */}
-                  <img
-                    src={industry.image}
-                    alt={industry.title}
-                    loading="lazy"
-                    decoding="async"
-                    className="industry-image-v2 absolute inset-0 h-full w-full object-cover object-center"
-                  />
-
-                  {/* Only the content area receives a strong overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/[0.94] via-black/[0.36] via-[54%] to-black/[0.03]" />
-
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/[0.36] via-transparent to-transparent" />
-
-                  {/* Accent line */}
-                  <div
-                    className="industry-accent-v2 absolute left-0 top-0 z-20 h-1 w-full"
-                    style={{ background: gradients.primary }}
-                  />
-
-                  <div
-                    className={[
-                      "relative z-10 flex h-full flex-col p-5 sm:p-6",
-                      industry.cardHeight,
-                    ].join(" ")}
-                  >
-                    {/* Top row */}
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/30 bg-black/20 text-white shadow-xl backdrop-blur-xl">
-                        <IndustryIcon className="h-5 w-5" />
-                      </div>
-
-                      <span className="text-[10px] font-bold tracking-[0.16em] text-white/65">
-                        {industry.number}
-                      </span>
-                    </div>
-
-                    {/* Bottom content */}
-                    <div
-                      className={[
-                        "mt-auto",
-                        industry.featured ? "max-w-2xl pt-24" : "max-w-3xl pt-16",
-                      ].join(" ")}
-                    >
-                      <p
-                        className="text-[9px] font-bold uppercase tracking-[0.16em]"
-                        style={{ color: colors.brand.accent }}
-                      >
-                        {industry.eyebrow}
-                      </p>
-
-                      <h3
-                        className={[
-                          "mt-2 font-bold leading-[1.18] tracking-[-0.025em] text-white",
-                          industry.featured
-                            ? "text-2xl sm:text-3xl"
-                            : "text-xl sm:text-2xl",
-                        ].join(" ")}
-                      >
-                        {industry.title}
-                      </h3>
-
-                      <p className="mt-3 max-w-2xl text-xs leading-[1.75] text-white/[0.76] sm:text-sm">
-                        {industry.description}
-                      </p>
-
-                      {/* Sector tags */}
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {industry.sectors.map((sector) => (
-                          <span
-                            key={sector}
-                            className="rounded-full border border-white/25 bg-black/20 px-2.5 py-1.5 text-[9px] font-semibold text-white/80 backdrop-blur-md"
-                          >
-                            {sector}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* Card footer */}
-                      <div className="mt-5 flex items-center justify-between border-t border-white/20 pt-4">
-                        <span className="text-xs font-bold text-white">
-                          {industry.linkText}
-                        </span>
-
-                        <span
-                          className="industry-arrow-v2 flex h-9 w-9 items-center justify-center rounded-full text-white shadow-lg"
-                          style={{ background: gradients.primary }}
-                        >
-                          <ArrowRight className="h-4 w-4" />
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </ScrollReveal>
-            );
-          })}
-        </div>
-
-        {/* ============================================
-            INDUSTRY EXPERTISE STRIP
-        ============================================ */}
-        <ScrollReveal delay={0.28}>
-          <div className="mt-7 overflow-hidden rounded-2xl border border-gray-200 bg-white/80 shadow-[0_18px_60px_rgba(0,1,49,0.08)] backdrop-blur-xl">
-            <div className="grid sm:grid-cols-3">
-              {[
-                {
-                  number: "01",
-                  title: "Sector Context",
-                  text: "We understand the commercial forces shaping each market.",
-                },
-                {
-                  number: "02",
-                  title: "Audience Precision",
-                  text: "Messaging is built around real buyer needs and behaviour.",
-                },
-                {
-                  number: "03",
-                  title: "Relevant Execution",
-                  text: "Channels and campaigns reflect how each sector buys.",
-                },
-              ].map((item, index) => (
-                <div
-                  key={item.number}
-                  className={[
-                    "px-5 py-5",
-                    index < 2
-                      ? "border-b border-gray-200 sm:border-b-0 sm:border-r"
-                      : "",
-                  ].join(" ")}
-                >
-                  <div className="flex items-start gap-3">
-                    <span
-                      className="text-[9px] font-bold uppercase tracking-[0.16em]"
-                      style={{ color: colors.brand.secondary }}
-                    >
-                      {item.number}
-                    </span>
-
-                    <div>
-                      <p
-                        className="text-sm font-bold"
-                        style={{ color: colors.brand.primary }}
-                      >
-                        {item.title}
-                      </p>
-
-                      <p className="mt-1 text-[10px] leading-[1.65] text-gray-500">
-                        {item.text}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </ScrollReveal>
-
-        {/* ============================================
-            FINAL CTA
-        ============================================ */}
-        <ScrollReveal delay={0.34}>
-          <div
-            className="mt-5 overflow-hidden rounded-2xl shadow-[0_22px_65px_rgba(0,1,49,0.16)]"
-            style={{ backgroundColor: colors.brand.primary }}
-          >
-            <div className="grid items-center lg:grid-cols-[1fr_auto]">
-              <div className="flex items-start gap-4 px-5 py-5 sm:px-7">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/[0.08]">
-                  <Building2
-                    className="h-5 w-5"
-                    style={{ color: colors.brand.accent }}
-                  />
-                </div>
-
-                <div>
-                  <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-white/45">
-                    Industry Knowledge Connected to Growth
-                  </p>
-
-                  <p className="mt-1 text-sm font-bold leading-relaxed text-white sm:text-base">
-                    Your marketing system should reflect how your market
-                    actually works—not follow a generic agency formula.
-                  </p>
-
-                  <p className="mt-1 text-xs leading-relaxed text-white/50">
-                    Explore our sector expertise and industry-specific
-                    capabilities.
-                  </p>
-                </div>
-              </div>
-
-              <Link
-                to="/industries"
-                className="group flex h-full items-center justify-center gap-2 border-t border-white/15 px-7 py-5 text-sm font-bold text-white transition-all duration-300 hover:bg-white/[0.08] lg:border-l lg:border-t-0"
-              >
-                Explore All Industries
-
-                <ArrowRight
-                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-                  style={{ color: colors.brand.accent }}
-                />
-              </Link>
-            </div>
-          </div>
-        </ScrollReveal>
-      </div>
-    </Container>
-  </Section>
-</ModernSectionBackground>
 
 
 
