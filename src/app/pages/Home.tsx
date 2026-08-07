@@ -354,7 +354,1333 @@ export function HomePage() {
 
 
 
+{/* ============================================
+    1. HOME MEGA HERO SECTION
+    ============================================ */}
 
+<ModernSectionBackground
+  variant="image-overlay-office"
+  className="mega-home-hero relative isolate min-h-[calc(100vh-72px)] w-full overflow-hidden"
+>
+  {/* ============================================
+      SELF-CONTAINED HERO ANIMATIONS
+      ============================================ */}
+
+  <style>
+    {`
+      .mega-home-hero .mega-bg-slide {
+        opacity: 0;
+        transform: scale(1.07);
+        animation: megaHeroBackground 32s infinite;
+        will-change: opacity, transform;
+      }
+
+      .mega-home-hero .mega-bg-slide:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .mega-home-hero .mega-bg-slide:nth-child(2) {
+        animation-delay: 8s;
+      }
+
+      .mega-home-hero .mega-bg-slide:nth-child(3) {
+        animation-delay: 16s;
+      }
+
+      .mega-home-hero .mega-bg-slide:nth-child(4) {
+        animation-delay: 24s;
+      }
+
+      @keyframes megaHeroBackground {
+        0% {
+          opacity: 0;
+          transform: scale(1.07);
+        }
+
+        5% {
+          opacity: 1;
+        }
+
+        24% {
+          opacity: 1;
+        }
+
+        31% {
+          opacity: 0;
+          transform: scale(1);
+        }
+
+        100% {
+          opacity: 0;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes megaHeroOrbit {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes megaHeroOrbitReverse {
+        from {
+          transform: rotate(360deg);
+        }
+
+        to {
+          transform: rotate(0deg);
+        }
+      }
+
+      @keyframes megaHeroFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-7px);
+        }
+      }
+
+      @keyframes megaHeroFloatReverse {
+        0%,
+        100% {
+          transform: translateY(-4px);
+        }
+
+        50% {
+          transform: translateY(5px);
+        }
+      }
+
+      @keyframes megaHeroPulse {
+        0%,
+        100% {
+          opacity: 0.45;
+          transform: scale(1);
+        }
+
+        50% {
+          opacity: 1;
+          transform: scale(1.35);
+        }
+      }
+
+      @keyframes megaHeroGlow {
+        0%,
+        100% {
+          opacity: 0.55;
+          transform: scale(1);
+        }
+
+        50% {
+          opacity: 0.9;
+          transform: scale(1.06);
+        }
+      }
+
+      @keyframes megaHeroLine {
+        0% {
+          transform: scaleX(0);
+          transform-origin: left;
+        }
+
+        45%,
+        100% {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+      }
+
+      .mega-home-hero .mega-orbit {
+        animation: megaHeroOrbit 52s linear infinite;
+      }
+
+      .mega-home-hero .mega-orbit-reverse {
+        animation: megaHeroOrbitReverse 68s linear infinite;
+      }
+
+      .mega-home-hero .mega-float {
+        animation: megaHeroFloat 6s ease-in-out infinite;
+      }
+
+      .mega-home-hero .mega-float-reverse {
+        animation: megaHeroFloatReverse 7s ease-in-out infinite;
+      }
+
+      .mega-home-hero .mega-pulse {
+        animation: megaHeroPulse 2.8s ease-in-out infinite;
+      }
+
+      .mega-home-hero .mega-glow {
+        animation: megaHeroGlow 9s ease-in-out infinite;
+      }
+
+      .mega-home-hero .mega-progress {
+        animation: megaHeroLine 8s linear infinite;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .mega-home-hero .mega-bg-slide,
+        .mega-home-hero .mega-orbit,
+        .mega-home-hero .mega-orbit-reverse,
+        .mega-home-hero .mega-float,
+        .mega-home-hero .mega-float-reverse,
+        .mega-home-hero .mega-pulse,
+        .mega-home-hero .mega-glow,
+        .mega-home-hero .mega-progress {
+          animation: none !important;
+        }
+
+        .mega-home-hero .mega-bg-slide:first-child {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    `}
+  </style>
+
+  {/* ============================================
+      FULL WIDTH CINEMATIC BACKGROUND SLIDER
+      ============================================ */}
+
+  <div
+    aria-hidden="true"
+    className="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-[#080915]"
+  >
+    <div className="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2400&q=90"
+        alt=""
+        loading="eager"
+        decoding="async"
+        className="mega-bg-slide absolute inset-0 h-full w-full object-cover object-center"
+      />
+
+      <img
+        src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2400&q=90"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="mega-bg-slide absolute inset-0 h-full w-full object-cover object-center"
+      />
+
+      <img
+        src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2400&q=90"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="mega-bg-slide absolute inset-0 h-full w-full object-cover object-center"
+      />
+
+      <img
+        src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=2400&q=90"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="mega-bg-slide absolute inset-0 h-full w-full object-cover object-center"
+      />
+    </div>
+
+    {/* Cinematic overlays */}
+
+    <div className="absolute inset-0 bg-black/[0.42]" />
+
+    <div
+      className="absolute inset-0"
+      style={{
+        background:
+          "linear-gradient(90deg, rgba(7,8,18,0.90) 0%, rgba(7,8,18,0.78) 35%, rgba(7,8,18,0.48) 63%, rgba(7,8,18,0.60) 100%)",
+      }}
+    />
+
+    <div
+      className="absolute inset-0"
+      style={{
+        background:
+          "linear-gradient(180deg, rgba(5,6,14,0.22) 0%, rgba(5,6,14,0.08) 45%, rgba(5,6,14,0.75) 100%)",
+      }}
+    />
+
+    {/* Brand atmospheric glow */}
+
+    <div
+      className="mega-glow absolute -left-64 top-[15%] h-[520px] w-[520px] rounded-full opacity-[0.10] blur-[160px]"
+      style={{
+        backgroundColor: colors.brand.secondary,
+      }}
+    />
+
+    <div
+      className="mega-glow absolute -right-52 bottom-[4%] h-[500px] w-[500px] rounded-full opacity-[0.10] blur-[150px]"
+      style={{
+        backgroundColor: colors.brand.accent,
+      }}
+    />
+
+    {/* Technical grid */}
+
+    <div
+      className="absolute inset-0 opacity-[0.035]"
+      style={{
+        backgroundImage:
+          "linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)",
+        backgroundSize: "76px 76px",
+      }}
+    />
+
+    {/* Top radial lighting */}
+
+    <div
+      className="absolute inset-0"
+      style={{
+        background:
+          "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12), transparent 42%)",
+      }}
+    />
+  </div>
+
+  {/* ============================================
+      TOP ACCENT LINE
+      ============================================ */}
+
+  <motion.div
+    className="absolute left-0 top-0 z-40 h-[3px]"
+    style={{
+      background: gradients.primary,
+    }}
+    initial={{ width: 0 }}
+    animate={{ width: "100%" }}
+    transition={{
+      duration: 1.2,
+      ease: [0.22, 1, 0.36, 1],
+    }}
+  />
+
+  {/* ============================================
+      MAIN MEGA HERO
+      ============================================ */}
+
+  <div
+    className="
+      relative
+      z-10
+      flex
+      min-h-[calc(100vh-72px)]
+      w-full
+      items-center
+      py-9
+      lg:py-10
+    "
+  >
+    <Container size="xl">
+      <div className="relative mx-auto w-full max-w-7xl">
+
+        {/* ============================================
+            UPPER META ROW
+            ============================================ */}
+
+        <motion.div
+          className="
+            mb-4
+            hidden
+            items-center
+            justify-between
+            border-b
+            border-white/15
+            pb-3
+            lg:flex
+          "
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.1,
+          }}
+        >
+          <div className="flex items-center gap-3">
+            <span
+              className="text-[9px] font-bold uppercase tracking-[0.18em]"
+              style={{
+                color: colors.brand.accent,
+              }}
+            >
+              AdvantEdge
+            </span>
+
+            <span className="h-3 w-px bg-white/20" />
+
+            <span className="text-[9px] font-medium uppercase tracking-[0.16em] text-white/55">
+              Strategy • Execution • Intelligence • Growth
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span
+              className="mega-pulse h-1.5 w-1.5 rounded-full"
+              style={{
+                backgroundColor: colors.brand.accent,
+              }}
+            />
+
+            <span className="text-[9px] font-semibold uppercase tracking-[0.14em] text-white/55">
+              Growth Systems Active
+            </span>
+          </div>
+        </motion.div>
+
+        {/* ============================================
+            PRIMARY MEGA GRID
+            ============================================ */}
+
+        <div
+          className="
+            grid
+            items-stretch
+            gap-5
+            lg:grid-cols-12
+          "
+        >
+          {/* ============================================
+              LEFT — LARGE GLASS CONTENT PANEL
+              ============================================ */}
+
+          <motion.div
+            className="
+              relative
+              overflow-hidden
+              rounded-[26px]
+              border
+              border-white/30
+              bg-white/[0.92]
+              shadow-[0_30px_90px_rgba(0,0,0,0.30)]
+              backdrop-blur-2xl
+              lg:col-span-6
+            "
+            initial={{
+              opacity: 0,
+              x: -45,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
+            transition={{
+              duration: 0.8,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
+            {/* Premium accent */}
+
+            <div
+              className="absolute left-0 top-0 h-[3px] w-full"
+              style={{
+                background: gradients.primary,
+              }}
+            />
+
+            {/* subtle inner wash */}
+
+            <div
+              className="pointer-events-none absolute -right-24 -top-28 h-[300px] w-[300px] rounded-full blur-[100px]"
+              style={{
+                backgroundColor: `${colors.brand.accent}14`,
+              }}
+            />
+
+            <div className="relative z-10 p-5 sm:p-6 lg:p-7 xl:p-8">
+
+              {/* Badge */}
+
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay: 0.2,
+                  duration: 0.6,
+                }}
+                className="mb-3"
+              >
+                <GlowEffect
+                  color={colors.brand.accent}
+                  intensity={20}
+                >
+                  <motion.span
+                    className="
+                      inline-flex
+                      items-center
+                      rounded-full
+                      border-2
+                      px-3
+                      py-1.5
+                      shadow-lg
+                    "
+                    style={{
+                      backgroundColor:
+                        "rgba(255,255,255,0.95)",
+                      backdropFilter: "blur(12px)",
+                      borderColor: colors.brand.accent,
+                    }}
+                    whileHover={{
+                      scale: 1.05,
+                      borderColor: colors.brand.primary,
+                    }}
+                    transition={{
+                      duration: 0.3,
+                    }}
+                  >
+                    <Sparkles
+                      className="mr-2 h-3.5 w-3.5"
+                      style={{
+                        color: colors.brand.accent,
+                      }}
+                    />
+
+                    <span
+                      className="text-xs font-bold tracking-wide"
+                      style={{
+                        color: colors.brand.primary,
+                      }}
+                    >
+                      Strategic Growth Partner
+                    </span>
+                  </motion.span>
+                </GlowEffect>
+              </motion.div>
+
+              {/* ============================================
+                  SAME TYPOGRAPHY
+                  ============================================ */}
+
+              <h1
+                className="
+                  mb-3
+                  text-2xl
+                  font-bold
+                  leading-tight
+                  tracking-tight
+                  sm:text-3xl
+                  lg:text-3xl
+                "
+                style={{
+                  color: colors.brand.primary,
+                }}
+              >
+                Strategic Marketing.{" "}
+
+                <span className="relative inline-block">
+                  Integrated Execution.
+
+                  <motion.span
+                    className="absolute -bottom-1 left-0 right-0 -z-0 h-1.5"
+                    style={{
+                      backgroundColor: colors.brand.accent,
+                      opacity: 0.3,
+                    }}
+                    initial={{
+                      width: 0,
+                    }}
+                    animate={{
+                      width: "100%",
+                    }}
+                    transition={{
+                      delay: 0.5,
+                      duration: 0.5,
+                    }}
+                  />
+                </span>
+
+                <br />
+
+                AI-Powered Growth.
+              </h1>
+
+              {/* Copy */}
+
+              <div className="mb-4 space-y-2">
+                <p
+                  className="text-sm font-semibold leading-snug"
+                  style={{
+                    color: colors.brand.primary,
+                  }}
+                >
+                  Growth is not accidental. It is engineered.
+                </p>
+
+                <p className="max-w-[610px] text-sm leading-relaxed text-gray-700">
+                  We build revenue-driven marketing systems that connect
+                  strategy, execution, and AI - so every effort drives
+                  measurable growth.
+                </p>
+              </div>
+
+              {/* CTA */}
+
+              <div className="mb-5 flex flex-col gap-3 sm:flex-row">
+                <MagneticButton strength={0.3}>
+                  <Link
+                    to="/contact"
+                    className="
+                      group
+                      inline-flex
+                      items-center
+                      justify-center
+                      rounded-xl
+                      px-6
+                      py-3
+                      text-sm
+                      font-bold
+                      text-white
+                      shadow-xl
+                      transition-all
+                      duration-300
+                      hover:-translate-y-0.5
+                      hover:shadow-2xl
+                    "
+                    style={{
+                      background: gradients.primary,
+                    }}
+                  >
+                    Book a 30-Minute Revenue Strategy Call
+
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </MagneticButton>
+
+                <MagneticButton strength={0.2}>
+                  <Link
+                    to="/services"
+                    className="
+                      inline-flex
+                      items-center
+                      justify-center
+                      rounded-xl
+                      border-2
+                      bg-white/70
+                      px-6
+                      py-3
+                      text-sm
+                      font-bold
+                      backdrop-blur-md
+                      transition-all
+                      duration-300
+                      hover:bg-white
+                      hover:shadow-lg
+                    "
+                    style={{
+                      borderColor: colors.brand.primary,
+                      color: colors.brand.primary,
+                    }}
+                  >
+                    Explore Services
+                  </Link>
+                </MagneticButton>
+              </div>
+
+              {/* ============================================
+                  METRICS
+                  ============================================ */}
+
+              <div
+                className="
+                  overflow-hidden
+                  rounded-2xl
+                  border
+                  border-gray-200
+                  bg-white/75
+                  shadow-[0_12px_35px_rgba(0,1,49,0.05)]
+                "
+              >
+                <div className="grid grid-cols-3">
+
+                  <motion.div
+                    className="px-4 py-3"
+                    whileHover={{
+                      backgroundColor:
+                        "rgba(248,249,252,0.95)",
+                    }}
+                  >
+                    <div className="flex items-baseline gap-0.5">
+                      <AnimatedCounter
+                        end={350}
+                        duration={2}
+                        className="text-xl font-bold"
+                        style={{
+                          color: colors.brand.primary,
+                        }}
+                      />
+
+                      <span
+                        className="text-lg font-bold"
+                        style={{
+                          color: colors.brand.accent,
+                        }}
+                      >
+                        +
+                      </span>
+                    </div>
+
+                    <p className="mt-0.5 text-xs font-medium text-gray-600">
+                      Clients
+                    </p>
+                  </motion.div>
+
+                  <motion.div
+                    className="border-l border-gray-200 px-4 py-3"
+                    whileHover={{
+                      backgroundColor:
+                        "rgba(248,249,252,0.95)",
+                    }}
+                  >
+                    <div className="flex items-baseline gap-0.5">
+                      <AnimatedCounter
+                        end={94}
+                        duration={2}
+                        className="text-xl font-bold"
+                        style={{
+                          color: colors.brand.primary,
+                        }}
+                      />
+
+                      <span
+                        className="text-lg font-bold"
+                        style={{
+                          color: colors.brand.accent,
+                        }}
+                      >
+                        %
+                      </span>
+                    </div>
+
+                    <p className="mt-0.5 text-xs font-medium text-gray-600">
+                      Satisfaction
+                    </p>
+                  </motion.div>
+
+                  <motion.div
+                    className="border-l border-gray-200 px-4 py-3"
+                    whileHover={{
+                      backgroundColor:
+                        "rgba(248,249,252,0.95)",
+                    }}
+                  >
+                    <div className="flex items-baseline gap-0.5">
+                      <AnimatedCounter
+                        end={4.1}
+                        decimals={1}
+                        duration={2}
+                        className="text-xl font-bold"
+                        style={{
+                          color: colors.brand.primary,
+                        }}
+                      />
+
+                      <span
+                        className="text-lg font-bold"
+                        style={{
+                          color: colors.brand.accent,
+                        }}
+                      >
+                        x
+                      </span>
+                    </div>
+
+                    <p className="mt-0.5 text-xs font-medium text-gray-600">
+                      ROI
+                    </p>
+                  </motion.div>
+
+                </div>
+              </div>
+
+              {/* Bottom process */}
+
+              <div
+                className="
+                  mt-4
+                  flex
+                  flex-wrap
+                  items-center
+                  gap-2
+                  border-t
+                  border-gray-200
+                  pt-4
+                  text-[10px]
+                  font-semibold
+                  text-gray-500
+                "
+              >
+                <span>Strategy</span>
+
+                <ArrowRight className="h-3 w-3 text-gray-300" />
+
+                <span>Execution</span>
+
+                <ArrowRight className="h-3 w-3 text-gray-300" />
+
+                <span>AI</span>
+
+                <ArrowRight className="h-3 w-3 text-gray-300" />
+
+                <span
+                  style={{
+                    color: colors.brand.primary,
+                  }}
+                >
+                  Measurable Growth
+                </span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* ============================================
+              RIGHT — LARGE GLOBE COMMAND CENTER
+              ============================================ */}
+
+          <motion.div
+            className="
+              relative
+              min-h-[430px]
+              overflow-hidden
+              rounded-[26px]
+              border
+              border-white/25
+              bg-black/[0.18]
+              shadow-[0_30px_90px_rgba(0,0,0,0.32)]
+              backdrop-blur-xl
+              sm:min-h-[480px]
+              lg:col-span-6
+              lg:min-h-full
+            "
+            initial={{
+              opacity: 0,
+              x: 45,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
+            transition={{
+              duration: 0.8,
+              ease: [0.22, 1, 0.36, 1],
+              delay: 0.15,
+            }}
+          >
+            {/* Accent */}
+
+            <div
+              className="absolute left-0 top-0 z-30 h-[3px] w-full"
+              style={{
+                background: gradients.primary,
+              }}
+            />
+
+            {/* Header */}
+
+            <div
+              className="
+                absolute
+                left-5
+                right-5
+                top-5
+                z-30
+                flex
+                items-start
+                justify-between
+                gap-4
+              "
+            >
+              <div>
+                <p
+                  className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                  style={{
+                    color: colors.brand.accent,
+                  }}
+                >
+                  Global Growth Infrastructure
+                </p>
+
+                <p className="mt-1 text-xs font-semibold text-white/70">
+                  Connected strategy. Intelligent execution.
+                </p>
+              </div>
+
+              <div
+                className="
+                  flex
+                  items-center
+                  gap-2
+                  rounded-full
+                  border
+                  border-white/20
+                  bg-black/20
+                  px-3
+                  py-1.5
+                  backdrop-blur-xl
+                "
+              >
+                <span
+                  className="mega-pulse h-1.5 w-1.5 rounded-full"
+                  style={{
+                    backgroundColor: colors.brand.accent,
+                  }}
+                />
+
+                <span className="text-[8px] font-bold uppercase tracking-[0.12em] text-white/70">
+                  Live
+                </span>
+              </div>
+            </div>
+
+            {/* Globe glow */}
+
+            <div
+              className="
+                mega-glow
+                absolute
+                left-1/2
+                top-1/2
+                h-[310px]
+                w-[310px]
+                -translate-x-1/2
+                -translate-y-1/2
+                rounded-full
+                blur-[95px]
+              "
+              style={{
+                background: `radial-gradient(
+                  circle,
+                  ${colors.brand.secondary}30 0%,
+                  ${colors.brand.primary}20 46%,
+                  transparent 72%
+                )`,
+              }}
+            />
+
+            {/* Main system ring */}
+
+            <div
+              className="
+                absolute
+                left-1/2
+                top-1/2
+                h-[300px]
+                w-[300px]
+                -translate-x-1/2
+                -translate-y-1/2
+                rounded-full
+                border
+                border-white/15
+                sm:h-[370px]
+                sm:w-[370px]
+              "
+            />
+
+            {/* Outer orbit */}
+
+            <div
+              className="
+                mega-orbit
+                absolute
+                left-1/2
+                top-1/2
+                h-[330px]
+                w-[330px]
+                -translate-x-1/2
+                -translate-y-1/2
+                rounded-full
+                border
+                border-white/15
+                sm:h-[405px]
+                sm:w-[405px]
+              "
+            >
+              <span
+                className="
+                  absolute
+                  left-1/2
+                  top-[-4px]
+                  h-2
+                  w-2
+                  -translate-x-1/2
+                  rounded-full
+                "
+                style={{
+                  backgroundColor: colors.brand.accent,
+                  boxShadow:
+                    `0 0 18px ${colors.brand.accent}`,
+                }}
+              />
+            </div>
+
+            {/* Elliptical orbit */}
+
+            <div
+              className="
+                mega-orbit-reverse
+                absolute
+                left-1/2
+                top-1/2
+                h-[260px]
+                w-[360px]
+                -translate-x-1/2
+                -translate-y-1/2
+                rounded-[50%]
+                border
+                border-white/10
+                sm:h-[315px]
+                sm:w-[440px]
+              "
+            />
+
+            {/* Axis */}
+
+            <div
+              className="
+                absolute
+                left-[8%]
+                right-[8%]
+                top-1/2
+                h-px
+                bg-gradient-to-r
+                from-transparent
+                via-white/15
+                to-transparent
+              "
+            />
+
+            <div
+              className="
+                absolute
+                bottom-[10%]
+                left-1/2
+                top-[10%]
+                w-px
+                bg-gradient-to-b
+                from-transparent
+                via-white/10
+                to-transparent
+              "
+            />
+
+            {/* ============================================
+                EXACT SAME PARTICLE GLOBE
+                ============================================ */}
+
+            <div className="absolute inset-0 z-20 flex items-center justify-center">
+              <div className="origin-center scale-[0.58] sm:scale-[0.76] lg:scale-[0.88] xl:scale-[0.92]">
+                <ParticleGlobe
+                  width={450}
+                  height={450}
+                  particleCount={1200}
+                  rotationSpeed={0.0015}
+                  radius={160}
+                />
+              </div>
+            </div>
+
+            {/* Intelligence card */}
+
+            <div
+              className="
+                mega-float
+                absolute
+                right-4
+                top-[27%]
+                z-30
+                hidden
+                min-w-[165px]
+                rounded-2xl
+                border
+                border-white/25
+                bg-black/[0.24]
+                px-4
+                py-3
+                shadow-xl
+                backdrop-blur-xl
+                sm:block
+              "
+            >
+              <p className="text-[8px] font-bold uppercase tracking-[0.14em] text-white/45">
+                Intelligence
+              </p>
+
+              <div className="mt-2 flex items-center gap-2">
+                <span
+                  className="mega-pulse h-1.5 w-1.5 rounded-full"
+                  style={{
+                    backgroundColor: colors.brand.accent,
+                  }}
+                />
+
+                <span className="text-[10px] font-bold text-white">
+                  AI Execution Layer
+                </span>
+              </div>
+
+              <p className="mt-1 text-[8px] text-white/50">
+                Always-on optimization
+              </p>
+            </div>
+
+            {/* ROI card */}
+
+            <div
+              className="
+                mega-float-reverse
+                absolute
+                bottom-[18%]
+                left-4
+                z-30
+                hidden
+                rounded-2xl
+                border
+                border-white/25
+                bg-black/[0.24]
+                px-4
+                py-3
+                shadow-xl
+                backdrop-blur-xl
+                md:block
+              "
+            >
+              <p className="text-[8px] font-bold uppercase tracking-[0.14em] text-white/45">
+                Performance
+              </p>
+
+              <div className="mt-1 flex items-baseline gap-1">
+                <span
+                  className="text-2xl font-black tracking-[-0.04em]"
+                  style={{
+                    color: colors.brand.accent,
+                  }}
+                >
+                  4.1x
+                </span>
+
+                <span className="text-[9px] font-semibold text-white/60">
+                  ROI
+                </span>
+              </div>
+
+              <p className="mt-1 text-[8px] text-white/45">
+                Average growth performance
+              </p>
+            </div>
+
+            {/* Bottom network status */}
+
+            <div
+              className="
+                absolute
+                bottom-4
+                left-4
+                right-4
+                z-30
+                flex
+                items-center
+                justify-between
+                border-t
+                border-white/15
+                pt-3
+              "
+            >
+              <span className="text-[8px] font-semibold uppercase tracking-[0.14em] text-white/40">
+                Strategy Network
+              </span>
+
+              <div className="flex items-center gap-1.5">
+                <span className="h-1 w-1 rounded-full bg-white/30" />
+                <span className="h-1 w-1 rounded-full bg-white/45" />
+                <span
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{
+                    backgroundColor: colors.brand.accent,
+                  }}
+                />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* ============================================
+            MEGA CAPABILITY RAIL
+            ============================================ */}
+
+        <motion.div
+          className="
+            mt-5
+            overflow-hidden
+            rounded-2xl
+            border
+            border-white/25
+            bg-black/[0.20]
+            shadow-[0_20px_60px_rgba(0,0,0,0.22)]
+            backdrop-blur-xl
+          "
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            delay: 0.45,
+            duration: 0.7,
+          }}
+        >
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4">
+
+            {[
+              {
+                number: "01",
+                title: "Strategic Marketing",
+                text: "Commercial strategy aligned to growth.",
+              },
+              {
+                number: "02",
+                title: "Integrated Execution",
+                text: "Channels operating as one system.",
+              },
+              {
+                number: "03",
+                title: "AI & Automation",
+                text: "Intelligence improving speed and precision.",
+              },
+              {
+                number: "04",
+                title: "Revenue Growth",
+                text: "Performance measured against business outcomes.",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={item.number}
+                className={[
+                  "group relative px-5 py-4",
+                  index < 3
+                    ? "border-b border-white/15 sm:border-b-0 lg:border-r"
+                    : "",
+                  index === 1
+                    ? "sm:border-l lg:border-l-0"
+                    : "",
+                ].join(" ")}
+                whileHover={{
+                  backgroundColor: "rgba(255,255,255,0.07)",
+                }}
+                transition={{
+                  duration: 0.3,
+                }}
+              >
+                <div className="flex items-start gap-3">
+                  <span
+                    className="text-[9px] font-black tracking-[0.14em]"
+                    style={{
+                      color: colors.brand.accent,
+                    }}
+                  >
+                    {item.number}
+                  </span>
+
+                  <div>
+                    <p className="text-xs font-bold text-white">
+                      {item.title}
+                    </p>
+
+                    <p className="mt-1 text-[9px] leading-[1.55] text-white/50">
+                      {item.text}
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  className="
+                    absolute
+                    bottom-0
+                    left-0
+                    h-[2px]
+                    w-full
+                    origin-left
+                    scale-x-0
+                    transition-transform
+                    duration-500
+                    group-hover:scale-x-100
+                  "
+                  style={{
+                    background: gradients.primary,
+                  }}
+                />
+              </motion.div>
+            ))}
+
+          </div>
+        </motion.div>
+
+        {/* ============================================
+            BACKGROUND SLIDER INDICATOR
+            ============================================ */}
+
+        <div className="mt-4 hidden items-center justify-center gap-2 sm:flex">
+          {[0, 1, 2, 3].map((item) => (
+            <span
+              key={item}
+              className="
+                relative
+                h-1
+                w-8
+                overflow-hidden
+                rounded-full
+                bg-white/20
+              "
+            >
+              <motion.span
+                className="block h-full w-full origin-left"
+                style={{
+                  background: gradients.primary,
+                }}
+                animate={{
+                  scaleX: [0, 1, 1, 0],
+                  opacity: [0.25, 1, 1, 0.25],
+                }}
+                transition={{
+                  duration: 8,
+                  delay: item * 8,
+                  repeat: Infinity,
+                  repeatDelay: 24,
+                  ease: "linear",
+                }}
+              />
+            </span>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </div>
+
+  {/* ============================================
+      BOTTOM CINEMATIC FADE
+      ============================================ */}
+
+  <div
+    className="pointer-events-none absolute bottom-0 left-0 right-0 z-[2] h-24"
+    style={{
+      background:
+        "linear-gradient(to bottom, transparent, rgba(8,9,21,0.70))",
+    }}
+  />
+</ModernSectionBackground>
 
 
 
