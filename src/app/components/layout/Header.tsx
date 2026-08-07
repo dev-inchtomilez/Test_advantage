@@ -1,549 +1,1264 @@
 /**
  * ============================================
- * ULTRA-PREMIUM HEADER - With Services Dropdown
+ * ADVANTEDGE — REFINED RESPONSIVE HEADER
  * ============================================
- * Modern, minimal, and blazing fast
- * Advanced glass morphism with blur effects
- * Services dropdown on hover (desktop) and tap (mobile)
- * Performance optimized
+ * - Compact executive navigation
+ * - Optimized desktop mega-menu
+ * - Responsive mobile drawer
+ * - Keyboard / touch friendly
+ * - Route-aware active states
+ * - Body scroll lock on mobile
+ * - Real page scroll progress
+ * - Reduced visual overhead
  * ============================================
  */
 
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router';
-import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Menu, 
-  X, 
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+} from "motion/react";
+
+import {
+  Menu,
+  X,
   ChevronDown,
   Rocket,
   ArrowRight,
-  Zap,
-  Phone,
-  Mail,
   Target,
   Award,
   MonitorSmartphone,
   Megaphone,
-  BarChart3
-} from 'lucide-react';
+  BarChart3,
+} from "lucide-react";
 
-// Design Tokens
-import { colors, gradients } from '../../../styles/design-tokens';
+import {
+  colors,
+  gradients,
+} from "../../../styles/design-tokens";
 
-// Service Categories for Dropdown
+
+/* ============================================
+   SERVICES
+============================================ */
+
 const serviceCategories = [
-  { 
-    name: 'Strategic Planning', 
-    path: '/services/strategic-planning',
-    icon: <Target className="w-4 h-4" />,
-    description: 'Comprehensive marketing strategy & planning'
+  {
+    name: "Strategic Planning",
+    path: "/services/strategic-planning",
+    icon: <Target className="h-4 w-4" />,
+    description: "Comprehensive marketing strategy & planning",
   },
-  { 
-    name: 'Brand Development', 
-    path: '/services/brand-development',
-    icon: <Award className="w-4 h-4" />,
-    description: 'Brand strategy, identity & positioning'
+  {
+    name: "Brand Development",
+    path: "/services/brand-development",
+    icon: <Award className="h-4 w-4" />,
+    description: "Brand strategy, identity & positioning",
   },
-  { 
-    name: 'Digital Marketing', 
-    path: '/services/digital-marketing',
-    icon: <Rocket className="w-4 h-4" />,
-    description: 'SEO, PPC, social media & growth'
+  {
+    name: "Digital Marketing",
+    path: "/services/digital-marketing",
+    icon: <Rocket className="h-4 w-4" />,
+    description: "SEO, PPC, social media & growth",
   },
-  { 
-    name: 'AI Marketing Solutions', 
-    path: '/services/content-strategy',
-    icon: <MonitorSmartphone className="w-4 h-4" />,
-    description: 'Content creation & distribution'
+  {
+    name: "AI Marketing Solutions",
+    path: "/services/content-strategy",
+    icon: <MonitorSmartphone className="h-4 w-4" />,
+    description: "Content creation & distribution",
   },
-  { 
-    name: 'PR & Communications', 
-    path: '/services/pr-communications',
-    icon: <Megaphone className="w-4 h-4" />,
-    description: 'Media relations & thought leadership'
+  {
+    name: "PR & Communications",
+    path: "/services/pr-communications",
+    icon: <Megaphone className="h-4 w-4" />,
+    description: "Media relations & thought leadership",
   },
-  { 
-    name: 'Analytics & Optimization', 
-    path: '/services/analytics-optimization',
-    icon: <BarChart3 className="w-4 h-4" />,
-    description: 'Performance tracking & optimization'
+  {
+    name: "Analytics & Optimization",
+    path: "/services/analytics-optimization",
+    icon: <BarChart3 className="h-4 w-4" />,
+    description: "Performance tracking & optimization",
   },
 ];
 
-// Navigation Links
+
+/* ============================================
+   NAVIGATION
+============================================ */
+
 const navLinks = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-  { name: 'Services', path: '/services', hasDropdown: true },
-  { name: 'Industries', path: '/industries' },
-  { name: 'Case Studies', path: '/case-studies' },
-  { name: 'Contact', path: '/contact' },
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "About",
+    path: "/about",
+  },
+  {
+    name: "Services",
+    path: "/services",
+    hasDropdown: true,
+  },
+  {
+    name: "Industries",
+    path: "/industries",
+  },
+  {
+    name: "Case Studies",
+    path: "/case-studies",
+  },
+  {
+    name: "Contact",
+    path: "/contact",
+  },
 ];
+
 
 export function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const location = useLocation();
 
-  // Handle scroll effect
+  const { scrollYProgress } = useScroll();
+
+  const [scrolled, setScrolled] = useState(false);
+
+  const [mobileMenuOpen, setMobileMenuOpen] =
+    useState(false);
+
+  const [
+    servicesDropdownOpen,
+    setServicesDropdownOpen,
+  ] = useState(false);
+
+  const [
+    mobileServicesOpen,
+    setMobileServicesOpen,
+  ] = useState(false);
+
+
+  /* ============================================
+     SCROLL STATE
+  ============================================ */
+
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 16);
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    handleScroll();
+
+    window.addEventListener(
+      "scroll",
+      handleScroll,
+      {
+        passive: true,
+      }
+    );
+
+    return () => {
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
+    };
   }, []);
 
-  // Close mobile menu on route change
+
+  /* ============================================
+     ROUTE CHANGE
+  ============================================ */
+
   useEffect(() => {
     setMobileMenuOpen(false);
+    setMobileServicesOpen(false);
     setServicesDropdownOpen(false);
   }, [location.pathname]);
 
-  const isActive = (path: string) => location.pathname === path;
+
+  /* ============================================
+     MOBILE DRAWER BEHAVIOR
+  ============================================ */
+
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      return;
+    }
+
+    const previousOverflow =
+      document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+
+    const handleEscape = (
+      event: KeyboardEvent
+    ) => {
+      if (event.key === "Escape") {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener(
+      "keydown",
+      handleEscape
+    );
+
+    return () => {
+      document.body.style.overflow =
+        previousOverflow;
+
+      window.removeEventListener(
+        "keydown",
+        handleEscape
+      );
+    };
+  }, [mobileMenuOpen]);
+
+
+  /* ============================================
+     ACTIVE ROUTE LOGIC
+  ============================================ */
+
+  const isActive = (path: string) => {
+    if (path === "/") {
+      return location.pathname === "/";
+    }
+
+    return (
+      location.pathname === path ||
+      location.pathname.startsWith(
+        `${path}/`
+      )
+    );
+  };
+
 
   return (
     <>
-      {/* Header Container */}
+      {/* ============================================
+          HEADER
+      ============================================ */}
+
       <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-0 left-0 right-0"
-        style={{ zIndex: 99999 }}
+        initial={{
+          y: -70,
+          opacity: 0,
+        }}
+        animate={{
+          y: 0,
+          opacity: 1,
+        }}
+        transition={{
+          duration: 0.55,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="fixed inset-x-0 top-0"
+        style={{
+          zIndex: 99990,
+        }}
       >
         <div className="relative">
-          {/* Background with glass effect */}
-          <div 
-            className={`absolute inset-0 transition-all duration-500 ${
-              scrolled 
-                ? 'bg-white/80 backdrop-blur-xl shadow-lg border-b border-gray-200/50' 
-                : 'bg-white/60 backdrop-blur-md'
+
+          {/* ============================================
+              SINGLE GLASS BACKGROUND LAYER
+          ============================================ */}
+
+          <div
+            className={`absolute inset-0 border-b transition-all duration-300 ${
+              scrolled
+                ? "border-gray-200/80 bg-white/95 shadow-[0_10px_35px_rgba(0,1,49,0.08)] backdrop-blur-xl"
+                : "border-white/50 bg-white/75 backdrop-blur-lg"
             }`}
           />
 
-          {/* Content */}
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-14">
-              
-              {/* Logo */}
-              <Link 
-                to="/" 
-                className="flex items-center gap-2 group relative z-10"
+
+          {/* ============================================
+              HEADER CONTENT
+          ============================================ */}
+
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+            <div className="flex h-16 items-center justify-between gap-4">
+
+              {/* ============================================
+                  LOGO
+              ============================================ */}
+
+              <Link
+                to="/"
+                aria-label="AdvantEdge Home"
+                className="group relative z-10 flex min-w-0 shrink-0 items-center gap-2.5"
               >
                 <motion.div
-                  whileHover={{ scale: 1.05, rotate: 5 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{
+                    scale: 1.04,
+                  }}
+                  whileTap={{
+                    scale: 0.97,
+                  }}
+                  transition={{
+                    duration: 0.2,
+                  }}
                   className="relative"
                 >
-                  <div 
-                    className="w-8 h-8 rounded-lg flex items-center justify-center shadow-lg"
-                    style={{ background: gradients.primary }}
+                  <div
+                    className="flex h-9 w-9 items-center justify-center rounded-xl shadow-[0_8px_22px_rgba(0,0,170,0.20)]"
+                    style={{
+                      background:
+                        gradients.primary,
+                    }}
                   >
-                    <Rocket className="w-4 h-4 text-white" />
+                    <Rocket className="h-4 w-4 text-white" />
                   </div>
-                  <motion.div
-                    className="absolute -inset-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-lg"
-                    style={{ background: gradients.primary }}
-                  />
                 </motion.div>
-                <div className="flex flex-col">
-                  <span 
-                    className="text-base font-bold tracking-tight"
-                    style={{ color: colors.brand.primary }}
+
+
+                <div className="min-w-0">
+
+                  <span
+                    className="block text-[16px] font-bold leading-none tracking-[-0.02em]"
+                    style={{
+                      color:
+                        colors.brand.primary,
+                    }}
                   >
                     AdvantEdge
                   </span>
-                  <span 
-                    className="text-xs font-semibold tracking-wide"
-                    style={{ color: colors.brand.secondary }}
+
+                  <span
+                    className="mt-1 hidden text-[9px] font-semibold uppercase leading-none tracking-[0.12em] sm:block"
+                    style={{
+                      color:
+                        colors.brand.secondary,
+                    }}
                   >
                     Strategic Marketing
                   </span>
+
                 </div>
               </Link>
 
-              {/* Desktop Navigation */}
-              <nav className="hidden lg:flex items-center gap-1">
-                {navLinks.map((link) => (
-                  <div
-                    key={link.path}
-                    className="relative"
-                    onMouseEnter={() => link.hasDropdown && setServicesDropdownOpen(true)}
-                    onMouseLeave={() => link.hasDropdown && setServicesDropdownOpen(false)}
-                  >
-                    <Link
-                      to={link.path}
-                      className="relative px-3 py-1.5 rounded-lg text-sm font-semibold transition-all duration-300 group flex items-center gap-1"
-                      style={{ 
-                        color: isActive(link.path) ? colors.brand.primary : colors.text.secondary 
-                      }}
-                    >
-                      <span className="relative z-10">{link.name}</span>
-                      {link.hasDropdown && (
-                        <ChevronDown 
-                          className={`w-4 h-4 transition-transform duration-300 ${
-                            servicesDropdownOpen ? 'rotate-180' : ''
-                          }`}
-                        />
-                      )}
-                      
-                      {/* Hover background */}
-                      <motion.div
-                        className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        style={{ backgroundColor: 'rgba(0, 0, 170, 0.05)' }}
-                      />
-                      
-                      {/* Active indicator */}
-                      {isActive(link.path) && (
-                        <motion.div
-                          layoutId="activeTab"
-                          className="absolute inset-0 rounded-lg"
-                          style={{ backgroundColor: 'rgba(0, 0, 170, 0.1)' }}
-                          transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                        />
-                      )}
-                    </Link>
 
-                    {/* Services Dropdown */}
-                    {link.hasDropdown && (
-                      <AnimatePresence>
-                        {servicesDropdownOpen && (
-                          <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 10 }}
-                            transition={{ duration: 0.2 }}
-                            className="absolute top-full left-0 mt-2 w-80 rounded-2xl shadow-2xl border border-gray-200/60 overflow-hidden"
-                            style={{ 
-                              background: 'rgba(255, 255, 255, 0.95)',
-                              backdropFilter: 'blur(20px)'
+              {/* ============================================
+                  DESKTOP NAVIGATION
+              ============================================ */}
+
+              <nav
+                aria-label="Primary navigation"
+                className="hidden items-center lg:flex"
+              >
+                <div className="flex items-center gap-0.5 rounded-xl border border-gray-200/50 bg-white/35 p-1">
+
+                  {navLinks.map((link) => {
+
+                    const active =
+                      isActive(link.path);
+
+                    if (
+                      link.hasDropdown
+                    ) {
+                      return (
+                        <div
+                          key={link.path}
+                          className="relative"
+                          onMouseEnter={() =>
+                            setServicesDropdownOpen(
+                              true
+                            )
+                          }
+                          onMouseLeave={() =>
+                            setServicesDropdownOpen(
+                              false
+                            )
+                          }
+                          onFocusCapture={() =>
+                            setServicesDropdownOpen(
+                              true
+                            )
+                          }
+                          onBlurCapture={(
+                            event
+                          ) => {
+                            const next =
+                              event.relatedTarget as Node | null;
+
+                            if (
+                              !next ||
+                              !event.currentTarget.contains(
+                                next
+                              )
+                            ) {
+                              setServicesDropdownOpen(
+                                false
+                              );
+                            }
+                          }}
+                        >
+                          {/* SERVICES NAV ITEM */}
+
+                          <Link
+                            to={link.path}
+                            aria-current={
+                              active
+                                ? "page"
+                                : undefined
+                            }
+                            aria-haspopup="menu"
+                            aria-expanded={
+                              servicesDropdownOpen
+                            }
+                            className="group relative flex items-center gap-1 rounded-lg px-3 py-2 text-[13px] font-semibold transition-colors duration-200"
+                            style={{
+                              color: active
+                                ? colors
+                                    .brand
+                                    .primary
+                                : colors
+                                    .text
+                                    .secondary,
                             }}
                           >
-                            <div className="p-3">
-                              {serviceCategories.map((service, idx) => (
-                                <Link
-                                  key={idx}
-                                  to={service.path}
-                                  className="flex items-start gap-3 p-3 rounded-xl hover:bg-gray-50 transition-all duration-200 group"
-                                >
-                                  <div 
-                                    className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-200"
-                                    style={{ backgroundColor: 'rgba(0, 0, 170, 0.1)' }}
-                                  >
-                                    {service.icon}
-                                  </div>
-                                  <div className="flex-1">
-                                    <div 
-                                      className="font-semibold text-sm mb-0.5"
-                                      style={{ color: colors.brand.primary }}
-                                    >
-                                      {service.name}
-                                    </div>
-                                    <div className="text-xs text-gray-600 leading-snug">
-                                      {service.description}
-                                    </div>
-                                  </div>
-                                </Link>
-                              ))}
-                            </div>
-                            
-                            {/* View All Services Link */}
-                            <div 
-                              className="px-4 py-3 border-t border-gray-100"
-                              style={{ backgroundColor: 'rgba(0, 0, 170, 0.02)' }}
-                            >
-                              <Link
-                                to="/services"
-                                className="flex items-center justify-between text-sm font-bold group"
-                                style={{ color: colors.brand.secondary }}
+                            {active && (
+                              <motion.span
+                                layoutId="header-active-nav"
+                                className="absolute inset-0 rounded-lg"
+                                style={{
+                                  backgroundColor:
+                                    "rgba(0,0,170,0.075)",
+                                }}
+                                transition={{
+                                  type: "spring",
+                                  bounce: 0.12,
+                                  duration: 0.5,
+                                }}
+                              />
+                            )}
+
+                            <span className="absolute inset-0 rounded-lg bg-[#0000aa]/[0.04] opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+
+                            <span className="relative z-10">
+                              {link.name}
+                            </span>
+
+                            <ChevronDown
+                              className={`relative z-10 h-3.5 w-3.5 transition-transform duration-200 ${
+                                servicesDropdownOpen
+                                  ? "rotate-180"
+                                  : ""
+                              }`}
+                            />
+                          </Link>
+
+
+                          {/* ============================================
+                              DESKTOP SERVICES MEGA MENU
+                          ============================================ */}
+
+                          <AnimatePresence>
+                            {servicesDropdownOpen && (
+                              <motion.div
+                                initial={{
+                                  opacity: 0,
+                                  y: 8,
+                                  scale: 0.985,
+                                }}
+                                animate={{
+                                  opacity: 1,
+                                  y: 0,
+                                  scale: 1,
+                                }}
+                                exit={{
+                                  opacity: 0,
+                                  y: 6,
+                                  scale: 0.99,
+                                }}
+                                transition={{
+                                  duration: 0.16,
+                                  ease: [
+                                    0.22,
+                                    1,
+                                    0.36,
+                                    1,
+                                  ],
+                                }}
+                                className="absolute left-1/2 top-full w-[570px] -translate-x-1/2 pt-3"
                               >
-                                <span>View All Services</span>
-                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-                              </Link>
-                            </div>
-                          </motion.div>
+                                <div
+                                  role="menu"
+                                  className="overflow-hidden rounded-[20px] border border-gray-200/80 bg-white/95 shadow-[0_24px_70px_rgba(0,1,49,0.16)] backdrop-blur-xl"
+                                >
+
+                                  {/* MENU HEADER */}
+
+                                  <div className="flex items-center justify-between border-b border-gray-100 px-4 py-3">
+
+                                    <div>
+                                      <p
+                                        className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                                        style={{
+                                          color:
+                                            colors
+                                              .brand
+                                              .secondary,
+                                        }}
+                                      >
+                                        Services
+                                      </p>
+
+                                      <p
+                                        className="mt-0.5 text-[12px] font-semibold"
+                                        style={{
+                                          color:
+                                            colors
+                                              .brand
+                                              .primary,
+                                        }}
+                                      >
+                                        Explore our core capabilities
+                                      </p>
+                                    </div>
+
+                                    <Link
+                                      to="/services"
+                                      className="group flex items-center gap-1.5 text-[11px] font-bold"
+                                      style={{
+                                        color:
+                                          colors
+                                            .brand
+                                            .secondary,
+                                      }}
+                                    >
+                                      View All
+
+                                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+                                    </Link>
+
+                                  </div>
+
+
+                                  {/* SERVICES */}
+
+                                  <div className="grid grid-cols-2 gap-1 p-2">
+
+                                    {serviceCategories.map(
+                                      (
+                                        service
+                                      ) => (
+                                        <Link
+                                          key={
+                                            service.path
+                                          }
+                                          to={
+                                            service.path
+                                          }
+                                          role="menuitem"
+                                          className="group flex items-start gap-3 rounded-xl p-3 transition-colors duration-200 hover:bg-[#0000aa]/[0.035]"
+                                        >
+                                          <div
+                                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-transform duration-200 group-hover:scale-105"
+                                            style={{
+                                              color:
+                                                colors
+                                                  .brand
+                                                  .secondary,
+
+                                              backgroundColor:
+                                                "rgba(0,0,170,0.075)",
+                                            }}
+                                          >
+                                            {
+                                              service.icon
+                                            }
+                                          </div>
+
+                                          <div className="min-w-0">
+
+                                            <p
+                                              className="text-[12px] font-bold leading-tight"
+                                              style={{
+                                                color:
+                                                  colors
+                                                    .brand
+                                                    .primary,
+                                              }}
+                                            >
+                                              {
+                                                service.name
+                                              }
+                                            </p>
+
+                                            <p className="mt-1 text-[10px] leading-[1.45] text-gray-500">
+                                              {
+                                                service.description
+                                              }
+                                            </p>
+
+                                          </div>
+                                        </Link>
+                                      )
+                                    )}
+
+                                  </div>
+
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      );
+                    }
+
+
+                    /* ============================================
+                       STANDARD DESKTOP LINK
+                    ============================================ */
+
+                    return (
+                      <Link
+                        key={link.path}
+                        to={link.path}
+                        aria-current={
+                          active
+                            ? "page"
+                            : undefined
+                        }
+                        className="group relative rounded-lg px-3 py-2 text-[13px] font-semibold transition-colors duration-200"
+                        style={{
+                          color: active
+                            ? colors
+                                .brand
+                                .primary
+                            : colors
+                                .text
+                                .secondary,
+                        }}
+                      >
+                        {active && (
+                          <motion.span
+                            layoutId="header-active-nav"
+                            className="absolute inset-0 rounded-lg"
+                            style={{
+                              backgroundColor:
+                                "rgba(0,0,170,0.075)",
+                            }}
+                            transition={{
+                              type: "spring",
+                              bounce: 0.12,
+                              duration: 0.5,
+                            }}
+                          />
                         )}
-                      </AnimatePresence>
-                    )}
-                  </div>
-                ))}
+
+                        <span className="absolute inset-0 rounded-lg bg-[#0000aa]/[0.04] opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+
+                        <span className="relative z-10">
+                          {link.name}
+                        </span>
+
+                      </Link>
+                    );
+                  })}
+
+                </div>
               </nav>
 
-              {/* CTA Buttons - Desktop */}
-              <div className="hidden lg:flex items-center gap-2">
-                {/* Contact Quick Link */}
-                <a
-                  href="tel:+15551234567"
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-gray-100"
-                  style={{ color: colors.brand.primary }}
-                >
-                  <Phone className="w-4 h-4" />
-                  <span className="hidden xl:inline">+1 (555) 123-4567</span>
-                </a>
 
-                {/* Primary CTA */}
-                <Link to="/contact">
-                  <motion.button
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.97 }}
-                    className="relative px-5 py-2 rounded-xl text-white text-sm font-bold shadow-lg overflow-hidden group"
-                  >
-                    {/* Gradient Background */}
-                    <div 
-                      className="absolute inset-0"
-                      style={{ background: gradients.primary }}
-                    />
-                    
-                    {/* Hover Shine Effect */}
-                    <motion.div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      style={{ 
-                        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)' 
-                      }}
-                      animate={{
-                        x: ['-100%', '100%']
-                      }}
-                      transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        repeatDelay: 1
-                      }}
-                    />
-                    
-                    <span className="relative z-10 flex items-center gap-2">
-                      Get Started
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                    </span>
-                  </motion.button>
+              {/* ============================================
+                  DESKTOP CTA
+              ============================================ */}
+
+              <div className="hidden shrink-0 items-center lg:flex">
+
+                <Link
+                  to="/contact"
+                  className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl px-4 py-2.5 text-[12px] font-bold text-white shadow-[0_10px_28px_rgba(0,0,170,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_35px_rgba(0,0,170,0.30)]"
+                  style={{
+                    background:
+                      gradients.primary,
+                  }}
+                >
+                  <span className="relative z-10 flex items-center gap-1.5">
+                    Get Started
+
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                  </span>
                 </Link>
+
               </div>
 
-              {/* Mobile Menu Button */}
+
+              {/* ============================================
+                  MOBILE MENU BUTTON
+              ============================================ */}
+
               <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 rounded-lg transition-colors duration-300 hover:bg-gray-100"
-                aria-label="Toggle menu"
+                type="button"
+                aria-label={
+                  mobileMenuOpen
+                    ? "Close navigation menu"
+                    : "Open navigation menu"
+                }
+                aria-expanded={
+                  mobileMenuOpen
+                }
+                aria-controls="mobile-navigation"
+                onClick={() =>
+                  setMobileMenuOpen(
+                    (open) => !open
+                  )
+                }
+                className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-gray-200/80 bg-white/70 transition-all duration-200 hover:bg-white active:scale-95 lg:hidden"
               >
-                {mobileMenuOpen ? (
-                  <X className="w-6 h-6" style={{ color: colors.brand.primary }} />
-                ) : (
-                  <Menu className="w-6 h-6" style={{ color: colors.brand.primary }} />
-                )}
+                <AnimatePresence
+                  mode="wait"
+                  initial={false}
+                >
+                  {mobileMenuOpen ? (
+                    <motion.div
+                      key="close"
+                      initial={{
+                        opacity: 0,
+                        rotate: -45,
+                        scale: 0.8,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        rotate: 0,
+                        scale: 1,
+                      }}
+                      exit={{
+                        opacity: 0,
+                        rotate: 45,
+                        scale: 0.8,
+                      }}
+                      transition={{
+                        duration: 0.16,
+                      }}
+                    >
+                      <X
+                        className="h-5 w-5"
+                        style={{
+                          color:
+                            colors
+                              .brand
+                              .primary,
+                        }}
+                      />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="menu"
+                      initial={{
+                        opacity: 0,
+                        scale: 0.8,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        scale: 1,
+                      }}
+                      exit={{
+                        opacity: 0,
+                        scale: 0.8,
+                      }}
+                      transition={{
+                        duration: 0.16,
+                      }}
+                    >
+                      <Menu
+                        className="h-5 w-5"
+                        style={{
+                          color:
+                            colors
+                              .brand
+                              .primary,
+                        }}
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </button>
+
             </div>
           </div>
 
-          {/* Scroll Progress Bar */}
+
+          {/* ============================================
+              REAL SCROLL PROGRESS
+          ============================================ */}
+
           <motion.div
-            className="absolute bottom-0 left-0 right-0 h-0.5 origin-left"
-            style={{ 
-              background: gradients.primary,
-              scaleX: scrolled ? 1 : 0,
-              opacity: scrolled ? 1 : 0
+            className="absolute inset-x-0 bottom-0 h-[2px] origin-left"
+            style={{
+              background:
+                gradients.primary,
+              scaleX:
+                scrollYProgress,
             }}
-            transition={{ duration: 0.3 }}
           />
+
         </div>
       </motion.header>
 
-      {/* Mobile Menu */}
+
+      {/* ============================================
+          MOBILE NAVIGATION
+      ============================================ */}
+
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm lg:hidden"
-              style={{ zIndex: 99990 }}
-              onClick={() => setMobileMenuOpen(false)}
+            {/* BACKDROP */}
+
+            <motion.button
+              type="button"
+              aria-label="Close navigation menu"
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+              }}
+              exit={{
+                opacity: 0,
+              }}
+              transition={{
+                duration: 0.2,
+              }}
+              onClick={() =>
+                setMobileMenuOpen(false)
+              }
+              className="fixed inset-0 bg-[#000131]/25 backdrop-blur-[3px] lg:hidden"
+              style={{
+                zIndex: 99991,
+              }}
             />
 
-            {/* Menu Panel */}
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="fixed top-0 right-0 bottom-0 w-80 bg-white shadow-2xl lg:hidden overflow-y-auto"
-              style={{ zIndex: 99995 }}
-            >
-              {/* Menu Header */}
-              <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                <div className="flex items-center gap-2">
-                  <div 
-                    className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg"
-                    style={{ background: gradients.primary }}
-                  >
-                    <Rocket className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-lg font-bold" style={{ color: colors.brand.primary }}>
-                      AdvantEdge
-                    </span>
-                    <span className="text-xs font-semibold" style={{ color: colors.brand.secondary }}>
-                      Strategic Marketing
-                    </span>
-                  </div>
-                </div>
-                <button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300"
-                >
-                  <X className="w-6 h-6" style={{ color: colors.brand.primary }} />
-                </button>
-              </div>
 
-              {/* Navigation Links */}
-              <nav className="p-6 space-y-2">
-                {navLinks.map((link, index) => (
-                  <motion.div
-                    key={link.path}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
+            {/* ============================================
+                MOBILE DRAWER
+            ============================================ */}
+
+            <motion.aside
+              id="mobile-navigation"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation"
+              initial={{
+                x: "100%",
+              }}
+              animate={{
+                x: 0,
+              }}
+              exit={{
+                x: "100%",
+              }}
+              transition={{
+                type: "spring",
+                damping: 32,
+                stiffness: 340,
+                mass: 0.85,
+              }}
+              className="fixed inset-y-0 right-0 flex w-full max-w-[390px] flex-col overflow-hidden border-l border-gray-200/80 bg-white shadow-[-20px_0_60px_rgba(0,1,49,0.16)] lg:hidden"
+              style={{
+                zIndex: 99992,
+              }}
+            >
+
+              {/* ============================================
+                  MOBILE DRAWER HEADER
+              ============================================ */}
+
+              <div
+                className="shrink-0 border-b border-gray-200/80 px-4 pb-4 pt-4"
+                style={{
+                  paddingTop:
+                    "max(16px, env(safe-area-inset-top))",
+                }}
+              >
+                <div className="flex items-center justify-between">
+
+                  <Link
+                    to="/"
+                    className="flex items-center gap-2.5"
+                    onClick={() =>
+                      setMobileMenuOpen(
+                        false
+                      )
+                    }
                   >
-                    {link.hasDropdown ? (
-                      <div>
-                        {/* Services with dropdown */}
-                        <button
-                          onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                          className={`w-full flex items-center justify-between px-4 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                            isActive(link.path)
-                              ? 'bg-gradient-to-r from-blue-50 to-purple-50 shadow-sm'
-                              : 'hover:bg-gray-50'
-                          }`}
-                          style={{ 
-                            color: isActive(link.path) ? colors.brand.primary : colors.text.secondary 
-                          }}
-                        >
-                          <span>{link.name}</span>
-                          <ChevronDown 
-                            className={`w-4 h-4 transition-transform duration-300 ${
-                              mobileServicesOpen ? 'rotate-180' : ''
-                            }`}
-                          />
-                        </button>
-                        
-                        {/* Mobile Services Dropdown */}
-                        <AnimatePresence>
-                          {mobileServicesOpen && (
-                            <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: 'auto' }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.2 }}
-                              className="mt-2 ml-4 space-y-1"
-                            >
-                              {serviceCategories.map((service, idx) => (
-                                <Link
-                                  key={idx}
-                                  to={service.path}
-                                  onClick={() => setMobileMenuOpen(false)}
-                                  className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-50 transition-all duration-200"
-                                >
-                                  <div 
-                                    className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                                    style={{ backgroundColor: 'rgba(0, 0, 170, 0.1)' }}
-                                  >
-                                    {service.icon}
-                                  </div>
-                                  <span className="text-sm font-medium text-gray-700">
-                                    {service.name}
-                                  </span>
-                                </Link>
-                              ))}
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    ) : (
-                      <Link
-                        to={link.path}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className={`block px-4 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                          isActive(link.path)
-                            ? 'bg-gradient-to-r from-blue-50 to-purple-50 shadow-sm'
-                            : 'hover:bg-gray-50'
-                        }`}
-                        style={{ 
-                          color: isActive(link.path) ? colors.brand.primary : colors.text.secondary 
+                    <div
+                      className="flex h-9 w-9 items-center justify-center rounded-xl shadow-lg"
+                      style={{
+                        background:
+                          gradients.primary,
+                      }}
+                    >
+                      <Rocket className="h-4 w-4 text-white" />
+                    </div>
+
+                    <div>
+                      <p
+                        className="text-[16px] font-bold leading-none"
+                        style={{
+                          color:
+                            colors
+                              .brand
+                              .primary,
                         }}
                       >
-                        <div className="flex items-center justify-between">
-                          <span>{link.name}</span>
-                          {isActive(link.path) && (
-                            <div 
-                              className="w-2 h-2 rounded-full"
-                              style={{ backgroundColor: colors.brand.accent }}
-                            />
-                          )}
-                        </div>
-                      </Link>
+                        AdvantEdge
+                      </p>
+
+                      <p
+                        className="mt-1 text-[9px] font-semibold uppercase tracking-[0.12em]"
+                        style={{
+                          color:
+                            colors
+                              .brand
+                              .secondary,
+                        }}
+                      >
+                        Strategic Marketing
+                      </p>
+                    </div>
+                  </Link>
+
+
+                  <button
+                    type="button"
+                    aria-label="Close navigation menu"
+                    onClick={() =>
+                      setMobileMenuOpen(
+                        false
+                      )
+                    }
+                    className="flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-gray-50 transition-colors hover:bg-gray-100"
+                  >
+                    <X
+                      className="h-4.5 w-4.5"
+                      style={{
+                        color:
+                          colors
+                            .brand
+                            .primary,
+                      }}
+                    />
+                  </button>
+
+                </div>
+              </div>
+
+
+              {/* ============================================
+                  MOBILE SCROLL AREA
+              ============================================ */}
+
+              <div className="flex-1 overflow-y-auto overscroll-contain">
+
+                <nav
+                  aria-label="Mobile navigation"
+                  className="p-4"
+                >
+                  <div className="space-y-1">
+
+                    {navLinks.map(
+                      (
+                        link,
+                        index
+                      ) => {
+
+                        const active =
+                          isActive(
+                            link.path
+                          );
+
+
+                        /* ============================================
+                           MOBILE SERVICES
+                        ============================================ */
+
+                        if (
+                          link.hasDropdown
+                        ) {
+                          return (
+                            <motion.div
+                              key={
+                                link.path
+                              }
+                              initial={{
+                                opacity: 0,
+                                y: 8,
+                              }}
+                              animate={{
+                                opacity: 1,
+                                y: 0,
+                              }}
+                              transition={{
+                                delay:
+                                  index *
+                                  0.035,
+                              }}
+                            >
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  setMobileServicesOpen(
+                                    (
+                                      open
+                                    ) =>
+                                      !open
+                                  )
+                                }
+                                aria-expanded={
+                                  mobileServicesOpen
+                                }
+                                aria-controls="mobile-services"
+                                className="flex w-full items-center justify-between rounded-xl px-3.5 py-3 text-left transition-colors duration-200"
+                                style={{
+                                  backgroundColor:
+                                    active
+                                      ? "rgba(0,0,170,0.065)"
+                                      : "transparent",
+
+                                  color:
+                                    active
+                                      ? colors
+                                          .brand
+                                          .primary
+                                      : colors
+                                          .text
+                                          .secondary,
+                                }}
+                              >
+                                <span className="text-[14px] font-semibold">
+                                  {
+                                    link.name
+                                  }
+                                </span>
+
+                                <ChevronDown
+                                  className={`h-4 w-4 transition-transform duration-200 ${
+                                    mobileServicesOpen
+                                      ? "rotate-180"
+                                      : ""
+                                  }`}
+                                />
+                              </button>
+
+
+                              <AnimatePresence
+                                initial={
+                                  false
+                                }
+                              >
+                                {mobileServicesOpen && (
+                                  <motion.div
+                                    id="mobile-services"
+                                    initial={{
+                                      height: 0,
+                                      opacity: 0,
+                                    }}
+                                    animate={{
+                                      height:
+                                        "auto",
+                                      opacity: 1,
+                                    }}
+                                    exit={{
+                                      height: 0,
+                                      opacity: 0,
+                                    }}
+                                    transition={{
+                                      duration: 0.22,
+                                      ease: [
+                                        0.22,
+                                        1,
+                                        0.36,
+                                        1,
+                                      ],
+                                    }}
+                                    className="overflow-hidden"
+                                  >
+                                    <div className="ml-2 mt-1 space-y-0.5 border-l border-gray-200 pl-2">
+
+                                      <Link
+                                        to="/services"
+                                        className="flex items-center justify-between rounded-lg px-3 py-2.5 text-[12px] font-bold"
+                                        style={{
+                                          color:
+                                            colors
+                                              .brand
+                                              .secondary,
+                                        }}
+                                      >
+                                        View All Services
+
+                                        <ArrowRight className="h-3.5 w-3.5" />
+                                      </Link>
+
+
+                                      {serviceCategories.map(
+                                        (
+                                          service
+                                        ) => (
+                                          <Link
+                                            key={
+                                              service.path
+                                            }
+                                            to={
+                                              service.path
+                                            }
+                                            className="flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-gray-50"
+                                          >
+                                            <div
+                                              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
+                                              style={{
+                                                color:
+                                                  colors
+                                                    .brand
+                                                    .secondary,
+
+                                                backgroundColor:
+                                                  "rgba(0,0,170,0.07)",
+                                              }}
+                                            >
+                                              {
+                                                service.icon
+                                              }
+                                            </div>
+
+                                            <span
+                                              className="text-[12px] font-semibold leading-tight"
+                                              style={{
+                                                color:
+                                                  colors
+                                                    .brand
+                                                    .primary,
+                                              }}
+                                            >
+                                              {
+                                                service.name
+                                              }
+                                            </span>
+
+                                          </Link>
+                                        )
+                                      )}
+
+                                    </div>
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
+                            </motion.div>
+                          );
+                        }
+
+
+                        /* ============================================
+                           STANDARD MOBILE LINK
+                        ============================================ */
+
+                        return (
+                          <motion.div
+                            key={
+                              link.path
+                            }
+                            initial={{
+                              opacity: 0,
+                              y: 8,
+                            }}
+                            animate={{
+                              opacity: 1,
+                              y: 0,
+                            }}
+                            transition={{
+                              delay:
+                                index *
+                                0.035,
+                            }}
+                          >
+                            <Link
+                              to={
+                                link.path
+                              }
+                              aria-current={
+                                active
+                                  ? "page"
+                                  : undefined
+                              }
+                              className="flex items-center justify-between rounded-xl px-3.5 py-3 transition-colors duration-200"
+                              style={{
+                                backgroundColor:
+                                  active
+                                    ? "rgba(0,0,170,0.065)"
+                                    : "transparent",
+
+                                color:
+                                  active
+                                    ? colors
+                                        .brand
+                                        .primary
+                                    : colors
+                                        .text
+                                        .secondary,
+                              }}
+                            >
+                              <span className="text-[14px] font-semibold">
+                                {
+                                  link.name
+                                }
+                              </span>
+
+                              {active && (
+                                <span
+                                  className="h-1.5 w-1.5 rounded-full"
+                                  style={{
+                                    backgroundColor:
+                                      colors
+                                        .brand
+                                        .accent,
+                                  }}
+                                />
+                              )}
+
+                            </Link>
+                          </motion.div>
+                        );
+                      }
                     )}
-                  </motion.div>
-                ))}
-              </nav>
 
-              {/* Quick Actions */}
-              <div className="p-6 border-t border-gray-200 space-y-3">
-                <a
-                  href="tel:+15551234567"
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gray-50 hover:bg-gray-100 transition-all duration-300"
+                  </div>
+                </nav>
+
+              </div>
+
+
+              {/* ============================================
+                  MOBILE CTA
+              ============================================ */}
+
+              <div
+                className="shrink-0 border-t border-gray-200/80 bg-white p-4"
+                style={{
+                  paddingBottom:
+                    "max(16px, env(safe-area-inset-bottom))",
+                }}
+              >
+                <Link
+                  to="/contact"
+                  className="group flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3.5 text-[13px] font-bold text-white shadow-[0_12px_30px_rgba(0,0,170,0.24)]"
+                  style={{
+                    background:
+                      gradients.primary,
+                  }}
                 >
-                  <div 
-                    className="w-10 h-10 rounded-lg flex items-center justify-center"
-                    style={{ backgroundColor: 'rgba(0, 0, 170, 0.1)' }}
-                  >
-                    <Phone className="w-5 h-5" style={{ color: colors.brand.secondary }} />
-                  </div>
-                  <div>
-                    <div className="text-xs font-semibold text-gray-500">Call Us</div>
-                    <div className="text-sm font-bold" style={{ color: colors.brand.primary }}>
-                      +1 (555) 123-4567
-                    </div>
-                  </div>
-                </a>
+                  Get Started
 
-                <a
-                  href="mailto:hello@advantedge.com"
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gray-50 hover:bg-gray-100 transition-all duration-300"
-                >
-                  <div 
-                    className="w-10 h-10 rounded-lg flex items-center justify-center"
-                    style={{ backgroundColor: 'rgba(255, 179, 0, 0.1)' }}
-                  >
-                    <Mail className="w-5 h-5" style={{ color: colors.brand.accent }} />
-                  </div>
-                  <div>
-                    <div className="text-xs font-semibold text-gray-500">Email Us</div>
-                    <div className="text-sm font-bold" style={{ color: colors.brand.primary }}>
-                      hello@advantedge.com
-                    </div>
-                  </div>
-                </a>
-
-                {/* Mobile CTA */}
-                <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
-                  <motion.button
-                    whileTap={{ scale: 0.97 }}
-                    className="w-full px-6 py-4 rounded-xl text-white font-bold shadow-xl"
-                    style={{ background: gradients.primary }}
-                  >
-                    <span className="flex items-center justify-center gap-2">
-                      Get Started
-                      <Zap className="w-5 h-5" />
-                    </span>
-                  </motion.button>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </Link>
               </div>
-            </motion.div>
+
+            </motion.aside>
           </>
         )}
       </AnimatePresence>
