@@ -21,8 +21,11 @@ import {
   Zap,
   Phone,
   Mail,
+  Target,
+  Award,
   MonitorSmartphone,
-  Brain
+  Megaphone,
+  BarChart3
 } from 'lucide-react';
 
 // Design Tokens
@@ -31,22 +34,40 @@ import { colors, gradients } from '../../../styles/design-tokens';
 // Service Categories for Dropdown
 const serviceCategories = [
   { 
-    name: 'Strategic Marketing', 
+    name: 'Strategic Planning', 
     path: '/services/strategic-planning',
-    icon: <Rocket className="w-4 h-4" />,
-    description: 'Revenue-aligned strategy & demand generation'
+    icon: <Target className="w-4 h-4" />,
+    description: 'Comprehensive marketing strategy & planning'
   },
   { 
-    name: 'Integrated Marketing', 
+    name: 'Brand Development', 
+    path: '/services/brand-development',
+    icon: <Award className="w-4 h-4" />,
+    description: 'Brand strategy, identity & positioning'
+  },
+  { 
+    name: 'Digital Marketing', 
     path: '/services/digital-marketing',
-    icon: <MonitorSmartphone className="w-4 h-4" />,
-    description: 'Omnichannel execution aligned to revenue goals'
+    icon: <Rocket className="w-4 h-4" />,
+    description: 'SEO, PPC, social media & growth'
   },
   { 
-    name: 'AI Solutions', 
-    path: '/services/ai-marketing-solutions',
-    icon: <Brain className="w-4 h-4" />,
-    description: 'AI-powered CRM, automation & pipeline systems'
+    name: 'AI Marketing Solutions', 
+    path: '/services/content-strategy',
+    icon: <MonitorSmartphone className="w-4 h-4" />,
+    description: 'Content creation & distribution'
+  },
+  { 
+    name: 'PR & Communications', 
+    path: '/services/pr-communications',
+    icon: <Megaphone className="w-4 h-4" />,
+    description: 'Media relations & thought leadership'
+  },
+  { 
+    name: 'Analytics & Optimization', 
+    path: '/services/analytics-optimization',
+    icon: <BarChart3 className="w-4 h-4" />,
+    description: 'Performance tracking & optimization'
   },
 ];
 
