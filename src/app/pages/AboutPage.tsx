@@ -1,38 +1,43 @@
 /**
  * ============================================
- * ABOUT US PAGE - Complete Premium Rebuild
+ * ABOUT US PAGE - AdvantEdge
  * ============================================
- * Industry-leading About page with comprehensive
- * images, premium design, and executive standards
+ * Updated with approved About page content
+ * UI/UX aligned with Home, Services, and Industries
  * ============================================
  */
 
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
-import { 
-  ArrowRight, 
-  Target, 
-  Eye,
-  Heart,
-  Shield,
-  TrendingUp,
+import {
+  ArrowRight,
+  Target,
   Users,
-  Award,
-  Globe,
-  MapPin,
-  Lightbulb,
-  Zap,
   CheckCircle2,
   Building2,
+  Sparkles,
+  Layers,
+  Brain,
+  Briefcase,
+  TrendingUp,
   Rocket,
   BarChart3,
-  Briefcase,
-  Star,
-  Sparkles
+  Search,
+  Lightbulb,
+  Zap,
+  Shield,
+  Network,
+  Workflow
 } from 'lucide-react';
 
 // Primitive Components
-import { Section, Container, SectionHeader, GlassCard, IconBadge } from '../components/primitives';
+import {
+  Section,
+  Container,
+  SectionHeader,
+  GlassCard,
+  IconBadge
+} from '../components/primitives';
 
 // Layout Components
 import { PageBackground } from '../components/layout';
@@ -42,15 +47,15 @@ import { PageSEO } from '../components/seo';
 import { PAGE_SEO } from '../utils/seo-config';
 
 // UI Components
-import { ScrollReveal, StaggerContainer, staggerItemVariants } from '../components/ScrollReveal';
+import {
+  ScrollReveal,
+  StaggerContainer,
+  staggerItemVariants
+} from '../components/ScrollReveal';
 import { MagneticButton } from '../components/MagneticButton';
-import { TiltCard } from '../components/TiltCard';
 import { ModernSectionBackground } from '../components/ModernSectionBackground';
 import { OptimizedImage } from '../components/OptimizedImage';
-import { AnimatedCounter } from '../components/AnimatedCounter';
-import { HoverCard3D } from '../components/HoverCard3D';
 import { GlowEffect } from '../components/GlowEffect';
-import { TextGradient } from '../components/TextGradient';
 
 // Design Tokens
 import { colors, gradients } from '../../styles/design-tokens';
@@ -59,120 +64,178 @@ import { colors, gradients } from '../../styles/design-tokens';
 // DATA DEFINITIONS
 // ============================================
 
-const stats = [
-  { number: 15, suffix: '+', label: 'Years of Excellence' },
-  { number: 500, suffix: '+', label: 'Clients Served' },
-  { number: 98, suffix: '%', label: 'Client Satisfaction' },
-  { number: 50, suffix: '+', label: 'Team Members' },
-];
-
-const coreValues = [
+const keyHighlights = [
   {
-    icon: <Shield className="w-8 h-8" />,
-    title: 'Integrity First',
-    description: 'We build trust through honest, transparent communication and ethical business practices in every interaction.',
+    icon: <Briefcase className="w-6 h-6" />,
+    title: 'Business-Led Thinking',
+    description:
+      'Built by leaders with experience across business development, market expansion, operations, and customer engagement.',
   },
   {
-    icon: <Lightbulb className="w-8 h-8" />,
-    title: 'Strategic Excellence',
-    description: 'We deliver exceptional results through rigorous analysis, strategic thinking, and data-driven decision making.',
+    icon: <Network className="w-6 h-6" />,
+    title: 'Integrated Growth Approach',
+    description:
+      'Strategy, marketing, CRM, automation, and AI aligned within one connected framework.',
   },
   {
-    icon: <Users className="w-8 h-8" />,
-    title: 'Client Partnership',
-    description: 'We work as an extension of your team, deeply invested in your success and long-term business growth.',
+    icon: <TrendingUp className="w-6 h-6" />,
+    title: 'Revenue-Focused Execution',
+    description:
+      'Every initiative is designed to support customer acquisition, pipeline growth, and operational efficiency.',
   },
   {
-    icon: <TrendingUp className="w-8 h-8" />,
-    title: 'Continuous Innovation',
-    description: 'We stay ahead of industry trends and constantly evolve our strategies to maintain competitive advantage.',
+    icon: <Rocket className="w-6 h-6" />,
+    title: 'Built for Scale',
+    description:
+      'Processes, systems, and technology designed to grow with your business.',
   },
 ];
 
-const milestones = [
+const philosophyPillars = [
   {
-    year: '2010',
-    title: 'Founded in New York',
-    description: 'AdvantEdge established with a vision to transform marketing through strategic excellence.',
+    icon: <Target className="w-7 h-7" />,
+    title: 'Strategic Marketing',
+    description:
+      'Building market clarity through positioning, competitive differentiation, messaging, and growth planning.',
   },
   {
-    year: '2014',
-    title: 'Global Expansion',
-    description: 'Opened offices in London and Sydney, serving clients across three continents.',
+    icon: <Layers className="w-7 h-7" />,
+    title: 'Integrated Marketing',
+    description:
+      'Executing coordinated programs across digital, content, communications, CRM, and customer engagement channels.',
   },
   {
-    year: '2018',
-    title: 'Industry Recognition',
-    description: 'Named Top Marketing Agency by Forbes and won multiple industry awards.',
-  },
-  {
-    year: '2023',
-    title: '500+ Clients Served',
-    description: 'Reached milestone of serving over 500 enterprise clients with 98% satisfaction rate.',
+    icon: <Brain className="w-7 h-7" />,
+    title: 'AI Solutions',
+    description:
+      'Leveraging automation, predictive intelligence, customer insights, and workflow optimization to improve business performance.',
   },
 ];
 
 const leadership = [
   {
-    name: 'Sarah Mitchell',
+    number: '01',
+    name: 'Jennifer Jordan',
+    role: 'Founder & President',
+    initials: 'JJ',
+    bio: [
+      'Jennifer brings a unique combination of executive leadership, business development, communications expertise, and organizational management experience developed over more than two decades.',
+      'Her background spans corporate communications, operational leadership, client relationship management, and educational leadership, enabling her to build strong partnerships while creating systems that support long-term organizational growth.',
+      'At AdvantEdge, Jennifer focuses on client relationships, strategic direction, and ensuring that every engagement remains aligned with measurable business outcomes.',
+    ],
+    expertise: [
+      'Executive Leadership',
+      'Strategic Communications',
+      'Client Relationship Management',
+      'Organizational Development',
+      'Community & Stakeholder Engagement',
+      'Business Growth Strategy',
+    ],
+    source: 'Source: Jennifer Jordan professional profile.',
+  },
+  {
+    number: '02',
+    name: 'Dwight Jordan',
     role: 'Chief Executive Officer',
-    bio: '20+ years leading strategic marketing initiatives for Fortune 500 companies.',
+    initials: 'DJ',
+    bio: [
+      'Dwight brings extensive experience in global business development, market expansion, strategic marketing, and technology-driven growth initiatives.',
+      "Throughout his career, he has led international growth programs, managed global portfolios exceeding $80 million, supported market expansion across multiple regions, and worked with some of the world's leading transportation and technology organizations.",
+      'At AdvantEdge, Dwight leads growth strategy, marketing innovation, market expansion initiatives, and business development programs that help clients unlock new opportunities and accelerate revenue growth.',
+    ],
+    expertise: [
+      'Strategic Marketing Leadership',
+      'Global Market Expansion',
+      'Business Development',
+      'Growth Strategy',
+      'Opportunity Creation',
+      'Technology Commercialization',
+      'Revenue Growth Programs',
+    ],
+    source: 'Source: Dwight Jordan professional CV.',
   },
   {
-    name: 'David Chen',
-    role: 'Chief Strategy Officer',
-    bio: 'Former McKinsey consultant specializing in growth strategy and market positioning.',
-  },
-  {
-    name: 'Emily Rodriguez',
-    role: 'Chief Creative Officer',
-    bio: 'Award-winning creative director with experience at top global advertising agencies.',
+    number: '03',
+    name: 'Harish Banwari',
+    role: 'Co-Founder',
+    initials: 'HB',
+    bio: [
+      'Harish brings extensive experience across business strategy, digital transformation, integrated marketing, branding, AI enablement, and growth consulting.',
+      'His work has focused on helping organizations align strategy, technology, marketing, and customer engagement systems to create scalable growth frameworks. With experience supporting businesses across multiple industries and international markets, he specializes in connecting business objectives with practical execution.',
+      'At AdvantEdge, Harish leads strategic consulting initiatives focused on integrated marketing systems, AI adoption, business growth acceleration, and operational alignment.',
+    ],
+    expertise: [
+      'Strategic Growth Consulting',
+      'Integrated Marketing Systems',
+      'Digital Transformation',
+      'AI Business Solutions',
+      'Brand Strategy',
+      'Revenue Growth Frameworks',
+      'Market Expansion',
+    ],
+    source: '',
   },
 ];
 
-const locations = [
+const whyPillars = [
   {
-    city: 'New York',
-    country: 'United States',
-    address: '123 Park Avenue, Suite 4500, New York, NY 10017',
-    phone: '+1 (212) 555-0100',
+    icon: <Target className="w-6 h-6" />,
+    title: 'Strategic Clarity',
+    description: 'Clear positioning, market focus, and growth direction.',
   },
   {
-    city: 'London',
-    country: 'United Kingdom',
-    address: '45 Grosvenor Street, Mayfair, London W1K 3HN',
-    phone: '+44 20 7123 4567',
+    icon: <Workflow className="w-6 h-6" />,
+    title: 'Connected Execution',
+    description: 'Integrated systems rather than disconnected activities.',
   },
   {
-    city: 'Sydney',
-    country: 'Australia',
-    address: '88 Cumberland Street, The Rocks, Sydney NSW 2000',
-    phone: '+61 2 9876 5432',
+    icon: <Zap className="w-6 h-6" />,
+    title: 'AI-Enabled Operations',
+    description:
+      'Automation and intelligence that improve efficiency and customer engagement.',
+  },
+  {
+    icon: <BarChart3 className="w-6 h-6" />,
+    title: 'Measurable Outcomes',
+    description:
+      'Growth initiatives aligned to business performance and revenue objectives.',
   },
 ];
 
-const awards = [
+const approachSteps = [
   {
-    year: '2023',
-    title: 'Best Marketing Agency',
-    organization: 'Forbes Business Awards',
+    number: '01',
+    icon: <Search className="w-6 h-6" />,
+    title: 'Discovery & Analysis',
+    description:
+      'Understanding business goals, market dynamics, customer behavior, and growth opportunities.',
   },
   {
-    year: '2022',
-    title: 'Excellence in Strategy',
-    organization: 'Marketing Excellence Awards',
+    number: '02',
+    icon: <Lightbulb className="w-6 h-6" />,
+    title: 'Strategy Development',
+    description:
+      'Creating growth strategies that align positioning, marketing, sales, CRM, and AI initiatives.',
   },
   {
-    year: '2021',
-    title: 'Top Workplace',
-    organization: 'Great Place to Work',
+    number: '03',
+    icon: <Layers className="w-6 h-6" />,
+    title: 'Implementation',
+    description:
+      'Executing integrated programs across customer acquisition, engagement, automation, and communications.',
   },
   {
-    year: '2020',
-    title: 'Innovation Leader',
-    organization: 'Digital Marketing Summit',
+    number: '04',
+    icon: <TrendingUp className="w-6 h-6" />,
+    title: 'Optimization & Scale',
+    description:
+      'Improving performance through data, insights, automation, and continuous refinement.',
   },
 ];
+
+// ============================================
+// ABOUT PAGE
+// ============================================
 
 export function AboutPage() {
   return (
@@ -186,844 +249,949 @@ export function AboutPage() {
       />
 
       {/* ============================================
-          1. HERO SECTION - PREMIUM TWO-COLUMN
+          1. HERO SECTION
           ============================================ */}
-      <ModernSectionBackground variant="mesh-gradient-blue">
-        <Section spacing="base" animate background="transparent">
+      <ModernSectionBackground
+        variant="mesh-gradient-blue"
+        className="relative overflow-hidden"
+      >
+        <Section
+          spacing="base"
+          animate
+          background="transparent"
+          className="relative overflow-hidden"
+        >
+          {/* Ambient brand effects */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 overflow-hidden"
+          >
+            <div
+              className="absolute inset-0 opacity-[0.22]"
+              style={{
+                backgroundImage:
+                  'linear-gradient(rgba(0,1,49,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,1,49,0.04) 1px, transparent 1px)',
+                backgroundSize: '54px 54px',
+                maskImage:
+                  'linear-gradient(to right, black 0%, black 48%, transparent 90%)',
+                WebkitMaskImage:
+                  'linear-gradient(to right, black 0%, black 48%, transparent 90%)',
+              }}
+            />
+
+            <div
+              className="absolute -left-40 top-0 h-[500px] w-[500px] rounded-full opacity-[0.08] blur-[140px]"
+              style={{ backgroundColor: colors.brand.secondary }}
+            />
+
+            <div
+              className="absolute -right-40 bottom-0 h-[500px] w-[500px] rounded-full opacity-[0.10] blur-[140px]"
+              style={{ backgroundColor: colors.brand.accent }}
+            />
+          </div>
+
           <Container size="xl">
-            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-              {/* Left Column - Content */}
+            <div className="relative z-10 grid items-center gap-8 lg:grid-cols-[1.04fr_0.96fr] lg:gap-12">
+              {/* Left */}
               <motion.div
-                className="order-2 lg:order-1"
-                initial={{ opacity: 0, x: -50 }}
+                initial={{ opacity: 0, x: -45 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                transition={{
+                  duration: 0.8,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
               >
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.6 }}
+                  transition={{ delay: 0.18, duration: 0.6 }}
                   className="mb-4"
                 >
                   <GlowEffect color={colors.brand.accent} intensity={20}>
-                    <motion.span 
-                      className="inline-flex items-center px-3 py-1.5 rounded-full shadow-lg border-2"
-                      style={{ 
-                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    <motion.span
+                      className="inline-flex items-center rounded-full border-2 px-3.5 py-1.5 shadow-lg"
+                      style={{
+                        backgroundColor: 'rgba(255,255,255,0.94)',
                         backdropFilter: 'blur(12px)',
-                        borderColor: colors.brand.accent 
+                        borderColor: colors.brand.accent,
                       }}
-                      whileHover={{ scale: 1.05, borderColor: colors.brand.primary }}
-                      transition={{ duration: 0.3 }}
+                      whileHover={{
+                        scale: 1.04,
+                        borderColor: colors.brand.primary,
+                      }}
+                      transition={{ duration: 0.25 }}
                     >
-                      <Sparkles className="w-3.5 h-3.5 mr-2" style={{ color: colors.brand.accent }} />
-                      <span className="text-xs font-bold tracking-wide" style={{ color: colors.brand.primary }}>About AdvantEdge</span>
+                      <Sparkles
+                        className="mr-2 h-3.5 w-3.5"
+                        style={{ color: colors.brand.accent }}
+                      />
+                      <span
+                        className="text-xs font-bold tracking-wide"
+                        style={{ color: colors.brand.primary }}
+                      >
+                        ABOUT ADVANTEDGE
+                      </span>
                     </motion.span>
                   </GlowEffect>
                 </motion.div>
 
-                <h1 className="text-2xl sm:text-3xl lg:text-3xl font-bold leading-tight tracking-tight mb-4" style={{ color: colors.brand.primary }}>
-                  Transforming Businesses Through{' '}
-                  <span className="relative inline-block">
-                    <TextGradient animated className="relative z-10 text-2xl sm:text-3xl lg:text-3xl font-bold">
-                      Strategic Excellence
-                    </TextGradient>
-                    <motion.span
-                      className="absolute -bottom-1 left-0 right-0 h-2 -z-0"
-                      style={{ backgroundColor: colors.brand.accent, opacity: 0.3 }}
-                      initial={{ width: 0 }}
-                      animate={{ width: '100%' }}
-                      transition={{ delay: 0.5, duration: 0.5 }}
-                    />
-                  </span>
+                <h1
+                  className="max-w-3xl text-3xl font-bold leading-[1.08] tracking-[-0.04em] sm:text-4xl lg:text-[48px]"
+                  style={{ color: colors.brand.primary }}
+                >
+                  Building Growth Systems That Drive Business Performance
                 </h1>
 
-                <div className="space-y-3 mb-4">
-                  <p className="text-sm font-semibold leading-snug" style={{ color: colors.brand.primary }}>
-                    15+ years of strategic marketing leadership.
+                <div className="mt-5 max-w-2xl space-y-3">
+                  <p className="text-sm leading-[1.8] text-gray-700 sm:text-[15px]">
+                    AdvantEdge was built on a simple belief: growth happens when
+                    strategy, marketing, sales, CRM, and technology work
+                    together.
                   </p>
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    We partner with industry leaders to deliver integrated marketing solutions that drive measurable business growth through strategic insight and operational excellence.
+
+                  <p className="text-sm leading-[1.8] text-gray-700 sm:text-[15px]">
+                    We help organizations eliminate disconnected execution and
+                    build integrated growth systems designed to improve
+                    customer acquisition, strengthen market positioning, and
+                    create measurable business outcomes.
                   </p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-3 mb-5">
-                  <MagneticButton strength={0.3}>
-                    <Link
-                      to="/contact"
-                      className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-white font-bold text-sm shadow-xl hover:shadow-2xl transition-all duration-300 group"
-                      style={{ background: gradients.primary }}
+                <div className="mt-7 flex flex-wrap items-center gap-2.5">
+                  {[
+                    'Strategy',
+                    'Marketing',
+                    'Sales',
+                    'CRM',
+                    'Technology',
+                  ].map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-white/90 bg-white/68 px-3 py-1.5 text-[10px] font-bold backdrop-blur-xl"
+                      style={{ color: colors.brand.primary }}
                     >
-                      Partner With Us
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </MagneticButton>
-
-                  <MagneticButton strength={0.2}>
-                    <Link
-                      to="/case-studies"
-                      className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-sm border-2 transition-all duration-300 hover:shadow-lg hover:bg-white/70 bg-white/50 backdrop-blur-md"
-                      style={{ borderColor: colors.brand.primary, color: colors.brand.primary }}
-                    >
-                      View Our Work
-                    </Link>
-                  </MagneticButton>
-                </div>
-
-                <div className="grid grid-cols-3 gap-4 pt-4 border-t border-gray-300/50">
-                  <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-                    <div className="flex items-baseline gap-0.5">
-                      <AnimatedCounter end={15} duration={2} className="text-xl font-bold" style={{ color: colors.brand.primary }} />
-                      <span className="text-lg font-bold" style={{ color: colors.brand.accent }}>+</span>
-                    </div>
-                    <p className="text-xs text-gray-600 font-medium mt-1">Years</p>
-                  </motion.div>
-                  <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-                    <div className="flex items-baseline gap-0.5">
-                      <AnimatedCounter end={500} duration={2} className="text-xl font-bold" style={{ color: colors.brand.primary }} />
-                      <span className="text-lg font-bold" style={{ color: colors.brand.accent }}>+</span>
-                    </div>
-                    <p className="text-xs text-gray-600 font-medium mt-1">Clients</p>
-                  </motion.div>
-                  <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-                    <div className="flex items-baseline gap-0.5">
-                      <AnimatedCounter end={98} duration={2} className="text-xl font-bold" style={{ color: colors.brand.primary }} />
-                      <span className="text-lg font-bold" style={{ color: colors.brand.accent }}>%</span>
-                    </div>
-                    <p className="text-xs text-gray-600 font-medium mt-1">Satisfaction</p>
-                  </motion.div>
+                      {item}
+                    </span>
+                  ))}
                 </div>
               </motion.div>
 
-              {/* Right Column - Image */}
+              {/* Right */}
               <motion.div
-                className="relative flex items-center justify-center w-full order-1 lg:order-2"
-                initial={{ opacity: 0, x: 50 }}
+                initial={{ opacity: 0, x: 45 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.2,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="relative"
               >
-                <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl">
-                  <OptimizedImage
-                    src="https://images.unsplash.com/photo-1758691736424-4b4273948341?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxleGVjdXRpdmUlMjBidXNpbmVzcyUyMHRlYW0lMjBtZWV0aW5nJTIwYm9hcmRyb29tfGVufDF8fHx8MTc3NDU2MDg5NHww&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="AdvantEdge executive team in boardroom meeting"
-                    className="w-full h-[280px] lg:h-[360px] object-cover"
-                    priority={true}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                  {/* Floating Stats Badge */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4, duration: 0.6 }}
-                    className="absolute bottom-3 right-3 sm:-bottom-6 sm:-right-6 lg:-right-8"
-                  >
-                    <GlassCard variant="strong" rounded="xl" padding="base" className="shadow-2xl">
-                      <div className="flex items-center gap-3">
-                        <div className="p-2.5 rounded-xl" style={{ background: gradients.primary }}>
-                          <Award className="w-5 h-5 text-white" />
+                <div className="relative overflow-hidden rounded-[28px] border border-white/90 bg-white/55 p-2 shadow-[0_28px_80px_rgba(0,1,49,0.14)] backdrop-blur-xl">
+                  <div className="relative h-[320px] overflow-hidden rounded-[22px] sm:h-[380px]">
+                    <OptimizedImage
+                      src="https://images.unsplash.com/photo-1758691736424-4b4273948341?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxleGVjdXRpdmUlMjBidXNpbmVzcyUyMHRlYW0lMjBtZWV0aW5nJTIwYm9hcmRyb29tfGVufDF8fHx8MTc3NDU2MDg5NHww&ixlib=rb-4.1.0&q=80&w=1080"
+                      alt="AdvantEdge business strategy and leadership"
+                      className="h-full w-full object-cover"
+                      priority={true}
+                    />
+
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background:
+                          'linear-gradient(180deg, rgba(0,1,49,0.02) 0%, rgba(0,1,49,0.12) 54%, rgba(0,1,49,0.84) 100%)',
+                      }}
+                    />
+
+                    <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
+                      <p
+                        className="text-[9px] font-bold uppercase tracking-[0.18em]"
+                        style={{ color: colors.brand.accent }}
+                      >
+                        Connected Growth
+                      </p>
+                      <p className="mt-2 max-w-md text-base font-bold leading-[1.35] text-white sm:text-lg">
+                        Strategy, marketing, sales, CRM, and technology working
+                        together.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Decorative floating system card */}
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.55, duration: 0.55 }}
+                  className="absolute -bottom-5 left-5 hidden rounded-2xl border border-white/90 bg-white/88 px-4 py-3 shadow-[0_18px_45px_rgba(0,1,49,0.12)] backdrop-blur-xl sm:block"
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="flex h-9 w-9 items-center justify-center rounded-xl"
+                      style={{
+                        color: colors.brand.secondary,
+                        backgroundColor: `${colors.brand.secondary}0D`,
+                      }}
+                    >
+                      <Workflow className="h-4 w-4" />
+                    </div>
+
+                    <div>
+                      <p
+                        className="text-[9px] font-bold uppercase tracking-[0.15em]"
+                        style={{ color: colors.brand.secondary }}
+                      >
+                        Integrated
+                      </p>
+                      <p
+                        className="mt-0.5 text-xs font-bold"
+                        style={{ color: colors.brand.primary }}
+                      >
+                        Growth Systems
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
+          </Container>
+        </Section>
+      </ModernSectionBackground>
+
+      {/* ============================================
+          2. WHO WE ARE
+          ============================================ */}
+      <ModernSectionBackground
+        variant="glass-white"
+        className="relative overflow-hidden"
+      >
+        <Section
+          spacing="base"
+          animate
+          background="transparent"
+          className="relative overflow-hidden"
+        >
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 overflow-hidden"
+          >
+            <div
+              className="absolute -left-44 top-20 h-[440px] w-[440px] rounded-full opacity-[0.05] blur-[130px]"
+              style={{ backgroundColor: colors.brand.secondary }}
+            />
+            <div
+              className="absolute -right-44 bottom-0 h-[440px] w-[440px] rounded-full opacity-[0.07] blur-[130px]"
+              style={{ backgroundColor: colors.brand.accent }}
+            />
+          </div>
+
+          <Container size="xl">
+            <div className="relative z-10 mx-auto max-w-7xl">
+              <div className="grid items-start gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:gap-10">
+                {/* Narrative */}
+                <ScrollReveal>
+                  <div className="lg:sticky lg:top-24">
+                    <div
+                      className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5"
+                      style={{
+                        color: colors.brand.secondary,
+                        borderColor: `${colors.brand.secondary}20`,
+                        backgroundColor: 'rgba(255,255,255,0.76)',
+                      }}
+                    >
+                      <Building2 className="h-3.5 w-3.5" />
+                      <span className="text-[10px] font-bold uppercase tracking-[0.18em]">
+                        Who We Are
+                      </span>
+                    </div>
+
+                    <h2
+                      className="mt-5 text-2xl font-bold leading-[1.15] tracking-[-0.03em] sm:text-3xl lg:text-[40px]"
+                      style={{ color: colors.brand.primary }}
+                    >
+                      More Than a Marketing Agency
+                    </h2>
+
+                    <div className="mt-5 space-y-3 text-sm leading-[1.82] text-gray-700">
+                      <p>
+                        Most businesses don't struggle because they lack
+                        marketing activity.
+                      </p>
+
+                      <p className="font-semibold" style={{ color: colors.brand.primary }}>
+                        They struggle because their growth systems are
+                        disconnected.
+                      </p>
+
+                      <p>
+                        Marketing operates separately from sales. Customer data
+                        lives in multiple platforms. Automation is underutilized.
+                        Valuable opportunities are lost between teams, tools,
+                        and processes.
+                      </p>
+
+                      <p>AdvantEdge was created to solve that challenge.</p>
+
+                      <p>
+                        We combine strategic marketing, integrated execution,
+                        and AI-powered business solutions to help organizations
+                        build scalable systems that support long-term growth.
+                      </p>
+                    </div>
+                  </div>
+                </ScrollReveal>
+
+                {/* Highlights */}
+                <StaggerContainer className="grid gap-4 sm:grid-cols-2">
+                  {keyHighlights.map((item, index) => (
+                    <motion.div
+                      key={item.title}
+                      variants={staggerItemVariants}
+                      className="h-full"
+                    >
+                      <motion.div
+                        whileHover={{ y: -5 }}
+                        transition={{
+                          duration: 0.28,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="group relative h-full overflow-hidden rounded-[22px] border border-white/90 bg-white/72 p-5 shadow-[0_16px_46px_rgba(0,1,49,0.055)] backdrop-blur-xl transition-all duration-300 hover:bg-white/95 hover:shadow-[0_24px_65px_rgba(0,1,49,0.10)]"
+                      >
+                        <div
+                          className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
+                          style={{ background: gradients.primary }}
+                        />
+
+                        <span
+                          className="pointer-events-none absolute -right-1 -top-5 text-[72px] font-black leading-none opacity-[0.035]"
+                          style={{ color: colors.brand.primary }}
+                        >
+                          0{index + 1}
+                        </span>
+
+                        <div
+                          className="flex h-11 w-11 items-center justify-center rounded-xl border"
+                          style={{
+                            color: colors.brand.secondary,
+                            borderColor: `${colors.brand.secondary}14`,
+                            backgroundColor: `${colors.brand.secondary}0D`,
+                          }}
+                        >
+                          {item.icon}
                         </div>
-                        <div>
-                          <div className="flex items-baseline gap-1">
-                            <span className="text-xl font-bold" style={{ color: colors.brand.primary }}>500+</span>
+
+                        <h3
+                          className="mt-5 text-base font-bold leading-[1.25]"
+                          style={{ color: colors.brand.primary }}
+                        >
+                          {item.title}
+                        </h3>
+
+                        <p className="mt-3 text-xs leading-[1.75] text-gray-600 sm:text-[13px]">
+                          {item.description}
+                        </p>
+                      </motion.div>
+                    </motion.div>
+                  ))}
+                </StaggerContainer>
+              </div>
+            </div>
+          </Container>
+        </Section>
+      </ModernSectionBackground>
+
+      {/* ============================================
+          3. WHAT WE BELIEVE
+          ============================================ */}
+      <ModernSectionBackground
+        variant="gradient-abstract"
+        className="relative overflow-hidden"
+      >
+        <Section
+          spacing="base"
+          animate
+          background="transparent"
+          className="relative overflow-hidden"
+        >
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 overflow-hidden"
+          >
+            <div
+              className="absolute inset-0 opacity-[0.22]"
+              style={{
+                backgroundImage:
+                  'linear-gradient(rgba(0,1,49,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,1,49,0.04) 1px, transparent 1px)',
+                backgroundSize: '60px 60px',
+              }}
+            />
+          </div>
+
+          <Container size="xl">
+            <div className="relative z-10 mx-auto max-w-7xl">
+              <SectionHeader
+                badge="Our Philosophy"
+                badgeIcon={<Target className="h-4 w-4" />}
+                title="Growth Requires More Than Marketing"
+                description="Modern businesses need more than campaigns."
+                align="center"
+                maxWidth="md"
+              />
+
+              <ScrollReveal>
+                <div className="mx-auto mt-5 max-w-3xl text-center">
+                  <p className="text-sm leading-[1.8] text-gray-600 sm:text-[15px]">
+                    They need connected systems that align strategy, execution,
+                    customer engagement, and operational intelligence.
+                  </p>
+
+                  <p
+                    className="mt-3 text-sm font-bold sm:text-[15px]"
+                    style={{ color: colors.brand.primary }}
+                  >
+                    Our approach combines three core disciplines:
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              <StaggerContainer className="mt-10 grid gap-5 lg:grid-cols-3">
+                {philosophyPillars.map((pillar, index) => (
+                  <motion.div
+                    key={pillar.title}
+                    variants={staggerItemVariants}
+                    className="h-full"
+                  >
+                    <motion.div
+                      whileHover={{ y: -6 }}
+                      transition={{
+                        duration: 0.3,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="group relative h-full overflow-hidden rounded-[24px] border border-white/90 bg-white/74 p-6 shadow-[0_18px_55px_rgba(0,1,49,0.065)] backdrop-blur-xl transition-all duration-300 hover:bg-white/96 hover:shadow-[0_28px_78px_rgba(0,1,49,0.12)]"
+                    >
+                      <div
+                        className="absolute left-0 top-0 h-1 w-full"
+                        style={{
+                          background:
+                            index === 2
+                              ? `linear-gradient(90deg, ${colors.brand.secondary}, ${colors.brand.accent})`
+                              : gradients.primary,
+                        }}
+                      />
+
+                      <div className="flex items-start justify-between gap-4">
+                        <div
+                          className="flex h-12 w-12 items-center justify-center rounded-xl border"
+                          style={{
+                            color: colors.brand.secondary,
+                            borderColor: `${colors.brand.secondary}15`,
+                            backgroundColor: `${colors.brand.secondary}0D`,
+                          }}
+                        >
+                          {pillar.icon}
+                        </div>
+
+                        <span
+                          className="text-[42px] font-black leading-none opacity-[0.05]"
+                          style={{ color: colors.brand.primary }}
+                        >
+                          0{index + 1}
+                        </span>
+                      </div>
+
+                      <h3
+                        className="mt-6 text-lg font-bold leading-[1.2]"
+                        style={{ color: colors.brand.primary }}
+                      >
+                        {pillar.title}
+                      </h3>
+
+                      <p className="mt-3 text-sm leading-[1.78] text-gray-600">
+                        {pillar.description}
+                      </p>
+                    </motion.div>
+                  </motion.div>
+                ))}
+              </StaggerContainer>
+
+              <ScrollReveal delay={0.15}>
+                <div
+                  className="relative mt-8 overflow-hidden rounded-[24px] px-5 py-6 text-center shadow-[0_20px_65px_rgba(0,1,49,0.16)] sm:px-7"
+                  style={{
+                    background:
+                      'linear-gradient(135deg, #000131 0%, #0000aa 130%)',
+                  }}
+                >
+                  <div
+                    aria-hidden="true"
+                    className="absolute -right-24 -top-24 h-64 w-64 rounded-full opacity-20 blur-[80px]"
+                    style={{ backgroundColor: colors.brand.accent }}
+                  />
+
+                  <p className="relative z-10 mx-auto max-w-3xl text-sm font-medium leading-[1.8] text-white/80 sm:text-[15px]">
+                    Together, these capabilities create a growth ecosystem
+                    designed to deliver sustainable and measurable results.
+                  </p>
+                </div>
+              </ScrollReveal>
+            </div>
+          </Container>
+        </Section>
+      </ModernSectionBackground>
+
+      {/* ============================================
+          4. LEADERSHIP TEAM
+          ============================================ */}
+      <ModernSectionBackground
+        variant="glass-white"
+        className="relative overflow-hidden"
+      >
+        <Section
+          spacing="base"
+          animate
+          background="transparent"
+          className="relative overflow-hidden"
+        >
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 overflow-hidden"
+          >
+            <div
+              className="absolute -left-48 top-[20%] h-[500px] w-[500px] rounded-full opacity-[0.05] blur-[145px]"
+              style={{ backgroundColor: colors.brand.secondary }}
+            />
+            <div
+              className="absolute -right-48 bottom-[5%] h-[500px] w-[500px] rounded-full opacity-[0.07] blur-[145px]"
+              style={{ backgroundColor: colors.brand.accent }}
+            />
+          </div>
+
+          <Container size="xl">
+            <div className="relative z-10 mx-auto max-w-7xl">
+              <SectionHeader
+                badge="Leadership"
+                badgeIcon={<Users className="h-4 w-4" />}
+                title="Experienced Leaders Driving Strategic Growth"
+                description="Our leadership team brings together expertise across business development, strategic marketing, communications, customer engagement, operational management, and emerging technologies."
+                align="center"
+                maxWidth="md"
+              />
+
+              <ScrollReveal>
+                <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-[1.8] text-gray-600">
+                  Together, they help organizations navigate growth
+                  opportunities, market expansion, and digital transformation
+                  with greater clarity and confidence.
+                </p>
+              </ScrollReveal>
+
+              <div className="mt-10 space-y-6">
+                {leadership.map((leader, index) => (
+                  <ScrollReveal
+                    key={leader.name}
+                    delay={Math.min(index * 0.08, 0.16)}
+                  >
+                    <motion.article
+                      whileHover={{ y: -3 }}
+                      transition={{
+                        duration: 0.3,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="group relative overflow-hidden rounded-[28px] border border-white/90 bg-white/74 shadow-[0_20px_68px_rgba(0,1,49,0.07)] backdrop-blur-2xl transition-all duration-300 hover:bg-white/94 hover:shadow-[0_30px_90px_rgba(0,1,49,0.12)]"
+                    >
+                      <div
+                        className="absolute inset-y-0 left-0 w-1"
+                        style={{ background: gradients.primary }}
+                      />
+
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute -right-3 -top-10 text-[130px] font-black leading-none tracking-[-0.08em] opacity-[0.028]"
+                        style={{ color: colors.brand.primary }}
+                      >
+                        {leader.number}
+                      </span>
+
+                      <div className="grid lg:grid-cols-[0.72fr_1.28fr]">
+                        {/* Profile identity */}
+                        <div
+                          className={`relative border-b border-gray-200/70 p-5 sm:p-6 lg:border-b-0 lg:p-7 ${
+                            index % 2 === 0
+                              ? 'lg:border-r'
+                              : 'lg:order-2 lg:border-l'
+                          }`}
+                        >
+                          <div className="flex items-start gap-4">
+                            <div
+                              className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-lg font-black text-white shadow-[0_14px_34px_rgba(0,0,170,0.20)]"
+                              style={{ background: gradients.primary }}
+                            >
+                              {leader.initials}
+                            </div>
+
+                            <div>
+                              <p
+                                className="text-[9px] font-bold uppercase tracking-[0.18em]"
+                                style={{ color: colors.brand.secondary }}
+                              >
+                                Leadership Profile {leader.number}
+                              </p>
+
+                              <h3
+                                className="mt-1.5 text-xl font-bold leading-[1.15] tracking-[-0.025em] sm:text-2xl"
+                                style={{ color: colors.brand.primary }}
+                              >
+                                {leader.name}
+                              </h3>
+
+                              <p
+                                className="mt-1 text-sm font-bold"
+                                style={{ color: colors.brand.secondary }}
+                              >
+                                {leader.role}
+                              </p>
+                            </div>
                           </div>
-                          <p className="text-xs text-gray-600 font-medium mt-0.5">Clients Served</p>
+
+                          <div className="mt-6">
+                            <p
+                              className="text-[9px] font-bold uppercase tracking-[0.17em]"
+                              style={{ color: colors.brand.secondary }}
+                            >
+                              Areas of Expertise
+                            </p>
+
+                            <div className="mt-3 flex flex-wrap gap-2">
+                              {leader.expertise.map((item) => (
+                                <span
+                                  key={item}
+                                  className="rounded-full border border-gray-200/80 bg-white/70 px-3 py-1.5 text-[10px] font-semibold text-gray-600"
+                                >
+                                  {item}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+
+                          {leader.source && (
+                            <p className="mt-5 text-[10px] italic text-gray-400">
+                              {leader.source}
+                            </p>
+                          )}
+                        </div>
+
+                        {/* Biography */}
+                        <div
+                          className={`p-5 sm:p-6 lg:p-7 ${
+                            index % 2 === 0 ? '' : 'lg:order-1'
+                          }`}
+                        >
+                          <div className="flex items-center gap-2">
+                            <span
+                              className="h-2 w-2 rounded-full"
+                              style={{ backgroundColor: colors.brand.accent }}
+                            />
+                            <p
+                              className="text-[9px] font-bold uppercase tracking-[0.18em]"
+                              style={{ color: colors.brand.secondary }}
+                            >
+                              Leadership Perspective
+                            </p>
+                          </div>
+
+                          <div className="mt-5 space-y-4">
+                            {leader.bio.map((paragraph) => (
+                              <p
+                                key={paragraph}
+                                className="text-sm leading-[1.84] text-gray-650"
+                              >
+                                {paragraph}
+                              </p>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </GlassCard>
-                  </motion.div>
-                </div>
-              </motion.div>
-            </div>
-          </Container>
-        </Section>
-      </ModernSectionBackground>
-
-      {/* ============================================
-          2. STATS - ANIMATED COUNTERS
-          ============================================ */}
-      <ModernSectionBackground variant="glass-white">
-        <Section spacing="compact" animate background="transparent">
-          <Container size="lg">
-            <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-              {stats.map((stat, index) => (
-                <motion.div key={index} variants={staggerItemVariants}>
-                  <GlassCard variant="base" rounded="xl" padding="md" hover className="text-center h-full">
-                    <div className="text-2xl lg:text-3xl font-bold mb-2" style={{ color: colors.brand.primary }}>
-                      <AnimatedCounter end={stat.number} suffix={stat.suffix} />
-                    </div>
-                    <div className="text-sm text-gray-600 font-semibold">
-                      {stat.label}
-                    </div>
-                  </GlassCard>
-                </motion.div>
-              ))}
-            </StaggerContainer>
-          </Container>
-        </Section>
-      </ModernSectionBackground>
-
-      {/* ============================================
-          3. OUR STORY - WITH IMAGE
-          ============================================ */}
-      <Section spacing="compact" animate>
-        <Container size="lg">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
-            {/* Content */}
-            <ScrollReveal>
-              <div>
-                <div className="mb-4">
-                  <span 
-                    className="inline-flex items-center px-3 py-1.5 rounded-full border-2"
-                    style={{ backgroundColor: '#ffffff', borderColor: colors.brand.accent }}
-                  >
-                    <Rocket className="w-3.5 h-3.5 mr-2" style={{ color: colors.brand.accent }} />
-                    <span className="text-xs font-bold tracking-wide" style={{ color: colors.brand.primary }}>
-                      OUR STORY
-                    </span>
-                  </span>
-                </div>
-
-                <h2 className="text-xl lg:text-2xl font-bold mb-4 leading-tight" style={{ color: colors.brand.primary }}>
-                  Built on Strategic Excellence
-                </h2>
-
-                <div className="space-y-3 text-sm text-gray-700 leading-relaxed">
-                  <p>
-                    AdvantEdge was founded in 2010 with a clear mission: to bring strategic rigor and measurable accountability to marketing. Our founders, coming from top management consulting firms and leading global brands, saw an opportunity to transform how organizations approach marketing.
-                  </p>
-                  <p>
-                    Today, we've grown into a full-service marketing agency serving Fortune 500 companies and high-growth enterprises across three continents. Our success is built on a simple principle: marketing should be a strategic function that drives measurable business outcomes.
-                  </p>
-                  <p>
-                    We combine the strategic thinking of a consultancy with the creative execution of an agency, delivering integrated solutions that generate real business impact.
-                  </p>
-                </div>
-
-                <div className="mt-5">
-                  <Link
-                    to="/services"
-                    className="inline-flex items-center text-sm font-bold transition-all group"
-                    style={{ color: colors.brand.secondary }}
-                  >
-                    Explore Our Services
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Image */}
-            <ScrollReveal delay={0.2}>
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[280px] lg:h-[360px]">
-                <OptimizedImage
-                  src="https://images.unsplash.com/photo-1643391448961-621e0b1bc5b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3Jwb3JhdGUlMjBvZmZpY2UlMjBoZWFkcXVhcnRlcnMlMjBidWlsZGluZyUyMGV4dGVyaW9yfGVufDF8fHx8MTc3NDU2MDg5NXww&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="AdvantEdge corporate headquarters"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <p className="text-sm font-bold opacity-95">Global Headquarters • New York, USA</p>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        </Container>
-      </Section>
-
-      {/* ============================================
-          4. MISSION & VISION - PREMIUM
-          ============================================ */}
-      <ModernSectionBackground variant="gradient-abstract">
-        <Section spacing="compact" animate background="transparent">
-          <Container size="lg">
-            <SectionHeader
-              badge="Our Purpose"
-              badgeIcon={<Target className="w-4 h-4" />}
-              title="Mission & Vision"
-              align="center"
-              maxWidth="2xl"
-            />
-
-            <div className="grid lg:grid-cols-2 gap-8">
-              {/* Mission */}
-              <ScrollReveal>
-                <TiltCard>
-                  <div 
-                    className="relative p-6 lg:p-8 rounded-2xl text-white shadow-2xl overflow-hidden h-full"
-                    style={{ background: gradients.primary }}
-                  >
-                    <div className="absolute inset-0 opacity-10">
-                      <div className="absolute top-10 right-10 w-48 h-48 bg-white rounded-full blur-3xl" />
-                    </div>
-                    
-                    <div className="relative z-10">
-                      <IconBadge 
-                        icon={<Target className="w-8 h-8" />}
-                        size="md"
-                        variant="solid"
-                        className="bg-white !text-gray-900 mb-4"
-                      />
-                      <h3 className="text-lg font-bold mb-3">Our Mission</h3>
-                      <p className="text-sm leading-relaxed opacity-95">
-                        To bring clarity, structure, and accountability to marketing by replacing fragmentation with integration, activity with purpose, and complexity with strategic focus—delivering measurable business outcomes through disciplined execution.
-                      </p>
-                    </div>
-                  </div>
-                </TiltCard>
-              </ScrollReveal>
-
-              {/* Vision */}
-              <ScrollReveal delay={0.1}>
-                <TiltCard>
-                  <div 
-                    className="relative p-6 lg:p-8 rounded-2xl text-white shadow-2xl overflow-hidden h-full"
-                    style={{ background: 'linear-gradient(135deg, #0000aa 0%, #000131 100%)' }}
-                  >
-                    <div className="absolute inset-0 opacity-10">
-                      <div className="absolute bottom-10 left-10 w-48 h-48 bg-white rounded-full blur-3xl" />
-                    </div>
-                    
-                    <div className="relative z-10">
-                      <IconBadge 
-                        icon={<Eye className="w-8 h-8" />}
-                        size="md"
-                        variant="solid"
-                        className="bg-white !text-gray-900 mb-4"
-                      />
-                      <h3 className="text-lg font-bold mb-3">Our Vision</h3>
-                      <p className="text-sm leading-relaxed opacity-95">
-                        To be the most trusted strategic marketing partner for enterprise organizations, recognized globally for transforming marketing into a measurable driver of business growth and competitive advantage.
-                      </p>
-                    </div>
-                  </div>
-                </TiltCard>
-              </ScrollReveal>
-            </div>
-
-            {/* Mission Image */}
-            <ScrollReveal delay={0.2}>
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl mt-8">
-                <OptimizedImage
-                  src="https://images.unsplash.com/photo-1765438868883-43efce4fd145?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHN0cmF0ZWd5JTIwcGxhbm5pbmclMjBzZXNzaW9uJTIwd2hpdGVib2FyZHxlbnwxfHx8fDE3NzQ1NjA4OTV8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Strategic planning session and business strategy"
-                  className="w-full h-[260px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent"></div>
-                <div className="absolute inset-0 flex items-center">
-                  <div className="p-6 lg:p-10 text-white max-w-2xl">
-                    <h4 className="text-base lg:text-lg font-bold mb-2">
-                      Strategy First, Always
-                    </h4>
-                    <p className="text-xs lg:text-sm opacity-95">
-                      Every engagement begins with strategic clarity. We define objectives, develop roadmaps, and ensure every tactical execution aligns with broader business goals.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-          </Container>
-        </Section>
-      </ModernSectionBackground>
-
-      {/* ============================================
-          5. CORE VALUES - WITH IMAGE
-          ============================================ */}
-      <Section spacing="compact" animate>
-        <Container size="lg">
-          <SectionHeader
-            badge="What Drives Us"
-            badgeIcon={<Heart className="w-4 h-4" />}
-            title="Our Core Values"
-            description="The principles that guide everything we do, from strategy development to client relationships."
-            align="center"
-            maxWidth="2xl"
-          />
-
-          <StaggerContainer className="grid md:grid-cols-2 gap-6 mb-8">
-            {coreValues.map((value, index) => (
-              <motion.div key={index} variants={staggerItemVariants}>
-                <HoverCard3D>
-                  <GlassCard variant="base" rounded="xl" padding="md" hover className="h-full">
-                    <IconBadge icon={value.icon} size="md" variant="gradient" animated className="mb-4" />
-                    <h3 className="text-base font-bold mb-2 leading-tight" style={{ color: colors.brand.primary }}>
-                      {value.title}
-                    </h3>
-                    <p className="text-sm text-gray-700 leading-relaxed">
-                      {value.description}
-                    </p>
-                  </GlassCard>
-                </HoverCard3D>
-              </motion.div>
-            ))}
-          </StaggerContainer>
-
-          {/* Values Image */}
-          <ScrollReveal>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <OptimizedImage
-                src="https://images.unsplash.com/photo-1758599543152-a73184816eba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBoYW5kc2hha2UlMjBwYXJ0bmVyc2hpcCUyMGJ1c2luZXNzJTIwZGVhbHxlbnwxfHx8fDE3NzQ1NjA4OTZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Professional partnership and business collaboration"
-                className="w-full h-[260px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6 text-white">
-                <h4 className="text-base lg:text-lg font-bold mb-1">
-                  Partnership Built on Trust
-                </h4>
-                <p className="text-xs lg:text-sm opacity-95 max-w-3xl">
-                  We build long-term relationships based on integrity, transparency, and mutual success. Our clients become partners, and their goals become our mission.
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-        </Container>
-      </Section>
-
-      {/* ============================================
-          6. COMPANY MILESTONES - TIMELINE
-          ============================================ */}
-      <ModernSectionBackground variant="animated-dots">
-        <Section spacing="compact" animate background="transparent">
-          <Container size="lg">
-            <SectionHeader
-              badge="Our Journey"
-              badgeIcon={<TrendingUp className="w-4 h-4" />}
-              title="Company Milestones"
-              description="Key moments in our growth from a startup to a global marketing leader."
-              align="center"
-              maxWidth="2xl"
-            />
-
-            <div className="max-w-4xl mx-auto">
-              <div className="space-y-5">
-                {milestones.map((milestone, index) => (
-                  <ScrollReveal key={index} delay={index * 0.1}>
-                    <div className="relative pl-8 border-l-4" style={{ borderColor: colors.brand.accent }}>
-                      <div 
-                        className="absolute -left-3 top-0 w-6 h-6 rounded-full border-4 border-white shadow-lg"
-                        style={{ backgroundColor: colors.brand.accent }}
-                      />
-                      <GlassCard variant="base" rounded="xl" padding="sm" hover>
-                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                          <h3 className="text-base font-bold" style={{ color: colors.brand.primary }}>
-                            {milestone.title}
-                          </h3>
-                          <span 
-                            className="text-sm font-bold mt-1 sm:mt-0"
-                            style={{ color: colors.brand.accent }}
-                          >
-                            {milestone.year}
-                          </span>
-                        </div>
-                        <p className="text-sm text-gray-700 leading-relaxed">
-                          {milestone.description}
-                        </p>
-                      </GlassCard>
-                    </div>
+                    </motion.article>
                   </ScrollReveal>
                 ))}
               </div>
             </div>
-
-            {/* Timeline Image */}
-            <ScrollReveal delay={0.4}>
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl mt-8">
-                <OptimizedImage
-                  src="https://images.unsplash.com/photo-1744854185466-cf95c3064cec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGdyb3d0aCUyMGNoYXJ0JTIwc3VjY2VzcyUyMG1ldHJpY3N8ZW58MXx8fHwxNzc0NTYwODk2fDA&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Business growth metrics and success charts"
-                  className="w-full h-[220px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
-                <div className="absolute inset-0 flex items-center">
-                  <div className="p-6 text-white">
-                    <h4 className="text-base font-bold mb-1">Consistent Growth, Proven Results</h4>
-                    <p className="text-xs opacity-95 max-w-xl">15 years of sustained growth and client success</p>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
           </Container>
         </Section>
       </ModernSectionBackground>
 
       {/* ============================================
-          7. LEADERSHIP TEAM
+          5. WHY CLIENTS WORK WITH US
           ============================================ */}
-      <Section spacing="compact" animate>
-        <Container size="lg">
-          <SectionHeader
-            badge="Leadership"
-            badgeIcon={<Users className="w-4 h-4" />}
-            title="Executive Team"
-            description="Seasoned leaders with decades of combined experience in strategy, marketing, and business transformation."
-            align="center"
-            maxWidth="2xl"
-          />
-
-          <StaggerContainer className="grid md:grid-cols-3 gap-6 mb-8">
-            {leadership.map((leader, index) => (
-              <motion.div key={index} variants={staggerItemVariants}>
-                <HoverCard3D>
-                  <GlassCard variant="base" rounded="xl" padding="md" hover className="text-center h-full">
-                    <div 
-                      className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center shadow-xl"
-                      style={{ background: gradients.primary }}
-                    >
-                      <Users className="w-7 h-7 text-white" />
-                    </div>
-                    <h3 className="text-base font-bold mb-1" style={{ color: colors.brand.primary }}>
-                      {leader.name}
-                    </h3>
-                    <p className="text-xs font-semibold text-gray-600 mb-2">
-                      {leader.role}
-                    </p>
-                    <p className="text-xs text-gray-700 leading-relaxed">
-                      {leader.bio}
-                    </p>
-                  </GlassCard>
-                </HoverCard3D>
-              </motion.div>
-            ))}
-          </StaggerContainer>
-
-          {/* Team Collaboration Image */}
-          <ScrollReveal>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <OptimizedImage
-                src="https://images.unsplash.com/photo-1758873268663-5a362616b5a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaXZlcnNlJTIwdGVhbSUyMGNvbGxhYm9yYXRpb24lMjBtb2Rlcm4lMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzc0NTYwODk2fDA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Diverse team collaboration in modern workspace"
-                className="w-full h-[260px] object-cover"
+      <ModernSectionBackground
+        variant="animated-dots"
+        className="relative overflow-hidden"
+      >
+        <Section
+          spacing="base"
+          animate
+          background="transparent"
+          className="relative overflow-hidden"
+        >
+          <Container size="xl">
+            <div className="mx-auto max-w-7xl">
+              <SectionHeader
+                badge="Why AdvantEdge"
+                badgeIcon={<Shield className="h-4 w-4" />}
+                title="Built for Businesses Focused on Long-Term Growth"
+                description="Organizations choose AdvantEdge because they need more than isolated marketing services."
+                align="center"
+                maxWidth="md"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6 text-white">
-                <h4 className="text-base lg:text-lg font-bold mb-1">
-                  Diverse Expertise, Unified Vision
-                </h4>
-                <p className="text-xs lg:text-sm opacity-95 max-w-3xl">
-                  Our team brings together strategists, creatives, analysts, and technologists—all working seamlessly to deliver integrated marketing solutions.
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-        </Container>
-      </Section>
 
-      {/* ============================================
-          8. AWARDS & RECOGNITION
-          ============================================ */}
-      <ModernSectionBackground variant="glass-blur">
-        <Section spacing="compact" animate background="transparent">
-          <Container size="lg">
-            <SectionHeader
-              badge="Recognition"
-              badgeIcon={<Award className="w-4 h-4" />}
-              title="Awards & Achievements"
-              description="Industry recognition for our commitment to excellence and innovation."
-              align="center"
-              maxWidth="2xl"
-            />
-
-            <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              {awards.map((award, index) => (
-                <motion.div key={index} variants={staggerItemVariants}>
-                  <HoverCard3D>
-                    <GlassCard variant="base" rounded="xl" padding="sm" hover className="text-center h-full">
-                      <IconBadge 
-                        icon={<Star className="w-6 h-6" />} 
-                        size="md" 
-                        variant="gradient" 
-                        animated 
-                        className="mx-auto mb-4" 
-                      />
-                      <div className="text-2xl font-bold mb-2" style={{ color: colors.brand.accent }}>
-                        {award.year}
-                      </div>
-                      <h4 className="text-base font-bold mb-2 leading-tight" style={{ color: colors.brand.primary }}>
-                        {award.title}
-                      </h4>
-                      <p className="text-xs text-gray-600">
-                        {award.organization}
-                      </p>
-                    </GlassCard>
-                  </HoverCard3D>
-                </motion.div>
-              ))}
-            </StaggerContainer>
-
-            {/* Awards Image */}
-            <ScrollReveal>
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <OptimizedImage
-                  src="https://images.unsplash.com/photo-1764874299025-d8b2251f307d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGF3YXJkcyUyMHRyb3BoeSUyMGFjaGlldmVtZW50fGVufDF8fHx8MTc3NDU2MDg5N3ww&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Business awards and achievements"
-                  className="w-full h-[300px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
-                <div className="absolute inset-0 flex items-center">
-                  <div className="p-8 text-white">
-                    <h4 className="text-xl font-bold mb-2">Industry-Leading Excellence</h4>
-                    <p className="text-sm opacity-95 max-w-xl">Recognized by leading organizations for our innovation and results</p>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-          </Container>
-        </Section>
-      </ModernSectionBackground>
-
-      {/* ============================================
-          9. GLOBAL LOCATIONS
-          ============================================ */}
-      <Section spacing="base" animate>
-        <Container size="lg">
-          <SectionHeader
-            badge="Global Presence"
-            badgeIcon={<Globe className="w-4 h-4" />}
-            title="Our Locations"
-            description="Strategic presence in key business centers across three continents."
-            align="center"
-            maxWidth="2xl"
-          />
-
-          <StaggerContainer className="grid md:grid-cols-3 gap-6 mb-12">
-            {locations.map((location, index) => (
-              <motion.div key={index} variants={staggerItemVariants}>
-                <HoverCard3D>
-                  <GlassCard variant="base" rounded="xl" padding="md" hover className="h-full">
-                    <IconBadge 
-                      icon={<MapPin className="w-6 h-6" />} 
-                      size="md" 
-                      variant="gradient" 
-                      animated 
-                      className="mb-6" 
-                    />
-                    <h3 className="text-xl font-bold mb-2" style={{ color: colors.brand.primary }}>
-                      {location.city}
-                    </h3>
-                    <p className="text-sm font-semibold text-gray-600 mb-4">
-                      {location.country}
-                    </p>
-                    <div className="space-y-2 text-sm text-gray-700">
-                      <p className="leading-relaxed">{location.address}</p>
-                      <p className="font-semibold" style={{ color: colors.brand.secondary }}>
-                        {location.phone}
-                      </p>
-                    </div>
-                  </GlassCard>
-                </HoverCard3D>
-              </motion.div>
-            ))}
-          </StaggerContainer>
-
-          {/* Global Network Image */}
-          <ScrollReveal>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <OptimizedImage
-                src="https://images.unsplash.com/photo-1570106413982-7f2897b8d0c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnbG9iYWwlMjBidXNpbmVzcyUyMHdvcmxkJTIwbWFwJTIwbmV0d29ya3xlbnwxfHx8fDE3NzQ0NDg1OTF8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Global business network and world map"
-                className="w-full h-[300px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8 text-white text-center">
-                <h4 className="text-lg lg:text-xl font-bold mb-2">
-                  Global Reach, Local Expertise
-                </h4>
-                <p className="text-sm lg:text-base opacity-95 max-w-3xl mx-auto">
-                  With offices across three continents, we combine global perspective with deep local market knowledge to serve clients worldwide.
-                </p>
-              </div>
-            </div>
-          </ScrollReveal>
-        </Container>
-      </Section>
-
-      {/* ============================================
-          10. COMPANY CULTURE - WITH IMAGE
-          ============================================ */}
-      <ModernSectionBackground variant="image-overlay-workspace">
-        <Section spacing="base" animate background="transparent">
-          <Container size="lg">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Image First */}
               <ScrollReveal>
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl h-[400px]">
-                  <OptimizedImage
-                    src="https://images.unsplash.com/photo-1761912915167-558fa68f16b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21wYW55JTIwY3VsdHVyZSUyMHRlYW0lMjBidWlsZGluZyUyMG9mZmljZXxlbnwxfHx8fDE3NzQ1NjA4OTd8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                    alt="Company culture and team building"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent"></div>
-                </div>
-              </ScrollReveal>
-
-              {/* Content */}
-              <ScrollReveal delay={0.2}>
-                <div>
-                  <div className="mb-6">
-                    <span 
-                      className="inline-flex items-center px-4 py-2 rounded-full border-2"
-                      style={{ backgroundColor: '#ffffff', borderColor: colors.brand.accent }}
-                    >
-                      <Heart className="w-4 h-4 mr-2" style={{ color: colors.brand.accent }} />
-                      <span className="text-sm font-bold tracking-wide" style={{ color: colors.brand.primary }}>
-                        OUR CULTURE
-                      </span>
-                    </span>
-                  </div>
-
-                  <h2 className="text-xl lg:text-2xl font-bold mb-4 leading-tight" style={{ color: colors.brand.primary }}>
-                    Where Excellence Meets Collaboration
-                  </h2>
-
-                  <div className="space-y-3 text-sm text-gray-700 leading-relaxed">
-                    <p>
-                      At AdvantEdge, we've built a culture that attracts top talent and fosters continuous innovation. We believe in challenging work, professional growth, and maintaining work-life balance.
-                    </p>
-                    <p>
-                      Our team members are encouraged to think strategically, collaborate openly, and take ownership of their work. We invest heavily in professional development and create opportunities for career advancement.
-                    </p>
-                  </div>
-
-                  <div className="mt-5 grid grid-cols-2 gap-3">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
-                      <span className="text-sm font-semibold text-gray-700">Continuous Learning</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
-                      <span className="text-sm font-semibold text-gray-700">Career Growth</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
-                      <span className="text-sm font-semibold text-gray-700">Work-Life Balance</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: colors.brand.primary }} />
-                      <span className="text-sm font-semibold text-gray-700">Collaborative Teams</span>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
-          </Container>
-        </Section>
-      </ModernSectionBackground>
-
-      {/* ============================================
-          11. CAREERS - JOIN OUR TEAM
-          ============================================ */}
-      <Section spacing="base" animate>
-        <Container size="lg">
-          <SectionHeader
-            badge="Careers"
-            badgeIcon={<Briefcase className="w-4 h-4" />}
-            title="Join Our Team"
-            description="We're always looking for talented professionals who are passionate about strategic marketing and driving business results."
-            align="center"
-            maxWidth="2xl"
-          />
-
-          <ScrollReveal>
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl mb-12">
-              <OptimizedImage
-                src="https://images.unsplash.com/photo-1758518727653-5650fd9e146c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBjYXJlZXIlMjBvcHBvcnR1bml0eSUyMGhpcmluZ3xlbnwxfHx8fDE3NzQ1NjA4OTh8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Career opportunities and professional hiring"
-                className="w-full h-[350px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12 text-white text-center">
-                <h3 className="text-2xl lg:text-3xl font-bold mb-3">
-                  Build Your Career at AdvantEdge
-                </h3>
-                <p className="text-base lg:text-lg opacity-95 max-w-3xl mx-auto mb-5">
-                  Work with top brands, solve complex challenges, and grow alongside industry-leading professionals.
+                <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-[1.8] text-gray-600">
+                  They need a strategic partner that understands how marketing,
+                  sales, customer engagement, CRM, automation, and AI influence
+                  business performance.
                 </p>
-                <MagneticButton strength={0.3}>
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-sm shadow-2xl transition-all duration-300 group border-2"
-                    style={{ backgroundColor: colors.brand.accent, borderColor: colors.brand.accent, color: colors.brand.primary }}
+              </ScrollReveal>
+
+              <StaggerContainer className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                {whyPillars.map((pillar, index) => (
+                  <motion.div
+                    key={pillar.title}
+                    variants={staggerItemVariants}
+                    className="h-full"
                   >
-                    View Open Positions
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </MagneticButton>
-              </div>
-            </div>
-          </ScrollReveal>
+                    <motion.div
+                      whileHover={{ y: -6 }}
+                      transition={{
+                        duration: 0.28,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      className="group relative h-full overflow-hidden rounded-[22px] border border-white/90 bg-white/72 p-5 shadow-[0_16px_48px_rgba(0,1,49,0.06)] backdrop-blur-xl transition-all duration-300 hover:bg-white/95 hover:shadow-[0_26px_72px_rgba(0,1,49,0.11)]"
+                    >
+                      <span
+                        className="pointer-events-none absolute -right-2 -top-5 text-[74px] font-black leading-none opacity-[0.035]"
+                        style={{ color: colors.brand.primary }}
+                      >
+                        0{index + 1}
+                      </span>
 
-          <StaggerContainer className="grid md:grid-cols-3 gap-6">
-            {[
-              { title: 'Competitive Compensation', icon: <BarChart3 className="w-6 h-6" /> },
-              { title: 'Professional Development', icon: <Lightbulb className="w-6 h-6" /> },
-              { title: 'Global Opportunities', icon: <Globe className="w-6 h-6" /> },
-            ].map((benefit, index) => (
-              <motion.div key={index} variants={staggerItemVariants}>
-                <GlassCard variant="base" rounded="xl" padding="md" hover className="text-center">
-                  <IconBadge icon={benefit.icon} size="md" variant="gradient" animated className="mx-auto mb-4" />
-                  <h4 className="text-base font-bold" style={{ color: colors.brand.primary }}>
-                    {benefit.title}
-                  </h4>
-                </GlassCard>
-              </motion.div>
-            ))}
-          </StaggerContainer>
-        </Container>
-      </Section>
+                      <div
+                        className="flex h-11 w-11 items-center justify-center rounded-xl border"
+                        style={{
+                          color: colors.brand.secondary,
+                          borderColor: `${colors.brand.secondary}14`,
+                          backgroundColor: `${colors.brand.secondary}0D`,
+                        }}
+                      >
+                        {pillar.icon}
+                      </div>
+
+                      <h3
+                        className="mt-5 text-base font-bold leading-[1.25]"
+                        style={{ color: colors.brand.primary }}
+                      >
+                        {pillar.title}
+                      </h3>
+
+                      <p className="mt-3 text-xs leading-[1.75] text-gray-600 sm:text-[13px]">
+                        {pillar.description}
+                      </p>
+
+                      <div
+                        className="mt-5 h-1 w-10 rounded-full transition-all duration-300 group-hover:w-16"
+                        style={{ background: gradients.primary }}
+                      />
+                    </motion.div>
+                  </motion.div>
+                ))}
+              </StaggerContainer>
+            </div>
+          </Container>
+        </Section>
+      </ModernSectionBackground>
 
       {/* ============================================
-          12. FINAL CTA - GET IN TOUCH
+          6. OUR APPROACH
           ============================================ */}
-      <ModernSectionBackground variant="mesh-gradient-purple">
-        <Section spacing="compact" animate background="transparent">
-          <Container size="md">
-            <div className="text-center">
-              <ScrollReveal>
-                <GlassCard variant="base" rounded="2xl" padding="base" className="shadow-2xl border border-white/40">
-                  <IconBadge 
-                    icon={<Rocket className="w-6 h-6" />}
-                    size="md"
-                    variant="gradient"
-                    animated
-                    className="mx-auto mb-4"
-                  />
+      <ModernSectionBackground
+        variant="mesh-gradient-purple"
+        className="relative overflow-hidden"
+      >
+        <Section
+          spacing="base"
+          animate
+          background="transparent"
+          className="relative overflow-hidden"
+        >
+          <Container size="xl">
+            <div className="mx-auto max-w-7xl">
+              <SectionHeader
+                badge="How We Work"
+                badgeIcon={<Workflow className="h-4 w-4" />}
+                title="A Framework Designed for Sustainable Growth"
+                align="center"
+                maxWidth="md"
+              />
 
-                  <h2 className="text-xl sm:text-2xl font-bold mb-3 leading-tight" style={{ color: colors.brand.primary }}>
-                    Ready to Transform Your Marketing?
+              <div className="relative mt-10">
+                {/* Desktop connector */}
+                <div
+                  aria-hidden="true"
+                  className="absolute left-[12.5%] right-[12.5%] top-7 hidden h-px lg:block"
+                  style={{
+                    background: `linear-gradient(90deg, transparent, ${colors.brand.secondary}35 8%, ${colors.brand.secondary}35 92%, transparent)`,
+                  }}
+                />
+
+                <StaggerContainer className="relative grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+                  {approachSteps.map((step, index) => (
+                    <motion.div
+                      key={step.number}
+                      variants={staggerItemVariants}
+                      className="h-full"
+                    >
+                      <motion.div
+                        whileHover={{ y: -5 }}
+                        transition={{
+                          duration: 0.28,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="group relative h-full"
+                      >
+                        <div className="relative z-10 mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border-[5px] border-white text-sm font-black text-white shadow-[0_10px_30px_rgba(0,1,49,0.18)] lg:mb-5"
+                          style={{ background: gradients.primary }}
+                        >
+                          {step.number}
+                        </div>
+
+                        <div className="h-[calc(100%-72px)] overflow-hidden rounded-[22px] border border-white/90 bg-white/72 p-5 text-center shadow-[0_16px_48px_rgba(0,1,49,0.06)] backdrop-blur-xl transition-all duration-300 group-hover:bg-white/95 group-hover:shadow-[0_26px_72px_rgba(0,1,49,0.11)]">
+                          <div
+                            className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl"
+                            style={{
+                              color: colors.brand.secondary,
+                              backgroundColor: `${colors.brand.secondary}0D`,
+                            }}
+                          >
+                            {step.icon}
+                          </div>
+
+                          <h3
+                            className="mt-4 text-base font-bold leading-[1.25]"
+                            style={{ color: colors.brand.primary }}
+                          >
+                            {step.title}
+                          </h3>
+
+                          <p className="mt-3 text-xs leading-[1.75] text-gray-600 sm:text-[13px]">
+                            {step.description}
+                          </p>
+                        </div>
+                      </motion.div>
+                    </motion.div>
+                  ))}
+                </StaggerContainer>
+              </div>
+            </div>
+          </Container>
+        </Section>
+      </ModernSectionBackground>
+
+      {/* ============================================
+          7. FINAL CTA
+          ============================================ */}
+      <ModernSectionBackground
+        variant="image-overlay-workspace"
+        className="relative overflow-hidden"
+      >
+        <section className="relative overflow-hidden bg-transparent px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(135deg, rgba(0,1,49,0.94) 0%, rgba(0,1,49,0.84) 46%, rgba(0,0,170,0.66) 100%)',
+            }}
+          />
+
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-24 top-0 h-[420px] w-[420px] rounded-full opacity-20 blur-[125px]"
+            style={{ backgroundColor: colors.brand.accent }}
+          />
+
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-32 bottom-0 h-[420px] w-[420px] rounded-full opacity-18 blur-[125px]"
+            style={{ backgroundColor: colors.brand.secondary }}
+          />
+
+          <Container size="lg">
+            <ScrollReveal>
+              <div className="relative z-10 mx-auto max-w-5xl overflow-hidden rounded-[30px] border border-white/15 bg-white/[0.075] px-5 py-8 text-center shadow-[0_32px_110px_rgba(0,1,49,0.36)] backdrop-blur-2xl sm:px-8 sm:py-10 lg:px-10 lg:py-11">
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 opacity-[0.08]"
+                  style={{
+                    backgroundImage:
+                      'linear-gradient(rgba(255,255,255,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.10) 1px, transparent 1px)',
+                    backgroundSize: '54px 54px',
+                  }}
+                />
+
+                <div className="relative z-10">
+                  <div
+                    className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl border border-white/15 bg-white/10"
+                    style={{ color: colors.brand.accent }}
+                  >
+                    <Rocket className="h-6 w-6" />
+                  </div>
+
+                  <h2 className="mx-auto mt-5 max-w-3xl text-2xl font-bold leading-[1.15] tracking-[-0.03em] text-white sm:text-3xl lg:text-[40px]">
+                    Build a Smarter Growth Engine
                   </h2>
 
-                  <p className="text-sm text-gray-700 mb-5 max-w-2xl mx-auto leading-relaxed">
-                    Let's discuss how AdvantEdge can help you achieve your business objectives through strategic, integrated marketing solutions.
+                  <p className="mx-auto mt-4 max-w-3xl text-sm leading-[1.85] text-white/66">
+                    Let's identify where your strategy, marketing, CRM,
+                    customer engagement, and AI systems are limiting growth-and
+                    build a connected framework designed for measurable
+                    business outcomes.
                   </p>
 
-                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
                     <MagneticButton strength={0.3}>
                       <Link
                         to="/contact"
-                        className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-white font-bold text-sm shadow-2xl hover:shadow-3xl transition-all duration-300 group border-2 border-transparent"
+                        className="group inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-sm font-bold text-white shadow-[0_15px_38px_rgba(0,0,170,0.30)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_48px_rgba(0,0,170,0.42)]"
                         style={{ background: gradients.primary }}
                       >
-                        Contact Us
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                        Book a Strategy Call
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                       </Link>
                     </MagneticButton>
 
                     <MagneticButton strength={0.2}>
                       <Link
                         to="/services"
-                        className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-sm border-2 transition-all duration-300 hover:shadow-lg bg-white"
-                        style={{ borderColor: colors.brand.primary, color: colors.brand.primary }}
+                        className="group inline-flex items-center justify-center rounded-xl border border-white/25 bg-white/10 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/16"
                       >
-                        Explore Services
+                        Explore Growth Solutions
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                       </Link>
                     </MagneticButton>
                   </div>
-                </GlassCard>
-              </ScrollReveal>
-            </div>
+
+                  <div className="mt-8 border-t border-white/10 pt-6">
+                    <p className="mx-auto max-w-3xl text-xs font-medium leading-[1.7] text-white/52 sm:text-sm">
+                      We partner with growth-focused organizations seeking
+                      strategic clarity, integrated execution, and scalable
+                      growth.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
           </Container>
-        </Section>
+        </section>
       </ModernSectionBackground>
     </PageBackground>
   );
