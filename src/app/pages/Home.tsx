@@ -353,57 +353,51 @@ export function HomePage() {
 
 
 
+
+
+
+
 {/* ============================================
     1. HOME MEGA HERO SECTION
-    CORRECTED & STABLE VERSION
     ============================================ */}
 
 <ModernSectionBackground
   variant="image-overlay-office"
-  className="adv-home-mega-hero relative isolate min-h-[calc(100vh-72px)] w-full overflow-hidden"
+  className="mega-home-hero relative isolate min-h-[calc(100vh-72px)] w-full overflow-hidden"
 >
   {/* ============================================
-      HERO-ONLY CSS
+      SELF-CONTAINED HERO ANIMATIONS
       ============================================ */}
 
   <style>
     {`
-      /* ==========================================
-         BACKGROUND SLIDER
-         ========================================== */
-
-      .adv-home-mega-hero .adv-mega-bg {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      .mega-home-hero .mega-bg-slide {
         opacity: 0;
-        transform: scale(1.065);
-        animation: advMegaBackground 32s infinite;
+        transform: scale(1.07);
+        animation: megaHeroBackground 32s infinite;
         will-change: opacity, transform;
       }
 
-      .adv-home-mega-hero .adv-mega-bg-1 {
+      .mega-home-hero .mega-bg-slide:nth-child(1) {
         animation-delay: 0s;
       }
 
-      .adv-home-mega-hero .adv-mega-bg-2 {
+      .mega-home-hero .mega-bg-slide:nth-child(2) {
         animation-delay: 8s;
       }
 
-      .adv-home-mega-hero .adv-mega-bg-3 {
+      .mega-home-hero .mega-bg-slide:nth-child(3) {
         animation-delay: 16s;
       }
 
-      .adv-home-mega-hero .adv-mega-bg-4 {
+      .mega-home-hero .mega-bg-slide:nth-child(4) {
         animation-delay: 24s;
       }
 
-      @keyframes advMegaBackground {
+      @keyframes megaHeroBackground {
         0% {
           opacity: 0;
-          transform: scale(1.065);
+          transform: scale(1.07);
         }
 
         5% {
@@ -425,14 +419,7 @@ export function HomePage() {
         }
       }
 
-      /* ==========================================
-         ORBIT ANIMATIONS
-         IMPORTANT:
-         rotation is applied to an INNER element
-         so it does not override translate centering
-         ========================================== */
-
-      @keyframes advMegaOrbit {
+      @keyframes megaHeroOrbit {
         from {
           transform: rotate(0deg);
         }
@@ -442,7 +429,7 @@ export function HomePage() {
         }
       }
 
-      @keyframes advMegaOrbitReverse {
+      @keyframes megaHeroOrbitReverse {
         from {
           transform: rotate(360deg);
         }
@@ -452,22 +439,10 @@ export function HomePage() {
         }
       }
 
-      .adv-home-mega-hero .adv-mega-orbit {
-        animation: advMegaOrbit 52s linear infinite;
-      }
-
-      .adv-home-mega-hero .adv-mega-orbit-reverse {
-        animation: advMegaOrbitReverse 68s linear infinite;
-      }
-
-      /* ==========================================
-         FLOATING UI
-         ========================================== */
-
-      @keyframes advMegaFloat {
+      @keyframes megaHeroFloat {
         0%,
         100% {
-          transform: translateY(0px);
+          transform: translateY(0);
         }
 
         50% {
@@ -475,7 +450,7 @@ export function HomePage() {
         }
       }
 
-      @keyframes advMegaFloatReverse {
+      @keyframes megaHeroFloatReverse {
         0%,
         100% {
           transform: translateY(-4px);
@@ -486,19 +461,7 @@ export function HomePage() {
         }
       }
 
-      .adv-home-mega-hero .adv-mega-float {
-        animation: advMegaFloat 6s ease-in-out infinite;
-      }
-
-      .adv-home-mega-hero .adv-mega-float-reverse {
-        animation: advMegaFloatReverse 7s ease-in-out infinite;
-      }
-
-      /* ==========================================
-         STATUS PULSE
-         ========================================== */
-
-      @keyframes advMegaPulse {
+      @keyframes megaHeroPulse {
         0%,
         100% {
           opacity: 0.45;
@@ -511,15 +474,7 @@ export function HomePage() {
         }
       }
 
-      .adv-home-mega-hero .adv-mega-pulse {
-        animation: advMegaPulse 2.8s ease-in-out infinite;
-      }
-
-      /* ==========================================
-         AMBIENT GLOW
-         ========================================== */
-
-      @keyframes advMegaGlow {
+      @keyframes megaHeroGlow {
         0%,
         100% {
           opacity: 0.55;
@@ -532,90 +487,110 @@ export function HomePage() {
         }
       }
 
-      .adv-home-mega-hero .adv-mega-glow {
-        animation: advMegaGlow 9s ease-in-out infinite;
+      @keyframes megaHeroLine {
+        0% {
+          transform: scaleX(0);
+          transform-origin: left;
+        }
+
+        45%,
+        100% {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
       }
 
-      /* ==========================================
-         REDUCED MOTION
-         ========================================== */
+      .mega-home-hero .mega-orbit {
+        animation: megaHeroOrbit 52s linear infinite;
+      }
+
+      .mega-home-hero .mega-orbit-reverse {
+        animation: megaHeroOrbitReverse 68s linear infinite;
+      }
+
+      .mega-home-hero .mega-float {
+        animation: megaHeroFloat 6s ease-in-out infinite;
+      }
+
+      .mega-home-hero .mega-float-reverse {
+        animation: megaHeroFloatReverse 7s ease-in-out infinite;
+      }
+
+      .mega-home-hero .mega-pulse {
+        animation: megaHeroPulse 2.8s ease-in-out infinite;
+      }
+
+      .mega-home-hero .mega-glow {
+        animation: megaHeroGlow 9s ease-in-out infinite;
+      }
+
+      .mega-home-hero .mega-progress {
+        animation: megaHeroLine 8s linear infinite;
+      }
 
       @media (prefers-reduced-motion: reduce) {
-        .adv-home-mega-hero .adv-mega-bg,
-        .adv-home-mega-hero .adv-mega-orbit,
-        .adv-home-mega-hero .adv-mega-orbit-reverse,
-        .adv-home-mega-hero .adv-mega-float,
-        .adv-home-mega-hero .adv-mega-float-reverse,
-        .adv-home-mega-hero .adv-mega-pulse,
-        .adv-home-mega-hero .adv-mega-glow {
+        .mega-home-hero .mega-bg-slide,
+        .mega-home-hero .mega-orbit,
+        .mega-home-hero .mega-orbit-reverse,
+        .mega-home-hero .mega-float,
+        .mega-home-hero .mega-float-reverse,
+        .mega-home-hero .mega-pulse,
+        .mega-home-hero .mega-glow,
+        .mega-home-hero .mega-progress {
           animation: none !important;
         }
 
-        .adv-home-mega-hero .adv-mega-bg-1 {
-          opacity: 1 !important;
-          transform: none !important;
-        }
-
-        .adv-home-mega-hero .adv-mega-bg-2,
-        .adv-home-mega-hero .adv-mega-bg-3,
-        .adv-home-mega-hero .adv-mega-bg-4 {
-          opacity: 0 !important;
+        .mega-home-hero .mega-bg-slide:first-child {
+          opacity: 1;
+          transform: none;
         }
       }
     `}
   </style>
 
   {/* ============================================
-      FULL-WIDTH CINEMATIC BACKGROUND SLIDER
+      FULL WIDTH CINEMATIC BACKGROUND SLIDER
       ============================================ */}
 
   <div
     aria-hidden="true"
     className="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-[#080915]"
   >
-    {/* Slide 01 */}
+    <div className="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2400&q=90"
+        alt=""
+        loading="eager"
+        decoding="async"
+        className="mega-bg-slide absolute inset-0 h-full w-full object-cover object-center"
+      />
 
-    <img
-      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=2400&q=90"
-      alt=""
-      loading="eager"
-      decoding="async"
-      className="adv-mega-bg adv-mega-bg-1"
-    />
+      <img
+        src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2400&q=90"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="mega-bg-slide absolute inset-0 h-full w-full object-cover object-center"
+      />
 
-    {/* Slide 02 */}
+      <img
+        src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2400&q=90"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="mega-bg-slide absolute inset-0 h-full w-full object-cover object-center"
+      />
 
-    <img
-      src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2400&q=90"
-      alt=""
-      loading="lazy"
-      decoding="async"
-      className="adv-mega-bg adv-mega-bg-2"
-    />
+      <img
+        src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=2400&q=90"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="mega-bg-slide absolute inset-0 h-full w-full object-cover object-center"
+      />
+    </div>
 
-    {/* Slide 03 */}
-
-    <img
-      src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2400&q=90"
-      alt=""
-      loading="lazy"
-      decoding="async"
-      className="adv-mega-bg adv-mega-bg-3"
-    />
-
-    {/* Slide 04 */}
-
-    <img
-      src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=2400&q=90"
-      alt=""
-      loading="lazy"
-      decoding="async"
-      className="adv-mega-bg adv-mega-bg-4"
-    />
-
-    {/* ============================================
-        CINEMATIC IMAGE TREATMENT
-        ============================================ */}
+    {/* Cinematic overlays */}
 
     <div className="absolute inset-0 bg-black/[0.42]" />
 
@@ -623,7 +598,7 @@ export function HomePage() {
       className="absolute inset-0"
       style={{
         background:
-          'linear-gradient(90deg, rgba(7,8,18,0.90) 0%, rgba(7,8,18,0.78) 35%, rgba(7,8,18,0.48) 63%, rgba(7,8,18,0.60) 100%)',
+          "linear-gradient(90deg, rgba(7,8,18,0.90) 0%, rgba(7,8,18,0.78) 35%, rgba(7,8,18,0.48) 63%, rgba(7,8,18,0.60) 100%)",
       }}
     />
 
@@ -631,70 +606,44 @@ export function HomePage() {
       className="absolute inset-0"
       style={{
         background:
-          'linear-gradient(180deg, rgba(5,6,14,0.22) 0%, rgba(5,6,14,0.08) 45%, rgba(5,6,14,0.75) 100%)',
+          "linear-gradient(180deg, rgba(5,6,14,0.22) 0%, rgba(5,6,14,0.08) 45%, rgba(5,6,14,0.75) 100%)",
       }}
     />
 
-    {/* ============================================
-        BRAND ATMOSPHERIC GLOWS
-        ============================================ */}
+    {/* Brand atmospheric glow */}
 
     <div
-      className="
-        adv-mega-glow
-        absolute
-        -left-64
-        top-[15%]
-        h-[520px]
-        w-[520px]
-        rounded-full
-        opacity-[0.10]
-        blur-[160px]
-      "
+      className="mega-glow absolute -left-64 top-[15%] h-[520px] w-[520px] rounded-full opacity-[0.10] blur-[160px]"
       style={{
         backgroundColor: colors.brand.secondary,
       }}
     />
 
     <div
-      className="
-        adv-mega-glow
-        absolute
-        -right-52
-        bottom-[4%]
-        h-[500px]
-        w-[500px]
-        rounded-full
-        opacity-[0.10]
-        blur-[150px]
-      "
+      className="mega-glow absolute -right-52 bottom-[4%] h-[500px] w-[500px] rounded-full opacity-[0.10] blur-[150px]"
       style={{
         backgroundColor: colors.brand.accent,
       }}
     />
 
-    {/* ============================================
-        TECHNICAL GRID
-        ============================================ */}
+    {/* Technical grid */}
 
     <div
       className="absolute inset-0 opacity-[0.035]"
       style={{
         backgroundImage:
-          'linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)',
-        backgroundSize: '76px 76px',
+          "linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)",
+        backgroundSize: "76px 76px",
       }}
     />
 
-    {/* ============================================
-        UPPER RADIAL LIGHT
-        ============================================ */}
+    {/* Top radial lighting */}
 
     <div
       className="absolute inset-0"
       style={{
         background:
-          'radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12), transparent 42%)',
+          "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12), transparent 42%)",
       }}
     />
   </div>
@@ -708,12 +657,8 @@ export function HomePage() {
     style={{
       background: gradients.primary,
     }}
-    initial={{
-      width: 0,
-    }}
-    animate={{
-      width: '100%',
-    }}
+    initial={{ width: 0 }}
+    animate={{ width: "100%" }}
     transition={{
       duration: 1.2,
       ease: [0.22, 1, 0.36, 1],
@@ -721,7 +666,7 @@ export function HomePage() {
   />
 
   {/* ============================================
-      MAIN HERO
+      MAIN MEGA HERO
       ============================================ */}
 
   <div
@@ -754,14 +699,8 @@ export function HomePage() {
             pb-3
             lg:flex
           "
-          initial={{
-            opacity: 0,
-            y: -10,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: 0.6,
             delay: 0.1,
@@ -769,12 +708,7 @@ export function HomePage() {
         >
           <div className="flex items-center gap-3">
             <span
-              className="
-                text-[9px]
-                font-bold
-                uppercase
-                tracking-[0.18em]
-              "
+              className="text-[9px] font-bold uppercase tracking-[0.18em]"
               style={{
                 color: colors.brand.accent,
               }}
@@ -784,41 +718,20 @@ export function HomePage() {
 
             <span className="h-3 w-px bg-white/20" />
 
-            <span
-              className="
-                text-[9px]
-                font-medium
-                uppercase
-                tracking-[0.16em]
-                text-white/55
-              "
-            >
+            <span className="text-[9px] font-medium uppercase tracking-[0.16em] text-white/55">
               Strategy • Execution • Intelligence • Growth
             </span>
           </div>
 
           <div className="flex items-center gap-2">
             <span
-              className="
-                adv-mega-pulse
-                h-1.5
-                w-1.5
-                rounded-full
-              "
+              className="mega-pulse h-1.5 w-1.5 rounded-full"
               style={{
                 backgroundColor: colors.brand.accent,
               }}
             />
 
-            <span
-              className="
-                text-[9px]
-                font-semibold
-                uppercase
-                tracking-[0.14em]
-                text-white/55
-              "
-            >
+            <span className="text-[9px] font-semibold uppercase tracking-[0.14em] text-white/55">
               Growth Systems Active
             </span>
           </div>
@@ -837,7 +750,7 @@ export function HomePage() {
           "
         >
           {/* ============================================
-              LEFT CONTENT PANEL
+              LEFT — LARGE GLASS CONTENT PANEL
               ============================================ */}
 
           <motion.div
@@ -874,19 +787,10 @@ export function HomePage() {
               }}
             />
 
-            {/* Ambient wash */}
+            {/* subtle inner wash */}
 
             <div
-              className="
-                pointer-events-none
-                absolute
-                -right-24
-                -top-28
-                h-[300px]
-                w-[300px]
-                rounded-full
-                blur-[100px]
-              "
+              className="pointer-events-none absolute -right-24 -top-28 h-[300px] w-[300px] rounded-full blur-[100px]"
               style={{
                 backgroundColor: `${colors.brand.accent}14`,
               }}
@@ -894,9 +798,7 @@ export function HomePage() {
 
             <div className="relative z-10 p-5 sm:p-6 lg:p-7 xl:p-8">
 
-              {/* ============================================
-                  BADGE
-                  ============================================ */}
+              {/* Badge */}
 
               <motion.div
                 initial={{
@@ -929,8 +831,8 @@ export function HomePage() {
                     "
                     style={{
                       backgroundColor:
-                        'rgba(255,255,255,0.95)',
-                      backdropFilter: 'blur(12px)',
+                        "rgba(255,255,255,0.95)",
+                      backdropFilter: "blur(12px)",
                       borderColor: colors.brand.accent,
                     }}
                     whileHover={{
@@ -949,11 +851,7 @@ export function HomePage() {
                     />
 
                     <span
-                      className="
-                        text-xs
-                        font-bold
-                        tracking-wide
-                      "
+                      className="text-xs font-bold tracking-wide"
                       style={{
                         color: colors.brand.primary,
                       }}
@@ -965,7 +863,7 @@ export function HomePage() {
               </motion.div>
 
               {/* ============================================
-                  HEADING
+                  SAME TYPOGRAPHY
                   ============================================ */}
 
               <h1
@@ -982,30 +880,22 @@ export function HomePage() {
                   color: colors.brand.primary,
                 }}
               >
-                Strategic Marketing.{' '}
+                Strategic Marketing.{" "}
 
                 <span className="relative inline-block">
                   Integrated Execution.
 
                   <motion.span
-                    className="
-                      absolute
-                      -bottom-1
-                      left-0
-                      right-0
-                      -z-0
-                      h-1.5
-                    "
+                    className="absolute -bottom-1 left-0 right-0 -z-0 h-1.5"
                     style={{
-                      backgroundColor:
-                        colors.brand.accent,
+                      backgroundColor: colors.brand.accent,
                       opacity: 0.3,
                     }}
                     initial={{
                       width: 0,
                     }}
                     animate={{
-                      width: '100%',
+                      width: "100%",
                     }}
                     transition={{
                       delay: 0.5,
@@ -1019,17 +909,11 @@ export function HomePage() {
                 AI-Powered Growth.
               </h1>
 
-              {/* ============================================
-                  COPY
-                  ============================================ */}
+              {/* Copy */}
 
               <div className="mb-4 space-y-2">
                 <p
-                  className="
-                    text-sm
-                    font-semibold
-                    leading-snug
-                  "
+                  className="text-sm font-semibold leading-snug"
                   style={{
                     color: colors.brand.primary,
                   }}
@@ -1037,33 +921,16 @@ export function HomePage() {
                   Growth is not accidental. It is engineered.
                 </p>
 
-                <p
-                  className="
-                    max-w-[610px]
-                    text-sm
-                    leading-relaxed
-                    text-gray-700
-                  "
-                >
+                <p className="max-w-[610px] text-sm leading-relaxed text-gray-700">
                   We build revenue-driven marketing systems that connect
                   strategy, execution, and AI - so every effort drives
                   measurable growth.
                 </p>
               </div>
 
-              {/* ============================================
-                  CTA
-                  ============================================ */}
+              {/* CTA */}
 
-              <div
-                className="
-                  mb-5
-                  flex
-                  flex-col
-                  gap-3
-                  sm:flex-row
-                "
-              >
+              <div className="mb-5 flex flex-col gap-3 sm:flex-row">
                 <MagneticButton strength={0.3}>
                   <Link
                     to="/contact"
@@ -1090,15 +957,7 @@ export function HomePage() {
                   >
                     Book a 30-Minute Revenue Strategy Call
 
-                    <ArrowRight
-                      className="
-                        ml-2
-                        h-4
-                        w-4
-                        transition-transform
-                        group-hover:translate-x-1
-                      "
-                    />
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </MagneticButton>
 
@@ -1148,13 +1007,11 @@ export function HomePage() {
               >
                 <div className="grid grid-cols-3">
 
-                  {/* Clients */}
-
                   <motion.div
                     className="px-4 py-3"
                     whileHover={{
                       backgroundColor:
-                        'rgba(248,249,252,0.95)',
+                        "rgba(248,249,252,0.95)",
                     }}
                   >
                     <div className="flex items-baseline gap-0.5">
@@ -1182,18 +1039,11 @@ export function HomePage() {
                     </p>
                   </motion.div>
 
-                  {/* Satisfaction */}
-
                   <motion.div
-                    className="
-                      border-l
-                      border-gray-200
-                      px-4
-                      py-3
-                    "
+                    className="border-l border-gray-200 px-4 py-3"
                     whileHover={{
                       backgroundColor:
-                        'rgba(248,249,252,0.95)',
+                        "rgba(248,249,252,0.95)",
                     }}
                   >
                     <div className="flex items-baseline gap-0.5">
@@ -1221,18 +1071,11 @@ export function HomePage() {
                     </p>
                   </motion.div>
 
-                  {/* ROI */}
-
                   <motion.div
-                    className="
-                      border-l
-                      border-gray-200
-                      px-4
-                      py-3
-                    "
+                    className="border-l border-gray-200 px-4 py-3"
                     whileHover={{
                       backgroundColor:
-                        'rgba(248,249,252,0.95)',
+                        "rgba(248,249,252,0.95)",
                     }}
                   >
                     <div className="flex items-baseline gap-0.5">
@@ -1260,12 +1103,11 @@ export function HomePage() {
                       ROI
                     </p>
                   </motion.div>
+
                 </div>
               </div>
 
-              {/* ============================================
-                  PROCESS RAIL
-                  ============================================ */}
+              {/* Bottom process */}
 
               <div
                 className="
@@ -1306,7 +1148,7 @@ export function HomePage() {
           </motion.div>
 
           {/* ============================================
-              RIGHT — GLOBE COMMAND CENTER
+              RIGHT — LARGE GLOBE COMMAND CENTER
               ============================================ */}
 
           <motion.div
@@ -1347,9 +1189,7 @@ export function HomePage() {
               }}
             />
 
-            {/* ============================================
-                GLOBE HEADER
-                ============================================ */}
+            {/* Header */}
 
             <div
               className="
@@ -1366,12 +1206,7 @@ export function HomePage() {
             >
               <div>
                 <p
-                  className="
-                    text-[9px]
-                    font-bold
-                    uppercase
-                    tracking-[0.16em]
-                  "
+                  className="text-[9px] font-bold uppercase tracking-[0.16em]"
                   style={{
                     color: colors.brand.accent,
                   }}
@@ -1399,39 +1234,23 @@ export function HomePage() {
                 "
               >
                 <span
-                  className="
-                    adv-mega-pulse
-                    h-1.5
-                    w-1.5
-                    rounded-full
-                  "
+                  className="mega-pulse h-1.5 w-1.5 rounded-full"
                   style={{
-                    backgroundColor:
-                      colors.brand.accent,
+                    backgroundColor: colors.brand.accent,
                   }}
                 />
 
-                <span
-                  className="
-                    text-[8px]
-                    font-bold
-                    uppercase
-                    tracking-[0.12em]
-                    text-white/70
-                  "
-                >
+                <span className="text-[8px] font-bold uppercase tracking-[0.12em] text-white/70">
                   Live
                 </span>
               </div>
             </div>
 
-            {/* ============================================
-                GLOBE AMBIENT GLOW
-                ============================================ */}
+            {/* Globe glow */}
 
             <div
               className="
-                adv-mega-glow
+                mega-glow
                 absolute
                 left-1/2
                 top-1/2
@@ -1452,9 +1271,7 @@ export function HomePage() {
               }}
             />
 
-            {/* ============================================
-                STATIC MAIN RING
-                ============================================ */}
+            {/* Main system ring */}
 
             <div
               className="
@@ -1473,13 +1290,11 @@ export function HomePage() {
               "
             />
 
-            {/* ============================================
-                ROTATING OUTER ORBIT
-                CORRECTED STRUCTURE
-                ============================================ */}
+            {/* Outer orbit */}
 
             <div
               className="
+                mega-orbit
                 absolute
                 left-1/2
                 top-1/2
@@ -1487,48 +1302,36 @@ export function HomePage() {
                 w-[330px]
                 -translate-x-1/2
                 -translate-y-1/2
+                rounded-full
+                border
+                border-white/15
                 sm:h-[405px]
                 sm:w-[405px]
               "
             >
-              <div
+              <span
                 className="
-                  adv-mega-orbit
-                  relative
-                  h-full
-                  w-full
+                  absolute
+                  left-1/2
+                  top-[-4px]
+                  h-2
+                  w-2
+                  -translate-x-1/2
                   rounded-full
-                  border
-                  border-white/15
                 "
-              >
-                <span
-                  className="
-                    absolute
-                    left-1/2
-                    top-[-4px]
-                    h-2
-                    w-2
-                    -translate-x-1/2
-                    rounded-full
-                  "
-                  style={{
-                    backgroundColor:
-                      colors.brand.accent,
-                    boxShadow:
-                      `0 0 18px ${colors.brand.accent}`,
-                  }}
-                />
-              </div>
+                style={{
+                  backgroundColor: colors.brand.accent,
+                  boxShadow:
+                    `0 0 18px ${colors.brand.accent}`,
+                }}
+              />
             </div>
 
-            {/* ============================================
-                ROTATING ELLIPTICAL ORBIT
-                CORRECTED STRUCTURE
-                ============================================ */}
+            {/* Elliptical orbit */}
 
             <div
               className="
+                mega-orbit-reverse
                 absolute
                 left-1/2
                 top-1/2
@@ -1536,25 +1339,15 @@ export function HomePage() {
                 w-[360px]
                 -translate-x-1/2
                 -translate-y-1/2
+                rounded-[50%]
+                border
+                border-white/10
                 sm:h-[315px]
                 sm:w-[440px]
               "
-            >
-              <div
-                className="
-                  adv-mega-orbit-reverse
-                  h-full
-                  w-full
-                  rounded-[50%]
-                  border
-                  border-white/10
-                "
-              />
-            </div>
+            />
 
-            {/* ============================================
-                AXIS
-                ============================================ */}
+            {/* Axis */}
 
             <div
               className="
@@ -1588,25 +1381,8 @@ export function HomePage() {
                 EXACT SAME PARTICLE GLOBE
                 ============================================ */}
 
-            <div
-              className="
-                absolute
-                inset-0
-                z-20
-                flex
-                items-center
-                justify-center
-              "
-            >
-              <div
-                className="
-                  origin-center
-                  scale-[0.58]
-                  sm:scale-[0.76]
-                  lg:scale-[0.88]
-                  xl:scale-[0.92]
-                "
-              >
+            <div className="absolute inset-0 z-20 flex items-center justify-center">
+              <div className="origin-center scale-[0.58] sm:scale-[0.76] lg:scale-[0.88] xl:scale-[0.92]">
                 <ParticleGlobe
                   width={450}
                   height={450}
@@ -1617,13 +1393,11 @@ export function HomePage() {
               </div>
             </div>
 
-            {/* ============================================
-                INTELLIGENCE CARD
-                ============================================ */}
+            {/* Intelligence card */}
 
             <div
               className="
-                adv-mega-float
+                mega-float
                 absolute
                 right-4
                 top-[27%]
@@ -1641,29 +1415,15 @@ export function HomePage() {
                 sm:block
               "
             >
-              <p
-                className="
-                  text-[8px]
-                  font-bold
-                  uppercase
-                  tracking-[0.14em]
-                  text-white/45
-                "
-              >
+              <p className="text-[8px] font-bold uppercase tracking-[0.14em] text-white/45">
                 Intelligence
               </p>
 
               <div className="mt-2 flex items-center gap-2">
                 <span
-                  className="
-                    adv-mega-pulse
-                    h-1.5
-                    w-1.5
-                    rounded-full
-                  "
+                  className="mega-pulse h-1.5 w-1.5 rounded-full"
                   style={{
-                    backgroundColor:
-                      colors.brand.accent,
+                    backgroundColor: colors.brand.accent,
                   }}
                 />
 
@@ -1677,13 +1437,11 @@ export function HomePage() {
               </p>
             </div>
 
-            {/* ============================================
-                ROI CARD
-                ============================================ */}
+            {/* ROI card */}
 
             <div
               className="
-                adv-mega-float-reverse
+                mega-float-reverse
                 absolute
                 bottom-[18%]
                 left-4
@@ -1700,25 +1458,13 @@ export function HomePage() {
                 md:block
               "
             >
-              <p
-                className="
-                  text-[8px]
-                  font-bold
-                  uppercase
-                  tracking-[0.14em]
-                  text-white/45
-                "
-              >
+              <p className="text-[8px] font-bold uppercase tracking-[0.14em] text-white/45">
                 Performance
               </p>
 
               <div className="mt-1 flex items-baseline gap-1">
                 <span
-                  className="
-                    text-2xl
-                    font-black
-                    tracking-[-0.04em]
-                  "
+                  className="text-2xl font-black tracking-[-0.04em]"
                   style={{
                     color: colors.brand.accent,
                   }}
@@ -1726,13 +1472,7 @@ export function HomePage() {
                   4.1x
                 </span>
 
-                <span
-                  className="
-                    text-[9px]
-                    font-semibold
-                    text-white/60
-                  "
-                >
+                <span className="text-[9px] font-semibold text-white/60">
                   ROI
                 </span>
               </div>
@@ -1742,9 +1482,7 @@ export function HomePage() {
               </p>
             </div>
 
-            {/* ============================================
-                BOTTOM NETWORK STATUS
-                ============================================ */}
+            {/* Bottom network status */}
 
             <div
               className="
@@ -1761,32 +1499,17 @@ export function HomePage() {
                 pt-3
               "
             >
-              <span
-                className="
-                  text-[8px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.14em]
-                  text-white/40
-                "
-              >
+              <span className="text-[8px] font-semibold uppercase tracking-[0.14em] text-white/40">
                 Strategy Network
               </span>
 
               <div className="flex items-center gap-1.5">
                 <span className="h-1 w-1 rounded-full bg-white/30" />
-
                 <span className="h-1 w-1 rounded-full bg-white/45" />
-
                 <span
-                  className="
-                    h-1.5
-                    w-1.5
-                    rounded-full
-                  "
+                  className="h-1.5 w-1.5 rounded-full"
                   style={{
-                    backgroundColor:
-                      colors.brand.accent,
+                    backgroundColor: colors.brand.accent,
                   }}
                 />
               </div>
@@ -1822,54 +1545,43 @@ export function HomePage() {
             duration: 0.7,
           }}
         >
-          <div
-            className="
-              grid
-              sm:grid-cols-2
-              lg:grid-cols-4
-            "
-          >
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4">
+
             {[
               {
-                number: '01',
-                title: 'Strategic Marketing',
-                text: 'Commercial strategy aligned to growth.',
+                number: "01",
+                title: "Strategic Marketing",
+                text: "Commercial strategy aligned to growth.",
               },
-
               {
-                number: '02',
-                title: 'Integrated Execution',
-                text: 'Channels operating as one system.',
+                number: "02",
+                title: "Integrated Execution",
+                text: "Channels operating as one system.",
               },
-
               {
-                number: '03',
-                title: 'AI & Automation',
-                text: 'Intelligence improving speed and precision.',
+                number: "03",
+                title: "AI & Automation",
+                text: "Intelligence improving speed and precision.",
               },
-
               {
-                number: '04',
-                title: 'Revenue Growth',
-                text: 'Performance measured against business outcomes.',
+                number: "04",
+                title: "Revenue Growth",
+                text: "Performance measured against business outcomes.",
               },
             ].map((item, index) => (
               <motion.div
                 key={item.number}
                 className={[
-                  'group relative px-5 py-4',
-
+                  "group relative px-5 py-4",
                   index < 3
-                    ? 'border-b border-white/15 sm:border-b-0 lg:border-r'
-                    : '',
-
+                    ? "border-b border-white/15 sm:border-b-0 lg:border-r"
+                    : "",
                   index === 1
-                    ? 'sm:border-l lg:border-l-0'
-                    : '',
-                ].join(' ')}
+                    ? "sm:border-l lg:border-l-0"
+                    : "",
+                ].join(" ")}
                 whileHover={{
-                  backgroundColor:
-                    'rgba(255,255,255,0.07)',
+                  backgroundColor: "rgba(255,255,255,0.07)",
                 }}
                 transition={{
                   duration: 0.3,
@@ -1877,11 +1589,7 @@ export function HomePage() {
               >
                 <div className="flex items-start gap-3">
                   <span
-                    className="
-                      text-[9px]
-                      font-black
-                      tracking-[0.14em]
-                    "
+                    className="text-[9px] font-black tracking-[0.14em]"
                     style={{
                       color: colors.brand.accent,
                     }}
@@ -1894,14 +1602,7 @@ export function HomePage() {
                       {item.title}
                     </p>
 
-                    <p
-                      className="
-                        mt-1
-                        text-[9px]
-                        leading-[1.55]
-                        text-white/50
-                      "
-                    >
+                    <p className="mt-1 text-[9px] leading-[1.55] text-white/50">
                       {item.text}
                     </p>
                   </div>
@@ -1926,23 +1627,15 @@ export function HomePage() {
                 />
               </motion.div>
             ))}
+
           </div>
         </motion.div>
 
         {/* ============================================
-            SLIDER INDICATORS
+            BACKGROUND SLIDER INDICATOR
             ============================================ */}
 
-        <div
-          className="
-            mt-4
-            hidden
-            items-center
-            justify-center
-            gap-2
-            sm:flex
-          "
-        >
+        <div className="mt-4 hidden items-center justify-center gap-2 sm:flex">
           {[0, 1, 2, 3].map((item) => (
             <span
               key={item}
@@ -1956,12 +1649,7 @@ export function HomePage() {
               "
             >
               <motion.span
-                className="
-                  block
-                  h-full
-                  w-full
-                  origin-left
-                "
+                className="block h-full w-full origin-left"
                 style={{
                   background: gradients.primary,
                 }}
@@ -1974,7 +1662,7 @@ export function HomePage() {
                   delay: item * 8,
                   repeat: Infinity,
                   repeatDelay: 24,
-                  ease: 'linear',
+                  ease: "linear",
                 }}
               />
             </span>
@@ -1989,21 +1677,56 @@ export function HomePage() {
       ============================================ */}
 
   <div
-    className="
-      pointer-events-none
-      absolute
-      bottom-0
-      left-0
-      right-0
-      z-[2]
-      h-24
-    "
+    className="pointer-events-none absolute bottom-0 left-0 right-0 z-[2] h-24"
     style={{
       background:
-        'linear-gradient(to bottom, transparent, rgba(8,9,21,0.70))',
+        "linear-gradient(to bottom, transparent, rgba(8,9,21,0.70))",
     }}
   />
 </ModernSectionBackground>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
