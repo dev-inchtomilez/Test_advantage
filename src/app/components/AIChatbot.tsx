@@ -1,7 +1,29 @@
-import { useState, useEffect, useRef } from 'react';
-import { MessageCircle, X, Send, Minimize2, Download, Sparkles } from 'lucide-react';
-import { colors, gradients, glass } from '../../styles/design-tokens';
+import {
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
+
+import {
+  X,
+  Send,
+  Minimize2,
+  Maximize2,
+  Download,
+  Sparkles,
+  Check,
+} from 'lucide-react';
+
+import {
+  colors,
+  gradients,
+} from '../../styles/design-tokens';
+
 import { submitChatbotLead } from '../utils/emailService';
+
+/* ============================================
+   TYPES
+   ============================================ */
 
 interface Message {
   id: string;
@@ -22,24 +44,77 @@ interface Lead {
   leadScore: number;
 }
 
-type ChatStep = 'greeting' | 'name' | 'email' | 'purpose' | 'phone' | 'complete';
+type ChatStep =
+  | 'greeting'
+  | 'name'
+  | 'email'
+  | 'purpose'
+  | 'phone'
+  | 'complete';
+
+/* ============================================
+   HELPERS
+   ============================================ */
+
+const createId = () => {
+  if (
+    typeof crypto !== 'undefined' &&
+    typeof crypto.randomUUID === 'function'
+  ) {
+    return crypto.randomUUID();
+  }
+
+  return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+};
+
+const safeParseArray = <T,>(
+  value: string | null,
+): T[] => {
+  if (!value) return [];
+
+  try {
+    const parsed = JSON.parse(value);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+};
+
+/* ============================================
+   COMPONENT
+   ============================================ */
 
 export function AIChatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [inputValue, setInputValue] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
-  const [currentStep, setCurrentStep] = useState<ChatStep>('greeting');
-  const [hasAutoOpened, setHasAutoOpened] = useState(false);
-  const [leadData, setLeadData] = useState({ 
-    name: '', 
+
+  const [isMinimized, setIsMinimized] =
+    useState(false);
+
+  const [messages, setMessages] = useState<
+    Message[]
+  >([]);
+
+  const [inputValue, setInputValue] =
+    useState('');
+
+  const [isTyping, setIsTyping] =
+    useState(false);
+
+  const [currentStep, setCurrentStep] =
+    useState<ChatStep>('greeting');
+
+  const [leadData, setLeadData] = useState({
+    name: '',
     email: '',
     purposeOfEnquiry: '',
-    phone: ''
+    phone: '',
   });
-  const [leadScore, setLeadScore] = useState(0);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const [leadScore, setLeadScore] =
+    useState(0);
+
+  const messagesEndRef =
+    useRef<HTMLDivElement>(null);
 
   const purposeOfEnquiries = [
     '🎯 Explore Services',
@@ -47,704 +122,2144 @@ export function AIChatbot() {
     '📅 Schedule a Consultation',
     '🤝 Partnership Inquiry',
     '❓ General Question',
-    '📝 Other'
+    '📝 Other',
   ];
 
+  /* ============================================
+     SCROLL
+     ============================================ */
+
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+    });
   };
 
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+    if (isOpen && !isMinimized) {
+      scrollToBottom();
+    }
+  }, [
+    messages,
+    isTyping,
+    isOpen,
+    isMinimized,
+  ]);
+
+  /* ============================================
+     INITIAL GREETING
+
+     IMPORTANT:
+     No auto-popup timer.
+     Chat opens ONLY when visitor clicks button.
+     ============================================ */
 
   useEffect(() => {
-    if (isOpen && messages.length === 0) {
-      setTimeout(() => {
-        addBotMessage(
-          "Hi there! 👋 Welcome to AdvantEdge. I'm your marketing strategy assistant. I'll help you find the perfect solution for your business.\n\nTo get started, what's your name?",
-          'greeting'
-        );
-        setCurrentStep('name');
-      }, 500);
+    if (
+      !isOpen ||
+      messages.length > 0
+    ) {
+      return;
     }
-  }, [isOpen]);
 
-  // Auto-open chatbot after 15 seconds
-  useEffect(() => {
-    if (!hasAutoOpened) {
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-        setHasAutoOpened(true);
-      }, 15000);
+    const timer = window.setTimeout(() => {
+      const greeting: Message = {
+        id: createId(),
+        text:
+          "Hi there! 👋 Welcome to AdvantEdge. I'm your marketing strategy assistant.\n\nI'll help you find the right solution for your business.\n\nTo get started, what's your name?",
+        sender: 'bot',
+        timestamp: new Date(),
+        intent: 'greeting',
+      };
 
-      return () => clearTimeout(timer);
-    }
-  }, [hasAutoOpened]);
+      setMessages([greeting]);
+      setCurrentStep('name');
+    }, 350);
 
-  const addBotMessage = (text: string, intent?: string, options?: string[]) => {
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [
+    isOpen,
+    messages.length,
+  ]);
+
+  /* ============================================
+     BOT MESSAGE
+     ============================================ */
+
+  const addBotMessage = (
+    text: string,
+    intent?: string,
+    options?: string[],
+    delay = 700,
+  ) => {
     setIsTyping(true);
-    setTimeout(() => {
+
+    window.setTimeout(() => {
       const newMessage: Message = {
-        id: Date.now().toString(),
+        id: createId(),
         text,
         sender: 'bot',
         timestamp: new Date(),
         intent,
-        options
+        options,
       };
-      setMessages((prev) => [...prev, newMessage]);
+
+      setMessages((prev) => [
+        ...prev,
+        newMessage,
+      ]);
+
       setIsTyping(false);
-    }, 1000);
+    }, delay);
   };
 
-  const addUserMessage = (text: string) => {
+  /* ============================================
+     USER MESSAGE
+     ============================================ */
+
+  const addUserMessage = (
+    text: string,
+  ) => {
     const newMessage: Message = {
-      id: Date.now().toString(),
+      id: createId(),
       text,
       sender: 'user',
       timestamp: new Date(),
     };
-    setMessages((prev) => [...prev, newMessage]);
+
+    setMessages((prev) => [
+      ...prev,
+      newMessage,
+    ]);
   };
 
-  const handleSend = () => {
-    if (!inputValue.trim()) return;
+  /* ============================================
+     LEAD SAVE
+     ============================================ */
 
-    addUserMessage(inputValue);
-    processResponse(inputValue);
+  const saveLead = (
+    data: typeof leadData,
+    score: number,
+    conversation: Message[],
+  ) => {
+    const lead: Lead = {
+      ...data,
+      conversation,
+      timestamp: new Date(),
+      leadScore: score,
+    };
+
+    try {
+      const existingLeads =
+        safeParseArray<Lead>(
+          localStorage.getItem(
+            'chatbot_leads',
+          ),
+        );
+
+      existingLeads.push(lead);
+
+      localStorage.setItem(
+        'chatbot_leads',
+        JSON.stringify(existingLeads),
+      );
+
+      if (score >= 70) {
+        const priorityLeads =
+          safeParseArray<Lead>(
+            localStorage.getItem(
+              'priority_leads',
+            ),
+          );
+
+        priorityLeads.push(lead);
+
+        localStorage.setItem(
+          'priority_leads',
+          JSON.stringify(
+            priorityLeads,
+          ),
+        );
+      }
+    } catch {
+      // Local storage failure should not
+      // prevent lead submission.
+    }
+
+    Promise.resolve(
+      submitChatbotLead(lead),
+    ).catch(() => {
+      // Keep chatbot usable even if
+      // email submission temporarily fails.
+    });
+  };
+
+  /* ============================================
+     COMPLETE LEAD
+     ============================================ */
+
+  const completeLead = (
+    data: typeof leadData,
+    score: number,
+    finalText: string,
+  ) => {
+    setIsTyping(true);
+
+    window.setTimeout(() => {
+      const finalMessage: Message = {
+        id: createId(),
+        text: finalText,
+        sender: 'bot',
+        timestamp: new Date(),
+        intent: 'complete',
+      };
+
+      setMessages((prev) => {
+        const completeConversation = [
+          ...prev,
+          finalMessage,
+        ];
+
+        saveLead(
+          data,
+          score,
+          completeConversation,
+        );
+
+        return completeConversation;
+      });
+
+      setIsTyping(false);
+    }, 800);
+  };
+
+  /* ============================================
+     PROCESS RESPONSE
+     ============================================ */
+
+  const processResponse = (
+    rawResponse: string,
+  ) => {
+    const response =
+      rawResponse.trim();
+
+    if (currentStep === 'name') {
+      if (response.length < 2) {
+        addBotMessage(
+          'Could you please share your name so I know how to address you?',
+          'name',
+        );
+
+        return;
+      }
+
+      setLeadData((prev) => ({
+        ...prev,
+        name: response,
+      }));
+
+      setCurrentStep('email');
+
+      addBotMessage(
+        `Great to meet you, ${response}! 📧\n\nTo keep you updated with relevant services and proposals, please share your email address.`,
+        'email',
+      );
+
+      return;
+    }
+
+    /* ============================================
+       EMAIL
+       ============================================ */
+
+    if (currentStep === 'email') {
+      const normalizedEmail =
+        response.toLowerCase();
+
+      const emailRegex =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (
+        !emailRegex.test(
+          normalizedEmail,
+        )
+      ) {
+        addBotMessage(
+          "That doesn't look like a valid email address. 😊\n\nPlease enter an email such as name@company.com.",
+          'email',
+        );
+
+        return;
+      }
+
+      setLeadData((prev) => ({
+        ...prev,
+        email: normalizedEmail,
+      }));
+
+      setCurrentStep('purpose');
+
+      addBotMessage(
+        `Perfect, ${leadData.name}. 🎯\n\nWhat brings you to AdvantEdge today?`,
+        'purpose',
+        purposeOfEnquiries,
+      );
+
+      return;
+    }
+
+    /* ============================================
+       PURPOSE
+       ============================================ */
+
+    if (currentStep === 'purpose') {
+      setLeadData((prev) => ({
+        ...prev,
+        purposeOfEnquiry: response,
+      }));
+
+      setCurrentStep('phone');
+
+      const cleanPurpose =
+        response.replace(
+          /^[🎯💼📅🤝❓📝]\s*/,
+          '',
+        );
+
+      addBotMessage(
+        `Thanks — I understand you're interested in "${cleanPurpose}". 📞\n\nWould you like to share your phone number?\n\nIt's optional, but it helps our team contact you faster.`,
+        'phone',
+      );
+
+      return;
+    }
+
+    /* ============================================
+       PHONE / SKIP
+       ============================================ */
+
+    if (currentStep === 'phone') {
+      const isSkipping =
+        response.toLowerCase() ===
+          'skip for now' ||
+        response.toLowerCase() ===
+          'skip' ||
+        response.toLowerCase() ===
+          'no';
+
+      const phone = isSkipping
+        ? ''
+        : response;
+
+      const updatedLeadData = {
+        ...leadData,
+        phone,
+      };
+
+      setLeadData(
+        updatedLeadData,
+      );
+
+      let score = 50;
+
+      if (
+        leadData.purposeOfEnquiry.includes(
+          'Quote',
+        ) ||
+        leadData.purposeOfEnquiry.includes(
+          'Consultation',
+        )
+      ) {
+        score += 30;
+      }
+
+      if (
+        phone &&
+        phone.replace(/\D/g, '')
+          .length >= 10
+      ) {
+        score += 20;
+      }
+
+      setLeadScore(score);
+      setCurrentStep('complete');
+
+      let finalMessage =
+        `🎉 Thank you, ${leadData.name}!\n\n`;
+
+      if (score >= 70) {
+        finalMessage +=
+          `I've marked your enquiry as high priority based on your requirements.\n\n`;
+
+        finalMessage +=
+          `Our team will review the details and connect with you using the information you've provided.\n\n`;
+
+        finalMessage +=
+          `📧 We'll use ${leadData.email} for follow-up communication.`;
+      } else {
+        finalMessage +=
+          `Your enquiry has been captured successfully.\n\n`;
+
+        finalMessage +=
+          `Our team will review your requirements and reach out at ${leadData.email}`;
+
+        if (phone) {
+          finalMessage +=
+            ` or ${phone}`;
+        }
+
+        finalMessage += '.';
+      }
+
+      completeLead(
+        updatedLeadData,
+        score,
+        finalMessage,
+      );
+
+      return;
+    }
+
+    /* ============================================
+       AFTER LEAD CAPTURE
+       SIMPLE FAQ ASSISTANT
+       ============================================ */
+
+    const lowerResponse =
+      response.toLowerCase();
+
+    if (
+      lowerResponse.includes(
+        'price',
+      ) ||
+      lowerResponse.includes(
+        'cost',
+      ) ||
+      lowerResponse.includes(
+        'budget',
+      )
+    ) {
+      addBotMessage(
+        'Our pricing depends on the scope, services, complexity, and level of implementation required. Our team can recommend the right engagement after understanding your objectives.',
+      );
+
+      return;
+    }
+
+    if (
+      lowerResponse.includes(
+        'timeline',
+      ) ||
+      lowerResponse.includes(
+        'how long',
+      )
+    ) {
+      addBotMessage(
+        'Timelines depend on the scope of work. Strategy-focused engagements can begin quickly, while larger integrated implementations may require multiple phases.',
+      );
+
+      return;
+    }
+
+    if (
+      lowerResponse.includes(
+        'case',
+      ) ||
+      lowerResponse.includes(
+        'example',
+      ) ||
+      lowerResponse.includes(
+        'portfolio',
+      )
+    ) {
+      addBotMessage(
+        'We can share relevant case studies and examples based on your industry and objectives. Our team can recommend the most relevant examples during your consultation.',
+      );
+
+      return;
+    }
+
+    if (
+      lowerResponse.includes(
+        'team',
+      ) ||
+      lowerResponse.includes(
+        'who',
+      )
+    ) {
+      addBotMessage(
+        'AdvantEdge combines strategy, marketing, communications, digital execution, analytics, CRM, automation, and AI capabilities to support business growth.',
+      );
+
+      return;
+    }
+
+    addBotMessage(
+      "Thanks for your question. Our team can provide a detailed recommendation based on your business goals and requirements.\n\nYou can continue asking me questions here.",
+    );
+  };
+
+  /* ============================================
+     SEND
+     ============================================ */
+
+  const handleSend = () => {
+    const cleanValue =
+      inputValue.trim();
+
+    if (
+      !cleanValue ||
+      isTyping
+    ) {
+      return;
+    }
+
+    addUserMessage(cleanValue);
+    processResponse(cleanValue);
+
     setInputValue('');
   };
 
-  const handleOptionClick = (option: string) => {
+  /* ============================================
+     OPTION CLICK
+     ============================================ */
+
+  const handleOptionClick = (
+    option: string,
+  ) => {
+    if (isTyping) return;
+
     addUserMessage(option);
     processResponse(option);
   };
 
-  const processResponse = (response: string) => {
-    if (currentStep === 'name') {
-      setLeadData((prev) => ({ ...prev, name: response }));
-      setTimeout(() => {
-        addBotMessage(
-          `Great to meet you, ${response}! 📧\n\nTo keep you updated with our services and proposals, please share your email address.`,
-          'email'
-        );
-      }, 1500);
-      setCurrentStep('email');
-      
-    } else if (currentStep === 'email') {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(response)) {
-        setTimeout(() => {
-          addBotMessage(
-            `That doesn't look like a valid email address. 😊 Could you please provide a valid email? (e.g., name@company.com)`,
-            'email'
-          );
-        }, 1000);
-        return;
-      }
-      
-      setLeadData((prev) => ({ ...prev, email: response }));
-      setTimeout(() => {
-        addBotMessage(
-          `Perfect! Thank you, ${leadData.name}. 🎯\n\nNow, what brings you to AdvantEdge today? What's the purpose of your enquiry?`,
-          'purpose',
-          purposeOfEnquiries
-        );
-      }, 1500);
-      setCurrentStep('purpose');
-      
-    } else if (currentStep === 'purpose') {
-      setLeadData((prev) => ({ ...prev, purposeOfEnquiry: response }));
-      
-      setTimeout(() => {
-        let responseMessage = `Excellent! I understand you're here to "${response.replace(/^[🎯💼📅🤝❓📝]\s*/, '')}". 📞\n\n`;
-        responseMessage += `To ensure our team can provide you with the most personalized assistance, could you share your phone number? (This is optional, but it helps us serve you better!)`;
-        
-        addBotMessage(responseMessage, 'phone');
-      }, 1500);
-      setCurrentStep('phone');
-      
-    } else if (currentStep === 'phone') {
-      const updatedLeadData = { ...leadData, phone: response };
-      setLeadData(updatedLeadData);
-      
-      let score = 50;
-      if (leadData.purposeOfEnquiry.includes('Quote') || leadData.purposeOfEnquiry.includes('Consultation')) {
-        score += 30;
-      }
-      if (response && response.length >= 10) {
-        score += 20;
-      }
-      setLeadScore(score);
-      
-      let finalMessage = `🎉 Perfect! Thank you so much, ${leadData.name}!\n\n`;
-      
-      if (score >= 70) {
-        finalMessage += `I've flagged your inquiry as HIGH PRIORITY based on your needs. Our senior strategist will contact you within the next 4 hours.\n\n`;
-        finalMessage += `📧 Check ${leadData.email} for:\n✅ Personalized Service Overview\n✅ Case Studies Relevant to Your Industry\n✅ Free Strategy Consultation Booking Link\n\nWe're excited to help you achieve your goals!`;
-      } else {
-        finalMessage += `Our team will review your inquiry and reach out to you at ${leadData.email}${response ? ` and ${response}` : ''} within 24 hours.\n\n`;
-        finalMessage += `In the meantime, feel free to explore our website or ask me any questions about our services!`;
-      }
-      
-      setTimeout(() => {
-        addBotMessage(finalMessage, 'complete');
-        saveLead(updatedLeadData, score);
-      }, 1500);
-      setCurrentStep('complete');
-      
-    } else {
-      setTimeout(() => {
-        const lowerResponse = response.toLowerCase();
-        
-        if (lowerResponse.includes('price') || lowerResponse.includes('cost') || lowerResponse.includes('budget')) {
-          addBotMessage(
-            "Our pricing is customized based on your specific needs and goals. The investment typically ranges from $5k to $100k+ depending on scope. Would you like to schedule a call to discuss your specific requirements?"
-          );
-        } else if (lowerResponse.includes('timeline') || lowerResponse.includes('how long')) {
-          addBotMessage(
-            "Most projects launch within 4-12 weeks, depending on complexity. Strategy projects can start within 1 week. Want to discuss your specific timeline?"
-          );
-        } else if (lowerResponse.includes('case') || lowerResponse.includes('example') || lowerResponse.includes('portfolio')) {
-          addBotMessage(
-            "We've helped 350+ companies grow their revenue by an average of 340%! Check out our Case Studies page to see detailed results, or I can email you industry-specific examples. Which would you prefer?"
-          );
-        } else if (lowerResponse.includes('team') || lowerResponse.includes('who')) {
-          addBotMessage(
-            "Our team includes 15+ specialists: strategists, designers, developers, SEO experts, and content creators. Each project gets a dedicated team lead. Want to meet the team?"
-          );
-        } else {
-          addBotMessage(
-            "Great question! Our team will provide detailed answers during your consultation call. Is there anything specific about our services you'd like to know right now?"
-          );
-        }
-      }, 1500);
-    }
-  };
+  /* ============================================
+     DOWNLOAD CONVERSATION
+     ============================================ */
 
-  const saveLead = (data: typeof leadData, score: number) => {
-    const lead: Lead = {
-      ...data,
-      conversation: messages,
-      timestamp: new Date(),
-      leadScore: score
+  const downloadConversation =
+    () => {
+      const transcript = messages
+        .map(
+          (message) =>
+            `[${message.timestamp.toLocaleTimeString()}] ${
+              message.sender ===
+              'bot'
+                ? 'AdvantEdge AI'
+                : leadData.name ||
+                  'You'
+            }: ${message.text}`,
+        )
+        .join('\n\n');
+
+      const blob = new Blob(
+        [transcript],
+        {
+          type: 'text/plain',
+        },
+      );
+
+      const url =
+        URL.createObjectURL(blob);
+
+      const anchor =
+        document.createElement('a');
+
+      anchor.href = url;
+
+      anchor.download =
+        `advantedge-chat-${new Date()
+          .toISOString()
+          .split('T')[0]}.txt`;
+
+      document.body.appendChild(
+        anchor,
+      );
+
+      anchor.click();
+      anchor.remove();
+
+      URL.revokeObjectURL(url);
     };
 
-    const existingLeads = JSON.parse(localStorage.getItem('chatbot_leads') || '[]');
-    existingLeads.push(lead);
-    localStorage.setItem('chatbot_leads', JSON.stringify(existingLeads));
-    
-    if (score >= 70) {
-      const priorityLeads = JSON.parse(localStorage.getItem('priority_leads') || '[]');
-      priorityLeads.push(lead);
-      localStorage.setItem('priority_leads', JSON.stringify(priorityLeads));
+  /* ============================================
+     CLOSE
+     ============================================ */
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setIsMinimized(false);
+  };
+
+  /* ============================================
+     PLACEHOLDER
+     ============================================ */
+
+  const getPlaceholder = () => {
+    if (isTyping) {
+      return 'AdvantEdge AI is typing...';
     }
 
-    // Track lead capture (remove console.log for production)
-    // console.log('Lead Captured:', lead);
-    submitChatbotLead(lead);
+    if (
+      currentStep === 'name'
+    ) {
+      return 'Enter your name...';
+    }
+
+    if (
+      currentStep === 'email'
+    ) {
+      return 'Enter your email...';
+    }
+
+    if (
+      currentStep === 'phone'
+    ) {
+      return 'Enter phone number...';
+    }
+
+    return 'Type your message...';
   };
 
-  const downloadConversation = () => {
-    const transcript = messages.map(m => 
-      `[${m.timestamp.toLocaleTimeString()}] ${m.sender === 'bot' ? 'Assistant' : leadData.name || 'You'}: ${m.text}`
-    ).join('\n\n');
-    
-    const blob = new Blob([transcript], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `advantedge-chat-${new Date().toISOString().split('T')[0]}.txt`;
-    a.click();
-  };
+  /* ============================================
+     UI
+     ============================================ */
 
   return (
     <>
-      {/* Floating Button */}
+      {/* ============================================
+          FLOATING CHAT BUTTON
+          ============================================ */}
+
       {!isOpen && (
         <button
-          onClick={() => setIsOpen(true)}
-          className="chatbot-fixed-button"
-          aria-label="Open chat"
+          type="button"
+          onClick={() =>
+            setIsOpen(true)
+          }
+          className="ae-chat-launcher"
+          aria-label="Open AdvantEdge AI assistant"
+          title="Chat with AdvantEdge AI"
         >
-          <Sparkles className="w-7 h-7" />
-          <span className="chatbot-indicator" />
+          <div className="ae-chat-launcher-glow" />
+
+          <Sparkles className="relative z-10 h-5 w-5" />
+
+          <span className="ae-chat-online-indicator" />
+
+          <span className="sr-only">
+            Open AI assistant
+          </span>
         </button>
       )}
 
-      {/* Chatbot Window */}
+      {/* ============================================
+          CHATBOT
+          ============================================ */}
+
       {isOpen && (
-        <div className={`chatbot-window ${isOpen ? 'chatbot-window-open' : ''}`}>
-          {/* Header */}
-          <div className="chatbot-header">
-            <div className="chatbot-header-gradient" />
-            
-            <div className="chatbot-header-content">
-              <div className="chatbot-logo">
-                <Sparkles className="w-5 h-5" style={{ color: colors.brand.secondary }} />
-              </div>
-              <div>
-                <h3 className="font-bold text-white">AdvantEdge AI</h3>
-                <div className="flex items-center gap-2">
-                  <span className="chatbot-status-dot" />
-                  <p className="text-xs text-white/90">Strategy Assistant</p>
+        <section
+          className={[
+            'ae-chat-window',
+            isMinimized
+              ? 'ae-chat-window-minimized'
+              : '',
+          ].join(' ')}
+          role="dialog"
+          aria-label="AdvantEdge AI Strategy Assistant"
+          aria-live="polite"
+        >
+          {/* ============================================
+              HEADER
+              ============================================ */}
+
+          <header className="ae-chat-header">
+            <div className="ae-chat-header-glow" />
+
+            <div className="ae-chat-header-inner">
+              <div className="ae-chat-brand">
+                <div className="ae-chat-brand-icon">
+                  <Sparkles className="h-4 w-4" />
+                </div>
+
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <h3 className="truncate text-[13px] font-bold tracking-[-0.01em] text-white">
+                      AdvantEdge AI
+                    </h3>
+
+                    <span className="ae-chat-ai-badge">
+                      AI
+                    </span>
+                  </div>
+
+                  <div className="mt-0.5 flex items-center gap-1.5">
+                    <span className="ae-chat-status-dot" />
+
+                    <p className="text-[9px] font-medium text-white/55">
+                      Strategy Assistant
+                    </p>
+                  </div>
                 </div>
               </div>
+
+              <div className="ae-chat-header-actions">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setIsMinimized(
+                      (prev) => !prev,
+                    )
+                  }
+                  className="ae-chat-header-button"
+                  aria-label={
+                    isMinimized
+                      ? 'Restore chat'
+                      : 'Minimize chat'
+                  }
+                  title={
+                    isMinimized
+                      ? 'Restore'
+                      : 'Minimize'
+                  }
+                >
+                  {isMinimized ? (
+                    <Maximize2 className="h-4 w-4" />
+                  ) : (
+                    <Minimize2 className="h-4 w-4" />
+                  )}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleClose}
+                  className="ae-chat-header-button"
+                  aria-label="Close chat"
+                  title="Close"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
             </div>
-            <div className="chatbot-header-actions">
-              <button
-                onClick={() => setIsMinimized(!isMinimized)}
-                className="chatbot-icon-button"
-                aria-label="Minimize chat"
-              >
-                <Minimize2 className="w-5 h-5 text-white" />
-              </button>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="chatbot-icon-button"
-                aria-label="Close chat"
-              >
-                <X className="w-5 h-5 text-white" />
-              </button>
-            </div>
-          </div>
+          </header>
+
+          {/* ============================================
+              BODY
+              ============================================ */}
 
           {!isMinimized && (
             <>
-              {/* Messages */}
-              <div className="chatbot-messages">
-                {messages.map((message) => (
-                  <div
-                    key={message.id}
-                    className={`chatbot-message ${message.sender === 'user' ? 'chatbot-message-user' : 'chatbot-message-bot'}`}
-                  >
-                    <div
-                      className={`chatbot-bubble ${message.sender === 'user' ? 'chatbot-bubble-user' : 'chatbot-bubble-bot'}`}
-                      style={message.sender === 'user' ? { 
-                        background: gradients.primary,
-                        borderColor: colors.brand.secondary 
-                      } : { 
-                        borderColor: colors.brand.secondary + '40' 
-                      }}
-                    >
-                      <p className="text-sm leading-relaxed whitespace-pre-line">{message.text}</p>
-                      <p className={`text-xs mt-1 ${
-                        message.sender === 'user' ? 'text-white/80' : 'text-gray-500'
-                      }`}>
-                        {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+              {/* ============================================
+                  MESSAGES
+                  ============================================ */}
 
-                {isTyping && (
-                  <div className="chatbot-message chatbot-message-bot">
-                    <div className="chatbot-bubble chatbot-bubble-bot" style={{ borderColor: colors.brand.secondary + '40' }}>
-                      <div className="flex gap-1">
-                        <div className="chatbot-typing-dot" style={{ backgroundColor: colors.brand.secondary, animationDelay: '0ms' }} />
-                        <div className="chatbot-typing-dot" style={{ backgroundColor: colors.brand.accent, animationDelay: '150ms' }} />
-                        <div className="chatbot-typing-dot" style={{ backgroundColor: colors.brand.secondary, animationDelay: '300ms' }} />
+              <div className="ae-chat-messages">
+                {/* intro system status */}
+
+                <div className="ae-chat-system-line">
+                  <span className="ae-chat-system-line-bar" />
+
+                  <span>
+                    AdvantEdge Growth
+                    Intelligence
+                  </span>
+
+                  <span className="ae-chat-system-line-bar" />
+                </div>
+
+                {messages.map(
+                  (message) => (
+                    <div
+                      key={message.id}
+                      className={[
+                        'ae-chat-message',
+                        message.sender ===
+                        'user'
+                          ? 'ae-chat-message-user'
+                          : 'ae-chat-message-bot',
+                      ].join(' ')}
+                    >
+                      {message.sender ===
+                        'bot' && (
+                        <div className="ae-chat-mini-avatar">
+                          <Sparkles className="h-3 w-3" />
+                        </div>
+                      )}
+
+                      <div
+                        className={[
+                          'ae-chat-bubble',
+                          message.sender ===
+                          'user'
+                            ? 'ae-chat-bubble-user'
+                            : 'ae-chat-bubble-bot',
+                        ].join(' ')}
+                      >
+                        <p className="whitespace-pre-line">
+                          {message.text}
+                        </p>
+
+                        <span className="ae-chat-time">
+                          {message.timestamp.toLocaleTimeString(
+                            [],
+                            {
+                              hour: '2-digit',
+                              minute:
+                                '2-digit',
+                            },
+                          )}
+                        </span>
                       </div>
                     </div>
+                  ),
+                )}
+
+                {/* ============================================
+                    TYPING
+                    ============================================ */}
+
+                {isTyping && (
+                  <div className="ae-chat-message ae-chat-message-bot">
+                    <div className="ae-chat-mini-avatar">
+                      <Sparkles className="h-3 w-3" />
+                    </div>
+
+                    <div className="ae-chat-typing">
+                      <span />
+                      <span />
+                      <span />
+                    </div>
                   </div>
                 )}
 
-                {/* Purpose Options */}
-                {currentStep === 'purpose' && messages.length > 0 && !isTyping && (
-                  <div className="chatbot-options">
-                    {purposeOfEnquiries.map((purpose) => (
+                {/* ============================================
+                    PURPOSE OPTIONS
+                    ============================================ */}
+
+                {currentStep ===
+                  'purpose' &&
+                  messages.length >
+                    0 &&
+                  !isTyping && (
+                    <div className="ae-chat-options">
+                      {purposeOfEnquiries.map(
+                        (purpose) => (
+                          <button
+                            type="button"
+                            key={
+                              purpose
+                            }
+                            onClick={() =>
+                              handleOptionClick(
+                                purpose,
+                              )
+                            }
+                            className="ae-chat-option"
+                          >
+                            {purpose}
+                          </button>
+                        ),
+                      )}
+                    </div>
+                  )}
+
+                {/* ============================================
+                    PHONE SKIP
+                    ============================================ */}
+
+                {currentStep ===
+                  'phone' &&
+                  !isTyping && (
+                    <div className="ae-chat-phone-skip">
                       <button
-                        key={purpose}
-                        onClick={() => handleOptionClick(purpose)}
-                        className="chatbot-option-button"
+                        type="button"
+                        onClick={() =>
+                          handleOptionClick(
+                            'Skip for now',
+                          )
+                        }
                       >
-                        {purpose}
+                        Skip for now
                       </button>
-                    ))}
-                  </div>
-                )}
+                    </div>
+                  )}
 
-                {/* Download Button */}
-                {currentStep === 'complete' && messages.length > 0 && !isTyping && (
-                  <div className="chatbot-actions">
-                    <button
-                      onClick={downloadConversation}
-                      className="chatbot-download-button"
-                    >
-                      <Download className="w-4 h-4" />
-                      Download Conversation
-                    </button>
-                  </div>
-                )}
+                {/* ============================================
+                    COMPLETE
+                    ============================================ */}
 
-                <div ref={messagesEndRef} />
+                {currentStep ===
+                  'complete' &&
+                  messages.length >
+                    0 &&
+                  !isTyping && (
+                    <div className="ae-chat-complete">
+                      <div className="ae-chat-complete-status">
+                        <div className="ae-chat-check">
+                          <Check className="h-3 w-3" />
+                        </div>
+
+                        <div>
+                          <p className="text-[10px] font-bold text-[#000131]">
+                            Enquiry
+                            captured
+                          </p>
+
+                          <p className="mt-0.5 text-[9px] text-gray-500">
+                            Lead score:{' '}
+                            {leadScore}/100
+                          </p>
+                        </div>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={
+                          downloadConversation
+                        }
+                        className="ae-chat-download"
+                      >
+                        <Download className="h-3.5 w-3.5" />
+
+                        Save transcript
+                      </button>
+                    </div>
+                  )}
+
+                <div
+                  ref={
+                    messagesEndRef
+                  }
+                />
               </div>
 
-              {/* Input */}
-              <div className="chatbot-input-container">
-                <div className="chatbot-input-wrapper">
+              {/* ============================================
+                  INPUT
+                  ============================================ */}
+
+              <div className="ae-chat-input-section">
+                <div className="ae-chat-input-wrapper">
                   <input
-                    type="text"
+                    type={
+                      currentStep ===
+                      'email'
+                        ? 'email'
+                        : currentStep ===
+                            'phone'
+                          ? 'tel'
+                          : 'text'
+                    }
                     value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-                    placeholder="Type your message..."
-                    className="chatbot-input"
-                    style={{ 
-                      borderColor: colors.brand.primary + '20',
-                      color: colors.brand.primary
+                    onChange={(event) =>
+                      setInputValue(
+                        event.target.value,
+                      )
+                    }
+                    onKeyDown={(
+                      event,
+                    ) => {
+                      if (
+                        event.key ===
+                          'Enter' &&
+                        !event.shiftKey
+                      ) {
+                        event.preventDefault();
+                        handleSend();
+                      }
                     }}
+                    placeholder={getPlaceholder()}
+                    className="ae-chat-input"
+                    autoComplete={
+                      currentStep ===
+                      'email'
+                        ? 'email'
+                        : currentStep ===
+                            'phone'
+                          ? 'tel'
+                          : currentStep ===
+                              'name'
+                            ? 'name'
+                            : 'off'
+                    }
+                    disabled={isTyping}
                   />
+
                   <button
+                    type="button"
                     onClick={handleSend}
-                    disabled={!inputValue.trim()}
-                    className="chatbot-send-button"
-                    style={{ background: gradients.primary }}
+                    disabled={
+                      !inputValue.trim() ||
+                      isTyping
+                    }
+                    className="ae-chat-send"
                     aria-label="Send message"
                   >
-                    <Send className="w-5 h-5" />
+                    <Send className="h-4 w-4" />
                   </button>
                 </div>
-                <p className="chatbot-footer">
-                  <Sparkles className="w-3 h-3 inline mr-1" />
-                  Powered by AdvantEdge AI • Data stored locally
-                </p>
+
+                <div className="ae-chat-footer">
+                  <span className="ae-chat-footer-dot" />
+
+                  <span>
+                    Powered by
+                    AdvantEdge AI
+                  </span>
+
+                  <span className="ae-chat-footer-divider">
+                    •
+                  </span>
+
+                  <span>
+                    Secure enquiry
+                    capture
+                  </span>
+                </div>
               </div>
             </>
           )}
-        </div>
+        </section>
       )}
 
+      {/* ============================================
+          COMPONENT CSS
+          ============================================ */}
+
       <style>{`
-        /* Fixed Button */
-        .chatbot-fixed-button {
+        /* ==========================================
+           LAUNCH BUTTON
+           ========================================== */
+
+        .ae-chat-launcher {
           position: fixed !important;
-          bottom: 24px;
-          right: 24px;
-          width: 64px;
-          height: 64px;
-          border-radius: 50%;
-          box-shadow: 0 10px 40px rgba(0, 0, 170, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+          right: 20px;
+          bottom: 20px;
+
+          width: 54px;
+          height: 54px;
+
           display: flex;
           align-items: center;
           justify-content: center;
-          color: white;
-          cursor: pointer;
-          z-index: 999997;
-          background: ${gradients.primary};
-          border: 2px solid ${colors.brand.secondary};
-          transition: box-shadow 0.3s ease;
-          /* NO transform here - breaks position:fixed in some browsers */
-          will-change: auto;
-        }
-        
-        .chatbot-fixed-button:hover {
-          box-shadow: 0 15px 50px rgba(0, 0, 170, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2);
-        }
-        
-        .chatbot-indicator {
-          position: absolute;
-          top: -4px;
-          right: -4px;
-          width: 12px;
-          height: 12px;
-          background: ${colors.brand.accent};
-          border-radius: 50%;
-          border: 2px solid white;
-          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        
-        /* Chatbot Window */
-        .chatbot-window {
-          position: fixed !important;
-          bottom: 24px;
-          right: 24px;
-          width: 384px;
-          max-width: calc(100vw - 48px);
-          height: 600px;
-          max-height: calc(100vh - 48px);
+
           border-radius: 16px;
-          box-shadow: 0 25px 80px rgba(0, 0, 170, 0.25), 0 0 0 1px rgba(0, 0, 170, 0.1);
-          border: 2px solid ${colors.brand.secondary};
+          border: 1px solid rgba(255,255,255,0.20);
+
+          color: #ffffff;
+
+          background:
+            linear-gradient(
+              145deg,
+              #000131 0%,
+              #0000aa 72%,
+              #1426c6 100%
+            );
+
+          box-shadow:
+            0 18px 45px rgba(0,0,80,0.30),
+            inset 0 1px 0 rgba(255,255,255,0.16);
+
+          cursor: pointer;
+
+          z-index: 999997;
+
+          overflow: visible;
+
+          transition:
+            box-shadow 0.25s ease,
+            border-color 0.25s ease;
+        }
+
+        .ae-chat-launcher:hover {
+          border-color:
+            rgba(255,179,0,0.50);
+
+          box-shadow:
+            0 22px 55px rgba(0,0,100,0.38),
+            0 0 0 4px rgba(255,179,0,0.06),
+            inset 0 1px 0 rgba(255,255,255,0.20);
+        }
+
+        .ae-chat-launcher-glow {
+          position: absolute;
+          inset: 8px;
+
+          border-radius: 12px;
+
+          background:
+            radial-gradient(
+              circle,
+              rgba(255,255,255,0.16),
+              transparent 70%
+            );
+
+          pointer-events: none;
+        }
+
+        .ae-chat-online-indicator {
+          position: absolute;
+
+          top: -3px;
+          right: -3px;
+
+          width: 11px;
+          height: 11px;
+
+          border-radius: 999px;
+
+          border: 2px solid #080912;
+
+          background: ${colors.brand.accent};
+
+          box-shadow:
+            0 0 0 2px rgba(255,179,0,0.10),
+            0 0 12px rgba(255,179,0,0.55);
+
+          animation:
+            aeChatPulse 2.4s ease-in-out infinite;
+        }
+
+        /* ==========================================
+           WINDOW
+           ========================================== */
+
+        .ae-chat-window {
+          position: fixed !important;
+
+          right: 20px;
+          bottom: 20px;
+
+          width: 360px;
+          height: 530px;
+
+          max-width:
+            calc(100vw - 32px);
+
+          max-height:
+            calc(100dvh - 32px);
+
           display: flex;
           flex-direction: column;
+
           overflow: hidden;
+
+          border-radius: 20px;
+
+          border:
+            1px solid rgba(255,255,255,0.18);
+
+          background:
+            rgba(249,250,252,0.98);
+
+          box-shadow:
+            0 30px 90px rgba(0,1,49,0.28),
+            0 0 0 1px rgba(0,1,49,0.05);
+
           z-index: 999997;
-          background: ${glass.base.background};
-          backdrop-filter: ${glass.base.backdropFilter};
-          /* NO transform here - breaks position:fixed */
-          will-change: auto;
-          animation: slideIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+          animation:
+            aeChatOpen 0.32s
+            cubic-bezier(0.22,1,0.36,1);
+
+          transition:
+            height 0.28s
+              cubic-bezier(0.22,1,0.36,1),
+            width 0.28s
+              cubic-bezier(0.22,1,0.36,1);
         }
-        
-        @keyframes slideIn {
-          from {
-            opacity: 0;
-            transform: translateY(100px) scale(0.9);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
+
+        .ae-chat-window-minimized {
+          height: 66px;
+          width: 320px;
         }
-        
-        .chatbot-header {
-          padding: 16px;
+
+        /* ==========================================
+           HEADER
+           ========================================== */
+
+        .ae-chat-header {
+          position: relative;
+
+          flex: 0 0 auto;
+
+          min-height: 66px;
+
+          overflow: hidden;
+
+          background:
+            linear-gradient(
+              120deg,
+              #050611 0%,
+              #000131 52%,
+              #00006e 100%
+            );
+
+          border-bottom:
+            1px solid rgba(255,255,255,0.10);
+        }
+
+        .ae-chat-header::after {
+          content: '';
+
+          position: absolute;
+
+          left: 18px;
+          right: 18px;
+          top: 0;
+
+          height: 1px;
+
+          background:
+            linear-gradient(
+              90deg,
+              transparent,
+              rgba(255,255,255,0.50),
+              transparent
+            );
+        }
+
+        .ae-chat-header-glow {
+          position: absolute;
+
+          width: 170px;
+          height: 170px;
+
+          top: -110px;
+          right: -35px;
+
+          border-radius: 50%;
+
+          background:
+            ${colors.brand.accent};
+
+          opacity: 0.13;
+
+          filter: blur(55px);
+
+          pointer-events: none;
+        }
+
+        .ae-chat-header-inner {
+          position: relative;
+          z-index: 2;
+
+          min-height: 66px;
+
           display: flex;
           align-items: center;
           justify-content: space-between;
-          position: relative;
-          overflow: hidden;
-          border-bottom: 2px solid ${colors.brand.secondary};
+
+          gap: 12px;
+
+          padding: 10px 12px 10px 14px;
         }
-        
-        .chatbot-header-gradient {
-          position: absolute;
-          inset: 0;
-          opacity: 0.9;
-          background: ${gradients.primary};
-        }
-        
-        .chatbot-header-content {
+
+        .ae-chat-brand {
           display: flex;
           align-items: center;
-          gap: 12px;
-          position: relative;
-          z-index: 10;
+
+          gap: 10px;
+
+          min-width: 0;
         }
-        
-        .chatbot-logo {
-          width: 40px;
-          height: 40px;
-          background: white;
-          border-radius: 50%;
+
+        .ae-chat-brand-icon {
+          width: 36px;
+          height: 36px;
+
+          flex: 0 0 auto;
+
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-          border: 2px solid ${colors.brand.accent};
+
+          border-radius: 11px;
+
+          color: ${colors.brand.accent};
+
+          background:
+            rgba(255,255,255,0.08);
+
+          border:
+            1px solid rgba(255,255,255,0.14);
+
+          box-shadow:
+            inset 0 1px 0 rgba(255,255,255,0.10);
         }
-        
-        .chatbot-status-dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: ${colors.brand.accent};
-          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+        .ae-chat-ai-badge {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+
+          min-width: 22px;
+          height: 15px;
+
+          padding: 0 5px;
+
+          border-radius: 999px;
+
+          font-size: 7px;
+          line-height: 1;
+
+          font-weight: 900;
+          letter-spacing: 0.08em;
+
+          color: #080912;
+
+          background:
+            ${colors.brand.accent};
         }
-        
-        .chatbot-header-actions {
+
+        .ae-chat-status-dot {
+          width: 6px;
+          height: 6px;
+
+          border-radius: 999px;
+
+          background:
+            ${colors.brand.accent};
+
+          box-shadow:
+            0 0 8px
+            rgba(255,179,0,0.65);
+        }
+
+        .ae-chat-header-actions {
+          flex: 0 0 auto;
+
           display: flex;
-          gap: 8px;
-          position: relative;
-          z-index: 10;
+          align-items: center;
+
+          gap: 5px;
         }
-        
-        .chatbot-icon-button {
-          padding: 8px;
-          border-radius: 8px;
-          transition: background 0.2s ease;
+
+        .ae-chat-header-button {
+          width: 32px;
+          height: 32px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          padding: 0;
+
+          color:
+            rgba(255,255,255,0.74);
+
+          border-radius: 9px;
+
+          border:
+            1px solid
+            rgba(255,255,255,0.08);
+
+          background:
+            rgba(255,255,255,0.04);
+
           cursor: pointer;
-          border: none;
-          background: transparent;
+
+          transition:
+            background 0.2s ease,
+            color 0.2s ease,
+            border-color 0.2s ease;
         }
-        
-        .chatbot-icon-button:hover {
-          background: rgba(255, 255, 255, 0.2);
+
+        .ae-chat-header-button:hover {
+          color: #ffffff;
+
+          background:
+            rgba(255,255,255,0.10);
+
+          border-color:
+            rgba(255,255,255,0.16);
         }
-        
-        .chatbot-messages {
+
+        /* ==========================================
+           MESSAGES
+           ========================================== */
+
+        .ae-chat-messages {
           flex: 1;
+
+          min-height: 0;
+
           overflow-y: auto;
           overflow-x: hidden;
-          padding: 16px;
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-          background: #f9fafb;
+
+          padding:
+            12px 12px 16px;
+
+          background:
+            linear-gradient(
+              180deg,
+              #f7f8fb 0%,
+              #ffffff 100%
+            );
+
+          scrollbar-width: thin;
+          scrollbar-color:
+            rgba(0,1,49,0.14)
+            transparent;
         }
-        
-        .chatbot-message {
-          display: flex;
-          width: 100%;
-          max-width: 100%;
+
+        .ae-chat-messages::-webkit-scrollbar {
+          width: 5px;
         }
-        
-        .chatbot-message-user {
-          justify-content: flex-end;
+
+        .ae-chat-messages::-webkit-scrollbar-track {
+          background: transparent;
         }
-        
-        .chatbot-message-bot {
-          justify-content: flex-start;
+
+        .ae-chat-messages::-webkit-scrollbar-thumb {
+          border-radius: 999px;
+
+          background:
+            rgba(0,1,49,0.14);
         }
-        
-        .chatbot-bubble {
-          max-width: 75%;
-          min-width: 0;
-          padding: 12px 16px;
-          border-radius: 16px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-          border: 2px solid;
-          overflow: hidden;
-          word-wrap: break-word;
-          overflow-wrap: break-word;
-          word-break: break-word;
-          hyphens: auto;
-          display: inline-block;
-        }
-        
-        .chatbot-bubble p {
-          margin: 0;
-          word-wrap: break-word;
-          overflow-wrap: break-word;
-          max-width: 100%;
-        }
-        
-        .chatbot-bubble-user {
-          color: white;
-          border-bottom-right-radius: 4px;
-        }
-        
-        .chatbot-bubble-bot {
-          color: #1f2937;
-          background: white;
-          border-bottom-left-radius: 4px;
-        }
-        
-        .chatbot-typing-dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          animation: bounce 1.4s infinite ease-in-out both;
-        }
-        
-        @keyframes bounce {
-          0%, 80%, 100% { transform: scale(0); }
-          40% { transform: scale(1); }
-        }
-        
-        .chatbot-options {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-        }
-        
-        .chatbot-option-button {
-          padding: 8px 16px;
-          background: white;
-          border: 1px solid #d1d5db;
-          color: #1f2937;
-          font-size: 14px;
-          border-radius: 9999px;
-          transition: all 0.3s ease;
-          cursor: pointer;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-        }
-        
-        .chatbot-option-button:hover {
-          background: #1a1a1a;
-          color: white;
-          border-color: #1a1a1a;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          transform: translateY(-2px);
-        }
-        
-        .chatbot-actions {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          margin-top: 16px;
-        }
-        
-        .chatbot-download-button {
-          padding: 12px 16px;
-          background: white;
-          border: 1px solid #d1d5db;
-          color: #1f2937;
-          border-radius: 12px;
-          transition: all 0.3s ease;
-          cursor: pointer;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+        .ae-chat-system-line {
           display: flex;
           align-items: center;
           justify-content: center;
+
           gap: 8px;
+
+          margin:
+            1px 0 12px;
+
+          font-size: 7px;
+          font-weight: 800;
+
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+
+          color:
+            rgba(0,1,49,0.32);
         }
-        
-        .chatbot-download-button:hover {
-          background: #1a1a1a;
-          color: white;
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          transform: translateY(-2px);
+
+        .ae-chat-system-line-bar {
+          width: 24px;
+          height: 1px;
+
+          background:
+            rgba(0,1,49,0.10);
         }
-        
-        .chatbot-input-container {
-          padding: 16px;
-          border-top: 2px solid ${colors.brand.secondary}40;
-          background: white;
-        }
-        
-        .chatbot-input-wrapper {
+
+        .ae-chat-message {
+          width: 100%;
+
           display: flex;
+          align-items: flex-end;
+
+          gap: 6px;
+
+          margin-bottom: 10px;
+        }
+
+        .ae-chat-message-user {
+          justify-content: flex-end;
+        }
+
+        .ae-chat-message-bot {
+          justify-content: flex-start;
+        }
+
+        .ae-chat-mini-avatar {
+          width: 23px;
+          height: 23px;
+
+          flex: 0 0 auto;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          margin-bottom: 2px;
+
+          border-radius: 7px;
+
+          color:
+            ${colors.brand.secondary};
+
+          background:
+            rgba(0,0,170,0.06);
+
+          border:
+            1px solid
+            rgba(0,0,170,0.10);
+        }
+
+        .ae-chat-bubble {
+          max-width: 82%;
+
+          min-width: 0;
+
+          padding:
+            9px 11px 7px;
+
+          border-radius: 13px;
+
+          word-break: break-word;
+          overflow-wrap: anywhere;
+
+          font-size: 11px;
+          line-height: 1.58;
+        }
+
+        .ae-chat-bubble p {
+          margin: 0;
+        }
+
+        .ae-chat-bubble-bot {
+          color: #31394a;
+
+          background: #ffffff;
+
+          border:
+            1px solid
+            rgba(0,1,49,0.08);
+
+          border-bottom-left-radius: 4px;
+
+          box-shadow:
+            0 5px 18px
+            rgba(0,1,49,0.04);
+        }
+
+        .ae-chat-bubble-user {
+          color: #ffffff;
+
+          border:
+            1px solid
+            rgba(255,255,255,0.12);
+
+          border-bottom-right-radius: 4px;
+
+          background:
+            ${gradients.primary};
+
+          box-shadow:
+            0 8px 20px
+            rgba(0,0,170,0.14);
+        }
+
+        .ae-chat-time {
+          display: block;
+
+          margin-top: 4px;
+
+          font-size: 7px;
+
+          line-height: 1;
+
+          opacity: 0.45;
+        }
+
+        .ae-chat-bubble-user
+        .ae-chat-time {
+          color: rgba(255,255,255,0.80);
+        }
+
+        /* ==========================================
+           TYPING
+           ========================================== */
+
+        .ae-chat-typing {
+          display: flex;
+          align-items: center;
+
+          gap: 3px;
+
+          min-width: 43px;
+
+          padding: 10px 12px;
+
+          border-radius:
+            13px 13px 13px 4px;
+
+          background: #ffffff;
+
+          border:
+            1px solid
+            rgba(0,1,49,0.08);
+
+          box-shadow:
+            0 5px 18px
+            rgba(0,1,49,0.04);
+        }
+
+        .ae-chat-typing span {
+          width: 5px;
+          height: 5px;
+
+          border-radius: 50%;
+
+          background:
+            ${colors.brand.secondary};
+
+          animation:
+            aeChatTyping
+            1.15s
+            ease-in-out
+            infinite;
+        }
+
+        .ae-chat-typing span:nth-child(2) {
+          animation-delay: 0.14s;
+
+          background:
+            ${colors.brand.accent};
+        }
+
+        .ae-chat-typing span:nth-child(3) {
+          animation-delay: 0.28s;
+        }
+
+        /* ==========================================
+           OPTIONS
+           ========================================== */
+
+        .ae-chat-options {
+          display: grid;
+          grid-template-columns:
+            repeat(2, minmax(0,1fr));
+
+          gap: 6px;
+
+          margin:
+            2px 0 12px 29px;
+        }
+
+        .ae-chat-option {
+          min-height: 36px;
+
+          padding: 7px 9px;
+
+          text-align: left;
+
+          font-size: 9px;
+          line-height: 1.35;
+
+          font-weight: 650;
+
+          color:
+            ${colors.brand.primary};
+
+          border-radius: 10px;
+
+          border:
+            1px solid
+            rgba(0,1,49,0.10);
+
+          background: #ffffff;
+
+          box-shadow:
+            0 4px 14px
+            rgba(0,1,49,0.025);
+
+          cursor: pointer;
+
+          transition:
+            transform 0.2s ease,
+            border-color 0.2s ease,
+            box-shadow 0.2s ease,
+            background 0.2s ease;
+        }
+
+        .ae-chat-option:hover {
+          transform:
+            translateY(-1px);
+
+          border-color:
+            rgba(0,0,170,0.25);
+
+          background:
+            rgba(0,0,170,0.025);
+
+          box-shadow:
+            0 8px 18px
+            rgba(0,1,49,0.05);
+        }
+
+        .ae-chat-phone-skip {
+          margin:
+            -2px 0 12px 29px;
+        }
+
+        .ae-chat-phone-skip button {
+          padding: 6px 10px;
+
+          border-radius: 8px;
+
+          border:
+            1px solid
+            rgba(0,1,49,0.09);
+
+          background:
+            rgba(0,1,49,0.025);
+
+          color:
+            rgba(0,1,49,0.58);
+
+          font-size: 9px;
+          font-weight: 650;
+
+          cursor: pointer;
+        }
+
+        .ae-chat-phone-skip button:hover {
+          color:
+            ${colors.brand.secondary};
+
+          border-color:
+            rgba(0,0,170,0.20);
+        }
+
+        /* ==========================================
+           COMPLETE STATUS
+           ========================================== */
+
+        .ae-chat-complete {
+          margin:
+            4px 0 10px 29px;
+
+          padding: 10px;
+
+          border-radius: 12px;
+
+          border:
+            1px solid
+            rgba(0,1,49,0.08);
+
+          background:
+            rgba(255,255,255,0.85);
+
+          box-shadow:
+            0 6px 20px
+            rgba(0,1,49,0.04);
+        }
+
+        .ae-chat-complete-status {
+          display: flex;
+          align-items: center;
+
           gap: 8px;
         }
-        
-        .chatbot-input {
-          flex: 1;
-          background: #f9fafb;
-          padding: 12px 16px;
-          border-radius: 12px;
-          border: 2px solid;
-          outline: none;
-          transition: all 0.2s ease;
+
+        .ae-chat-check {
+          width: 25px;
+          height: 25px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          border-radius: 8px;
+
+          color: #ffffff;
+
+          background:
+            ${gradients.primary};
         }
-        
-        .chatbot-input:focus {
-          ring: 2px;
-          border-color: ${colors.brand.secondary};
-        }
-        
-        .chatbot-send-button {
-          padding: 12px 16px;
-          color: white;
-          border-radius: 12px;
-          border: none;
+
+        .ae-chat-download {
+          width: 100%;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          gap: 6px;
+
+          margin-top: 9px;
+
+          padding: 7px 10px;
+
+          border-radius: 9px;
+
+          border:
+            1px solid
+            rgba(0,1,49,0.10);
+
+          background: #ffffff;
+
+          color:
+            ${colors.brand.primary};
+
+          font-size: 9px;
+          font-weight: 700;
+
           cursor: pointer;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-          transition: all 0.3s ease;
+
+          transition:
+            background 0.2s ease,
+            border-color 0.2s ease;
         }
-        
-        .chatbot-send-button:disabled {
-          opacity: 0.5;
+
+        .ae-chat-download:hover {
+          background:
+            rgba(0,0,170,0.035);
+
+          border-color:
+            rgba(0,0,170,0.20);
+        }
+
+        /* ==========================================
+           INPUT
+           ========================================== */
+
+        .ae-chat-input-section {
+          flex: 0 0 auto;
+
+          padding: 10px 11px 8px;
+
+          border-top:
+            1px solid
+            rgba(0,1,49,0.08);
+
+          background:
+            rgba(255,255,255,0.98);
+
+          box-shadow:
+            0 -8px 22px
+            rgba(0,1,49,0.025);
+        }
+
+        .ae-chat-input-wrapper {
+          display: flex;
+          align-items: center;
+
+          gap: 7px;
+        }
+
+        .ae-chat-input {
+          flex: 1;
+
+          min-width: 0;
+          height: 39px;
+
+          padding:
+            0 11px;
+
+          border-radius: 11px;
+
+          border:
+            1px solid
+            rgba(0,1,49,0.10);
+
+          outline: none;
+
+          background:
+            #f8f9fb;
+
+          color:
+            ${colors.brand.primary};
+
+          font-size: 11px;
+
+          transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease,
+            background 0.2s ease;
+        }
+
+        .ae-chat-input::placeholder {
+          color:
+            rgba(0,1,49,0.35);
+        }
+
+        .ae-chat-input:focus {
+          border-color:
+            rgba(0,0,170,0.45);
+
+          background: #ffffff;
+
+          box-shadow:
+            0 0 0 3px
+            rgba(0,0,170,0.07);
+        }
+
+        .ae-chat-input:disabled {
+          opacity: 0.65;
+        }
+
+        .ae-chat-send {
+          width: 39px;
+          height: 39px;
+
+          flex: 0 0 auto;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          padding: 0;
+
+          border-radius: 11px;
+
+          border: none;
+
+          color: #ffffff;
+
+          background:
+            ${gradients.primary};
+
+          box-shadow:
+            0 7px 18px
+            rgba(0,0,170,0.17);
+
+          cursor: pointer;
+
+          transition:
+            opacity 0.2s ease,
+            box-shadow 0.2s ease;
+        }
+
+        .ae-chat-send:not(:disabled):hover {
+          box-shadow:
+            0 10px 24px
+            rgba(0,0,170,0.24);
+        }
+
+        .ae-chat-send:disabled {
+          opacity: 0.38;
+
           cursor: not-allowed;
+
+          box-shadow: none;
         }
-        
-        .chatbot-send-button:not(:disabled):hover {
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-          transform: scale(1.05);
+
+        .ae-chat-footer {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          flex-wrap: wrap;
+
+          gap: 4px;
+
+          margin-top: 7px;
+
+          font-size: 7px;
+
+          line-height: 1;
+
+          color:
+            rgba(0,1,49,0.36);
         }
-        
-        .chatbot-send-button:not(:disabled):active {
-          transform: scale(0.95);
+
+        .ae-chat-footer-dot {
+          width: 5px;
+          height: 5px;
+
+          border-radius: 999px;
+
+          background:
+            ${colors.brand.accent};
         }
-        
-        .chatbot-footer {
-          font-size: 12px;
-          margin-top: 12px;
-          text-align: center;
-          color: ${colors.brand.primary}80;
+
+        .ae-chat-footer-divider {
+          opacity: 0.45;
         }
-        
-        @keyframes pulse {
-          0%, 100% {
+
+        /* ==========================================
+           ANIMATIONS
+           ========================================== */
+
+        @keyframes aeChatOpen {
+          from {
+            opacity: 0;
+            transform:
+              translateY(18px)
+              scale(0.97);
+          }
+
+          to {
+            opacity: 1;
+            transform:
+              translateY(0)
+              scale(1);
+          }
+        }
+
+        @keyframes aeChatPulse {
+          0%,
+          100% {
             opacity: 1;
           }
+
           50% {
             opacity: 0.5;
+          }
+        }
+
+        @keyframes aeChatTyping {
+          0%,
+          60%,
+          100% {
+            transform:
+              translateY(0);
+
+            opacity: 0.4;
+          }
+
+          30% {
+            transform:
+              translateY(-3px);
+
+            opacity: 1;
+          }
+        }
+
+        /* ==========================================
+           MOBILE
+           ========================================== */
+
+        @media (max-width: 640px) {
+          .ae-chat-launcher {
+            right: 14px;
+
+            bottom:
+              max(
+                14px,
+                env(
+                  safe-area-inset-bottom
+                )
+              );
+
+            width: 50px;
+            height: 50px;
+
+            border-radius: 15px;
+          }
+
+          .ae-chat-window {
+            right: 10px;
+
+            bottom:
+              max(
+                10px,
+                env(
+                  safe-area-inset-bottom
+                )
+              );
+
+            width:
+              calc(100vw - 20px);
+
+            max-width: none;
+
+            height:
+              min(
+                520px,
+                calc(
+                  100dvh - 20px
+                )
+              );
+
+            max-height:
+              calc(
+                100dvh - 20px
+              );
+
+            border-radius: 18px;
+          }
+
+          .ae-chat-window-minimized {
+            width:
+              min(
+                320px,
+                calc(
+                  100vw - 20px
+                )
+              );
+
+            height: 64px;
+          }
+
+          .ae-chat-header {
+            min-height: 64px;
+          }
+
+          .ae-chat-header-inner {
+            min-height: 64px;
+
+            padding:
+              9px 10px 9px 12px;
+          }
+
+          .ae-chat-brand-icon {
+            width: 34px;
+            height: 34px;
+          }
+
+          .ae-chat-header-button {
+            width: 30px;
+            height: 30px;
+          }
+
+          .ae-chat-messages {
+            padding:
+              11px 10px 14px;
+          }
+
+          .ae-chat-bubble {
+            max-width: 84%;
+
+            font-size: 10.5px;
+          }
+
+          .ae-chat-options {
+            margin-left: 0;
+
+            grid-template-columns: 1fr 1fr;
+          }
+
+          .ae-chat-phone-skip,
+          .ae-chat-complete {
+            margin-left: 0;
+          }
+
+          .ae-chat-input-section {
+            padding:
+              9px 9px 7px;
+          }
+        }
+
+        /* ==========================================
+           VERY SMALL MOBILE
+           ========================================== */
+
+        @media (max-width: 380px) {
+          .ae-chat-options {
+            grid-template-columns: 1fr;
+          }
+
+          .ae-chat-system-line-bar {
+            width: 15px;
+          }
+        }
+
+        /* ==========================================
+           REDUCED MOTION
+           ========================================== */
+
+        @media (
+          prefers-reduced-motion:
+          reduce
+        ) {
+          .ae-chat-window,
+          .ae-chat-online-indicator,
+          .ae-chat-typing span {
+            animation: none !important;
           }
         }
       `}</style>
     </>
   );
 }
+
+export default AIChatbot;
