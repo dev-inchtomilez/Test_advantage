@@ -1,6 +1,6 @@
 /**
  * ============================================
- * STRATEGIC PLANNING SERVICE PAGE
+ * STRATEGIC MARKETING SERVICE PAGE
  * AdvantEdge
  * ============================================
  */
@@ -51,37 +51,37 @@ const keyServices = [
     icon: <Target className="h-5 w-5" />,
     title: 'Market Analysis',
     description:
-      'Comprehensive market research, competitive intelligence, and customer insights to inform strategic decisions.',
+      'Market intelligence, competitor analysis, and customer insights that reveal where to compete, who to target, and how to win.',
   },
   {
     icon: <Map className="h-5 w-5" />,
     title: 'Go-to-Market Strategy',
     description:
-      'Integrated launch plans covering positioning, messaging, channels, and tactical execution roadmaps.',
+      'Integrated launch strategies covering positioning, messaging, offers, channel selection, campaign sequencing, and market entry execution.',
   },
   {
     icon: <LineChart className="h-5 w-5" />,
-    title: 'Growth Strategy',
+    title: 'Growth Marketing Strategy',
     description:
-      'Data-driven strategies for market expansion, customer acquisition, and revenue acceleration.',
+      'Data-driven acquisition, retention, expansion, and conversion strategies designed to accelerate sustainable revenue growth.',
   },
   {
     icon: <Users className="h-5 w-5" />,
-    title: 'Customer Segmentation',
+    title: 'Audience Segmentation & Targeting',
     description:
-      'Detailed audience analysis, persona development, and targeting strategies for maximum impact.',
+      'High-value audience segmentation, persona development, intent mapping, and targeting strategies for more relevant marketing.',
   },
   {
     icon: <Lightbulb className="h-5 w-5" />,
-    title: 'Brand Positioning',
+    title: 'Brand Positioning & Messaging',
     description:
-      'Strategic differentiation and value proposition development that resonates with target markets.',
+      'Distinctive positioning, value propositions, and messaging architecture that make your brand relevant, credible, and memorable.',
   },
   {
     icon: <BarChart3 className="h-5 w-5" />,
-    title: 'Performance Frameworks',
+    title: 'Marketing Performance & Optimization',
     description:
-      'KPI definition, measurement systems, and optimization frameworks for continuous improvement.',
+      'KPI architecture, attribution thinking, reporting systems, testing priorities, and optimization frameworks that improve marketing ROI.',
   },
 ];
 
@@ -89,53 +89,53 @@ const processSteps = [
   {
     id: 'step-1',
     number: '01',
-    title: 'Business Discovery',
+    title: 'Business & Marketing Discovery',
     description:
-      'Deep dive into business model, objectives, and market context',
+      'Align business goals, growth priorities, commercial realities, and the current marketing ecosystem',
     details: [
-      'Stakeholder interviews and alignment sessions',
-      'Business model and value chain analysis',
-      'Current state marketing audit',
-      'Organizational capability assessment',
+      'Stakeholder interviews and growth-priority alignment',
+      'Business model, offer, and revenue-driver analysis',
+      'Current-state brand, channel, funnel, and campaign audit',
+      'Marketing capability, technology, and resource assessment',
     ],
   },
   {
     id: 'step-2',
     number: '02',
-    title: 'Market Research',
+    title: 'Market & Audience Intelligence',
     description:
-      'Comprehensive analysis of market dynamics and opportunities',
+      'Build a fact base around the market, competition, customers, demand, and growth opportunities',
     details: [
-      'Market sizing and trend analysis',
-      'Competitive landscape mapping',
-      'Customer research and persona development',
-      'Industry best practice benchmarking',
+      'Market sizing, category trends, and demand analysis',
+      'Competitor positioning, messaging, and channel mapping',
+      'Customer research, segmentation, and persona development',
+      'Channel, content, funnel, and category benchmarking',
     ],
   },
   {
     id: 'step-3',
     number: '03',
-    title: 'Strategy Development',
+    title: 'Strategic Marketing Development',
     description:
-      'Craft integrated marketing strategy aligned with business goals',
+      'Design the integrated marketing strategy that connects positioning, audiences, channels, campaigns, and commercial goals',
     details: [
-      'Strategic positioning and differentiation',
-      'Target market selection and prioritization',
-      'Channel strategy and mix optimization',
-      'Budget allocation and resource planning',
+      'Brand positioning, value proposition, and messaging architecture',
+      'Priority audience, segment, and market selection',
+      'Channel, content, media, and lifecycle strategy',
+      'Budget allocation, KPI targets, and resource planning',
     ],
   },
   {
     id: 'step-4',
     number: '04',
-    title: 'Roadmap Creation',
+    title: 'Campaign & Growth Roadmap',
     description:
-      'Develop actionable implementation plans and timelines',
+      'Translate strategy into a practical campaign, channel, content, and optimization roadmap',
     details: [
-      'Phased implementation roadmap',
-      'Campaign planning and scheduling',
-      'Resource and budget requirements',
-      'Risk mitigation strategies',
+      'Phased 90-day and long-term execution roadmap',
+      'Campaign themes, launch waves, and content priorities',
+      'Channel budgets, ownership, and resource requirements',
+      'Measurement cadence, testing plan, and optimization priorities',
     ],
   },
 ];
@@ -143,31 +143,31 @@ const processSteps = [
 const benefits = [
   {
     icon: <Target className="h-5 w-5" />,
-    title: 'Strategic Clarity',
+    title: 'Marketing Clarity',
     description:
-      'Clear direction and aligned priorities across the organization',
+      'Clear market priorities, audience focus, messaging, channel roles, and measurable marketing objectives',
   },
   {
     icon: <TrendingUp className="h-5 w-5" />,
-    title: 'Accelerated Growth',
-    description: 'Faster market penetration and revenue growth',
+    title: 'Scalable Growth',
+    description: 'A connected acquisition and retention system designed for sustainable revenue growth',
   },
   {
     icon: <Zap className="h-5 w-5" />,
-    title: 'Resource Efficiency',
-    description: 'Optimized budget allocation and ROI maximization',
+    title: 'Smarter Marketing Spend',
+    description: 'Better allocation of media, channel, content, technology, and team resources around business impact',
   },
   {
     icon: <Award className="h-5 w-5" />,
-    title: 'Competitive Advantage',
-    description: 'Differentiation that captures market share',
+    title: 'Stronger Market Position',
+    description: 'Sharper differentiation and messaging that improve relevance, preference, and market share potential',
   },
 ];
 
 const deliverables = [
   {
     id: 'del-1',
-    title: 'Marketing Strategy Document',
+    title: 'Integrated Marketing Strategy',
     icon: (
       <FileText
         className="h-5 w-5"
@@ -175,7 +175,7 @@ const deliverables = [
       />
     ),
     content:
-      'Comprehensive strategy documentation including market analysis, positioning, messaging frameworks, channel strategy, and success metrics.',
+      'A comprehensive strategic marketing blueprint covering market context, target audiences, positioning, messaging, channel roles, campaign priorities, budget direction, and success metrics.',
   },
   {
     id: 'del-2',
@@ -187,11 +187,11 @@ const deliverables = [
       />
     ),
     content:
-      'Detailed implementation plan with phased approach, campaign calendar, resource requirements, and milestone tracking.',
+      'A phased go-to-market and growth roadmap covering launch priorities, campaign waves, channel activation, content themes, responsibilities, budgets, and milestone tracking.',
   },
   {
     id: 'del-3',
-    title: 'Competitive Analysis',
+    title: 'Competitive & Audience Intelligence',
     icon: (
       <BarChart3
         className="h-5 w-5"
@@ -199,11 +199,11 @@ const deliverables = [
       />
     ),
     content:
-      'In-depth competitive intelligence, market positioning map, and strategic recommendations for differentiation.',
+      'Competitive positioning analysis, audience insights, category patterns, messaging gaps, and strategic opportunities to strengthen market differentiation.',
   },
   {
     id: 'del-4',
-    title: 'Performance Framework',
+    title: 'Performance & Optimization Framework',
     icon: (
       <LineChart
         className="h-5 w-5"
@@ -211,7 +211,7 @@ const deliverables = [
       />
     ),
     content:
-      'KPI dashboard, measurement methodology, reporting templates, and optimization guidelines for continuous improvement.',
+      'KPI framework, measurement methodology, reporting cadence, testing agenda, and optimization guidelines for continuous marketing improvement.',
   },
 ];
 
@@ -245,7 +245,7 @@ const industries = [
 const faqs = [
   {
     id: 'faq-1',
-    title: 'How long does strategic planning take?',
+    title: 'How long does a strategic marketing engagement take?',
     icon: (
       <Target
         className="h-5 w-5"
@@ -253,11 +253,11 @@ const faqs = [
       />
     ),
     content:
-      'Typical engagements range from 6-12 weeks depending on scope and complexity. We work efficiently while ensuring thorough analysis and stakeholder alignment.',
+      'Typical strategic marketing engagements range from 6-12 weeks depending on scope, market complexity, number of audiences, and channels involved. We move efficiently while protecting the quality of research, alignment, and decision-making.',
   },
   {
     id: 'faq-2',
-    title: 'What if our market is constantly changing?',
+    title: 'How do you keep the strategy relevant when markets change?',
     icon: (
       <TrendingUp
         className="h-5 w-5"
@@ -265,11 +265,11 @@ const faqs = [
       />
     ),
     content:
-      'We build agile strategies with flexibility built in. Our frameworks include quarterly review cycles and adjustment mechanisms to adapt to market dynamics.',
+      'We build strategic marketing systems with adaptability built in. The framework includes KPI reviews, campaign learning loops, testing priorities, and adjustment mechanisms so positioning, channels, budgets, and execution can evolve with market conditions.',
   },
   {
     id: 'faq-3',
-    title: 'Do you help with implementation?',
+    title: 'Can you support campaign execution after the strategy is built?',
     icon: (
       <Zap
         className="h-5 w-5"
@@ -277,7 +277,7 @@ const faqs = [
       />
     ),
     content:
-      'Absolutely. We offer both strategy development and ongoing implementation support, ensuring your plans translate into measurable results.',
+      'Yes. We can extend the engagement into campaign planning, creative direction, content, performance marketing, funnel optimization, reporting, and ongoing strategic oversight so the marketing strategy is translated into measurable execution.',
   },
 ];
 
@@ -285,15 +285,15 @@ const faqs = [
    PAGE
    ============================================ */
 
-export function StrategicPlanningPage() {
+export function StrategicMarketingPage() {
   return (
     <PageBackground>
       <PageSEO
-        title={SERVICE_SEO.strategicPlanning.title}
-        description={SERVICE_SEO.strategicPlanning.description}
+        title="Strategic Marketing Services | AdvantEdge"
+        description="Data-driven strategic marketing services covering market intelligence, audience strategy, brand positioning, go-to-market planning, growth marketing, channel strategy, and performance optimization."
         keywords={SERVICE_SEO.strategicPlanning.keywords}
         ogImage={SERVICE_SEO.strategicPlanning.ogImage}
-        path="/services/strategic-planning"
+        path="/services/strategic-marketing"
         serviceSchema={SERVICE_SEO.strategicPlanning.schema}
       />
 
@@ -393,9 +393,9 @@ export function StrategicPlanningPage() {
                   transition={{ duration: 0.7, delay: 0.18 }}
                   className="mt-5 max-w-2xl text-sm leading-[1.8] text-white/68 sm:text-base"
                 >
-                  Data-driven market analysis, competitive positioning, and
-                  integrated go-to-market strategies that accelerate business
-                  growth and market leadership.
+                  Data-driven strategic marketing that connects market intelligence,
+                  audience insight, brand positioning, channel strategy, campaigns,
+                  and performance optimization to accelerate sustainable growth.
                 </motion.p>
 
                 <motion.p
@@ -404,7 +404,7 @@ export function StrategicPlanningPage() {
                   transition={{ delay: 0.3 }}
                   className="mt-4 text-sm font-bold text-white"
                 >
-                  Transform ambition into executable strategy.
+                  Turn business ambition into a focused marketing growth system.
                 </motion.p>
 
                 {/* CTA */}
@@ -421,7 +421,7 @@ export function StrategicPlanningPage() {
                       className="group inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold text-white shadow-[0_18px_45px_rgba(0,0,170,0.28)] transition-all duration-300 hover:-translate-y-0.5"
                       style={{ background: gradients.primary }}
                     >
-                      Build Your Strategy
+                      Build Your Marketing Strategy
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </MagneticButton>
@@ -438,11 +438,11 @@ export function StrategicPlanningPage() {
 
                 <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2">
                   {[
-                    'Research',
+                    'Insight',
                     'Positioning',
-                    'Go-to-Market',
-                    'Growth',
-                    'Measurement',
+                    'Channels',
+                    'Campaigns',
+                    'Optimization',
                   ].map((item, index) => (
                     <div key={item} className="flex items-center gap-3">
                       <span className="text-[9px] font-bold uppercase tracking-[0.14em] text-white/45">
@@ -508,8 +508,8 @@ export function StrategicPlanningPage() {
             <div className="mt-8 overflow-hidden rounded-2xl border border-white/20 bg-black/20 backdrop-blur-xl">
               <div className="grid grid-cols-3 divide-x divide-white/15">
                 {[
-                  ['200+', 'Strategies Built'],
-                  ['3.8x', 'Avg. Growth'],
+                  ['200+', 'Marketing Strategies'],
+                  ['3.8x', 'Avg. Growth Impact'],
                   ['96%', 'Success Rate'],
                 ].map(([value, label]) => (
                   <div key={label} className="px-3 py-4 text-center">
@@ -529,7 +529,7 @@ export function StrategicPlanningPage() {
       </section>
 
       {/* ============================================
-          2. WHY STRATEGIC PLANNING
+          2. WHY STRATEGIC MARKETING
           + BENEFITS
           ============================================ */}
 
@@ -559,7 +559,7 @@ export function StrategicPlanningPage() {
                         className="text-[10px] font-bold uppercase tracking-[0.18em]"
                         style={{ color: colors.brand.primary }}
                       >
-                        Strategic Foundation
+                        Strategic Marketing Foundation
                       </span>
                     </div>
 
@@ -567,16 +567,16 @@ export function StrategicPlanningPage() {
                       className="mt-5 text-2xl font-bold leading-[1.1] tracking-[-0.03em] sm:text-3xl"
                       style={{ color: colors.brand.primary }}
                     >
-                      Why Strategic Planning Matters
+                      Why Strategic Marketing Matters
                     </h2>
                   </div>
 
                   <p className="text-sm leading-[1.8] text-gray-600 sm:text-base">
                     In today's complex market environment, success requires
-                    more than tactical execution. Our strategic planning
-                    services provide the clarity, direction, and frameworks
-                    needed to make informed decisions, allocate resources
-                    effectively, and achieve sustainable competitive advantage.
+                    more than isolated campaigns or disconnected channels. Our
+                    strategic marketing services connect market insight, audience
+                    priorities, brand positioning, channel strategy, campaigns,
+                    and measurement into one growth system built around business outcomes.
                   </p>
                 </div>
               </ScrollReveal>
@@ -617,7 +617,7 @@ export function StrategicPlanningPage() {
       </ModernSectionBackground>
 
       {/* ============================================
-          3. CORE STRATEGIC SERVICES
+          3. CORE STRATEGIC MARKETING SERVICES
           ============================================ */}
 
       <ModernSectionBackground
@@ -648,13 +648,13 @@ export function StrategicPlanningPage() {
                       className="mt-3 text-2xl font-bold tracking-[-0.03em] sm:text-3xl"
                       style={{ color: colors.brand.primary }}
                     >
-                      Core Strategic Services
+                      Core Strategic Marketing Services
                     </h2>
                   </div>
 
                   <p className="max-w-lg text-sm leading-relaxed text-gray-600 lg:text-right">
-                    Comprehensive planning services that drive business
-                    growth and market success.
+                    Integrated strategic marketing services that connect insight,
+                    positioning, acquisition, retention, and performance.
                   </p>
                 </div>
               </ScrollReveal>
@@ -707,7 +707,7 @@ export function StrategicPlanningPage() {
       </ModernSectionBackground>
 
       {/* ============================================
-          4. PROCESS — DARK
+          4. STRATEGIC MARKETING PROCESS — DARK
           ============================================ */}
 
       <ModernSectionBackground
@@ -768,7 +768,7 @@ export function StrategicPlanningPage() {
                     </div>
 
                     <h2 className="mt-5 text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl">
-                      Strategic Planning Process
+                      Strategic Marketing Process
                     </h2>
                   </div>
 
@@ -860,12 +860,12 @@ export function StrategicPlanningPage() {
                     className="mt-3 text-xl font-bold sm:text-2xl"
                     style={{ color: colors.brand.primary }}
                   >
-                    Strategic Deliverables
+                    Strategic Marketing Deliverables
                   </h2>
 
                   <p className="mt-2 text-sm leading-relaxed text-gray-600">
-                    Comprehensive documentation and frameworks to guide
-                    your marketing success.
+                    Practical strategy, research, messaging, roadmaps, and
+                    measurement frameworks your team can execute against.
                   </p>
 
                   <div className="mt-5">
@@ -900,7 +900,7 @@ export function StrategicPlanningPage() {
                     </h2>
 
                     <p className="mt-2 text-sm text-white/50">
-                      Strategic planning that drives measurable business outcomes.
+                      Strategic marketing designed to create measurable commercial outcomes.
                     </p>
 
                     <div className="mt-6 grid grid-cols-3 divide-x divide-white/15 overflow-hidden rounded-xl border border-white/15 bg-white/[0.05]">
@@ -928,9 +928,9 @@ export function StrategicPlanningPage() {
                     </div>
 
                     <p className="mt-5 border-t border-white/15 pt-5 text-[11px] leading-[1.75] text-white/55">
-                      Technology company leveraged strategic planning to
-                      reposition in competitive market, resulting in dramatic
-                      growth and market leadership.
+                      A technology company used a sharper market position, clearer
+                      audience priorities, integrated channel strategy, and disciplined
+                      performance optimization to accelerate growth and strengthen market leadership.
                     </p>
                   </div>
                 </div>
@@ -977,7 +977,7 @@ export function StrategicPlanningPage() {
                   </h2>
 
                   <p className="mt-2 text-sm text-gray-600">
-                    Strategic planning expertise across diverse market sectors.
+                    Strategic marketing expertise adapted to different buying cycles, customer journeys, and market dynamics.
                   </p>
 
                   <div className="mt-5 grid grid-cols-2 gap-3">
@@ -1032,7 +1032,7 @@ export function StrategicPlanningPage() {
                   </h2>
 
                   <p className="mt-2 text-sm text-gray-600">
-                    Everything you need to know about our strategic planning services.
+                    Everything you need to know about our strategic marketing approach, process, and implementation support.
                   </p>
 
                   <div className="mt-5 rounded-[20px] border border-gray-200 bg-white/85 p-3 shadow-[0_14px_40px_rgba(0,1,49,0.05)]">
@@ -1082,12 +1082,12 @@ export function StrategicPlanningPage() {
                 </div>
 
                 <h2 className="mt-5 text-2xl font-bold text-white">
-                  Ready to Build Your Strategy?
+                  Ready to Build Your Marketing Strategy?
                 </h2>
 
                 <p className="mx-auto mt-3 max-w-2xl text-sm leading-[1.75] text-white/55">
-                  Let's discuss your business objectives and develop a
-                  strategic marketing plan that drives measurable results.
+                  Let's connect your business objectives to a focused strategic
+                  marketing system built to improve demand, conversion, growth, and measurable ROI.
                 </p>
 
                 <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
@@ -1097,7 +1097,7 @@ export function StrategicPlanningPage() {
                       className="group inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold text-white shadow-xl transition-all hover:-translate-y-0.5"
                       style={{ background: gradients.primary }}
                     >
-                      Schedule Consultation
+                      Schedule Strategy Consultation
 
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
@@ -1119,4 +1119,4 @@ export function StrategicPlanningPage() {
   );
 }
 
-export default StrategicPlanningPage;
+export default StrategicMarketingPage;
