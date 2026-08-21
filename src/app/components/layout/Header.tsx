@@ -65,7 +65,7 @@ const serviceCategories = [
   },
   {
     name: "AI Marketing Solutions",
-    path: "/services/content-strategy",
+    path: "/services/ai-marketing-solutions",
     icon: <MonitorSmartphone className="h-4 w-4" />,
     description: "Content creation & distribution",
   },
