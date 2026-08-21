@@ -82,6 +82,12 @@ const keyServices = [
     description:
       'CRO strategies and A/B testing to maximize conversions and revenue from existing traffic.',
   },
+  {
+    icon: <Globe className="h-5 w-5" />,
+    title: 'AEO & GEO',
+    description:
+      'Answer Engine Optimization and Generative Engine Optimization to strengthen visibility across AI-powered search, answer engines, and generative discovery platforms.',
+  },
 ];
 
 const processSteps = [
@@ -508,7 +514,7 @@ export function DigitalMarketingPage() {
                           className="text-[8px] font-bold uppercase tracking-[0.17em]"
                           style={{ color: colors.brand.accent }}
                         >
-                          Channel 0{index + 1}
+                          Capability 0{index + 1}
                         </p>
 
                         <h2 className="mt-1 text-sm font-bold text-white">
