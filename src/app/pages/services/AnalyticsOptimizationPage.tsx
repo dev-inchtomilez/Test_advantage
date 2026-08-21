@@ -655,7 +655,7 @@ export function AnalyticsOptimizationPage() {
                                   color: colors.brand.accent,
                                 }}
                               >
-                                INTELLIGENCE {String(index + 1).padStart(2, '0')}
+                                CAPABILITY {String(index + 1).padStart(2, '0')}
                               </p>
 
                               <h2 className="mt-1 text-xs font-bold text-white">
