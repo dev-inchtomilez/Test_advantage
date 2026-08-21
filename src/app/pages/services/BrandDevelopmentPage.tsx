@@ -717,7 +717,7 @@ export function BrandDevelopmentPage() {
                                   color: colors.brand.accent,
                                 }}
                               >
-                                BRAND SYSTEM {item.number}
+                                CAPABILITY {item.number}
                               </p>
 
                               <h2 className="mt-1 text-xs font-bold text-white">
