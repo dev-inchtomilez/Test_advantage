@@ -1,52 +1,33 @@
 /**
  * ============================================
- * B2B SALES REINVENTION
- * AI MARKETING SOLUTIONS
- * ============================================
- * ADVANTEDGE — ENTERPRISE SERVICE PAGE
- *
- * Compact typography
- * Premium dark / light composition
- * AI-enabled sales transformation
- * Only 2 primary CTAs
+ * B2B SALES REINVENTION SERVICE PAGE
+ * AdvantEdge
  * ============================================
  */
-
-import type { ReactNode } from 'react';
 
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
 
 import {
   ArrowRight,
-  Brain,
-  CheckCircle2,
-  Clock3,
-  MessageSquare,
   Target,
-  RefreshCw,
-  Database,
-  BarChart3,
-  Users,
-  Bot,
-  Layers,
-  Workflow,
-  Search,
-  Rocket,
+  CheckCircle2,
   TrendingUp,
-  Eye,
+  Users,
+  BarChart3,
+  Lightbulb,
+  FileText,
+  Globe,
+  Award,
   Zap,
-  UserCheck,
-  CalendarCheck,
-  Gauge,
-  Repeat2,
-  Building2,
+  Layers,
+  Eye,
+  Map,
+  LineChart,
 } from 'lucide-react';
 
-import {
-  Section,
-  Container,
-} from '../../components/primitives';
+import { Section, Container } from '../../components/primitives';
+import { Accordion } from '../../components/Accordion';
 
 import {
   ScrollReveal,
@@ -55,289 +36,304 @@ import {
 } from '../../components/ScrollReveal';
 
 import { MagneticButton } from '../../components/MagneticButton';
-
-import {
-  colors,
-  gradients,
-} from '../../../styles/design-tokens';
-
+import { colors, gradients } from '../../../styles/design-tokens';
 import { PageBackground } from '../../components/layout';
-
 import { ModernSectionBackground } from '../../components/ModernSectionBackground';
-
 import { PageSEO } from '../../components/seo';
 
 /* ============================================
-   PROBLEMS
+   DATA
    ============================================ */
 
 const salesProblems = [
   {
-    icon: <Clock3 className="h-5 w-5" />,
-    title: 'Leads wait too long for a response.',
-    content:
-      "Prospects expect quick answers. When they don't receive them, they move on or lose interest before your sales team even makes contact.",
+    icon: <Zap className="h-5 w-5" />,
+    title: 'Slow Lead Response',
+    description:
+      'Prospects expect quick answers. When they wait too long, interest drops and valuable opportunities can disappear before your sales team makes contact.',
   },
-
-  {
-    icon: <Workflow className="h-5 w-5" />,
-    title: 'Sales teams spend too much time on repetitive work.',
-    content:
-      'Instead of building relationships and closing deals, sales representatives spend hours answering basic questions, qualifying leads, updating CRMs, booking meetings, and chasing follow-ups.',
-  },
-
-  {
-    icon: <Target className="h-5 w-5" />,
-    title: 'High-quality opportunities are missed.',
-    content:
-      'Not every inquiry deserves the same level of attention, yet many businesses treat every lead the same. As a result, valuable prospects are overlooked while time is spent on opportunities that are unlikely to convert.',
-  },
-
-  {
-    icon: <RefreshCw className="h-5 w-5" />,
-    title: 'Follow-ups are inconsistent.',
-    content:
-      `Deals rarely disappear because customers say "no." More often, they disappear because nobody followed up at the right time. When follow-ups rely on memory or manual reminders, opportunities quietly fall through the cracks.`,
-  },
-
-  {
-    icon: <Database className="h-5 w-5" />,
-    title: 'CRM data becomes unreliable.',
-    content:
-      'Sales teams are busy. Updating CRM records often becomes an afterthought, leaving managers with incomplete information and making forecasting difficult.',
-  },
-
-  {
-    icon: <Eye className="h-5 w-5" />,
-    title: 'Sales leaders lack visibility.',
-    content:
-      "Without reliable data, it's difficult to understand where deals are slowing down, which activities are producing results, or how to improve overall sales performance.",
-  },
-
   {
     icon: <Users className="h-5 w-5" />,
-    title: 'Scaling means hiring more people.',
-    content:
-      'As enquiries increase, businesses often respond by growing the sales team. This increases costs while creating new challenges around consistency, onboarding, and performance management.',
+    title: 'Too Much Repetitive Work',
+    description:
+      'Sales representatives spend valuable time answering basic questions, qualifying leads, updating CRMs, booking meetings, and managing routine follow-ups.',
+  },
+  {
+    icon: <Target className="h-5 w-5" />,
+    title: 'High-Quality Leads Get Missed',
+    description:
+      'When every enquiry is treated the same, valuable prospects can be overlooked while sales teams spend time on opportunities that are unlikely to convert.',
+  },
+  {
+    icon: <TrendingUp className="h-5 w-5" />,
+    title: 'Inconsistent Follow-Ups',
+    description:
+      'Deals often disappear because nobody followed up at the right time. Manual reminders and memory-based processes allow opportunities to quietly fall through the cracks.',
+  },
+  {
+    icon: <FileText className="h-5 w-5" />,
+    title: 'Unreliable CRM Data',
+    description:
+      'CRM updates often become an afterthought, leaving managers with incomplete customer histories, inaccurate pipeline information, and difficult forecasting.',
+  },
+  {
+    icon: <BarChart3 className="h-5 w-5" />,
+    title: 'Limited Sales Visibility',
+    description:
+      'Without reliable data, sales leaders struggle to see where opportunities are slowing down, which activities are working, and where performance can improve.',
+  },
+  {
+    icon: <Layers className="h-5 w-5" />,
+    title: 'Growth Depends on Headcount',
+    description:
+      'As enquiries increase, businesses often respond by hiring more salespeople, increasing costs while creating new challenges around consistency, onboarding, and performance.',
   },
 ];
 
-/* ============================================
-   SOLUTION STEPS
-   ============================================ */
+const keyServices = [
+  {
+    icon: <Zap className="h-5 w-5" />,
+    title: 'Instant Prospect Engagement',
+    description:
+      'Respond to every new prospect immediately across your digital sales journey while customer interest is at its highest.',
+  },
+  {
+    icon: <Target className="h-5 w-5" />,
+    title: 'Automated Lead Qualification',
+    description:
+      'Gather the right information, understand customer requirements, and identify which opportunities are ready for a sales conversation.',
+  },
+  {
+    icon: <Users className="h-5 w-5" />,
+    title: 'Sales-Ready Handover',
+    description:
+      'Give sales representatives complete conversation history, qualification details, requirements, and context before they engage.',
+  },
+  {
+    icon: <TrendingUp className="h-5 w-5" />,
+    title: 'Consistent Opportunity Follow-Up',
+    description:
+      'Keep prospects moving through the pipeline with structured reminders, communications, and sales activities that do not depend on memory.',
+  },
+  {
+    icon: <Globe className="h-5 w-5" />,
+    title: 'Lead Re-Engagement',
+    description:
+      'Reconnect with inactive prospects through personalised digital communication and bring valuable opportunities back into the sales pipeline.',
+  },
+  {
+    icon: <BarChart3 className="h-5 w-5" />,
+    title: 'Complete Pipeline Visibility',
+    description:
+      'Capture conversations, activities, opportunities, and performance data in one connected environment for better sales decisions.',
+  },
+];
 
 const solutionSteps = [
   {
+    id: 'step-1',
     number: '01',
-    icon: <MessageSquare className="h-5 w-5" />,
     title: 'Engage Every Prospect Immediately',
-    content: [
-      'Every inquiry receives an instant response.',
-      'Whether someone visits your website, submits an inquiry, or starts a conversation, they receive immediate assistance instead of waiting for someone to become available.',
-      'This creates a professional first impression and keeps prospects engaged while interest is highest.',
+    description:
+      'Give every inquiry an instant and professional first response.',
+    details: [
+      'Respond the moment a prospect arrives',
+      'Support website and digital enquiries',
+      'Answer initial customer questions',
+      'Keep prospects engaged while interest is high',
     ],
   },
-
   {
+    id: 'step-2',
     number: '02',
-    icon: <Target className="h-5 w-5" />,
     title: 'Qualify Leads Automatically',
-    content: [
-      'Not every lead is ready to buy.',
-      'Instead of asking your sales team to manually assess every inquiry, the system gathers the right information, understands customer needs, and identifies which prospects are ready for a sales conversation.',
-      'Your team receives qualified opportunities rather than raw enquiries.',
+    description:
+      'Understand customer needs before involving your sales team.',
+    details: [
+      'Gather relevant qualification information',
+      'Understand customer requirements',
+      'Identify sales-ready prospects',
+      'Reduce time spent assessing raw enquiries',
     ],
   },
-
   {
+    id: 'step-3',
     number: '03',
-    icon: <UserCheck className="h-5 w-5" />,
     title: 'Prepare Your Sales Team',
-    content: [
-      'When a lead is ready, your sales representative receives the complete conversation history, qualification details, customer requirements, and relevant context.',
-      "Instead of spending the first meeting collecting information, they can focus on understanding the customer's goals and moving the opportunity forward.",
+    description:
+      'Give representatives the context they need before the conversation begins.',
+    details: [
+      'Provide complete conversation history',
+      'Share qualification details',
+      'Capture customer requirements',
+      'Allow meetings to focus on progressing the deal',
     ],
   },
-
   {
+    id: 'step-4',
     number: '04',
-    icon: <Workflow className="h-5 w-5" />,
     title: 'Keep Every Opportunity Moving',
-    content: [
-      "The sales process doesn't stop after the first conversation.",
-      'The solution helps manage follow-ups, reminders, customer communications, and sales activities to ensure opportunities continue progressing without relying on manual tracking.',
-      'Nothing gets forgotten.',
+    description:
+      'Maintain sales momentum after the first interaction.',
+    details: [
+      'Manage follow-up activity',
+      'Coordinate reminders',
+      'Support ongoing customer communication',
+      'Reduce opportunities lost through inactivity',
     ],
   },
-
   {
+    id: 'step-5',
     number: '05',
-    icon: <Repeat2 className="h-5 w-5" />,
     title: 'Re-engage Lost Opportunities',
-    content: [
-      "Many prospects aren't ready to buy immediately.",
-      'Rather than allowing those opportunities to disappear, the system automatically reconnects with inactive prospects through personalised follow-ups, bringing them back into the sales pipeline when the timing is right.',
+    description:
+      'Reconnect when previously inactive prospects are ready to continue.',
+    details: [
+      'Identify dormant opportunities',
+      'Run personalised follow-up communication',
+      'Bring prospects back into the pipeline',
+      'Generate more value from existing leads',
     ],
   },
-
   {
+    id: 'step-6',
     number: '06',
-    icon: <BarChart3 className="h-5 w-5" />,
     title: 'Give Leaders Complete Visibility',
-    content: [
-      'Every conversation, activity, and opportunity is captured in one place.',
-      'Sales leaders gain a clear understanding of pipeline health, team performance, conversion rates, and areas that need attention, allowing better decisions based on real data.',
+    description:
+      'Turn sales activity into reliable information for better decision-making.',
+    details: [
+      'Capture conversations and activity',
+      'Monitor pipeline health',
+      'Understand conversion performance',
+      'Identify areas that need attention',
     ],
   },
 ];
 
-/* ============================================
-   AI SALES TEAM
-   ============================================ */
-
-const aiSalesTeam = [
+const aiTeam = [
   {
-    number: '01',
-    icon: <Bot className="h-6 w-6" />,
+    id: 'ai-1',
     title: 'AI Sales Representative',
-    tagline: 'Your first salesperson never sleeps.',
+    icon: (
+      <Zap
+        className="h-5 w-5"
+        style={{ color: colors.brand.primary }}
+      />
+    ),
     content:
-      'The AI Sales Representative engages prospects the moment they arrive, answers questions, gathers information, qualifies leads, updates your CRM, and schedules meetings with the right person when appropriate.',
-    closing:
-      'Your team starts every conversation already informed.',
-    outcomes: [
-      'Respond instantly to every inquiry',
-      'Qualify leads automatically',
-      'Book meetings',
-      'Capture customer information',
-      'Reduce manual administrative work',
-      'Improve first response times',
-    ],
+      'Your first salesperson never sleeps. The AI Sales Representative engages prospects the moment they arrive, answers questions, gathers information, qualifies leads, captures customer information, updates your CRM, and schedules meetings with the right person when appropriate. It helps you respond instantly, qualify leads automatically, book meetings, reduce administrative work, and improve first-response times.',
   },
-
   {
-    number: '02',
-    icon: <RefreshCw className="h-6 w-6" />,
+    id: 'ai-2',
     title: 'Lead Revival',
-    tagline: 'Your second chance to win the deal.',
+    icon: (
+      <TrendingUp
+        className="h-5 w-5"
+        style={{ color: colors.brand.primary }}
+      />
+    ),
     content:
-      "Many promising opportunities become inactive-not because they weren't interested, but because the timing wasn't right.",
-    closing:
-      'Lead Revival automatically reconnects with prospects using personalised email, SMS, chat, and other digital channels, bringing qualified opportunities back into your pipeline.',
-    outcomes: [
-      'Recover dormant opportunities',
-      'Increase pipeline value',
-      'Improve marketing ROI',
-      'Generate more sales from existing leads',
-      'Reduce lost revenue',
-    ],
+      'Your second chance to win the deal. Lead Revival reconnects with promising but inactive prospects through personalised email, SMS, chat, and other digital channels. It helps recover dormant opportunities, increase pipeline value, improve marketing ROI, generate more sales from existing leads, and reduce lost revenue.',
   },
-
   {
-    number: '03',
-    icon: <Layers className="h-6 w-6" />,
+    id: 'ai-3',
     title: 'Sales Orchestrator',
-    tagline: 'Your command centre for modern sales.',
+    icon: (
+      <Layers
+        className="h-5 w-5"
+        style={{ color: colors.brand.primary }}
+      />
+    ),
     content:
-      'The Sales Orchestrator brings together your sales activities, customer conversations, pipeline information, and performance metrics into one organised workspace.',
-    closing:
-      'Instead of switching between multiple systems, your team has everything they need to manage opportunities efficiently while sales leaders gain complete visibility into business performance.',
-    outcomes: [
-      'Track every sales opportunity',
-      'Improve pipeline visibility',
-      'Monitor team performance',
-      'Keep CRM records up to date',
-      'Support better forecasting',
-      'Create a consistent sales process',
-    ],
+      'Your command centre for modern sales. The Sales Orchestrator brings sales activities, customer conversations, pipeline information, CRM records, and performance metrics together into one organised workspace. It helps track every opportunity, improve pipeline visibility, monitor team performance, support forecasting, and create a more consistent sales process.',
   },
 ];
 
-/* ============================================
-   HOW WE WORK
-   ============================================ */
-
-const implementationSteps = [
+const workSteps = [
   {
     number: '01',
-    icon: <Search className="h-5 w-5" />,
     title: 'Discover',
-    content:
-      'We begin by understanding your current sales process, business objectives, customer journey, and operational challenges.',
+    description:
+      'We begin by understanding your current sales process, business objectives, customer journey, systems, and operational challenges.',
   },
-
   {
     number: '02',
-    icon: <Target className="h-5 w-5" />,
     title: 'Define the Future State',
-    content:
+    description:
       'Together, we identify where improvements can be made and design a sales process that supports your growth goals.',
   },
-
   {
     number: '03',
-    icon: <Workflow className="h-5 w-5" />,
     title: 'Build Together',
-    content:
-      'We configure the solution around your business, integrating it into your existing sales process and ensuring it reflects the way your organisation works.',
+    description:
+      'We configure the solution around your business and integrate it into the way your organisation actually sells.',
   },
-
   {
     number: '04',
-    icon: <Rocket className="h-5 w-5" />,
     title: 'Launch and Embed',
-    content:
-      'We deploy the solution with minimal disruption, helping your sales team adopt new ways of working while maintaining business continuity.',
+    description:
+      'We deploy the solution with minimal disruption and help your sales team adopt new ways of working while maintaining business continuity.',
   },
-
   {
     number: '05',
-    icon: <TrendingUp className="h-5 w-5" />,
     title: 'Continuously Improve',
-    content:
-      'Sales is constantly evolving. We continue measuring performance, identifying opportunities for improvement, and refining the solution so your business continues to grow over time.',
+    description:
+      'We measure performance, identify improvement opportunities, and refine the solution as your sales operation continues to evolve.',
   },
 ];
 
-/* ============================================
-   WHY CHOOSE US
-   ============================================ */
-
-const reasons = [
+const whyChooseUs = [
   {
-    number: '01',
-    title: 'We redesign your sales process-not just your software.',
+    id: 'why-1',
+    title: 'We Redesign Your Sales Process — Not Just Your Software',
+    icon: (
+      <Target
+        className="h-5 w-5"
+        style={{ color: colors.brand.primary }}
+      />
+    ),
     content:
-      'Our goal is to improve the way your organisation sells, not simply automate existing tasks.',
+      'Our goal is to improve the way your organisation sells, not simply automate existing tasks. We examine how opportunities move through your business and redesign the process around better customer experiences, stronger sales execution, and measurable business outcomes.',
   },
-
   {
-    number: '02',
-    title: 'Built around your business.',
+    id: 'why-2',
+    title: 'Built Around Your Business',
+    icon: (
+      <Layers
+        className="h-5 w-5"
+        style={{ color: colors.brand.primary }}
+      />
+    ),
     content:
-      'Every organisation has a different sales journey. We tailor every implementation to your products, customers, teams, and objectives.',
+      'Every organisation has a different sales journey. We tailor the implementation around your products, customers, teams, objectives, processes, and existing ways of working.',
   },
-
   {
-    number: '03',
-    title: 'Sales and technology working together.',
+    id: 'why-3',
+    title: 'Sales and Technology Working Together',
+    icon: (
+      <Users
+        className="h-5 w-5"
+        style={{ color: colors.brand.primary }}
+      />
+    ),
     content:
-      'Instead of replacing your sales team, our solution supports them by removing repetitive work and providing better visibility across the sales pipeline.',
+      'Technology does not close deals — people do. Instead of replacing your sales team, the solution supports them by removing repetitive work, providing better information, and improving visibility across the sales pipeline.',
   },
-
   {
-    number: '04',
-    title: 'Designed for long-term growth.',
+    id: 'why-4',
+    title: 'Designed for Long-Term Growth',
+    icon: (
+      <TrendingUp
+        className="h-5 w-5"
+        style={{ color: colors.brand.primary }}
+      />
+    ),
     content:
-      'As your business grows, your sales operation continues to improve through continuous optimisation and learning.',
+      'As your business grows, your sales operation continues to improve through measurement, optimisation, learning, and ongoing refinement rather than remaining locked into a static process.',
   },
 ];
 
-/* ============================================
-   BUSINESS OUTCOMES
-   ============================================ */
-
-const outcomes = [
+const businessOutcomes = [
   'Increase qualified opportunities',
   'Improve conversion rates',
   'Reduce sales cycle times',
@@ -347,86 +343,44 @@ const outcomes = [
 ];
 
 /* ============================================
-   SECTION LABEL
-   ============================================ */
-
-function SectionLabel({
-  icon,
-  children,
-  dark = false,
-}: {
-  icon: ReactNode;
-  children: ReactNode;
-  dark?: boolean;
-}) {
-  return (
-    <div
-      className={[
-        'inline-flex items-center gap-2 rounded-full border px-3.5 py-2 backdrop-blur-xl',
-        dark
-          ? 'border-white/15 bg-white/[0.06]'
-          : 'border-gray-200 bg-white/80',
-      ].join(' ')}
-    >
-      <span
-        style={{
-          color: colors.brand.accent,
-        }}
-      >
-        {icon}
-      </span>
-
-      <span
-        className={[
-          'text-[9px] font-bold uppercase tracking-[0.17em]',
-          dark ? 'text-white/70' : '',
-        ].join(' ')}
-        style={
-          dark
-            ? undefined
-            : {
-                color: colors.brand.primary,
-              }
-        }
-      >
-        {children}
-      </span>
-    </div>
-  );
-}
-
-/* ============================================
    PAGE
    ============================================ */
 
 export function B2BSalesReinventionPage() {
   return (
     <PageBackground>
-
-      {/* ============================================
-          SEO
-          ============================================ */}
-
       <PageSEO
-        title="B2B Sales Reinvention | AI Marketing Solutions | AdvantEdge"
-        description="B2B Sales Reinvention helps businesses engage prospects instantly, qualify opportunities automatically, maintain consistent follow-ups, improve CRM visibility, and help sales teams convert more opportunities."
-        path="/services/ai-marketing-solutions/b2b-sales-reinvention"
+        title="B2B Sales Reinvention | AdvantEdge"
+        description="Transform your B2B sales process with faster prospect engagement, automated qualification, intelligent follow-ups, lead revival, CRM orchestration, and complete pipeline visibility."
+        keywords={[
+          'B2B Sales Reinvention',
+          'B2B Sales Automation',
+          'AI Sales Representative',
+          'Lead Qualification',
+          'Lead Revival',
+          'Sales Orchestration',
+          'Sales Process Transformation',
+          'CRM Automation',
+          'Sales Pipeline Management',
+          'B2B Revenue Growth',
+        ]}
+        path="/services/b2b-sales-reinvention"
       />
 
       {/* ============================================
           1. HERO
+          MATCHES MASTER SERVICES PAGE
           ============================================ */}
 
       <section className="relative isolate overflow-hidden bg-[#080912]">
-
-        {/* BACKGROUND */}
+        {/* Background */}
 
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-30"
+          className="pointer-events-none absolute inset-0 -z-20"
         >
           <img
-            src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2400&q=88"
+            src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2400&q=90"
             alt=""
             loading="eager"
             decoding="async"
@@ -434,513 +388,316 @@ export function B2BSalesReinventionPage() {
           />
         </div>
 
-        {/* OVERLAYS */}
+        {/* Treatment */}
 
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-20"
+          className="pointer-events-none absolute inset-0 -z-10"
         >
-          <div className="absolute inset-0 bg-black/55" />
+          <div className="absolute inset-0 bg-black/45" />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-[#060711]/98 via-[#080912]/90 to-[#080912]/48" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#080912]/95 via-[#080912]/72 to-[#080912]/38" />
 
-          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-[#080912]/96" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#080912]/30 via-transparent to-[#080912]/96" />
 
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_22%,rgba(255,255,255,0.13),transparent_36%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_62%_20%,rgba(255,255,255,0.14),transparent_38%)]" />
 
           <div
-            className="absolute -left-48 top-[8%] h-[500px] w-[500px] rounded-full opacity-10 blur-[160px]"
-            style={{
-              backgroundColor: colors.brand.secondary,
-            }}
+            className="absolute -left-52 top-[15%] h-[480px] w-[480px] rounded-full opacity-[0.09] blur-[155px]"
+            style={{ backgroundColor: colors.brand.secondary }}
           />
 
           <div
-            className="absolute -right-44 bottom-[-140px] h-[480px] w-[480px] rounded-full opacity-10 blur-[155px]"
-            style={{
-              backgroundColor: colors.brand.accent,
-            }}
+            className="absolute -right-48 bottom-[-120px] h-[450px] w-[450px] rounded-full opacity-[0.08] blur-[150px]"
+            style={{ backgroundColor: colors.brand.accent }}
           />
 
           <div
-            className="absolute inset-0 opacity-[0.032]"
+            className="absolute inset-0 opacity-[0.035]"
             style={{
               backgroundImage:
-                'linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)',
+                'linear-gradient(rgba(255,255,255,0.13) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.13) 1px, transparent 1px)',
               backgroundSize: '78px 78px',
             }}
           />
         </div>
 
         <Container size="xl">
-          <div className="mx-auto flex min-h-[720px] max-w-7xl flex-col justify-center py-14 lg:min-h-[740px] lg:py-16">
-
-            <div className="grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr]">
-
-              {/* LEFT */}
+          <div className="mx-auto flex min-h-[650px] max-w-7xl flex-col justify-center py-16 lg:min-h-[700px] lg:py-20">
+            <div className="grid items-center gap-9 lg:grid-cols-[1.08fr_0.92fr]">
+              {/* Content */}
 
               <div className="max-w-3xl">
-
                 <motion.div
-                  initial={{
-                    opacity: 0,
-                    y: 14,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    duration: 0.55,
-                  }}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.55 }}
                 >
-                  <SectionLabel
-                    dark
-                    icon={<Brain className="h-3.5 w-3.5" />}
+                  <div
+                    className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/20 px-4 py-2 backdrop-blur-xl"
+                    style={{ color: colors.brand.accent }}
                   >
-                    AI Marketing Solutions
-                  </SectionLabel>
-                </motion.div>
+                    <Target className="h-3.5 w-3.5" />
 
-                <motion.p
-                  initial={{
-                    opacity: 0,
-                    y: 12,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    delay: 0.08,
-                    duration: 0.55,
-                  }}
-                  className="mt-5 text-[9px] font-bold uppercase tracking-[0.18em]"
-                  style={{
-                    color: colors.brand.accent,
-                  }}
-                >
-                  B2B Sales Reinvention
-                </motion.p>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.18em]">
+                      B2B Sales Reinvention
+                    </span>
+                  </div>
+                </motion.div>
 
                 <motion.h1
-                  initial={{
-                    opacity: 0,
-                    y: 20,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    delay: 0.12,
-                    duration: 0.68,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="mt-3 max-w-3xl text-3xl font-bold leading-[1.06] tracking-[-0.045em] text-white sm:text-4xl lg:text-[46px]"
+                  initial={{ opacity: 0, y: 22 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.1 }}
+                  className="mt-5 max-w-3xl text-3xl font-bold leading-[1.07] tracking-[-0.04em] text-white sm:text-4xl lg:text-[48px]"
                 >
-                  Stop Losing Deals Before Your Sales Team Even Gets a Chance.
+                  Stop Losing Deals Before
+                  <span className="mt-1 block text-white/65">
+                    Your Sales Team Even Gets a Chance.
+                  </span>
                 </motion.h1>
 
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    y: 18,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    delay: 0.2,
-                    duration: 0.65,
-                  }}
-                  className="mt-5 max-w-2xl space-y-3"
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.18 }}
+                  className="mt-5 max-w-2xl text-sm leading-[1.8] text-white/68 sm:text-base"
                 >
-                  <p className="text-sm leading-[1.8] text-white/60 sm:text-[15px]">
-                    Every inquiry matters. But slow responses, inconsistent
-                    follow-ups, and manual sales processes cause promising
-                    opportunities to disappear long before a deal is won.
-                  </p>
+                  Every inquiry matters. But slow responses, inconsistent
+                  follow-ups, and manual sales processes cause promising
+                  opportunities to disappear long before a deal is won.
+                </motion.p>
 
-                  <p className="text-sm leading-[1.8] text-white/60 sm:text-[15px]">
-                    B2B Sales Reinvention helps your business engage prospects
-                    instantly, qualify leads automatically, keep every opportunity
-                    moving, and give your sales team everything they need to close
-                    more business.
-                  </p>
+                <motion.p
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.24 }}
+                  className="mt-3 max-w-2xl text-sm leading-[1.8] text-white/60"
+                >
+                  B2B Sales Reinvention helps your business engage prospects
+                  instantly, qualify leads automatically, keep every opportunity
+                  moving, and give your sales team everything they need to close
+                  more business.
+                </motion.p>
 
-                  <p className="text-sm font-bold leading-[1.7] text-white">
-                    More qualified opportunities. Faster sales cycles. Higher
-                    conversion rates.
-                  </p>
-                </motion.div>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                  className="mt-4 text-sm font-bold text-white"
+                >
+                  More qualified opportunities. Faster sales cycles. Higher
+                  conversion rates.
+                </motion.p>
 
-                {/* CTA 1 */}
+                {/* CTA */}
 
                 <motion.div
-                  initial={{
-                    opacity: 0,
-                    y: 14,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    delay: 0.32,
-                    duration: 0.55,
-                  }}
-                  className="mt-7"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="mt-7 flex flex-col gap-3 sm:flex-row"
                 >
                   <MagneticButton strength={0.25}>
                     <Link
                       to="/contact"
-                      className="group inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold text-white shadow-[0_16px_42px_rgba(0,0,170,0.30)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_52px_rgba(0,0,170,0.40)]"
-                      style={{
-                        background: gradients.primary,
-                      }}
+                      className="group inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold text-white shadow-[0_18px_45px_rgba(0,0,170,0.28)] transition-all duration-300 hover:-translate-y-0.5"
+                      style={{ background: gradients.primary }}
                     >
                       Book a Discovery Call
-
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </MagneticButton>
+
+                  <Link
+                    to="/services"
+                    className="inline-flex items-center justify-center rounded-xl border border-white/25 bg-black/20 px-6 py-3 text-sm font-bold text-white backdrop-blur-xl transition-all hover:bg-white/10"
+                  >
+                    View All Services
+                  </Link>
                 </motion.div>
 
-                {/* FLOW */}
+                {/* Framework */}
 
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                  }}
-                  transition={{
-                    delay: 0.42,
-                  }}
-                  className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2"
-                >
+                <div className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-2">
                   {[
                     'Engage',
                     'Qualify',
-                    'Handover',
-                    'Follow-up',
-                    'Optimize',
+                    'Convert',
+                    'Revive',
+                    'Optimise',
                   ].map((item, index) => (
-                    <div
-                      key={item}
-                      className="flex items-center gap-4"
-                    >
-                      <span className="text-[8px] font-bold uppercase tracking-[0.16em] text-white/40">
+                    <div key={item} className="flex items-center gap-3">
+                      <span className="text-[9px] font-bold uppercase tracking-[0.14em] text-white/45">
                         {item}
                       </span>
 
                       {index < 4 && (
                         <ArrowRight
-                          className="hidden h-3 w-3 sm:block"
-                          style={{
-                            color: colors.brand.accent,
-                          }}
+                          className="h-3 w-3"
+                          style={{ color: colors.brand.accent }}
                         />
                       )}
                     </div>
                   ))}
-                </motion.div>
+                </div>
               </div>
 
-              {/* RIGHT — AI SALES SYSTEM */}
+              {/* Right Capability Summary */}
 
               <motion.div
-                initial={{
-                  opacity: 0,
-                  x: 24,
-                }}
-                animate={{
-                  opacity: 1,
-                  x: 0,
-                }}
-                transition={{
-                  duration: 0.72,
-                  delay: 0.22,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="grid gap-3"
               >
-                <div className="relative overflow-hidden rounded-[24px] border border-white/15 bg-black/30 p-4 shadow-[0_28px_80px_rgba(0,0,0,0.30)] backdrop-blur-2xl sm:p-5">
-
+                {keyServices.slice(0, 3).map((service, index) => (
                   <div
-                    aria-hidden="true"
-                    className="absolute -right-24 -top-24 h-56 w-56 rounded-full opacity-10 blur-[90px]"
-                    style={{
-                      backgroundColor: colors.brand.accent,
-                    }}
-                  />
-
-                  <div className="relative">
-
-                    <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                    key={service.title}
+                    className="group rounded-[18px] border border-white/20 bg-black/25 p-4 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.10] sm:p-5"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div
+                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/20 bg-white/[0.08]"
+                        style={{ color: colors.brand.accent }}
+                      >
+                        {service.icon}
+                      </div>
 
                       <div>
                         <p
-                          className="text-[8px] font-bold uppercase tracking-[0.18em]"
-                          style={{
-                            color: colors.brand.accent,
-                          }}
+                          className="text-[8px] font-bold uppercase tracking-[0.17em]"
+                          style={{ color: colors.brand.accent }}
                         >
-                          AI Sales Operating System
+                          Capability 0{index + 1}
                         </p>
 
-                        <p className="mt-1 text-xs font-semibold text-white/60">
-                          From enquiry to opportunity
+                        <h2 className="mt-1 text-sm font-bold text-white">
+                          {service.title}
+                        </h2>
+
+                        <p className="mt-1.5 text-[10px] leading-[1.65] text-white/50">
+                          {service.description}
                         </p>
                       </div>
-
-                      <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/15 bg-white/[0.07]">
-                        <Brain
-                          className="h-4 w-4"
-                          style={{
-                            color: colors.brand.accent,
-                          }}
-                        />
-                      </div>
-                    </div>
-
-                    <div className="mt-4 space-y-3">
-
-                      {[
-                        {
-                          number: '01',
-                          icon: <Bot className="h-4 w-4" />,
-                          title: 'AI Sales Representative',
-                          text: 'Instant engagement, qualification and meeting booking.',
-                        },
-
-                        {
-                          number: '02',
-                          icon: <RefreshCw className="h-4 w-4" />,
-                          title: 'Lead Revival',
-                          text: 'Reconnect dormant prospects when timing improves.',
-                        },
-
-                        {
-                          number: '03',
-                          icon: <Layers className="h-4 w-4" />,
-                          title: 'Sales Orchestrator',
-                          text: 'Pipeline, conversations and performance in one place.',
-                        },
-                      ].map((item) => (
-                        <div
-                          key={item.number}
-                          className="group rounded-[16px] border border-white/10 bg-white/[0.05] p-4 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08]"
-                        >
-                          <div className="flex items-start gap-3">
-
-                            <div
-                              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-black/20"
-                              style={{
-                                color: colors.brand.accent,
-                              }}
-                            >
-                              {item.icon}
-                            </div>
-
-                            <div>
-                              <p
-                                className="text-[7px] font-bold uppercase tracking-[0.17em]"
-                                style={{
-                                  color: colors.brand.accent,
-                                }}
-                              >
-                                AI SYSTEM {item.number}
-                              </p>
-
-                              <h2 className="mt-1 text-xs font-bold text-white">
-                                {item.title}
-                              </h2>
-
-                              <p className="mt-1.5 text-[9px] leading-[1.6] text-white/50">
-                                {item.text}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="mt-4 grid grid-cols-3 divide-x divide-white/10 border-t border-white/10 pt-4">
-
-                      {[
-                        ['Instant', 'Response'],
-                        ['Qualified', 'Pipeline'],
-                        ['Visible', 'Performance'],
-                      ].map(([value, label]) => (
-                        <div
-                          key={value}
-                          className="px-2 text-center"
-                        >
-                          <p className="text-[10px] font-bold text-white">
-                            {value}
-                          </p>
-
-                          <p className="mt-1 text-[7px] uppercase tracking-[0.13em] text-white/40">
-                            {label}
-                          </p>
-                        </div>
-                      ))}
-
                     </div>
                   </div>
-                </div>
+                ))}
               </motion.div>
             </div>
 
-            {/* HERO OUTCOME STRIP */}
+            {/* Performance Strip */}
 
-            <motion.div
-              initial={{
-                opacity: 0,
-                y: 14,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                delay: 0.48,
-              }}
-              className="mt-8 overflow-hidden rounded-[18px] border border-white/15 bg-black/20 backdrop-blur-xl"
-            >
-              <div className="grid grid-cols-3 divide-x divide-white/10">
-
+            <div className="mt-8 overflow-hidden rounded-2xl border border-white/20 bg-black/20 backdrop-blur-xl">
+              <div className="grid grid-cols-3 divide-x divide-white/15">
                 {[
-                  'More qualified opportunities.',
-                  'Faster sales cycles.',
-                  'Higher conversion rates.',
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="flex min-h-[72px] items-center justify-center px-3 py-4 text-center"
-                  >
-                    <p className="text-[9px] font-bold leading-relaxed text-white/70 sm:text-[11px]">
-                      {item}
+                  ['Instant', 'Lead Response'],
+                  ['24/7', 'Prospect Engagement'],
+                  ['One', 'Connected Sales Process'],
+                ].map(([value, label]) => (
+                  <div key={label} className="px-3 py-4 text-center">
+                    <p className="text-lg font-bold text-white sm:text-xl">
+                      {value}
+                    </p>
+
+                    <p className="mt-1 text-[9px] text-white/45">
+                      {label}
                     </p>
                   </div>
                 ))}
-
               </div>
-            </motion.div>
+            </div>
           </div>
         </Container>
       </section>
 
       {/* ============================================
-          2. PROBLEMS
+          2. THE PROBLEMS WE SOLVE
           ============================================ */}
 
       <ModernSectionBackground
-        variant="mesh-gradient-light"
+        variant="glass-blur"
         className="relative overflow-hidden"
       >
-        <Section
-          spacing="base"
-          animate
-          background="transparent"
-        >
+        <Section spacing="base" animate background="transparent">
           <Container size="xl">
-
             <div className="mx-auto max-w-7xl">
-
               <ScrollReveal>
-                <div className="grid gap-7 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
-
+                <div className="grid gap-7 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
                   <div>
-                    <SectionLabel
-                      icon={<Gauge className="h-3.5 w-3.5" />}
-                    >
-                      Sales Friction
-                    </SectionLabel>
-
-                    <h2
-                      className="mt-5 text-2xl font-bold tracking-[-0.035em] sm:text-3xl"
+                    <div
+                      className="inline-flex items-center gap-2 rounded-full border px-4 py-2"
                       style={{
-                        color: colors.brand.primary,
+                        borderColor: `${colors.brand.accent}55`,
+                        backgroundColor: `${colors.brand.accent}10`,
                       }}
                     >
-                      The Problems We Solve
+                      <Lightbulb
+                        className="h-3.5 w-3.5"
+                        style={{ color: colors.brand.accent }}
+                      />
+
+                      <span
+                        className="text-[10px] font-bold uppercase tracking-[0.18em]"
+                        style={{ color: colors.brand.primary }}
+                      >
+                        The Problems We Solve
+                      </span>
+                    </div>
+
+                    <h2
+                      className="mt-5 text-2xl font-bold leading-[1.1] tracking-[-0.03em] sm:text-3xl"
+                      style={{ color: colors.brand.primary }}
+                    >
+                      More Leads Alone Won&apos;t Fix a Broken Sales Process.
                     </h2>
                   </div>
 
-                  <div className="space-y-2">
-                    <p className="text-sm leading-[1.8] text-gray-600">
-                      Growing revenue isn't just about generating more leads.
-                      It's about making sure every opportunity is handled quickly,
-                      consistently, and professionally.
+                  <div>
+                    <p className="text-sm leading-[1.8] text-gray-600 sm:text-base">
+                      Growing revenue isn&apos;t just about generating more
+                      leads. It&apos;s about making sure every opportunity is
+                      handled quickly, consistently, and professionally.
                     </p>
 
-                    <p className="text-sm leading-[1.8] text-gray-600">
-                      Unfortunately, many sales teams spend more time managing the
-                      sales process than actually selling.
+                    <p className="mt-3 text-sm leading-[1.8] text-gray-600">
+                      Unfortunately, many sales teams spend more time managing
+                      the sales process than actually selling.
                     </p>
                   </div>
                 </div>
               </ScrollReveal>
 
-              <StaggerContainer className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-
-                {salesProblems.map((problem, index) => (
-                  <motion.article
+              <StaggerContainer className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {salesProblems.map((problem) => (
+                  <motion.div
                     key={problem.title}
                     variants={staggerItemVariants}
-                    whileHover={{
-                      y: -4,
-                    }}
-                    className={[
-                      'group relative overflow-hidden rounded-[20px] border border-gray-200 bg-white/90 p-5 shadow-[0_14px_42px_rgba(0,1,49,0.045)] transition-shadow duration-300 hover:shadow-[0_20px_54px_rgba(0,1,49,0.08)]',
-                      index === salesProblems.length - 1
-                        ? 'md:col-span-2 lg:col-span-3'
-                        : '',
-                    ].join(' ')}
+                    whileHover={{ y: -3 }}
+                    className="rounded-[18px] border border-gray-200 bg-white/85 p-4 shadow-[0_12px_35px_rgba(0,1,49,0.05)] backdrop-blur-xl"
                   >
-                    <div className="flex items-start justify-between">
-
-                      <div
-                        className="flex h-10 w-10 items-center justify-center rounded-xl"
-                        style={{
-                          color: colors.brand.secondary,
-                          backgroundColor: `${colors.brand.secondary}0D`,
-                        }}
-                      >
-                        {problem.icon}
-                      </div>
-
-                      <span className="text-[8px] font-bold tracking-[0.16em] text-gray-300">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
+                    <div
+                      className="flex h-9 w-9 items-center justify-center rounded-lg"
+                      style={{
+                        color: colors.brand.secondary,
+                        backgroundColor: `${colors.brand.secondary}0D`,
+                      }}
+                    >
+                      {problem.icon}
                     </div>
 
                     <h3
-                      className="mt-4 text-sm font-bold leading-[1.45]"
-                      style={{
-                        color: colors.brand.primary,
-                      }}
+                      className="mt-4 text-xs font-bold"
+                      style={{ color: colors.brand.primary }}
                     >
                       {problem.title}
                     </h3>
 
-                    <p className="mt-2 text-[11px] leading-[1.75] text-gray-600">
-                      {problem.content}
+                    <p className="mt-1.5 text-[10px] leading-[1.65] text-gray-500">
+                      {problem.description}
                     </p>
-
-                    <div
-                      className="mt-5 h-[2px] w-7 transition-all duration-500 group-hover:w-14"
-                      style={{
-                        background: gradients.primary,
-                      }}
-                    />
-                  </motion.article>
+                  </motion.div>
                 ))}
-
               </StaggerContainer>
             </div>
           </Container>
@@ -952,82 +709,371 @@ export function B2BSalesReinventionPage() {
           ============================================ */}
 
       <ModernSectionBackground
-        variant="glass-blur"
+        variant="mesh-gradient-light"
+        className="relative overflow-hidden"
+      >
+        <Section spacing="base" animate background="transparent">
+          <Container size="xl">
+            <div className="mx-auto max-w-7xl">
+              <ScrollReveal>
+                <div className="grid gap-7 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <Layers
+                        className="h-4 w-4"
+                        style={{ color: colors.brand.accent }}
+                      />
+
+                      <span
+                        className="text-[10px] font-bold uppercase tracking-[0.17em]"
+                        style={{ color: colors.brand.secondary }}
+                      >
+                        Introducing B2B Sales Reinvention
+                      </span>
+                    </div>
+
+                    <h2
+                      className="mt-3 text-2xl font-bold tracking-[-0.03em] sm:text-3xl"
+                      style={{ color: colors.brand.primary }}
+                    >
+                      Build a Sales Process That Never Misses an Opportunity.
+                    </h2>
+                  </div>
+
+                  <div>
+                    <p className="text-sm leading-[1.8] text-gray-600 sm:text-base">
+                      B2B Sales Reinvention transforms the way your business
+                      captures, qualifies, manages, and converts sales
+                      opportunities.
+                    </p>
+
+                    <p className="mt-3 text-sm leading-[1.8] text-gray-600">
+                      Instead of relying on manual processes and disconnected
+                      tools, the solution works alongside your sales team to
+                      engage prospects instantly, gather the right information,
+                      qualify opportunities, schedule meetings, maintain CRM
+                      records, and ensure every lead receives the attention it
+                      deserves.
+                    </p>
+
+                    <p className="mt-3 text-sm font-semibold leading-[1.8] text-gray-700">
+                      Your salespeople spend less time on administration and
+                      more time building relationships and closing deals.
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.05}>
+                <div
+                  className="mt-7 rounded-[20px] border p-5 sm:p-6"
+                  style={{
+                    borderColor: `${colors.brand.secondary}18`,
+                    backgroundColor: `${colors.brand.secondary}06`,
+                  }}
+                >
+                  <p
+                    className="max-w-5xl text-sm font-medium leading-[1.85] sm:text-base"
+                    style={{ color: colors.brand.primary }}
+                  >
+                    The result is a faster, more organised sales operation that
+                    helps your business convert more opportunities without
+                    increasing headcount.
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              <StaggerContainer className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {keyServices.map((service, index) => (
+                  <motion.div
+                    key={service.title}
+                    variants={staggerItemVariants}
+                    whileHover={{ y: -4 }}
+                    className="group relative overflow-hidden rounded-[20px] border border-gray-200 bg-white/90 p-5 shadow-[0_16px_45px_rgba(0,1,49,0.06)]"
+                  >
+                    <div className="flex items-start justify-between">
+                      <div
+                        className="flex h-10 w-10 items-center justify-center rounded-xl"
+                        style={{
+                          color: colors.brand.secondary,
+                          backgroundColor: `${colors.brand.secondary}0D`,
+                        }}
+                      >
+                        {service.icon}
+                      </div>
+
+                      <span className="text-[9px] font-bold tracking-[0.15em] text-gray-300">
+                        0{index + 1}
+                      </span>
+                    </div>
+
+                    <h3
+                      className="mt-5 text-sm font-bold"
+                      style={{ color: colors.brand.primary }}
+                    >
+                      {service.title}
+                    </h3>
+
+                    <p className="mt-2 text-[11px] leading-[1.7] text-gray-600">
+                      {service.description}
+                    </p>
+
+                    <div
+                      className="mt-5 h-[2px] w-8 transition-all duration-500 group-hover:w-16"
+                      style={{ background: gradients.primary }}
+                    />
+                  </motion.div>
+                ))}
+              </StaggerContainer>
+            </div>
+          </Container>
+        </Section>
+      </ModernSectionBackground>
+
+      {/* ============================================
+          4. HOW THE SOLUTION WORKS — DARK
+          ============================================ */}
+
+      <ModernSectionBackground
+        variant="gradient-tech"
         className="relative overflow-hidden"
       >
         <Section
           spacing="base"
           animate
           background="transparent"
+          className="relative isolate overflow-hidden"
         >
+          {/* Dark Background */}
+
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-[#080912]"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2400&q=86"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 h-full w-full object-cover opacity-[0.17]"
+            />
+
+            <div className="absolute inset-0 bg-black/50" />
+
+            <div className="absolute inset-0 bg-gradient-to-r from-[#000131]/84 via-[#080912]/78 to-[#080912]/92" />
+
+            <div
+              className="absolute inset-0 opacity-[0.035]"
+              style={{
+                backgroundImage:
+                  'linear-gradient(rgba(255,255,255,0.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.14) 1px, transparent 1px)',
+                backgroundSize: '76px 76px',
+              }}
+            />
+          </div>
+
           <Container size="xl">
-
             <div className="mx-auto max-w-7xl">
-
               <ScrollReveal>
-                <div className="relative overflow-hidden rounded-[26px] border border-gray-200 bg-white/90 p-5 shadow-[0_20px_60px_rgba(0,1,49,0.06)] sm:p-7 lg:p-9">
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                  <div>
+                    <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/20 px-4 py-2 backdrop-blur-xl">
+                      <Map
+                        className="h-3.5 w-3.5"
+                        style={{ color: colors.brand.accent }}
+                      />
 
-                  <div
-                    aria-hidden="true"
-                    className="absolute -right-24 -top-28 h-72 w-72 rounded-full opacity-[0.07] blur-[100px]"
-                    style={{
-                      backgroundColor: colors.brand.accent,
-                    }}
-                  />
-
-                  <div className="relative grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
-
-                    <div>
-                      <SectionLabel
-                        icon={<Brain className="h-3.5 w-3.5" />}
+                      <span
+                        className="text-[10px] font-bold uppercase tracking-[0.18em]"
+                        style={{ color: colors.brand.accent }}
                       >
-                        Introducing B2B Sales Reinvention
-                      </SectionLabel>
-
-                      <h2
-                        className="mt-5 text-2xl font-bold leading-[1.1] tracking-[-0.035em] sm:text-3xl"
-                        style={{
-                          color: colors.brand.primary,
-                        }}
-                      >
-                        Build a Sales Process That Never Misses an Opportunity.
-                      </h2>
+                        How the Solution Works
+                      </span>
                     </div>
 
-                    <div className="space-y-3 lg:border-l lg:border-gray-200 lg:pl-8">
+                    <h2 className="mt-5 text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl">
+                      From First Inquiry to Successful Handover.
+                    </h2>
+                  </div>
 
-                      <p className="text-sm leading-[1.8] text-gray-600">
-                        B2B Sales Reinvention transforms the way your business
-                        captures, qualifies, manages, and converts sales
-                        opportunities.
-                      </p>
+                  <p className="max-w-lg text-sm leading-relaxed text-white/50 lg:text-right">
+                    Our solution supports your sales process from the very
+                    first inquiry through qualification, conversion,
+                    follow-up, re-engagement, and performance visibility.
+                  </p>
+                </div>
+              </ScrollReveal>
 
-                      <p className="text-sm leading-[1.8] text-gray-600">
-                        Instead of relying on manual processes and disconnected
-                        tools, the solution works alongside your sales team to
-                        engage prospects instantly, gather the right information,
-                        qualify opportunities, schedule meetings, maintain CRM
-                        records, and ensure every lead receives the attention it
-                        deserves.
-                      </p>
+              <StaggerContainer className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {solutionSteps.map((step) => (
+                  <motion.div
+                    key={step.id}
+                    variants={staggerItemVariants}
+                    whileHover={{ y: -4 }}
+                    className="relative overflow-hidden rounded-[20px] border border-white/15 bg-black/25 p-5 backdrop-blur-xl"
+                  >
+                    <span
+                      className="text-[9px] font-bold tracking-[0.16em]"
+                      style={{ color: colors.brand.accent }}
+                    >
+                      STEP {step.number}
+                    </span>
 
-                      <p className="text-sm leading-[1.8] text-gray-600">
-                        Your salespeople spend less time on administration and
-                        more time doing what they do best-building relationships
-                        and closing deals.
-                      </p>
+                    <h3 className="mt-3 text-sm font-bold text-white">
+                      {step.title}
+                    </h3>
 
-                      <p
-                        className="text-sm font-semibold leading-[1.8]"
-                        style={{
-                          color: colors.brand.primary,
-                        }}
+                    <p className="mt-2 text-[10px] leading-[1.65] text-white/48">
+                      {step.description}
+                    </p>
+
+                    <div className="my-4 h-px bg-white/15" />
+
+                    <ul className="space-y-2">
+                      {step.details.map((detail) => (
+                        <li
+                          key={detail}
+                          className="flex items-start gap-2 text-[10px] leading-relaxed text-white/60"
+                        >
+                          <CheckCircle2
+                            className="mt-0.5 h-3.5 w-3.5 shrink-0"
+                            style={{ color: colors.brand.accent }}
+                          />
+
+                          <span>{detail}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                ))}
+              </StaggerContainer>
+            </div>
+          </Container>
+        </Section>
+      </ModernSectionBackground>
+
+      {/* ============================================
+          5. AI SALES TEAM + BUSINESS OUTCOMES
+          ============================================ */}
+
+      <ModernSectionBackground
+        variant="glass-blur"
+        className="relative overflow-hidden"
+      >
+        <Section spacing="base" animate background="transparent">
+          <Container size="xl">
+            <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2">
+              {/* AI Team */}
+
+              <ScrollReveal>
+                <div className="h-full rounded-[24px] border border-gray-200 bg-white/85 p-5 shadow-[0_18px_55px_rgba(0,1,49,0.06)] backdrop-blur-xl sm:p-6">
+                  <div className="flex items-center gap-2">
+                    <Users
+                      className="h-4 w-4"
+                      style={{ color: colors.brand.accent }}
+                    />
+
+                    <span
+                      className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                      style={{ color: colors.brand.secondary }}
+                    >
+                      Meet the AI Team Behind Your Sales
+                    </span>
+                  </div>
+
+                  <h2
+                    className="mt-3 text-xl font-bold sm:text-2xl"
+                    style={{ color: colors.brand.primary }}
+                  >
+                    Specialised Intelligence. One Connected Sales Process.
+                  </h2>
+
+                  <p className="mt-2 text-sm leading-relaxed text-gray-600">
+                    Behind every successful sales process is a team working
+                    together. Our solution combines specialised AI agents that
+                    support both your customers and your salespeople.
+                  </p>
+
+                  <div className="mt-5">
+                    <Accordion items={aiTeam} />
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* Outcomes */}
+
+              <ScrollReveal delay={0.08}>
+                <div className="relative h-full overflow-hidden rounded-[24px] bg-[#080912] p-5 shadow-[0_24px_70px_rgba(0,1,49,0.18)] sm:p-6">
+                  <div className="absolute -right-24 -top-24 h-60 w-60 rounded-full bg-[#ffb300]/10 blur-[90px]" />
+
+                  <div className="relative">
+                    <div className="flex items-center gap-2">
+                      <TrendingUp
+                        className="h-4 w-4"
+                        style={{ color: colors.brand.accent }}
+                      />
+
+                      <span
+                        className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                        style={{ color: colors.brand.accent }}
                       >
-                        The result is a faster, more organised sales operation
-                        that helps your business convert more opportunities
-                        without increasing headcount.
+                        Measurable Business Outcomes
+                      </span>
+                    </div>
+
+                    <h2 className="mt-3 text-xl font-bold text-white sm:text-2xl">
+                      Sell Smarter. Convert More. Scale Efficiently.
+                    </h2>
+
+                    <p className="mt-2 text-sm leading-[1.75] text-white/50">
+                      Everything we do is designed to improve how efficiently
+                      your organisation turns opportunities into revenue.
+                    </p>
+
+                    <div className="mt-6 grid grid-cols-3 divide-x divide-white/15 overflow-hidden rounded-xl border border-white/15 bg-white/[0.05]">
+                      {[
+                        ['Instant', 'Engagement'],
+                        ['Always', 'Follow-Up'],
+                        ['Clear', 'Visibility'],
+                      ].map(([value, label]) => (
+                        <div
+                          key={label}
+                          className="px-2 py-5 text-center"
+                        >
+                          <p
+                            className="text-lg font-bold sm:text-xl"
+                            style={{ color: colors.brand.accent }}
+                          >
+                            {value}
+                          </p>
+
+                          <p className="mt-1 text-[8px] text-white/45">
+                            {label}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="mt-5 border-t border-white/15 pt-5">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-white/45">
+                        Business Impact
                       </p>
 
+                      <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                        {businessOutcomes.map((outcome) => (
+                          <li
+                            key={outcome}
+                            className="flex items-start gap-2 text-[10px] leading-[1.65] text-white/60"
+                          >
+                            <CheckCircle2
+                              className="mt-0.5 h-3.5 w-3.5 shrink-0"
+                              style={{ color: colors.brand.accent }}
+                            />
+
+                            <span>{outcome}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </div>
@@ -1038,607 +1084,251 @@ export function B2BSalesReinventionPage() {
       </ModernSectionBackground>
 
       {/* ============================================
-          4. HOW THE SOLUTION WORKS
-          ============================================ */}
-
-      <section className="relative isolate overflow-hidden bg-[#080912] py-14 sm:py-16">
-
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10"
-        >
-          <img
-            src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=2400&q=86"
-            alt=""
-            loading="lazy"
-            decoding="async"
-            className="absolute inset-0 h-full w-full object-cover opacity-[0.13]"
-          />
-
-          <div className="absolute inset-0 bg-black/60" />
-
-          <div className="absolute inset-0 bg-gradient-to-r from-[#000131]/90 via-[#080912]/88 to-[#080912]/95" />
-
-          <div
-            className="absolute inset-0 opacity-[0.035]"
-            style={{
-              backgroundImage:
-                'linear-gradient(rgba(255,255,255,0.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.14) 1px, transparent 1px)',
-              backgroundSize: '72px 72px',
-            }}
-          />
-        </div>
-
-        <Container size="xl">
-
-          <div className="mx-auto max-w-7xl">
-
-            <ScrollReveal>
-              <div className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
-
-                <div>
-                  <SectionLabel
-                    dark
-                    icon={<Workflow className="h-3.5 w-3.5" />}
-                  >
-                    How the Solution Works
-                  </SectionLabel>
-
-                  <h2 className="mt-5 text-2xl font-bold tracking-[-0.035em] text-white sm:text-3xl">
-                    From First Inquiry to Successful Handover
-                  </h2>
-                </div>
-
-                <p className="max-w-2xl text-sm leading-[1.8] text-white/50 lg:justify-self-end">
-                  Our solution supports your sales process from the very first
-                  inquiry through to a successful handover.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            <StaggerContainer className="mt-9 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-
-              {solutionSteps.map((step) => (
-                <motion.article
-                  key={step.number}
-                  variants={staggerItemVariants}
-                  whileHover={{
-                    y: -4,
-                  }}
-                  className="rounded-[20px] border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl"
-                >
-                  <div className="flex items-center justify-between">
-
-                    <span
-                      className="text-[9px] font-bold tracking-[0.16em]"
-                      style={{
-                        color: colors.brand.accent,
-                      }}
-                    >
-                      STEP {step.number}
-                    </span>
-
-                    <div
-                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-black/20"
-                      style={{
-                        color: colors.brand.accent,
-                      }}
-                    >
-                      {step.icon}
-                    </div>
-                  </div>
-
-                  <h3 className="mt-4 text-sm font-bold text-white">
-                    {step.title}
-                  </h3>
-
-                  <div className="mt-3 space-y-2">
-
-                    {step.content.map((paragraph) => (
-                      <p
-                        key={paragraph}
-                        className="text-[10px] leading-[1.7] text-white/50"
-                      >
-                        {paragraph}
-                      </p>
-                    ))}
-
-                  </div>
-                </motion.article>
-              ))}
-
-            </StaggerContainer>
-          </div>
-        </Container>
-      </section>
-
-      {/* ============================================
-          5. AI TEAM
+          6. HOW WE WORK + WHY CHOOSE US
           ============================================ */}
 
       <ModernSectionBackground
         variant="mesh-gradient-light"
         className="relative overflow-hidden"
       >
-        <Section
-          spacing="base"
-          animate
-          background="transparent"
-        >
+        <Section spacing="base" animate background="transparent">
           <Container size="xl">
-
-            <div className="mx-auto max-w-7xl">
+            <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+              {/* How We Work */}
 
               <ScrollReveal>
-                <div className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
-
-                  <div>
-                    <SectionLabel
-                      icon={<Bot className="h-3.5 w-3.5" />}
-                    >
-                      AI Sales Workforce
-                    </SectionLabel>
-
-                    <h2
-                      className="mt-5 text-2xl font-bold tracking-[-0.035em] sm:text-3xl"
-                      style={{
-                        color: colors.brand.primary,
-                      }}
-                    >
-                      Meet the AI Team Behind Your Sales
-                    </h2>
-                  </div>
-
-                  <div className="space-y-2">
-                    <p className="text-sm leading-[1.8] text-gray-600">
-                      Behind every successful sales process is a team working
-                      together.
-                    </p>
-
-                    <p className="text-sm leading-[1.8] text-gray-600">
-                      Our solution combines specialised AI agents that support
-                      both your customers and your salespeople.
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
-
-              <StaggerContainer className="mt-8 grid gap-5 lg:grid-cols-3">
-
-                {aiSalesTeam.map((agent) => (
-                  <motion.article
-                    key={agent.number}
-                    variants={staggerItemVariants}
-                    whileHover={{
-                      y: -4,
-                    }}
-                    className="group relative overflow-hidden rounded-[22px] border border-gray-200 bg-white/90 p-5 shadow-[0_16px_50px_rgba(0,1,49,0.055)] sm:p-6"
-                  >
-                    <div className="flex items-start justify-between">
-
-                      <div
-                        className="flex h-11 w-11 items-center justify-center rounded-xl"
-                        style={{
-                          color: colors.brand.secondary,
-                          backgroundColor: `${colors.brand.secondary}0D`,
-                        }}
-                      >
-                        {agent.icon}
-                      </div>
-
-                      <span className="text-[8px] font-bold tracking-[0.16em] text-gray-300">
-                        AI {agent.number}
-                      </span>
-                    </div>
-
-                    <h3
-                      className="mt-5 text-base font-bold"
-                      style={{
-                        color: colors.brand.primary,
-                      }}
-                    >
-                      {agent.title}
-                    </h3>
-
-                    <p
-                      className="mt-1.5 text-xs font-bold"
-                      style={{
-                        color: colors.brand.secondary,
-                      }}
-                    >
-                      {agent.tagline}
-                    </p>
-
-                    <p className="mt-4 text-[11px] leading-[1.75] text-gray-600">
-                      {agent.content}
-                    </p>
-
-                    <p className="mt-2 text-[11px] leading-[1.75] text-gray-600">
-                      {agent.closing}
-                    </p>
-
-                    <div className="my-5 h-px bg-gray-200" />
-
-                    <p
-                      className="text-[9px] font-bold uppercase tracking-[0.15em]"
-                      style={{
-                        color: colors.brand.primary,
-                      }}
-                    >
-                      What it helps you achieve
-                    </p>
-
-                    <ul className="mt-3 space-y-2">
-
-                      {agent.outcomes.map((item) => (
-                        <li
-                          key={item}
-                          className="flex items-start gap-2 text-[10px] leading-[1.6] text-gray-600"
-                        >
-                          <CheckCircle2
-                            className="mt-0.5 h-3.5 w-3.5 shrink-0"
-                            style={{
-                              color: colors.brand.accent,
-                            }}
-                          />
-
-                          <span>{item}</span>
-                        </li>
-                      ))}
-
-                    </ul>
-
-                    <div
-                      className="mt-5 h-[2px] w-7 transition-all duration-500 group-hover:w-14"
-                      style={{
-                        background: gradients.primary,
-                      }}
+                <div>
+                  <div className="flex items-center gap-2">
+                    <Map
+                      className="h-4 w-4"
+                      style={{ color: colors.brand.accent }}
                     />
-                  </motion.article>
-                ))}
 
-              </StaggerContainer>
-            </div>
-          </Container>
-        </Section>
-      </ModernSectionBackground>
-
-      {/* ============================================
-          6. HOW WE WORK
-          ============================================ */}
-
-      <ModernSectionBackground
-        variant="glass-blur"
-        className="relative overflow-hidden"
-      >
-        <Section
-          spacing="base"
-          animate
-          background="transparent"
-        >
-          <Container size="xl">
-
-            <div className="mx-auto max-w-7xl">
-
-              <ScrollReveal>
-                <div className="grid gap-7 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
-
-                  <div>
-                    <SectionLabel
-                      icon={<Building2 className="h-3.5 w-3.5" />}
+                    <span
+                      className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                      style={{ color: colors.brand.secondary }}
                     >
                       How We Work
-                    </SectionLabel>
-
-                    <h2
-                      className="mt-5 text-2xl font-bold tracking-[-0.035em] sm:text-3xl"
-                      style={{
-                        color: colors.brand.primary,
-                      }}
-                    >
-                      Sales Transformation Built Around Your Business
-                    </h2>
+                    </span>
                   </div>
 
-                  <p className="text-sm leading-[1.8] text-gray-600">
+                  <h2
+                    className="mt-3 text-xl font-bold sm:text-2xl"
+                    style={{ color: colors.brand.primary }}
+                  >
+                    Transformation Starts With the Sales Process.
+                  </h2>
+
+                  <p className="mt-2 text-sm leading-[1.75] text-gray-600">
                     Technology is only one part of successful sales
-                    transformation. That's why we work closely with your business
-                    to redesign your sales process before implementing the
-                    solution.
+                    transformation. That&apos;s why we work closely with your
+                    business to redesign your sales process before implementing
+                    the solution.
                   </p>
+
+                  <div className="mt-5 space-y-3">
+                    {workSteps.map((step) => (
+                      <motion.div
+                        key={step.number}
+                        whileHover={{ x: 3 }}
+                        className="group rounded-[16px] border border-gray-200 bg-white/85 p-4 shadow-[0_10px_30px_rgba(0,1,49,0.04)]"
+                      >
+                        <div className="flex items-start gap-4">
+                          <div
+                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[10px] font-bold"
+                            style={{
+                              color: colors.brand.secondary,
+                              backgroundColor: `${colors.brand.secondary}0D`,
+                            }}
+                          >
+                            {step.number}
+                          </div>
+
+                          <div>
+                            <h3
+                              className="text-xs font-bold"
+                              style={{ color: colors.brand.primary }}
+                            >
+                              {step.title}
+                            </h3>
+
+                            <p className="mt-1.5 text-[10px] leading-[1.65] text-gray-500">
+                              {step.description}
+                            </p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
               </ScrollReveal>
 
-              <StaggerContainer className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+              {/* Why Choose Us */}
 
-                {implementationSteps.map((step) => (
-                  <motion.article
-                    key={step.number}
-                    variants={staggerItemVariants}
-                    whileHover={{
-                      y: -3,
-                    }}
-                    className="rounded-[18px] border border-gray-200 bg-white/90 p-4 shadow-[0_12px_36px_rgba(0,1,49,0.04)]"
-                  >
-                    <div className="flex items-center justify-between">
-
-                      <div
-                        className="flex h-9 w-9 items-center justify-center rounded-lg"
-                        style={{
-                          color: colors.brand.secondary,
-                          backgroundColor: `${colors.brand.secondary}0D`,
-                        }}
-                      >
-                        {step.icon}
-                      </div>
-
-                      <span className="text-[8px] font-bold text-gray-300">
-                        {step.number}
-                      </span>
-                    </div>
-
-                    <h3
-                      className="mt-4 text-xs font-bold leading-[1.45]"
-                      style={{
-                        color: colors.brand.primary,
-                      }}
-                    >
-                      {step.title}
-                    </h3>
-
-                    <p className="mt-2 text-[10px] leading-[1.7] text-gray-600">
-                      {step.content}
-                    </p>
-                  </motion.article>
-                ))}
-
-              </StaggerContainer>
-            </div>
-          </Container>
-        </Section>
-      </ModernSectionBackground>
-
-      {/* ============================================
-          7. WHY CHOOSE US + BUSINESS OUTCOMES
-          ============================================ */}
-
-      <section className="relative isolate overflow-hidden bg-[#080912] py-14 sm:py-16">
-
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 -z-10"
-        >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(0,0,170,0.18),transparent_35%)]" />
-
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_72%,rgba(255,179,0,0.09),transparent_28%)]" />
-        </div>
-
-        <Container size="xl">
-
-          <div className="mx-auto max-w-7xl">
-
-            <ScrollReveal>
-              <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr]">
-
-                {/* LEFT */}
-
+              <ScrollReveal delay={0.08}>
                 <div>
-                  <SectionLabel
-                    dark
-                    icon={<Users className="h-3.5 w-3.5" />}
-                  >
-                    Why Choose Us?
-                  </SectionLabel>
+                  <div className="flex items-center gap-2">
+                    <Award
+                      className="h-4 w-4"
+                      style={{ color: colors.brand.accent }}
+                    />
 
-                  <h2 className="mt-5 text-2xl font-bold leading-[1.08] tracking-[-0.035em] text-white sm:text-3xl">
-                    Technology doesn't close deals.
                     <span
-                      className="mt-1 block"
-                      style={{
-                        color: colors.brand.accent,
-                      }}
+                      className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                      style={{ color: colors.brand.secondary }}
                     >
-                      People do.
+                      Why Choose Us?
                     </span>
+                  </div>
+
+                  <h2
+                    className="mt-3 text-xl font-bold sm:text-2xl"
+                    style={{ color: colors.brand.primary }}
+                  >
+                    Technology Doesn&apos;t Close Deals. People Do.
                   </h2>
 
-                  <p className="mt-4 max-w-lg text-sm leading-[1.8] text-white/50">
+                  <p className="mt-2 text-sm leading-[1.75] text-gray-600">
                     Our role is to give your people better information, better
                     processes, and better tools so they can focus on building
                     relationships and winning business.
                   </p>
-                </div>
 
-                {/* RIGHT */}
+                  <div className="mt-5 rounded-[20px] border border-gray-200 bg-white/85 p-3 shadow-[0_14px_40px_rgba(0,1,49,0.05)]">
+                    <Accordion items={whyChooseUs} />
+                  </div>
 
-                <div className="grid gap-3 sm:grid-cols-2">
-
-                  {reasons.map((item) => (
-                    <div
-                      key={item.number}
-                      className="rounded-[18px] border border-white/10 bg-white/[0.055] p-4 backdrop-blur-xl"
-                    >
-                      <span
-                        className="text-[8px] font-bold tracking-[0.16em]"
-                        style={{
-                          color: colors.brand.accent,
-                        }}
-                      >
-                        {item.number}
-                      </span>
-
-                      <h3 className="mt-2 text-xs font-bold leading-[1.5] text-white">
-                        {item.title}
-                      </h3>
-
-                      <p className="mt-2 text-[10px] leading-[1.7] text-white/50">
-                        {item.content}
-                      </p>
-                    </div>
-                  ))}
-
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* BUSINESS OUTCOMES */}
-
-            <ScrollReveal delay={0.08}>
-              <div className="mt-7 overflow-hidden rounded-[22px] border border-white/10 bg-black/20 p-5 backdrop-blur-xl sm:p-6">
-
-                <div className="grid gap-6 lg:grid-cols-[0.55fr_1.45fr] lg:items-center">
-
-                  <div>
+                  <div
+                    className="mt-5 rounded-[20px] border p-5"
+                    style={{
+                      borderColor: `${colors.brand.accent}35`,
+                      backgroundColor: `${colors.brand.accent}08`,
+                    }}
+                  >
                     <div className="flex items-center gap-2">
-
-                      <TrendingUp
+                      <LineChart
                         className="h-4 w-4"
-                        style={{
-                          color: colors.brand.accent,
-                        }}
+                        style={{ color: colors.brand.accent }}
                       />
 
-                      <span
+                      <p
                         className="text-[9px] font-bold uppercase tracking-[0.16em]"
-                        style={{
-                          color: colors.brand.accent,
-                        }}
+                        style={{ color: colors.brand.secondary }}
                       >
-                        Measurable Business Outcomes
-                      </span>
+                        Focused on Measurable Business Outcomes
+                      </p>
                     </div>
 
-                    <h3 className="mt-3 text-lg font-bold text-white">
-                      Focused on measurable business outcomes.
-                    </h3>
+                    <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                      {businessOutcomes.map((outcome) => (
+                        <div
+                          key={outcome}
+                          className="flex items-start gap-2 text-[10px] leading-[1.6] text-gray-600"
+                        >
+                          <CheckCircle2
+                            className="mt-0.5 h-3.5 w-3.5 shrink-0"
+                            style={{ color: colors.brand.secondary }}
+                          />
 
-                    <p className="mt-2 text-[11px] leading-[1.7] text-white/50">
-                      Everything we do is designed to help you:
-                    </p>
-                  </div>
-
-                  <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-
-                    {outcomes.map((item) => (
-                      <div
-                        key={item}
-                        className="flex items-start gap-2 rounded-xl border border-white/10 bg-white/[0.05] p-3"
-                      >
-                        <CheckCircle2
-                          className="mt-0.5 h-3.5 w-3.5 shrink-0"
-                          style={{
-                            color: colors.brand.accent,
-                          }}
-                        />
-
-                        <span className="text-[10px] leading-[1.6] text-white/60">
-                          {item}
-                        </span>
-                      </div>
-                    ))}
-
+                          <span>{outcome}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        </Container>
-      </section>
+              </ScrollReveal>
+            </div>
+          </Container>
+        </Section>
+      </ModernSectionBackground>
 
       {/* ============================================
-          8. FINAL CTA
+          7. FINAL CTA
           ============================================ */}
 
       <ModernSectionBackground
-        variant="gradient-soft"
+        variant="gradient-tech"
         className="relative overflow-hidden"
       >
-        <section className="px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
+        <section className="relative isolate overflow-hidden px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 bg-[#080912]"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2400&q=88"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover opacity-25"
+            />
+
+            <div className="absolute inset-0 bg-black/50" />
+
+            <div className="absolute inset-0 bg-gradient-to-r from-[#000131]/94 via-[#080912]/80 to-[#080912]/90" />
+          </div>
 
           <Container size="lg">
-
             <ScrollReveal>
-              <div className="mx-auto max-w-4xl overflow-hidden rounded-[26px] border border-gray-200 bg-white/90 px-5 py-8 text-center shadow-[0_24px_70px_rgba(0,1,49,0.08)] sm:px-8 sm:py-10">
-
+              <div className="rounded-[24px] border border-white/20 bg-black/25 px-5 py-8 text-center shadow-[0_28px_80px_rgba(0,0,0,0.30)] backdrop-blur-xl sm:px-8 sm:py-10">
                 <div
-                  className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl"
-                  style={{
-                    color: colors.brand.secondary,
-                    backgroundColor: `${colors.brand.secondary}0D`,
-                  }}
+                  className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/[0.08]"
+                  style={{ color: colors.brand.accent }}
                 >
-                  <Brain className="h-5 w-5" />
+                  <Target className="h-5 w-5" />
                 </div>
 
-                <p
-                  className="mt-5 text-[9px] font-bold uppercase tracking-[0.18em]"
-                  style={{
-                    color: colors.brand.secondary,
-                  }}
+                <div
+                  className="mx-auto mt-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-3 py-1.5"
+                  style={{ color: colors.brand.accent }}
                 >
-                  B2B Sales Reinvention
-                </p>
+                  <span className="text-[8px] font-bold uppercase tracking-[0.18em]">
+                    B2B Sales Reinvention
+                  </span>
+                </div>
 
-                <h2
-                  className="mt-2 text-2xl font-bold tracking-[-0.035em] sm:text-3xl"
-                  style={{
-                    color: colors.brand.primary,
-                  }}
-                >
+                <h2 className="mx-auto mt-4 max-w-3xl text-2xl font-bold leading-tight text-white sm:text-3xl">
                   Ready to Reinvent Your Sales Process?
                 </h2>
 
-                <div className="mx-auto mt-4 max-w-2xl space-y-2">
+                <p className="mx-auto mt-3 max-w-2xl text-sm leading-[1.75] text-white/55">
+                  Winning more business isn&apos;t always about generating
+                  more leads. It&apos;s about making the most of every
+                  opportunity you already have.
+                </p>
 
-                  <p className="text-sm leading-[1.8] text-gray-600">
-                    Winning more business isn't always about generating more
-                    leads.
-                  </p>
+                <p className="mx-auto mt-3 max-w-2xl text-sm leading-[1.75] text-white/55">
+                  B2B Sales Reinvention helps your organisation respond faster,
+                  sell smarter, and grow revenue through a more connected,
+                  consistent, and efficient sales process.
+                </p>
 
-                  <p className="text-sm leading-[1.8] text-gray-600">
-                    It's about making the most of every opportunity you already
-                    have.
-                  </p>
+                <p className="mx-auto mt-4 max-w-2xl text-sm font-bold text-white">
+                  Let&apos;s reinvent the way your business sells.
+                </p>
 
-                  <p className="text-sm leading-[1.8] text-gray-600">
-                    B2B Sales Reinvention helps your organisation respond faster,
-                    sell smarter, and grow revenue through a more connected,
-                    consistent, and efficient sales process.
-                  </p>
-
-                  <p
-                    className="pt-1 text-sm font-bold"
-                    style={{
-                      color: colors.brand.primary,
-                    }}
-                  >
-                    Let's reinvent the way your business sells.
-                  </p>
-
-                </div>
-
-                {/* CTA 2 */}
-
-                <div className="mt-7 flex justify-center">
-
+                <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
                   <MagneticButton strength={0.25}>
                     <Link
                       to="/contact"
-                      className="group inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold text-white shadow-[0_16px_42px_rgba(0,0,170,0.30)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_52px_rgba(0,0,170,0.40)]"
-                      style={{
-                        background: gradients.primary,
-                      }}
+                      className="group inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-bold text-white shadow-xl transition-all hover:-translate-y-0.5"
+                      style={{ background: gradients.primary }}
                     >
                       Book Your Discovery Call
 
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </MagneticButton>
 
+                  <Link
+                    to="/services"
+                    className="inline-flex items-center justify-center rounded-xl border border-white/25 bg-black/20 px-6 py-3 text-sm font-bold text-white backdrop-blur-xl transition-all hover:bg-white/10"
+                  >
+                    View All Services
+                  </Link>
                 </div>
               </div>
             </ScrollReveal>
-
           </Container>
         </section>
       </ModernSectionBackground>
