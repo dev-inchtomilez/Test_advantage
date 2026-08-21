@@ -1895,40 +1895,17 @@ export function AboutPage() {
             <div className="grid lg:grid-cols-[230px_1fr]">
 
               {/* ============================================
-                  HARISH VISUAL
-                  NO FAKE IMAGE USED
+                  REAL IMAGE
               ============================================ */}
-              <div className="relative flex h-[220px] items-center justify-center overflow-hidden bg-[#000131] lg:h-auto lg:min-h-[300px]">
+              <div className="relative h-[260px] overflow-hidden bg-[#000131] sm:h-[300px] lg:h-auto lg:min-h-[310px]">
 
-                {/* Grid */}
-                <div
-                  className="absolute inset-0 opacity-[0.08]"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(rgba(255,255,255,0.14) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.14) 1px, transparent 1px)",
-                    backgroundSize: "34px 34px",
-                  }}
+                <OptimizedImage
+                  src="https://drive.google.com/thumbnail?id=1BLKTgyrudWdiNjTdUP86ndKPQZLfxAAy&sz=w1400"
+                  alt="Harish Banwari"
+                  className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[900ms] ease-out group-hover:scale-[1.025]"
                 />
 
-                <div
-                  className="absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-30 blur-[80px]"
-                  style={{ backgroundColor: colors.brand.secondary }}
-                />
-
-                <div
-                  className="absolute -bottom-20 -left-12 h-48 w-48 rounded-full opacity-20 blur-[80px]"
-                  style={{ backgroundColor: colors.brand.accent }}
-                />
-
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  className="relative flex h-24 w-24 items-center justify-center rounded-full border border-white/20 bg-white/[0.08] shadow-[0_20px_55px_rgba(0,0,0,0.25)] backdrop-blur-xl"
-                >
-                  <span className="text-2xl font-bold tracking-[-0.03em] text-white">
-                    HB
-                  </span>
-                </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#000131]/88 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#000131]/10" />
 
                 <div className="absolute inset-x-0 bottom-0 p-5 lg:hidden">
                   <p
