@@ -46,7 +46,7 @@ import {
 
 const serviceCategories = [
   {
-    name: "Strategic Planning",
+    name: "Strategic Marketing",
     path: "/services/strategic-planning",
     icon: <Target className="h-4 w-4" />,
     description: "Comprehensive marketing strategy & planning",
