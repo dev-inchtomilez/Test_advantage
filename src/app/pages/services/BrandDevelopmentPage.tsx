@@ -42,6 +42,7 @@ import {
 } from '../../components/ScrollReveal';
 
 import { MagneticButton } from '../../components/MagneticButton';
+import { Accordion } from '../../components/Accordion';
 
 import {
   colors,
@@ -1389,34 +1390,39 @@ export function BrandDevelopmentPage() {
               <Accordion
                 items={[
                   {
-                    question:
-                      "What does your brand development service include?",
-                    answer:
-                      "Our brand development process can include positioning, brand architecture, audience definition, messaging, visual identity, brand guidelines, and implementation frameworks designed to create a consistent and differentiated market presence.",
+                    id: 'brand-faq-1',
+                    title:
+                      'What does your brand development service include?',
+                    content:
+                      'Our brand development process can include positioning, brand architecture, audience definition, messaging, visual identity, brand guidelines, and implementation frameworks designed to create a consistent and differentiated market presence.',
                   },
                   {
-                    question:
-                      "How is brand development different from logo design?",
-                    answer:
-                      "A logo is only one visual component of a brand. Brand development defines the strategic foundation behind how your organization is positioned, communicated, experienced, and recognized across every customer touchpoint.",
+                    id: 'brand-faq-2',
+                    title:
+                      'How is brand development different from logo design?',
+                    content:
+                      'A logo is only one visual component of a brand. Brand development defines the strategic foundation behind how your organization is positioned, communicated, experienced, and recognized across every customer touchpoint.',
                   },
                   {
-                    question:
-                      "Can you help reposition or refresh an existing brand?",
-                    answer:
-                      "Yes. We work with existing organizations to evaluate current brand perception, positioning, communication, and identity before developing a refreshed or repositioned brand system aligned with future business goals.",
+                    id: 'brand-faq-3',
+                    title:
+                      'Can you help reposition or refresh an existing brand?',
+                    content:
+                      'Yes. We work with existing organizations to evaluate current brand perception, positioning, communication, and identity before developing a refreshed or repositioned brand system aligned with future business goals.',
                   },
                   {
-                    question:
-                      "Do you create brand guidelines for internal teams?",
-                    answer:
-                      "Yes. We develop practical brand guidelines that establish standards for visual identity, typography, colors, messaging, tone of voice, and brand application so internal and external teams can maintain consistency.",
+                    id: 'brand-faq-4',
+                    title:
+                      'Do you create brand guidelines for internal teams?',
+                    content:
+                      'Yes. We develop practical brand guidelines that establish standards for visual identity, typography, colors, messaging, tone of voice, and brand application so internal and external teams can maintain consistency.',
                   },
                   {
-                    question:
-                      "How does brand development support business growth?",
-                    answer:
-                      "A stronger brand improves differentiation, recognition, customer trust, communication consistency, and perceived value. This creates a clearer foundation for marketing, sales, customer experience, and long-term commercial growth.",
+                    id: 'brand-faq-5',
+                    title:
+                      'How does brand development support business growth?',
+                    content:
+                      'A stronger brand improves differentiation, recognition, customer trust, communication consistency, and perceived value. This creates a clearer foundation for marketing, sales, customer experience, and long-term commercial growth.',
                   },
                 ]}
               />
