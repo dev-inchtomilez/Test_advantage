@@ -5282,7 +5282,7 @@ Because of Ideas.`}
 
 
 {/* ============================================
-    18. INDUSTRIES WE SERVE — IMAGE-LED BENTO
+    18. INDUSTRIES WE SERVE — COMPACT HORIZONTAL CAROUSEL
 ============================================ */}
 <ModernSectionBackground
   variant="glass-blur"
@@ -5292,181 +5292,127 @@ Because of Ideas.`}
     spacing="base"
     animate
     background="transparent"
-    className="industries-section-v2 relative isolate overflow-hidden"
+    className="industries-carousel-section relative isolate overflow-hidden"
   >
-    {/* ============================================
-        SECTION-SPECIFIC STYLES
-    ============================================ */}
     <style>
       {`
-        .industries-section-v2 .industry-image-v2 {
+        .industries-carousel-section .industries-carousel-track {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+
+        .industries-carousel-section .industries-carousel-track::-webkit-scrollbar {
+          display: none;
+        }
+
+        .industries-carousel-section .industry-carousel-image {
+          transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .industries-carousel-section .industry-carousel-card:hover .industry-carousel-image {
+          transform: scale(1.055);
+        }
+
+        .industries-carousel-section .industry-carousel-card {
           transition:
-            transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-            filter 0.6s ease;
+            transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 0.35s ease,
+            border-color 0.35s ease;
         }
 
-        .industries-section-v2 .industry-card-v2:hover .industry-image-v2 {
-          transform: scale(1.04);
-          filter: saturate(1.06);
-        }
-
-        .industries-section-v2 .industry-accent-v2 {
-          transform: scaleX(0.14);
-          transform-origin: left;
-          transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .industries-section-v2 .industry-card-v2:hover .industry-accent-v2 {
-          transform: scaleX(1);
-        }
-
-        .industries-section-v2 .industry-arrow-v2 {
-          transition:
-            transform 0.3s ease,
-            background-color 0.3s ease;
-        }
-
-        .industries-section-v2 .industry-card-v2:hover .industry-arrow-v2 {
-          transform: translateX(4px);
+        .industries-carousel-section .industry-carousel-card:hover {
+          transform: translateY(-4px);
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .industries-section-v2 .industry-image-v2,
-          .industries-section-v2 .industry-accent-v2,
-          .industries-section-v2 .industry-arrow-v2 {
+          .industries-carousel-section .industry-carousel-image,
+          .industries-carousel-section .industry-carousel-card {
             transition: none;
           }
         }
       `}
     </style>
 
-    {/* ============================================
-        LIGHT EDITORIAL BACKGROUND
-    ============================================ */}
     <div
       aria-hidden="true"
       className="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-[#f7f8fc]"
     >
-      {/* Soft architectural image */}
-      <img
-        src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=2400&q=84"
-        alt=""
-        loading="lazy"
-        decoding="async"
-        className="absolute right-0 top-0 h-full w-[58%] object-cover opacity-[0.055] grayscale"
-      />
-
-      <div className="absolute inset-0 bg-gradient-to-r from-[#f7f8fc] via-[#f7f8fc]/95 to-[#f7f8fc]/80" />
-
-      {/* Brand atmospheres */}
       <div
-        className="absolute -left-56 top-[-100px] h-[500px] w-[500px] rounded-full opacity-[0.055] blur-[150px]"
+        className="absolute -left-52 top-[-120px] h-[440px] w-[440px] rounded-full opacity-[0.05] blur-[140px]"
         style={{ backgroundColor: colors.brand.secondary }}
       />
 
       <div
-        className="absolute -right-52 bottom-[-140px] h-[480px] w-[480px] rounded-full opacity-[0.09] blur-[150px]"
+        className="absolute -right-48 bottom-[-140px] h-[420px] w-[420px] rounded-full opacity-[0.08] blur-[140px]"
         style={{ backgroundColor: colors.brand.accent }}
       />
 
-      {/* Subtle grid */}
       <div
-        className="absolute inset-0 opacity-[0.32]"
+        className="absolute inset-0 opacity-[0.25]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(0,1,49,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,1,49,0.04) 1px, transparent 1px)",
+            "linear-gradient(rgba(0,1,49,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(0,1,49,0.035) 1px, transparent 1px)",
           backgroundSize: "76px 76px",
         }}
       />
-
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(247,248,252,0.84)_100%)]" />
     </div>
 
     <Container size="xl">
       <div className="mx-auto max-w-7xl">
-        {/* ============================================
-            SECTION HEADER
-        ============================================ */}
         <ScrollReveal>
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-3xl">
               <div
-                className="inline-flex items-center gap-2 rounded-full border px-4 py-2"
+                className="inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5"
                 style={{
                   color: colors.brand.secondary,
-                  borderColor: `${colors.brand.secondary}22`,
-                  backgroundColor: `${colors.brand.secondary}08`,
+                  borderColor: `${colors.brand.secondary}20`,
+                  backgroundColor: `${colors.brand.secondary}07`,
                 }}
               >
                 <Building2 className="h-3.5 w-3.5" />
 
-                <span className="text-[10px] font-bold uppercase tracking-[0.18em]">
-                  Industry-Specific Expertise
+                <span className="text-[9px] font-bold uppercase tracking-[0.18em]">
+                  Industry Expertise
                 </span>
               </div>
 
               <h2
-                className="mt-5 text-2xl font-bold leading-[1.1] tracking-[-0.035em] sm:text-3xl lg:text-[42px]"
+                className="mt-4 text-2xl font-bold leading-[1.12] tracking-[-0.03em] sm:text-3xl lg:text-[36px]"
                 style={{ color: colors.brand.primary }}
               >
                 Industries We Understand.
-                <span className="mt-1 block text-gray-500">
-                  Growth Systems We Know How to Build.
-                </span>
               </h2>
 
-              <p className="mt-5 max-w-2xl text-sm leading-[1.8] text-gray-600 sm:text-base">
-                Every sector has different buyers, sales cycles, regulations,
-                competitive pressures, and routes to growth. Our approach is
-                designed around those realities.
+              <p className="mt-3 max-w-2xl text-sm leading-[1.7] text-gray-600">
+                Sector-specific growth systems built around real buyers, markets,
+                and commercial realities.
               </p>
             </div>
 
-            {/* Framework panel */}
-            <div className="max-w-sm rounded-2xl border border-gray-200 bg-white/75 px-5 py-4 shadow-[0_16px_45px_rgba(0,1,49,0.07)] backdrop-blur-xl">
-              <p
-                className="text-[9px] font-bold uppercase tracking-[0.16em]"
-                style={{ color: colors.brand.secondary }}
-              >
-                Our Sector Approach
-              </p>
+            <a
+              href="https://test-advantage-rho.vercel.app/industries"
+              className="group inline-flex w-fit items-center gap-2 text-sm font-bold"
+              style={{ color: colors.brand.secondary }}
+            >
+              Explore All Industries
 
-              <div className="mt-3 flex flex-wrap items-center gap-2 text-[11px] font-semibold text-gray-600">
-                <span>Market Context</span>
-                <ArrowRight className="h-3 w-3 text-gray-400" />
-
-                <span>Buyer Journey</span>
-                <ArrowRight className="h-3 w-3 text-gray-400" />
-
-                <span>Growth System</span>
-              </div>
-            </div>
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </a>
           </div>
         </ScrollReveal>
 
-        {/* ============================================
-            INDUSTRY BENTO GRID
-        ============================================ */}
-        <div className="mt-9 grid gap-5 lg:grid-cols-12">
+        <div className="industries-carousel-track mt-7 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2">
           {[
             {
               number: "01",
               title: "Healthcare & Life Sciences",
               description:
-                "Strategic marketing for medical devices, pharmaceuticals, biotechnology, healthcare services, and digital health businesses.",
+                "Strategic marketing for healthcare, pharmaceuticals, medical devices, biotechnology, and digital health.",
               image:
-                "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1800&q=92",
+                "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=90",
               icon: Hospital,
-              eyebrow: "Regulated Growth Environments",
-              linkText: "Explore Healthcare Expertise",
-              sectors: [
-                "Medical Devices",
-                "Pharmaceuticals",
-                "Digital Health",
-              ],
-              className: "lg:col-span-7 lg:row-span-2",
-              cardHeight: "min-h-[470px] lg:min-h-[520px]",
-              featured: true,
+              eyebrow: "Healthcare",
             },
             {
               number: "02",
@@ -5474,48 +5420,29 @@ Because of Ideas.`}
               description:
                 "Positioning, authority building, and qualified demand generation for expertise-led organizations.",
               image:
-                "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=92",
+                "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=90",
               icon: Briefcase,
-              eyebrow: "Expertise-Led Businesses",
-              linkText: "Professional Services",
-              sectors: ["Consulting", "Legal", "Advisory"],
-              className: "lg:col-span-5",
-              cardHeight: "min-h-[310px] lg:min-h-[250px]",
-              featured: false,
+              eyebrow: "Services",
             },
             {
               number: "03",
               title: "Retail & E-Commerce",
               description:
-                "Connected acquisition, brand, content, and conversion systems for consumer-focused growth.",
+                "Connected acquisition, content, brand, and conversion systems for consumer-focused businesses.",
               image:
-                "https://images.unsplash.com/photo-1441986300917-64674bd6008?auto=format&fit=crop&w=1400&q=92",
+                "https://images.unsplash.com/photo-1441986300917-64674bd6008?auto=format&fit=crop&w=1200&q=90",
               icon: Store,
-              eyebrow: "Consumer Growth Systems",
-              linkText: "Retail & Commerce",
-              sectors: ["D2C", "Omnichannel", "Marketplaces"],
-              className: "lg:col-span-5",
-              cardHeight: "min-h-[310px] lg:min-h-[250px]",
-              featured: false,
+              eyebrow: "Commerce",
             },
             {
               number: "04",
               title: "Manufacturing & Industrial",
               description:
-                "Complex B2B marketing for manufacturers, industrial technology providers, equipment companies, and supply-chain organizations.",
+                "Growth systems for manufacturers, industrial technology, equipment, and supply-chain organizations.",
               image:
-                "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1900&q=92",
+                "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?auto=format&fit=crop&w=1200&q=90",
               icon: Factory,
-              eyebrow: "Complex B2B Markets",
-              linkText: "Explore Industrial Expertise",
-              sectors: [
-                "Industrial Equipment",
-                "Advanced Manufacturing",
-                "Supply Chain",
-              ],
-              className: "lg:col-span-12",
-              cardHeight: "min-h-[350px] lg:min-h-[330px]",
-              featured: false,
+              eyebrow: "Industrial",
             },
           ].map((industry, index) => {
             const IndustryIcon = industry.icon;
@@ -5523,65 +5450,40 @@ Because of Ideas.`}
             return (
               <ScrollReveal
                 key={industry.title}
-                delay={index * 0.08}
-                className={industry.className}
+                delay={index * 0.06}
+                className="min-w-[285px] flex-1 snap-start sm:min-w-[315px] lg:min-w-0"
               >
-                <Link
-                  to="/industries"
-                  className={[
-                    "industry-card-v2 group relative block h-full overflow-hidden rounded-[24px]",
-                    "border border-white/80 bg-[#11131a]",
-                    "shadow-[0_24px_75px_rgba(0,1,49,0.14)]",
-                    "transition-all duration-500",
-                    "hover:-translate-y-1.5",
-                    "hover:shadow-[0_36px_105px_rgba(0,1,49,0.23)]",
-                    industry.cardHeight,
-                  ].join(" ")}
+                <a
+                  href="https://test-advantage-rho.vercel.app/industries"
+                  className="industry-carousel-card group relative block h-[265px] overflow-hidden rounded-[22px] border border-white/85 bg-[#000131] shadow-[0_18px_55px_rgba(0,1,49,0.12)] hover:border-white hover:shadow-[0_26px_70px_rgba(0,1,49,0.18)]"
                 >
-                  {/* Clearly visible image */}
                   <img
                     src={industry.image}
                     alt={industry.title}
                     loading="lazy"
                     decoding="async"
-                    className="industry-image-v2 absolute inset-0 h-full w-full object-cover object-center"
+                    className="industry-carousel-image absolute inset-0 h-full w-full object-cover object-center"
                   />
 
-                  {/* Only the content area receives a strong overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/[0.94] via-black/[0.36] via-[54%] to-black/[0.03]" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#000131]/95 via-[#000131]/46 to-[#000131]/08" />
 
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/[0.36] via-transparent to-transparent" />
-
-                  {/* Accent line */}
                   <div
-                    className="industry-accent-v2 absolute left-0 top-0 z-20 h-1 w-full"
+                    className="absolute left-0 top-0 h-1 w-full"
                     style={{ background: gradients.primary }}
                   />
 
-                  <div
-                    className={[
-                      "relative z-10 flex h-full flex-col p-5 sm:p-6",
-                      industry.cardHeight,
-                    ].join(" ")}
-                  >
-                    {/* Top row */}
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/30 bg-black/20 text-white shadow-xl backdrop-blur-xl">
-                        <IndustryIcon className="h-5 w-5" />
+                  <div className="relative z-10 flex h-full flex-col p-5">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white backdrop-blur-xl">
+                        <IndustryIcon className="h-4.5 w-4.5" />
                       </div>
 
-                      <span className="text-[10px] font-bold tracking-[0.16em] text-white/65">
+                      <span className="text-[9px] font-bold tracking-[0.16em] text-white/55">
                         {industry.number}
                       </span>
                     </div>
 
-                    {/* Bottom content */}
-                    <div
-                      className={[
-                        "mt-auto",
-                        industry.featured ? "max-w-2xl pt-24" : "max-w-3xl pt-16",
-                      ].join(" ")}
-                    >
+                    <div className="mt-auto">
                       <p
                         className="text-[9px] font-bold uppercase tracking-[0.16em]"
                         style={{ color: colors.brand.accent }}
@@ -5589,166 +5491,37 @@ Because of Ideas.`}
                         {industry.eyebrow}
                       </p>
 
-                      <h3
-                        className={[
-                          "mt-2 font-bold leading-[1.18] tracking-[-0.025em] text-white",
-                          industry.featured
-                            ? "text-2xl sm:text-3xl"
-                            : "text-xl sm:text-2xl",
-                        ].join(" ")}
-                      >
+                      <h3 className="mt-2 text-lg font-bold leading-[1.18] tracking-[-0.02em] text-white">
                         {industry.title}
                       </h3>
 
-                      <p className="mt-3 max-w-2xl text-xs leading-[1.75] text-white/[0.76] sm:text-sm">
+                      <p className="mt-2 line-clamp-2 text-[11px] leading-[1.65] text-white/68">
                         {industry.description}
                       </p>
 
-                      {/* Sector tags */}
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {industry.sectors.map((sector) => (
-                          <span
-                            key={sector}
-                            className="rounded-full border border-white/25 bg-black/20 px-2.5 py-1.5 text-[9px] font-semibold text-white/80 backdrop-blur-md"
-                          >
-                            {sector}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* Card footer */}
-                      <div className="mt-5 flex items-center justify-between border-t border-white/20 pt-4">
-                        <span className="text-xs font-bold text-white">
-                          {industry.linkText}
+                      <div className="mt-4 flex items-center justify-between border-t border-white/15 pt-3">
+                        <span className="text-[10px] font-bold text-white/80">
+                          View Industry
                         </span>
 
                         <span
-                          className="industry-arrow-v2 flex h-9 w-9 items-center justify-center rounded-full text-white shadow-lg"
+                          className="flex h-8 w-8 items-center justify-center rounded-full text-white"
                           style={{ background: gradients.primary }}
                         >
-                          <ArrowRight className="h-4 w-4" />
+                          <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
                         </span>
                       </div>
                     </div>
                   </div>
-                </Link>
+                </a>
               </ScrollReveal>
             );
           })}
         </div>
-
-        {/* ============================================
-            INDUSTRY EXPERTISE STRIP
-        ============================================ */}
-        <ScrollReveal delay={0.28}>
-          <div className="mt-7 overflow-hidden rounded-2xl border border-gray-200 bg-white/80 shadow-[0_18px_60px_rgba(0,1,49,0.08)] backdrop-blur-xl">
-            <div className="grid sm:grid-cols-3">
-              {[
-                {
-                  number: "01",
-                  title: "Sector Context",
-                  text: "We understand the commercial forces shaping each market.",
-                },
-                {
-                  number: "02",
-                  title: "Audience Precision",
-                  text: "Messaging is built around real buyer needs and behaviour.",
-                },
-                {
-                  number: "03",
-                  title: "Relevant Execution",
-                  text: "Channels and campaigns reflect how each sector buys.",
-                },
-              ].map((item, index) => (
-                <div
-                  key={item.number}
-                  className={[
-                    "px-5 py-5",
-                    index < 2
-                      ? "border-b border-gray-200 sm:border-b-0 sm:border-r"
-                      : "",
-                  ].join(" ")}
-                >
-                  <div className="flex items-start gap-3">
-                    <span
-                      className="text-[9px] font-bold uppercase tracking-[0.16em]"
-                      style={{ color: colors.brand.secondary }}
-                    >
-                      {item.number}
-                    </span>
-
-                    <div>
-                      <p
-                        className="text-sm font-bold"
-                        style={{ color: colors.brand.primary }}
-                      >
-                        {item.title}
-                      </p>
-
-                      <p className="mt-1 text-[10px] leading-[1.65] text-gray-500">
-                        {item.text}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </ScrollReveal>
-
-        {/* ============================================
-            FINAL CTA
-        ============================================ */}
-        <ScrollReveal delay={0.34}>
-          <div
-            className="mt-5 overflow-hidden rounded-2xl shadow-[0_22px_65px_rgba(0,1,49,0.16)]"
-            style={{ backgroundColor: colors.brand.primary }}
-          >
-            <div className="grid items-center lg:grid-cols-[1fr_auto]">
-              <div className="flex items-start gap-4 px-5 py-5 sm:px-7">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/[0.08]">
-                  <Building2
-                    className="h-5 w-5"
-                    style={{ color: colors.brand.accent }}
-                  />
-                </div>
-
-                <div>
-                  <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-white/45">
-                    Industry Knowledge Connected to Growth
-                  </p>
-
-                  <p className="mt-1 text-sm font-bold leading-relaxed text-white sm:text-base">
-                    Your marketing system should reflect how your market
-                    actually works—not follow a generic agency formula.
-                  </p>
-
-                  <p className="mt-1 text-xs leading-relaxed text-white/50">
-                    Explore our sector expertise and industry-specific
-                    capabilities.
-                  </p>
-                </div>
-              </div>
-
-              <Link
-                to="/industries"
-                className="group flex h-full items-center justify-center gap-2 border-t border-white/15 px-7 py-5 text-sm font-bold text-white transition-all duration-300 hover:bg-white/[0.08] lg:border-l lg:border-t-0"
-              >
-                Explore All Industries
-
-                <ArrowRight
-                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-                  style={{ color: colors.brand.accent }}
-                />
-              </Link>
-            </div>
-          </div>
-        </ScrollReveal>
       </div>
     </Container>
   </Section>
 </ModernSectionBackground>
-
 
 
 {/* ============================================
