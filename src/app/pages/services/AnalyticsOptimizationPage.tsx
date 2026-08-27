@@ -1273,103 +1273,174 @@ export function AnalyticsOptimizationPage() {
                 </div>
               </ScrollReveal>
 
-              {/* INDUSTRIES + FAQ */}
+              {/* INDUSTRIES */}
 
-              <div className="mt-6 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-                {/* Industries */}
-
-                <ScrollReveal delay={0.08}>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <Globe
-                        className="h-4 w-4"
-                        style={{ color: colors.brand.accent }}
-                      />
-
-                      <span
-                        className="text-[9px] font-bold uppercase tracking-[0.16em]"
-                        style={{ color: colors.brand.secondary }}
+              <ScrollReveal delay={0.08}>
+                <div className="mt-6 rounded-[22px] border border-gray-200 bg-white/78 p-5 shadow-[0_14px_44px_rgba(0,1,49,0.045)] backdrop-blur-xl sm:p-6">
+                  <div className="flex flex-col gap-4 border-b border-gray-200 pb-5 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                      <p
+                        className="text-[9px] font-bold uppercase tracking-[0.17em]"
+                        style={{
+                          color: colors.brand.secondary,
+                        }}
                       >
                         Industry Expertise
-                      </span>
+                      </p>
+
+                      <h3
+                        className="mt-1.5 text-base font-bold"
+                        style={{
+                          color: colors.brand.primary,
+                        }}
+                      >
+                        Industries We Serve
+                      </h3>
                     </div>
 
-                    <h2
-                      className="mt-3 text-xl font-bold sm:text-2xl"
-                      style={{ color: colors.brand.primary }}
-                    >
-                      Industries We Serve
-                    </h2>
-
-                    <p className="mt-2 text-sm text-gray-600">
+                    <p className="max-w-md text-[11px] leading-[1.7] text-gray-500 sm:text-right">
                       Analytics expertise across sectors.
                     </p>
-
-                    <div className="mt-5 grid grid-cols-2 gap-3">
-                      {industries.map((industry) => (
-                        <motion.div
-                          key={industry.name}
-                          whileHover={{ y: -3 }}
-                          className="rounded-[16px] border border-gray-200 bg-white/85 p-4 shadow-[0_10px_30px_rgba(0,1,49,0.04)]"
-                        >
-                          <div
-                            className="flex h-8 w-8 items-center justify-center rounded-lg"
-                            style={{
-                              color: colors.brand.secondary,
-                              backgroundColor: `${colors.brand.secondary}0D`,
-                            }}
-                          >
-                            {industry.icon}
-                          </div>
-
-                          <p className="mt-3 text-[10px] font-bold leading-relaxed text-gray-700">
-                            {industry.name}
-                          </p>
-                        </motion.div>
-                      ))}
-                    </div>
                   </div>
-                </ScrollReveal>
 
-                {/* FAQ */}
-
-                <ScrollReveal delay={0.12}>
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <Eye
-                        className="h-4 w-4"
-                        style={{ color: colors.brand.accent }}
-                      />
-
-                      <span
-                        className="text-[9px] font-bold uppercase tracking-[0.16em]"
-                        style={{ color: colors.brand.secondary }}
+                  <div className="mt-5 grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-6">
+                    {industries.map((industry) => (
+                      <motion.div
+                        key={industry.name}
+                        whileHover={{
+                          y: -2,
+                        }}
+                        className="rounded-xl border border-gray-200/80 bg-white/82 px-3 py-4 text-center"
                       >
-                        Common Questions
-                      </span>
-                    </div>
+                        <div
+                          className="mx-auto flex h-8 w-8 items-center justify-center rounded-lg"
+                          style={{
+                            color: colors.brand.secondary,
+                            backgroundColor: `${colors.brand.secondary}0D`,
+                          }}
+                        >
+                          {industry.icon}
+                        </div>
 
-                    <h2
-                      className="mt-3 text-xl font-bold sm:text-2xl"
-                      style={{ color: colors.brand.primary }}
-                    >
-                      Frequently Asked Questions
-                    </h2>
-
-                    <p className="mt-2 text-sm text-gray-600">
-                      Common questions about analytics and optimization.
-                    </p>
-
-                    <div className="mt-5 rounded-[20px] border border-gray-200 bg-white/85 p-3 shadow-[0_14px_40px_rgba(0,1,49,0.05)]">
-                      <Accordion items={faqs} />
-                    </div>
+                        <p className="mt-2 text-[9px] font-semibold text-gray-600">
+                          {industry.name}
+                        </p>
+                      </motion.div>
+                    ))}
                   </div>
-                </ScrollReveal>
-              </div>
+                </div>
+              </ScrollReveal>
             </div>
           </Container>
         </Section>
       </ModernSectionBackground>
+
+      {/* ============================================
+          7. ANALYTICS SERVICES + FAQ
+          ============================================ */}
+
+      <ModernSectionBackground
+        variant="mesh-gradient-light"
+        className="relative overflow-hidden"
+      >
+        <Section spacing="base" animate background="transparent">
+          <Container size="xl">
+            <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+              {/* Analytics Services */}
+
+              <ScrollReveal>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <BarChart3
+                      className="h-4 w-4"
+                      style={{ color: colors.brand.accent }}
+                    />
+
+                    <span
+                      className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                      style={{ color: colors.brand.secondary }}
+                    >
+                      Our Services
+                    </span>
+                  </div>
+
+                  <h2
+                    className="mt-3 text-xl font-bold sm:text-2xl"
+                    style={{ color: colors.brand.primary }}
+                  >
+                    Analytics & Optimization Services
+                  </h2>
+
+                  <p className="mt-2 text-sm text-gray-600">
+                    Complete analytics implementation and optimization
+                    capabilities.
+                  </p>
+
+                  <div className="mt-5 grid grid-cols-2 gap-3">
+                    {keyServices.map((service) => (
+                      <motion.div
+                        key={service.title}
+                        whileHover={{ y: -3 }}
+                        className="rounded-[16px] border border-gray-200 bg-white/85 p-4 shadow-[0_10px_30px_rgba(0,1,49,0.04)]"
+                      >
+                        <div
+                          className="flex h-8 w-8 items-center justify-center rounded-lg"
+                          style={{
+                            color: colors.brand.secondary,
+                            backgroundColor: `${colors.brand.secondary}0D`,
+                          }}
+                        >
+                          {service.icon}
+                        </div>
+
+                        <p className="mt-3 text-[10px] font-bold leading-relaxed text-gray-700">
+                          {service.title}
+                        </p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* FAQ */}
+
+              <ScrollReveal delay={0.08}>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <Eye
+                      className="h-4 w-4"
+                      style={{ color: colors.brand.accent }}
+                    />
+
+                    <span
+                      className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                      style={{ color: colors.brand.secondary }}
+                    >
+                      Common Questions
+                    </span>
+                  </div>
+
+                  <h2
+                    className="mt-3 text-xl font-bold sm:text-2xl"
+                    style={{ color: colors.brand.primary }}
+                  >
+                    Frequently Asked Questions
+                  </h2>
+
+                  <p className="mt-2 text-sm text-gray-600">
+                    Common questions about analytics and optimization.
+                  </p>
+
+                  <div className="mt-5 rounded-[20px] border border-gray-200 bg-white/85 p-3 shadow-[0_14px_40px_rgba(0,1,49,0.05)]">
+                    <Accordion items={faqs} />
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+          </Container>
+        </Section>
+      </ModernSectionBackground>
+
 
       {/* ============================================
           8. FINAL CTA
@@ -1443,5 +1514,3 @@ export function AnalyticsOptimizationPage() {
                     }}
                   >
                     Start Optimizing Today
-
-                    
