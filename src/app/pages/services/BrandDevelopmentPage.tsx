@@ -1057,12 +1057,68 @@ export function BrandDevelopmentPage() {
                 </div>
               </ScrollReveal>
             </div>
+
+            {/* Brand Development Expertise */}
+            <ScrollReveal delay={0.1}>
+              <div className="mx-auto mt-6 max-w-7xl rounded-[24px] border border-gray-200 bg-white/85 p-5 shadow-[0_18px_55px_rgba(0,1,49,0.05)] backdrop-blur-xl sm:p-6">
+                <div className="flex items-center gap-2">
+                  <Sparkles
+                    className="h-4 w-4"
+                    style={{ color: colors.brand.accent }}
+                  />
+
+                  <span
+                    className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                    style={{ color: colors.brand.secondary }}
+                  >
+                    Brand Development Expertise
+                  </span>
+                </div>
+
+                <h3
+                  className="mt-3 text-lg font-bold sm:text-xl"
+                  style={{ color: colors.brand.primary }}
+                >
+                  What We Build for Your Brand
+                </h3>
+
+                <p className="mt-2 max-w-4xl text-sm leading-[1.75] text-gray-600">
+                  We develop clear, differentiated, and scalable brand systems that
+                  strengthen positioning, communication, recognition, and long-term
+                  market relevance.
+                </p>
+
+                <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
+                  {brandExpertise.map((item) => (
+                    <motion.div
+                      key={item.name}
+                      whileHover={{ y: -3 }}
+                      className="rounded-[16px] border border-gray-200 bg-white/85 p-4 shadow-[0_10px_30px_rgba(0,1,49,0.04)]"
+                    >
+                      <div
+                        className="flex h-8 w-8 items-center justify-center rounded-lg"
+                        style={{
+                          color: colors.brand.secondary,
+                          backgroundColor: `${colors.brand.secondary}0D`,
+                        }}
+                      >
+                        {item.icon}
+                      </div>
+
+                      <p className="mt-3 text-[10px] font-bold leading-relaxed text-gray-700">
+                        {item.name}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
           </Container>
         </Section>
       </ModernSectionBackground>
 
       {/* ============================================
-          6. INDUSTRIES + BRAND EXPERTISE + FAQ
+          6. INDUSTRIES + FAQ
           ============================================ */}
 
       <ModernSectionBackground
@@ -1072,7 +1128,7 @@ export function BrandDevelopmentPage() {
         <Section spacing="base" animate background="transparent">
           <Container size="xl">
             <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-              {/* Industries + Brand Development Expertise */}
+              {/* Industries */}
 
               <ScrollReveal>
                 <div>
@@ -1125,60 +1181,6 @@ export function BrandDevelopmentPage() {
                     ))}
                   </div>
 
-                  {/* Brand Development Expertise */}
-
-                  <div className="mt-8 border-t border-gray-200 pt-7">
-                    <div className="flex items-center gap-2">
-                      <Sparkles
-                        className="h-4 w-4"
-                        style={{ color: colors.brand.accent }}
-                      />
-
-                      <span
-                        className="text-[9px] font-bold uppercase tracking-[0.16em]"
-                        style={{ color: colors.brand.secondary }}
-                      >
-                        Brand Development Expertise
-                      </span>
-                    </div>
-
-                    <h3
-                      className="mt-3 text-lg font-bold sm:text-xl"
-                      style={{ color: colors.brand.primary }}
-                    >
-                      What We Build for Your Brand
-                    </h3>
-
-                    <p className="mt-2 text-sm leading-[1.75] text-gray-600">
-                      We develop clear, differentiated, and scalable brand systems that
-                      strengthen positioning, communication, recognition, and long-term
-                      market relevance.
-                    </p>
-
-                    <div className="mt-5 grid grid-cols-2 gap-3">
-                      {brandExpertise.map((item) => (
-                        <motion.div
-                          key={item.name}
-                          whileHover={{ y: -3 }}
-                          className="rounded-[16px] border border-gray-200 bg-white/85 p-4 shadow-[0_10px_30px_rgba(0,1,49,0.04)]"
-                        >
-                          <div
-                            className="flex h-8 w-8 items-center justify-center rounded-lg"
-                            style={{
-                              color: colors.brand.secondary,
-                              backgroundColor: `${colors.brand.secondary}0D`,
-                            }}
-                          >
-                            {item.icon}
-                          </div>
-
-                          <p className="mt-3 text-[10px] font-bold leading-relaxed text-gray-700">
-                            {item.name}
-                          </p>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
                 </div>
               </ScrollReveal>
 
