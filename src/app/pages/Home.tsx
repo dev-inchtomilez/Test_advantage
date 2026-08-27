@@ -8697,8 +8697,9 @@ Because of Ideas.`}
      
 
 
+
 {/* ============================================
-    21. FAQ — PREMIUM FULL-WIDTH SECTION
+    20. INSIGHTS & BLOG PREVIEW — COMPACT
 ============================================ */}
 <ModernSectionBackground
   variant="glass-blur"
@@ -8708,20 +8709,20 @@ Because of Ideas.`}
     spacing="base"
     animate
     background="transparent"
-    className="faq-premium-section relative isolate overflow-hidden"
+    className="insights-section-v3 relative isolate overflow-hidden"
   >
     {/* ============================================
         SECTION-SPECIFIC STYLES
     ============================================ */}
     <style>
       {`
-        .faq-premium-section .faq-accordion-wrap {
+        .insights-section-v3 .blog-preview-fullwidth {
           width: 100%;
           min-width: 0;
           max-width: none;
         }
 
-        .faq-premium-section .faq-accordion-wrap > * {
+        .insights-section-v3 .blog-preview-fullwidth > * {
           width: 100% !important;
           min-width: 0 !important;
           max-width: none !important;
@@ -8729,11 +8730,13 @@ Because of Ideas.`}
           margin-right: 0 !important;
         }
 
-        .faq-premium-section .faq-accordion-wrap button {
-          width: 100%;
+        .insights-section-v3
+          .blog-preview-fullwidth
+          :where([class*="max-w-"], [class*="container"]) {
+          max-width: none !important;
         }
 
-        .faq-premium-section .faq-support-item {
+        .insights-section-v3 .insight-topic {
           transition:
             transform 0.3s ease,
             border-color 0.3s ease,
@@ -8741,15 +8744,24 @@ Because of Ideas.`}
             box-shadow 0.3s ease;
         }
 
-        .faq-premium-section .faq-support-item:hover {
-          transform: translateY(-3px);
-          border-color: ${colors.brand.secondary}2e;
-          background-color: rgba(255, 255, 255, 0.94);
-          box-shadow: 0 16px 38px rgba(0, 1, 49, 0.08);
+        .insights-section-v3 .insight-topic:hover {
+          transform: translateY(-2px);
+          border-color: ${colors.brand.secondary}33;
+          background-color: ${colors.brand.secondary}08;
+          box-shadow: 0 10px 28px rgba(0, 1, 49, 0.07);
+        }
+
+        .insights-section-v3 .insight-topic-row {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+
+        .insights-section-v3 .insight-topic-row::-webkit-scrollbar {
+          display: none;
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .faq-premium-section .faq-support-item {
+          .insights-section-v3 .insight-topic {
             transition: none;
           }
         }
@@ -8757,274 +8769,295 @@ Because of Ideas.`}
     </style>
 
     {/* ============================================
-        FULL SECTION BACKGROUND
+        EDITORIAL BACKGROUND
     ============================================ */}
     <div
       aria-hidden="true"
       className="pointer-events-none absolute inset-0 -z-10 overflow-hidden bg-[#f7f8fc]"
     >
-      {/* Professional image */}
+      {/* Editorial image */}
       <img
-        src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2400&q=88"
+        src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=2400&q=88"
         alt=""
         loading="lazy"
         decoding="async"
-        className="absolute left-0 top-0 h-full w-full object-cover object-center opacity-[0.13]"
+        className="absolute right-0 top-0 h-full w-[62%] object-cover object-center opacity-[0.08] grayscale"
       />
 
-      {/* Light treatment */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#f7f8fc]/95 via-[#f7f8fc]/88 to-[#f7f8fc]/82" />
+      {/* Readability treatment */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#f7f8fc] via-[#f7f8fc]/95 to-[#f7f8fc]/78" />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-[#f7f8fc]/45 via-transparent to-[#f7f8fc]/88" />
-
-      {/* Soft brand atmosphere */}
+      {/* Brand atmosphere */}
       <div
-        className="absolute -left-52 top-[-100px] h-[470px] w-[470px] rounded-full opacity-[0.055] blur-[150px]"
+        className="absolute -left-56 bottom-[-150px] h-[500px] w-[500px] rounded-full opacity-[0.055] blur-[155px]"
         style={{ backgroundColor: colors.brand.secondary }}
       />
 
       <div
-        className="absolute -right-48 bottom-[-130px] h-[450px] w-[450px] rounded-full opacity-[0.10] blur-[145px]"
+        className="absolute -right-52 top-[-130px] h-[470px] w-[470px] rounded-full opacity-[0.09] blur-[150px]"
         style={{ backgroundColor: colors.brand.accent }}
       />
 
-      {/* Subtle grid */}
+      {/* Fine grid */}
       <div
-        className="absolute inset-0 opacity-[0.24]"
+        className="absolute inset-0 opacity-[0.28]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(0,1,49,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,1,49,0.04) 1px, transparent 1px)",
+            "linear-gradient(rgba(0,1,49,0.038) 1px, transparent 1px), linear-gradient(90deg, rgba(0,1,49,0.038) 1px, transparent 1px)",
           backgroundSize: "76px 76px",
         }}
       />
+
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_18%,rgba(247,248,252,0.86)_100%)]" />
     </div>
 
     <Container size="xl">
       <div className="mx-auto max-w-7xl">
         {/* ============================================
-            TWO-COLUMN FAQ LAYOUT
+            SECTION HEADER
         ============================================ */}
-        <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start lg:gap-10">
-          {/* ============================================
-              LEFT — INTRODUCTION
-          ============================================ */}
-          <ScrollReveal>
-            <div className="lg:sticky lg:top-28">
+        <ScrollReveal>
+          <div className="grid items-end gap-5 lg:grid-cols-[1fr_0.42fr]">
+            {/* Main heading */}
+            <div className="max-w-3xl">
               <div
-                className="inline-flex items-center gap-2 rounded-full border px-4 py-2 shadow-sm"
+                className="inline-flex items-center gap-2 rounded-full border px-4 py-2"
                 style={{
                   color: colors.brand.secondary,
                   borderColor: `${colors.brand.secondary}22`,
                   backgroundColor: `${colors.brand.secondary}08`,
                 }}
               >
-                <Heart className="h-3.5 w-3.5" />
+                <Lightbulb className="h-3.5 w-3.5" />
 
                 <span className="text-[10px] font-bold uppercase tracking-[0.18em]">
-                  Questions & Answers
+                  Insights & Resources
                 </span>
               </div>
 
               <h2
-                className="mt-5 text-2xl font-bold leading-[1.1] tracking-[-0.035em] sm:text-3xl lg:text-[42px]"
+                className="mt-4 text-2xl font-bold leading-[1.1] tracking-[-0.035em] sm:text-3xl lg:text-[36px]"
                 style={{ color: colors.brand.primary }}
               >
-                Frequently Asked
+                Strategic Thinking for
                 <span className="mt-1 block text-gray-500">
-                  Questions.
+                  Better Business Decisions.
                 </span>
               </h2>
 
-              <p className="mt-5 max-w-xl text-sm leading-[1.8] text-gray-600 sm:text-base">
-                Clear answers about our approach, capabilities, engagement
-                models, performance measurement, and what it is like to partner
-                with AdvantEdge.
+              <p className="mt-4 max-w-2xl text-sm leading-[1.8] text-gray-600 sm:text-base">
+                Explore practical perspectives, proven frameworks, and market
+                intelligence designed to improve marketing decisions,
+                execution quality, and commercial performance.
+              </p>
+            </div>
+
+            {/* Editorial promise */}
+            <div className="rounded-2xl border border-gray-200 bg-white/75 p-4 shadow-[0_14px_42px_rgba(0,1,49,0.06)] backdrop-blur-xl">
+              <p
+                className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                style={{ color: colors.brand.secondary }}
+              >
+                What You Will Find
               </p>
 
-              {/* Quick topics */}
-              <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+              <div className="mt-3 grid gap-2 sm:grid-cols-3 lg:grid-cols-1">
                 {[
-                  {
-                    icon: <Sparkles className="h-4 w-4" />,
-                    title: "Our Difference",
-                    text: "How our strategic partnership model works.",
-                  },
-                  {
-                    icon: <LineChart className="h-4 w-4" />,
-                    title: "Performance",
-                    text: "How marketing success and ROI are measured.",
-                  },
-                  {
-                    icon: <Building2 className="h-4 w-4" />,
-                    title: "Who We Serve",
-                    text: "Industries, business sizes, and growth stages.",
-                  },
-                  {
-                    icon: <RefreshCw className="h-4 w-4" />,
-                    title: "Engagement Process",
-                    text: "How projects and partnerships progress.",
-                  },
+                  "Practical strategic frameworks",
+                  "Commercially relevant perspectives",
+                  "Ideas designed for real execution",
                 ].map((item) => (
-                  <div
-                    key={item.title}
-                    className="faq-support-item rounded-xl border border-gray-200 bg-white/75 px-4 py-4 backdrop-blur-xl"
-                  >
-                    <div
-                      className="flex h-9 w-9 items-center justify-center rounded-lg"
-                      style={{
-                        color: colors.brand.secondary,
-                        backgroundColor: `${colors.brand.secondary}0D`,
-                      }}
-                    >
-                      {item.icon}
-                    </div>
+                  <div key={item} className="flex items-center gap-2.5">
+                    <CheckCircle2
+                      className="h-4 w-4 shrink-0"
+                      style={{ color: colors.brand.secondary }}
+                    />
 
-                    <p
-                      className="mt-3 text-xs font-bold"
-                      style={{ color: colors.brand.primary }}
-                    >
-                      {item.title}
-                    </p>
-
-                    <p className="mt-1 text-[10px] leading-[1.6] text-gray-500">
-                      {item.text}
+                    <p className="text-xs font-semibold text-gray-600">
+                      {item}
                     </p>
                   </div>
                 ))}
               </div>
-
-              {/* Trust statement */}
-              <div className="mt-6 rounded-2xl border border-gray-200 bg-white/80 p-5 shadow-[0_16px_45px_rgba(0,1,49,0.06)] backdrop-blur-xl">
-                <div className="flex items-start gap-3">
-                  <div
-                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
-                    style={{
-                      color: colors.brand.secondary,
-                      backgroundColor: `${colors.brand.secondary}0D`,
-                    }}
-                  >
-                    <Shield className="h-4 w-4" />
-                  </div>
-
-                  <div>
-                    <p
-                      className="text-xs font-bold"
-                      style={{ color: colors.brand.primary }}
-                    >
-                      Transparent From the Beginning
-                    </p>
-
-                    <p className="mt-1 text-[10px] leading-[1.7] text-gray-500">
-                      We define responsibilities, deliverables, success
-                      measures, timelines, and reporting expectations before
-                      execution begins.
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
-          </ScrollReveal>
-
-          {/* ============================================
-              RIGHT — FULL-WIDTH ACCORDION
-          ============================================ */}
-          <ScrollReveal delay={0.1}>
-            <div className="relative overflow-hidden rounded-[28px] border border-gray-200 bg-white/85 p-3 shadow-[0_30px_95px_rgba(0,1,49,0.11)] backdrop-blur-xl sm:p-5 lg:p-6">
-              {/* Decorative glows */}
-              <div
-                aria-hidden="true"
-                className="absolute -right-24 -top-24 h-60 w-60 rounded-full opacity-[0.08] blur-[95px]"
-                style={{ backgroundColor: colors.brand.accent }}
-              />
-
-              <div
-                aria-hidden="true"
-                className="absolute -bottom-24 -left-24 h-60 w-60 rounded-full opacity-[0.05] blur-[95px]"
-                style={{ backgroundColor: colors.brand.secondary }}
-              />
-
-              {/* Accordion heading */}
-              <div className="relative z-10 mb-5 flex flex-col gap-4 border-b border-gray-200 px-1 pb-5 sm:flex-row sm:items-end sm:justify-between">
-                <div>
-                  <p
-                    className="text-[9px] font-bold uppercase tracking-[0.16em]"
-                    style={{ color: colors.brand.secondary }}
-                  >
-                    Partnership Information
-                  </p>
-
-                  <h3
-                    className="mt-1 text-base font-bold tracking-[-0.015em] sm:text-lg"
-                    style={{ color: colors.brand.primary }}
-                  >
-                    Everything You Need to Know Before Getting Started
-                  </h3>
-
-                  <p className="mt-1 max-w-xl text-xs leading-[1.7] text-gray-500">
-                    Select a question to learn more about our model, process,
-                    services, and performance approach.
-                  </p>
-                </div>
-
-                <div className="flex shrink-0 items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-3 py-2">
-                  <CheckCircle2
-                    className="h-3.5 w-3.5"
-                    style={{ color: colors.brand.secondary }}
-                  />
-
-                  <span className="text-[9px] font-bold uppercase tracking-[0.12em] text-gray-500">
-                    Clear & Transparent
-                  </span>
-                </div>
-              </div>
-
-              {/* Existing accordion component */}
-              <div className="faq-accordion-wrap relative z-10 w-full">
-                <Accordion items={faqItems} />
-              </div>
-
-              {/* Accordion footer */}
-              <div className="relative z-10 mt-5 flex flex-col gap-4 border-t border-gray-200 px-1 pt-5 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <p
-                    className="text-xs font-bold"
-                    style={{ color: colors.brand.primary }}
-                  >
-                    Have a question that is not listed?
-                  </p>
-
-                  <p className="mt-1 text-[10px] leading-relaxed text-gray-500">
-                    Speak directly with our team about your goals, priorities,
-                    and current marketing challenges.
-                  </p>
-                </div>
-
-                <Link
-                  to="/contact"
-                  className="group inline-flex shrink-0 items-center justify-center gap-2 rounded-xl px-5 py-3 text-xs font-bold text-white shadow-[0_14px_35px_rgba(0,0,170,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_45px_rgba(0,0,170,0.25)]"
-                  style={{ background: gradients.primary }}
-                >
-                  Ask Our Team
-
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
+          </div>
+        </ScrollReveal>
 
         {/* ============================================
-            BOTTOM PARTNERSHIP STRIP
+            CONTENT TOPICS
         ============================================ */}
-        <ScrollReveal delay={0.2}>
+        <ScrollReveal delay={0.08}>
+          <div className="insight-topic-row mt-5 flex gap-2 overflow-x-auto pb-1">
+            {[
+              {
+                icon: <Target className="h-3.5 w-3.5" />,
+                title: "Marketing Strategy",
+              },
+              {
+                icon: <Sparkles className="h-3.5 w-3.5" />,
+                title: "Brand Leadership",
+              },
+              {
+                icon: <Layers className="h-3.5 w-3.5" />,
+                title: "Integrated Marketing",
+              },
+              {
+                icon: <TrendingUp className="h-3.5 w-3.5" />,
+                title: "Revenue Growth",
+              },
+              {
+                icon: <Lightbulb className="h-3.5 w-3.5" />,
+                title: "AI & Automation",
+              },
+            ].map((topic) => (
+              <div
+                key={topic.title}
+                className="insight-topic inline-flex shrink-0 items-center gap-2 rounded-full border border-gray-200 bg-white/75 px-3.5 py-2 text-[10px] font-bold text-gray-600 backdrop-blur-md"
+              >
+                <span style={{ color: colors.brand.secondary }}>
+                  {topic.icon}
+                </span>
+
+                {topic.title}
+              </div>
+            ))}
+          </div>
+        </ScrollReveal>
+
+        {/* ============================================
+            FULL-WIDTH BLOG CONTENT FRAME
+        ============================================ */}
+        <ScrollReveal delay={0.14}>
+          <div className="relative mt-5 w-full overflow-hidden rounded-[24px] border border-gray-200 bg-white/80 p-3 shadow-[0_24px_75px_rgba(0,1,49,0.10)] backdrop-blur-xl sm:p-4">
+            {/* Decorative atmosphere */}
+            <div
+              aria-hidden="true"
+              className="absolute -right-24 -top-24 h-64 w-64 rounded-full opacity-[0.08] blur-[100px]"
+              style={{ backgroundColor: colors.brand.accent }}
+            />
+
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full opacity-[0.05] blur-[100px]"
+              style={{ backgroundColor: colors.brand.secondary }}
+            />
+
+            {/* Frame header */}
+            <div className="relative z-10 mb-4 grid gap-3 border-b border-gray-200 px-1 pb-4 sm:px-2 lg:grid-cols-[1fr_auto] lg:items-end">
+              <div>
+                <p
+                  className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                  style={{ color: colors.brand.secondary }}
+                >
+                  Featured Strategic Thinking
+                </p>
+
+                <h3
+                  className="mt-1 text-base font-bold tracking-[-0.015em] sm:text-lg"
+                  style={{ color: colors.brand.primary }}
+                >
+                  Ideas Built for Practical Business Application
+                </h3>
+
+                <p className="mt-1 max-w-2xl text-xs leading-[1.7] text-gray-500">
+                  Selected perspectives on positioning, customer experience,
+                  demand generation, technology, and commercial
+                  transformation.
+                </p>
+              </div>
+
+              <Link
+                to="/blog"
+                className="group inline-flex w-fit items-center gap-2 rounded-xl border-2 px-4 py-2.5 text-xs font-bold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                style={{
+                  borderColor: colors.brand.primary,
+                  color: colors.brand.primary,
+                }}
+              >
+                View All Insights
+
+                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+
+            {/* Existing BlogPreview component */}
+            <div className="blog-preview-fullwidth relative z-10 w-full">
+              <BlogPreview />
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* ============================================
+            EDITORIAL VALUE STRIP
+        ============================================ */}
+        <ScrollReveal delay={0.22}>
+          <div className="mt-4 overflow-hidden rounded-2xl border border-gray-200 bg-white/80 shadow-[0_14px_45px_rgba(0,1,49,0.06)] backdrop-blur-xl">
+            <div className="grid sm:grid-cols-3">
+              {[
+                {
+                  number: "01",
+                  title: "Leadership Perspective",
+                  text: "Content focused on business priorities, not surface-level trends.",
+                },
+                {
+                  number: "02",
+                  title: "Practical Application",
+                  text: "Frameworks designed to guide strategy and improve execution.",
+                },
+                {
+                  number: "03",
+                  title: "Commercial Relevance",
+                  text: "Ideas connected to positioning, pipeline, conversion, and growth.",
+                },
+              ].map((item, index) => (
+                <div
+                  key={item.number}
+                  className={[
+                    "px-4 py-4",
+                    index < 2
+                      ? "border-b border-gray-200 sm:border-b-0 sm:border-r"
+                      : "",
+                  ].join(" ")}
+                >
+                  <div className="flex items-start gap-3">
+                    <span
+                      className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                      style={{ color: colors.brand.secondary }}
+                    >
+                      {item.number}
+                    </span>
+
+                    <div>
+                      <p
+                        className="text-xs font-bold"
+                        style={{ color: colors.brand.primary }}
+                      >
+                        {item.title}
+                      </p>
+
+                      <p className="mt-1 text-[10px] leading-[1.65] text-gray-500">
+                        {item.text}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* ============================================
+            FINAL CTA
+        ============================================ */}
+        <ScrollReveal delay={0.3}>
           <div
-            className="mt-7 overflow-hidden rounded-2xl shadow-[0_22px_70px_rgba(0,1,49,0.16)]"
+            className="mt-4 overflow-hidden rounded-2xl shadow-[0_18px_55px_rgba(0,1,49,0.15)]"
             style={{ backgroundColor: colors.brand.primary }}
           >
             <div className="grid items-center lg:grid-cols-[1fr_auto]">
-              <div className="flex items-start gap-4 px-5 py-5 sm:px-7">
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/[0.08]">
-                  <Heart
+              <div className="flex items-start gap-4 px-5 py-4 sm:px-6">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/[0.08]">
+                  <Lightbulb
                     className="h-5 w-5"
                     style={{ color: colors.brand.accent }}
                   />
@@ -9032,26 +9065,26 @@ Because of Ideas.`}
 
                 <div>
                   <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-white/45">
-                    Start With a Clear Conversation
+                    Intelligence for Better Decisions
                   </p>
 
                   <p className="mt-1 text-sm font-bold leading-relaxed text-white sm:text-base">
-                    Tell us where your marketing is today and where the business
-                    needs it to go.
+                    Explore ideas created for leadership teams, marketers, and
+                    growth-focused organizations.
                   </p>
 
                   <p className="mt-1 text-xs leading-relaxed text-white/50">
-                    We will help identify the strategic, operational, and
-                    technology gaps limiting growth.
+                    Practical thinking that connects marketing decisions with
+                    meaningful commercial outcomes.
                   </p>
                 </div>
               </div>
 
               <Link
-                to="/contact"
-                className="group flex h-full items-center justify-center gap-2 border-t border-white/15 px-7 py-5 text-sm font-bold text-white transition-all duration-300 hover:bg-white/[0.08] lg:border-l lg:border-t-0"
+                to="/blog"
+                className="group flex h-full items-center justify-center gap-2 border-t border-white/15 px-7 py-4 text-sm font-bold text-white transition-all duration-300 hover:bg-white/[0.08] lg:border-l lg:border-t-0"
               >
-                Start the Conversation
+                Visit the Insights Hub
 
                 <ArrowRight
                   className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
@@ -9065,6 +9098,7 @@ Because of Ideas.`}
     </Container>
   </Section>
 </ModernSectionBackground>
+
    
     </PageBackground>
   );
