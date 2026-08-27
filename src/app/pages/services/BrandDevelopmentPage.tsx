@@ -1258,7 +1258,175 @@ export function BrandDevelopmentPage() {
       </ModernSectionBackground>
 
       
-      
+
+
+
+
+      {/* ============================================
+    6. BRAND DEVELOPMENT + FAQ
+============================================ */}
+
+<ModernSectionBackground
+  variant="mesh-gradient-light"
+  className="relative overflow-hidden"
+>
+  <Section spacing="base" animate background="transparent">
+    <Container size="xl">
+      <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+        {/* Brand Development Expertise */}
+
+        <ScrollReveal>
+          <div>
+            <div className="flex items-center gap-2">
+              <Globe
+                className="h-4 w-4"
+                style={{ color: colors.brand.accent }}
+              />
+
+              <span
+                className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                style={{ color: colors.brand.secondary }}
+              >
+                Brand Development Expertise
+              </span>
+            </div>
+
+            <h2
+              className="mt-3 text-xl font-bold sm:text-2xl"
+              style={{ color: colors.brand.primary }}
+            >
+              What We Build for Your Brand
+            </h2>
+
+            <p className="mt-2 text-sm text-gray-600">
+              We develop clear, differentiated, and scalable brand systems that
+              strengthen positioning, communication, recognition, and long-term
+              market relevance.
+            </p>
+
+            <div className="mt-5 grid grid-cols-2 gap-3">
+              {[
+                {
+                  name: "Brand Positioning",
+                  icon: <Globe className="h-4 w-4" />,
+                },
+                {
+                  name: "Brand Architecture",
+                  icon: <Eye className="h-4 w-4" />,
+                },
+                {
+                  name: "Visual Identity",
+                  icon: <Eye className="h-4 w-4" />,
+                },
+                {
+                  name: "Messaging Framework",
+                  icon: <Globe className="h-4 w-4" />,
+                },
+                {
+                  name: "Brand Guidelines",
+                  icon: <Eye className="h-4 w-4" />,
+                },
+                {
+                  name: "Rebranding & Refresh",
+                  icon: <Globe className="h-4 w-4" />,
+                },
+              ].map((item) => (
+                <motion.div
+                  key={item.name}
+                  whileHover={{ y: -3 }}
+                  className="rounded-[16px] border border-gray-200 bg-white/85 p-4 shadow-[0_10px_30px_rgba(0,1,49,0.04)]"
+                >
+                  <div
+                    className="flex h-8 w-8 items-center justify-center rounded-lg"
+                    style={{
+                      color: colors.brand.secondary,
+                      backgroundColor: `${colors.brand.secondary}0D`,
+                    }}
+                  >
+                    {item.icon}
+                  </div>
+
+                  <p className="mt-3 text-[10px] font-bold leading-relaxed text-gray-700">
+                    {item.name}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* FAQ */}
+
+        <ScrollReveal delay={0.08}>
+          <div>
+            <div className="flex items-center gap-2">
+              <Eye
+                className="h-4 w-4"
+                style={{ color: colors.brand.accent }}
+              />
+
+              <span
+                className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                style={{ color: colors.brand.secondary }}
+              >
+                Common Questions
+              </span>
+            </div>
+
+            <h2
+              className="mt-3 text-xl font-bold sm:text-2xl"
+              style={{ color: colors.brand.primary }}
+            >
+              Frequently Asked Questions
+            </h2>
+
+            <p className="mt-2 text-sm text-gray-600">
+              Everything you need to know about our brand development approach,
+              positioning process, identity systems, and implementation support.
+            </p>
+
+            <div className="mt-5 rounded-[20px] border border-gray-200 bg-white/85 p-3 shadow-[0_14px_40px_rgba(0,1,49,0.05)]">
+              <Accordion
+                items={[
+                  {
+                    question:
+                      "What does your brand development service include?",
+                    answer:
+                      "Our brand development process can include positioning, brand architecture, audience definition, messaging, visual identity, brand guidelines, and implementation frameworks designed to create a consistent and differentiated market presence.",
+                  },
+                  {
+                    question:
+                      "How is brand development different from logo design?",
+                    answer:
+                      "A logo is only one visual component of a brand. Brand development defines the strategic foundation behind how your organization is positioned, communicated, experienced, and recognized across every customer touchpoint.",
+                  },
+                  {
+                    question:
+                      "Can you help reposition or refresh an existing brand?",
+                    answer:
+                      "Yes. We work with existing organizations to evaluate current brand perception, positioning, communication, and identity before developing a refreshed or repositioned brand system aligned with future business goals.",
+                  },
+                  {
+                    question:
+                      "Do you create brand guidelines for internal teams?",
+                    answer:
+                      "Yes. We develop practical brand guidelines that establish standards for visual identity, typography, colors, messaging, tone of voice, and brand application so internal and external teams can maintain consistency.",
+                  },
+                  {
+                    question:
+                      "How does brand development support business growth?",
+                    answer:
+                      "A stronger brand improves differentiation, recognition, customer trust, communication consistency, and perceived value. This creates a clearer foundation for marketing, sales, customer experience, and long-term commercial growth.",
+                  },
+                ]}
+              />
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+    </Container>
+  </Section>
+</ModernSectionBackground>
 
 
       
