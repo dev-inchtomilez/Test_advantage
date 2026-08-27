@@ -6535,6 +6535,17 @@ Because of Ideas.`}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 {/* ============================================
     8. WHY ADVANTEDGE — AUTO-SLIDING BACKGROUND
 ============================================ */}
@@ -7056,6 +7067,20 @@ Because of Ideas.`}
     </Container>
   </Section>
 </ModernSectionBackground>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
 
 
 
