@@ -922,6 +922,594 @@ export function HomePage() {
 
 
 
+{/* ============================================
+    3. WHY YOU NEED US / BUSINESS CHALLENGES
+============================================ */}
+<ModernSectionBackground variant="gradient-tech">
+  <Section
+    spacing="base"
+    animate
+    background="transparent"
+    className="relative overflow-hidden"
+  >
+    {/* ============================================
+        INFOGRAPHIC BACKGROUND SYSTEM
+    ============================================ */}
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+    >
+      {/* Technical grid */}
+      <div
+        className="absolute inset-0 opacity-55"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(0, 0, 170, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0, 0, 170, 0.035) 1px, transparent 1px)
+          `,
+          backgroundSize: "46px 46px",
+          maskImage:
+            "linear-gradient(to bottom, transparent, black 14%, black 86%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent, black 14%, black 86%, transparent)",
+        }}
+      />
+
+      {/* Ambient glows */}
+      <div
+        className="absolute -left-44 top-12 h-[420px] w-[420px] rounded-full opacity-[0.06] blur-[120px]"
+        style={{ backgroundColor: colors.brand.secondary }}
+      />
+
+      <div
+        className="absolute -right-44 bottom-0 h-[420px] w-[420px] rounded-full opacity-[0.08] blur-[120px]"
+        style={{ backgroundColor: colors.brand.accent }}
+      />
+
+      <div
+        className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.035] blur-[130px]"
+        style={{ backgroundColor: colors.brand.secondary }}
+      />
+    </div>
+
+    <Container size="xl">
+      <div className="relative z-10 mx-auto max-w-7xl">
+        {/* ============================================
+            SECTION HEADER
+        ============================================ */}
+        <SectionHeader
+          badge="Why You Need Us"
+          badgeIcon={<Target className="h-4 w-4" />}
+          title={`Most Marketing Doesn't Fail
+Because of Ideas.`}
+          description="It fails because strategy, channels, technology, data, and sales operate as separate parts. More activity does not create growth when the system itself is disconnected."
+          align="center"
+          maxWidth="4xl"
+        />
+
+        {(() => {
+          const challenges = [
+            {
+              number: "01",
+              icon: Target,
+              title: "Unclear Strategic Direction",
+              text: "No clear positioning, growth strategy, or unified roadmap guiding marketing decisions.",
+            },
+            {
+              number: "02",
+              icon: Layers,
+              title: "Disconnected Marketing Channels",
+              text: "Campaigns, content, digital platforms, and offline activities operate independently.",
+            },
+            {
+              number: "03",
+              icon: TrendingUp,
+              title: "Low-Quality Demand",
+              text: "Traffic and enquiries increase, but conversion quality and commercial impact remain weak.",
+            },
+            {
+              number: "04",
+              icon: Users,
+              title: "Sales and Marketing Misalignment",
+              text: "Sales teams spend valuable time pursuing leads that are not ready or properly qualified.",
+            },
+            {
+              number: "05",
+              icon: BarChart3,
+              title: "Technology Without Intelligence",
+              text: "CRM and marketing tools collect information but fail to convert data into meaningful action.",
+            },
+            {
+              number: "06",
+              icon: RefreshCw,
+              title: "No Repeatable Growth System",
+              text: "Performance depends on isolated campaigns instead of a measurable and scalable process.",
+            },
+          ];
+
+          const leftChallenges = challenges.slice(0, 3);
+          const rightChallenges = challenges.slice(3);
+
+          return (
+            <>
+              {/* ============================================
+                  SYSTEM DIAGNOSIS INTRODUCTION
+              ============================================ */}
+              <ScrollReveal>
+                <div className="mt-10 flex flex-col gap-4 border-y border-gray-200/80 py-5 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p
+                      className="text-[10px] font-bold uppercase tracking-[0.18em]"
+                      style={{ color: colors.brand.secondary }}
+                    >
+                      Growth System Diagnosis
+                    </p>
+
+                    <h3
+                      className="mt-1.5 text-lg font-bold tracking-[-0.02em] sm:text-xl"
+                      style={{ color: colors.brand.primary }}
+                    >
+                      Six visible symptoms. One underlying problem.
+                    </h3>
+                  </div>
+
+                  <div className="flex w-fit items-center gap-3 rounded-full border border-white/90 bg-white/65 px-4 py-2.5 shadow-[0_8px_26px_rgba(0,1,49,0.055)] backdrop-blur-xl">
+                    <span
+                      className="h-2 w-2 animate-pulse rounded-full"
+                      style={{ backgroundColor: colors.brand.accent }}
+                    />
+
+                    <p
+                      className="text-xs font-bold"
+                      style={{ color: colors.brand.primary }}
+                    >
+                      Activity without integration is not a growth system.
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              {/* ============================================
+                  MAIN DIAGNOSTIC INFOGRAPHIC
+              ============================================ */}
+              <div className="relative mt-8 grid gap-5 lg:grid-cols-[1fr_310px_1fr] lg:items-center lg:gap-9">
+                {/* ============================================
+                    LEFT CHALLENGE NODES
+                ============================================ */}
+                <div className="order-2 space-y-4 lg:order-1">
+                  {leftChallenges.map((item, index) => {
+                    const ItemIcon = item.icon;
+
+                    return (
+                      <ScrollReveal
+                        key={item.number}
+                        delay={index * 0.08}
+                      >
+                        <motion.div
+                          whileHover={{ y: -4 }}
+                          transition={{
+                            duration: 0.28,
+                            ease: [0.22, 1, 0.36, 1],
+                          }}
+                          className="group relative"
+                        >
+                          {/* Desktop connector */}
+                          <div className="pointer-events-none absolute left-full top-1/2 hidden w-9 -translate-y-1/2 items-center lg:flex">
+                            <div
+                              className="h-px flex-1 opacity-25 transition-opacity duration-300 group-hover:opacity-70"
+                              style={{ backgroundColor: colors.brand.secondary }}
+                            />
+
+                            <div
+                              className="h-2 w-2 rounded-full opacity-35 transition-all duration-300 group-hover:scale-125 group-hover:opacity-100"
+                              style={{
+                                backgroundColor: colors.brand.secondary,
+                              }}
+                            />
+                          </div>
+
+                          <div className="relative min-h-[130px] overflow-hidden rounded-2xl border border-white/85 bg-white/68 p-4 shadow-[0_13px_38px_rgba(0,1,49,0.065)] backdrop-blur-xl transition-all duration-300 group-hover:border-white group-hover:bg-white/90 group-hover:shadow-[0_20px_55px_rgba(0,1,49,0.12)] sm:p-5">
+                            {/* Hover edge */}
+                            <div
+                              className="absolute inset-y-0 left-0 w-1 origin-bottom scale-y-0 rounded-r-full transition-transform duration-300 group-hover:scale-y-100"
+                              style={{ background: gradients.primary }}
+                            />
+
+                            {/* Large background number */}
+                            <span
+                              className="pointer-events-none absolute -right-2 -top-5 text-[74px] font-bold leading-none tracking-[-0.08em] opacity-[0.035]"
+                              style={{ color: colors.brand.primary }}
+                            >
+                              {item.number}
+                            </span>
+
+                            <div className="relative z-10 flex items-start gap-4">
+                              <div className="relative shrink-0">
+                                <div
+                                  className="flex h-12 w-12 items-center justify-center rounded-xl border transition-all duration-300 group-hover:scale-105"
+                                  style={{
+                                    color: colors.brand.secondary,
+                                    borderColor: `${colors.brand.secondary}12`,
+                                    backgroundColor: `${colors.brand.secondary}0B`,
+                                  }}
+                                >
+                                  <ItemIcon className="h-5 w-5" />
+                                </div>
+
+                                <span
+                                  className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full border-2 border-white text-[8px] font-bold text-white"
+                                  style={{
+                                    backgroundColor: colors.brand.primary,
+                                  }}
+                                >
+                                  {item.number}
+                                </span>
+                              </div>
+
+                              <div className="min-w-0">
+                                <h4
+                                  className="text-sm font-bold leading-snug sm:text-[15px]"
+                                  style={{ color: colors.brand.primary }}
+                                >
+                                  {item.title}
+                                </h4>
+
+                                <p className="mt-1.5 text-xs leading-[1.7] text-gray-600 sm:text-[13px]">
+                                  {item.text}
+                                </p>
+
+                                <div className="mt-3 flex items-center gap-2 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                                  <span
+                                    className="h-px w-5"
+                                    style={{
+                                      backgroundColor: colors.brand.accent,
+                                    }}
+                                  />
+
+                                  <span className="text-[9px] font-bold uppercase tracking-[0.14em] text-gray-400">
+                                    System Friction
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      </ScrollReveal>
+                    );
+                  })}
+                </div>
+
+                {/* ============================================
+                    CENTRAL ROOT-CAUSE ENGINE
+                ============================================ */}
+                <ScrollReveal delay={0.12}>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.7,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="order-1 lg:order-2"
+                  >
+                    <div className="relative overflow-hidden rounded-[28px] bg-[#000131] px-5 py-7 shadow-[0_28px_85px_rgba(0,1,49,0.25)] sm:px-6 lg:min-h-[500px] lg:px-6 lg:py-8">
+                      {/* Top accent */}
+                      <div
+                        className="absolute left-0 top-0 h-1 w-full"
+                        style={{ background: gradients.primary }}
+                      />
+
+                      {/* Decorative glow */}
+                      <div
+                        aria-hidden="true"
+                        className="absolute -right-20 -top-20 h-64 w-64 rounded-full opacity-25 blur-[90px]"
+                        style={{ backgroundColor: colors.brand.secondary }}
+                      />
+
+                      <div
+                        aria-hidden="true"
+                        className="absolute -bottom-24 -left-20 h-64 w-64 rounded-full opacity-15 blur-[90px]"
+                        style={{ backgroundColor: colors.brand.accent }}
+                      />
+
+                      {/* Concentric system rings */}
+                      <div
+                        aria-hidden="true"
+                        className="absolute left-1/2 top-[39%] h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.05]"
+                      />
+
+                      <div
+                        aria-hidden="true"
+                        className="absolute left-1/2 top-[39%] h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.07]"
+                      />
+
+                      <div
+                        aria-hidden="true"
+                        className="absolute left-1/2 top-[39%] h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/[0.09]"
+                      />
+
+                      <div className="relative z-10 flex h-full flex-col text-center">
+                        <p
+                          className="text-[9px] font-bold uppercase tracking-[0.2em]"
+                          style={{ color: colors.brand.accent }}
+                        >
+                          The Root Cause
+                        </p>
+
+                        {/* Core icon */}
+                        <div className="relative mx-auto mt-6 flex h-24 w-24 items-center justify-center">
+                          <motion.div
+                            animate={{
+                              scale: [1, 1.08, 1],
+                              opacity: [0.35, 0.12, 0.35],
+                            }}
+                            transition={{
+                              duration: 3.2,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                            }}
+                            className="absolute inset-0 rounded-full"
+                            style={{
+                              backgroundColor: colors.brand.secondary,
+                            }}
+                          />
+
+                          <div className="relative flex h-16 w-16 items-center justify-center rounded-full border border-white/15 bg-white/10 backdrop-blur-xl">
+                            <Layers className="h-7 w-7 text-white" />
+                          </div>
+                        </div>
+
+                        <h3 className="mx-auto mt-6 max-w-[240px] text-xl font-bold leading-[1.15] tracking-[-0.025em] text-white sm:text-2xl">
+                          Your Growth Engine Is Fragmented
+                        </h3>
+
+                        <p className="mx-auto mt-3 max-w-[250px] text-xs leading-[1.7] text-white/60">
+                          Strategy, execution, sales, technology, and data are
+                          operating as separate systems.
+                        </p>
+
+                        {/* System status grid */}
+                        <div className="mt-7 grid grid-cols-2 gap-2">
+                          {[
+                            "Strategy",
+                            "Execution",
+                            "Technology",
+                            "Sales",
+                          ].map((item) => (
+                            <div
+                              key={item}
+                              className="rounded-xl border border-white/10 bg-white/[0.055] px-3 py-3 text-left backdrop-blur-md"
+                            >
+                              <div className="flex items-center gap-2">
+                                <span
+                                  className="h-1.5 w-1.5 rounded-full"
+                                  style={{
+                                    backgroundColor: colors.brand.accent,
+                                  }}
+                                />
+
+                                <span className="text-[9px] font-bold uppercase tracking-[0.12em] text-white/45">
+                                  {item}
+                                </span>
+                              </div>
+
+                              <p className="mt-1.5 text-[11px] font-semibold text-white/80">
+                                Disconnected
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="mt-6 border-t border-white/10 pt-5">
+                          <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-white/35">
+                            The Result
+                          </p>
+
+                          <p
+                            className="mt-1.5 text-sm font-bold"
+                            style={{ color: colors.brand.accent }}
+                          >
+                            More activity. Less predictable growth.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </ScrollReveal>
+
+                {/* ============================================
+                    RIGHT CHALLENGE NODES
+                ============================================ */}
+                <div className="order-3 space-y-4">
+                  {rightChallenges.map((item, index) => {
+                    const ItemIcon = item.icon;
+
+                    return (
+                      <ScrollReveal
+                        key={item.number}
+                        delay={0.12 + index * 0.08}
+                      >
+                        <motion.div
+                          whileHover={{ y: -4 }}
+                          transition={{
+                            duration: 0.28,
+                            ease: [0.22, 1, 0.36, 1],
+                          }}
+                          className="group relative"
+                        >
+                          {/* Desktop connector */}
+                          <div className="pointer-events-none absolute right-full top-1/2 hidden w-9 -translate-y-1/2 items-center lg:flex">
+                            <div
+                              className="h-2 w-2 rounded-full opacity-35 transition-all duration-300 group-hover:scale-125 group-hover:opacity-100"
+                              style={{
+                                backgroundColor: colors.brand.secondary,
+                              }}
+                            />
+
+                            <div
+                              className="h-px flex-1 opacity-25 transition-opacity duration-300 group-hover:opacity-70"
+                              style={{ backgroundColor: colors.brand.secondary }}
+                            />
+                          </div>
+
+                          <div className="relative min-h-[130px] overflow-hidden rounded-2xl border border-white/85 bg-white/68 p-4 shadow-[0_13px_38px_rgba(0,1,49,0.065)] backdrop-blur-xl transition-all duration-300 group-hover:border-white group-hover:bg-white/90 group-hover:shadow-[0_20px_55px_rgba(0,1,49,0.12)] sm:p-5">
+                            {/* Hover edge */}
+                            <div
+                              className="absolute inset-y-0 right-0 w-1 origin-bottom scale-y-0 rounded-l-full transition-transform duration-300 group-hover:scale-y-100"
+                              style={{ background: gradients.primary }}
+                            />
+
+                            <span
+                              className="pointer-events-none absolute -left-2 -top-5 text-[74px] font-bold leading-none tracking-[-0.08em] opacity-[0.035]"
+                              style={{ color: colors.brand.primary }}
+                            >
+                              {item.number}
+                            </span>
+
+                            <div className="relative z-10 flex items-start gap-4">
+                              <div className="relative shrink-0">
+                                <div
+                                  className="flex h-12 w-12 items-center justify-center rounded-xl border transition-all duration-300 group-hover:scale-105"
+                                  style={{
+                                    color: colors.brand.secondary,
+                                    borderColor: `${colors.brand.secondary}12`,
+                                    backgroundColor: `${colors.brand.secondary}0B`,
+                                  }}
+                                >
+                                  <ItemIcon className="h-5 w-5" />
+                                </div>
+
+                                <span
+                                  className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full border-2 border-white text-[8px] font-bold text-white"
+                                  style={{
+                                    backgroundColor: colors.brand.primary,
+                                  }}
+                                >
+                                  {item.number}
+                                </span>
+                              </div>
+
+                              <div className="min-w-0">
+                                <h4
+                                  className="text-sm font-bold leading-snug sm:text-[15px]"
+                                  style={{ color: colors.brand.primary }}
+                                >
+                                  {item.title}
+                                </h4>
+
+                                <p className="mt-1.5 text-xs leading-[1.7] text-gray-600 sm:text-[13px]">
+                                  {item.text}
+                                </p>
+
+                                <div className="mt-3 flex items-center gap-2 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                                  <span
+                                    className="h-px w-5"
+                                    style={{
+                                      backgroundColor: colors.brand.accent,
+                                    }}
+                                  />
+
+                                  <span className="text-[9px] font-bold uppercase tracking-[0.14em] text-gray-400">
+                                    System Friction
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      </ScrollReveal>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* ============================================
+                  BUSINESS IMPACT INFOGRAPHIC
+              ============================================ */}
+              <ScrollReveal delay={0.2}>
+                <div className="mt-8 overflow-hidden rounded-2xl border border-white/85 bg-white/62 shadow-[0_16px_48px_rgba(0,1,49,0.07)] backdrop-blur-xl">
+                  <div className="grid lg:grid-cols-[230px_1fr]">
+                    <div
+                      className="flex items-center gap-3 px-5 py-5 lg:border-r lg:border-white/10 lg:px-6"
+                      style={{ background: gradients.primary }}
+                    >
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/15 bg-white/10">
+                        <TrendingUp className="h-5 w-5 text-white" />
+                      </div>
+
+                      <div>
+                        <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-white/50">
+                          Business Impact
+                        </p>
+
+                        <p className="mt-1 text-sm font-bold text-white">
+                          What fragmentation creates
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid sm:grid-cols-3 sm:divide-x sm:divide-gray-200/80">
+                      {[
+                        {
+                          number: "01",
+                          title: "Higher Cost of Growth",
+                          text: "Budget is distributed across activities that do not reinforce one another.",
+                        },
+                        {
+                          number: "02",
+                          title: "Slower Sales Velocity",
+                          text: "Poor qualification and fragmented journeys delay customer decisions.",
+                        },
+                        {
+                          number: "03",
+                          title: "Unpredictable Revenue",
+                          text: "Performance depends on campaigns instead of a repeatable operating system.",
+                        },
+                      ].map((item) => (
+                        <div
+                          key={item.number}
+                          className="group px-5 py-5 transition-colors duration-300 hover:bg-white/55"
+                        >
+                          <div className="flex items-start gap-3">
+                            <span
+                              className="mt-0.5 text-[10px] font-bold"
+                              style={{ color: colors.brand.secondary }}
+                            >
+                              {item.number}
+                            </span>
+
+                            <div>
+                              <h4
+                                className="text-sm font-bold"
+                                style={{ color: colors.brand.primary }}
+                              >
+                                {item.title}
+                              </h4>
+
+                              <p className="mt-1 text-xs leading-[1.65] text-gray-500">
+                                {item.text}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+            </>
+          );
+        })()}
+      </div>
+    </Container>
+  </Section>
+</ModernSectionBackground>
+
+
+      
+
 
 
 {/* ============================================
