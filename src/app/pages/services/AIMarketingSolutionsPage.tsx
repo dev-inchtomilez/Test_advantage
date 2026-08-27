@@ -21,7 +21,6 @@ import {
   Award,
   Zap,
   Layers,
-  Eye,
   Map,
   LineChart,
 } from 'lucide-react';
@@ -394,9 +393,9 @@ export function B2BSalesReinventionPage() {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 -z-10"
         >
-          <div className="absolute inset-0 bg-black/45" />
+          <div className="absolute inset-0 bg-black/40" />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-[#080912]/95 via-[#080912]/72 to-[#080912]/38" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#080912]/95 via-[#080912]/70 to-[#080912]/35" />
 
           <div className="absolute inset-0 bg-gradient-to-b from-[#080912]/30 via-transparent to-[#080912]/96" />
 
@@ -674,7 +673,7 @@ export function B2BSalesReinventionPage() {
                     key={problem.title}
                     variants={staggerItemVariants}
                     whileHover={{ y: -3 }}
-                    className="rounded-[18px] border border-gray-200 bg-white/85 p-4 shadow-[0_12px_35px_rgba(0,1,49,0.05)] backdrop-blur-xl"
+                    className="rounded-[18px] border border-gray-200 bg-white/85 p-4 shadow-[0_12px_35px_rgba(0,1,49,0.05)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,1,49,0.08)]"
                   >
                     <div
                       className="flex h-9 w-9 items-center justify-center rounded-lg"
@@ -766,7 +765,7 @@ export function B2BSalesReinventionPage() {
 
               <ScrollReveal delay={0.05}>
                 <div
-                  className="mt-7 rounded-[20px] border p-5 sm:p-6"
+                  className="mt-7 rounded-[20px] border bg-white/70 p-5 shadow-[0_12px_35px_rgba(0,1,49,0.04)] backdrop-blur-xl sm:p-6"
                   style={{
                     borderColor: `${colors.brand.secondary}18`,
                     backgroundColor: `${colors.brand.secondary}06`,
@@ -789,7 +788,7 @@ export function B2BSalesReinventionPage() {
                     key={service.title}
                     variants={staggerItemVariants}
                     whileHover={{ y: -4 }}
-                    className="group relative overflow-hidden rounded-[20px] border border-gray-200 bg-white/90 p-5 shadow-[0_16px_45px_rgba(0,1,49,0.06)]"
+                    className="group relative overflow-hidden rounded-[20px] border border-gray-200 bg-white/90 p-5 shadow-[0_16px_45px_rgba(0,1,49,0.06)] transition-all duration-300 hover:shadow-[0_22px_55px_rgba(0,1,49,0.09)]"
                   >
                     <div className="flex items-start justify-between">
                       <div
@@ -910,7 +909,7 @@ export function B2BSalesReinventionPage() {
                     key={step.id}
                     variants={staggerItemVariants}
                     whileHover={{ y: -4 }}
-                    className="relative overflow-hidden rounded-[20px] border border-white/15 bg-black/25 p-5 backdrop-blur-xl"
+                    className="relative overflow-hidden rounded-[20px] border border-white/15 bg-black/25 p-5 shadow-[0_16px_45px_rgba(0,0,0,0.18)] backdrop-blur-xl transition-all duration-300 hover:bg-white/[0.08]"
                   >
                     <span
                       className="text-[9px] font-bold tracking-[0.16em]"
@@ -966,7 +965,7 @@ export function B2BSalesReinventionPage() {
               {/* AI Team */}
 
               <ScrollReveal>
-                <div className="h-full rounded-[24px] border border-gray-200 bg-white/85 p-5 shadow-[0_18px_55px_rgba(0,1,49,0.06)] backdrop-blur-xl sm:p-6">
+                <div className="h-full rounded-[24px] border border-gray-200 bg-white/85 p-5 shadow-[0_18px_55px_rgba(0,1,49,0.06)] backdrop-blur-xl sm:p-6 lg:p-7">
                   <div className="flex items-center gap-2">
                     <Users
                       className="h-4 w-4"
@@ -1003,7 +1002,7 @@ export function B2BSalesReinventionPage() {
               {/* Outcomes */}
 
               <ScrollReveal delay={0.08}>
-                <div className="relative h-full overflow-hidden rounded-[24px] bg-[#080912] p-5 shadow-[0_24px_70px_rgba(0,1,49,0.18)] sm:p-6">
+                <div className="relative h-full overflow-hidden rounded-[24px] border border-white/10 bg-[#080912] p-5 shadow-[0_24px_70px_rgba(0,1,49,0.18)] sm:p-6 lg:p-7">
                   <div className="absolute -right-24 -top-24 h-60 w-60 rounded-full bg-[#ffb300]/10 blur-[90px]" />
 
                   <div className="relative">
@@ -1131,7 +1130,7 @@ export function B2BSalesReinventionPage() {
                       <motion.div
                         key={step.number}
                         whileHover={{ x: 3 }}
-                        className="group rounded-[16px] border border-gray-200 bg-white/85 p-4 shadow-[0_10px_30px_rgba(0,1,49,0.04)]"
+                        className="group rounded-[16px] border border-gray-200 bg-white/85 p-4 shadow-[0_10px_30px_rgba(0,1,49,0.04)] transition-all duration-300 hover:border-gray-300 hover:shadow-[0_14px_38px_rgba(0,1,49,0.07)]"
                       >
                         <div className="flex items-start gap-4">
                           <div
@@ -1270,7 +1269,7 @@ export function B2BSalesReinventionPage() {
 
           <Container size="lg">
             <ScrollReveal>
-              <div className="rounded-[24px] border border-white/20 bg-black/25 px-5 py-8 text-center shadow-[0_28px_80px_rgba(0,0,0,0.30)] backdrop-blur-xl sm:px-8 sm:py-10">
+              <div className="mx-auto max-w-4xl rounded-[24px] border border-white/20 bg-black/25 px-5 py-8 text-center shadow-[0_28px_80px_rgba(0,0,0,0.30)] backdrop-blur-xl sm:px-8 sm:py-10">
                 <div
                   className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/[0.08]"
                   style={{ color: colors.brand.accent }}
