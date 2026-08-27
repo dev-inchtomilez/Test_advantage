@@ -4621,6 +4621,7 @@ Because of Ideas.`}
 
 
 
+
 {/* ============================================
     6. HOW WE HELP YOU — INTERACTIVE GROWTH SYSTEM
 ============================================ */}
@@ -5267,50 +5268,6 @@ Because of Ideas.`}
                 </div>
               </ScrollReveal>
 
-              {/* ============================================
-                  CONNECTED SYSTEM FOOTER
-              ============================================ */}
-              <ScrollReveal delay={0.18}>
-                <div className="mt-5 overflow-hidden rounded-2xl border border-white/85 bg-white/62 shadow-[0_14px_42px_rgba(0,1,49,0.06)] backdrop-blur-xl">
-                  <div className="grid sm:grid-cols-[1fr_auto] sm:items-stretch">
-                    <div className="flex items-start gap-3 px-5 py-4 sm:items-center sm:px-6">
-                      <div
-                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
-                        style={{
-                          color: colors.brand.secondary,
-                          backgroundColor: `${colors.brand.secondary}0D`,
-                        }}
-                      >
-                        <Layers className="h-5 w-5" />
-                      </div>
-
-                      <div>
-                        <p className="text-[9px] font-bold uppercase tracking-[0.15em] text-gray-400">
-                          One Connected Growth Infrastructure
-                        </p>
-
-                        <p
-                          className="mt-1 text-sm font-bold"
-                          style={{ color: colors.brand.primary }}
-                        >
-                          Revenue Strategy → Connected Marketing → AI
-                          Intelligence → Scalable GTM Operations
-                        </p>
-                      </div>
-                    </div>
-
-                    <Link
-                      to="/contact"
-                      className="group flex items-center justify-center gap-2 border-t px-6 py-4 text-sm font-bold text-white transition-all duration-300 hover:shadow-xl sm:border-l sm:border-t-0"
-                      style={{ background: gradients.primary }}
-                    >
-                      Build Your Growth System
-
-                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
-                  </div>
-                </div>
-              </ScrollReveal>
             </div>
           );
         })()}
@@ -5318,9 +5275,6 @@ Because of Ideas.`}
     </Container>
   </Section>
 </ModernSectionBackground>
-
-
-
 
 
 
