@@ -1514,3 +1514,19 @@ export function AnalyticsOptimizationPage() {
                     }}
                   >
                     Start Optimizing Today
+
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </MagneticButton>
+
+              </div>
+            </div>
+          </ScrollReveal>
+
+        </Container>
+      </section>
+    </PageBackground>
+  );
+}
+
+export default AnalyticsOptimizationPage;
