@@ -6633,6 +6633,16 @@ Because of Ideas.`}
           transform: scaleX(1);
         }
 
+        .why-advantedge-slider .why-advantage-carousel {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+          scroll-snap-type: x mandatory;
+        }
+
+        .why-advantedge-slider .why-advantage-carousel::-webkit-scrollbar {
+          display: none;
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .why-advantedge-slider .why-background-slide {
             animation: none;
@@ -6743,7 +6753,7 @@ Because of Ideas.`}
               </span>
             </div>
 
-            <h2 className="mt-5 text-2xl font-bold leading-[1.1] tracking-[-0.035em] text-white sm:text-3xl lg:text-[42px]">
+            <h2 className="mt-4 text-2xl font-bold leading-[1.1] tracking-[-0.035em] text-white sm:text-3xl lg:text-[42px]">
               We Are Not Just Another
               <span className="relative mt-1 block">
                 Marketing Agency.
@@ -6756,7 +6766,7 @@ Because of Ideas.`}
               </span>
             </h2>
 
-            <p className="mx-auto mt-7 max-w-3xl text-sm leading-[1.8] text-white/[0.72] sm:text-base">
+            <p className="mx-auto mt-5 max-w-3xl text-sm leading-[1.8] text-white/[0.72] sm:text-base">
               Global expertise, leadership-level thinking, integrated
               execution, and commercial discipline—built to create measurable
               business outcomes rather than disconnected marketing activity.
@@ -6768,7 +6778,7 @@ Because of Ideas.`}
             CORE POSITIONING STRIP
         ============================================ */}
         <ScrollReveal delay={0.08}>
-          <div className="mx-auto mt-9 max-w-6xl overflow-hidden rounded-2xl border border-white/20 bg-white/[0.10] shadow-[0_22px_65px_rgba(0,0,0,0.20)] backdrop-blur-2xl">
+          <div className="mx-auto mt-6 max-w-6xl overflow-hidden rounded-2xl border border-white/20 bg-white/[0.10] shadow-[0_22px_65px_rgba(0,0,0,0.20)] backdrop-blur-2xl">
             <div className="grid sm:grid-cols-2 lg:grid-cols-4">
               {[
                 {
@@ -6799,7 +6809,7 @@ Because of Ideas.`}
                   }}
                   transition={{ duration: 0.3 }}
                   className={[
-                    "relative px-5 py-5 text-center",
+                    "relative px-4 py-4 text-center",
                     index < 3
                       ? "border-b border-white/12 lg:border-b-0 lg:border-r"
                       : "",
@@ -6829,7 +6839,7 @@ Because of Ideas.`}
         {/* ============================================
             ADVANTAGE CARDS
         ============================================ */}
-        <div className="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="why-advantage-carousel mt-6 flex gap-4 overflow-x-auto pb-2">
           {[
             {
               number: "01",
@@ -6886,14 +6896,14 @@ Because of Ideas.`}
                 "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=88",
             },
           ].map((item, index) => (
-            <ScrollReveal key={item.number} delay={index * 0.06}>
+            <ScrollReveal key={item.number} delay={index * 0.06} className="min-w-[290px] flex-1 snap-start sm:min-w-[320px] lg:min-w-[300px]">
               <motion.article
                 whileHover={{ y: -8 }}
                 transition={{
                   duration: 0.36,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="why-advantage-card group relative min-h-[294px] overflow-hidden rounded-[22px] border border-white/20 bg-[#000131]/45 shadow-[0_20px_60px_rgba(0,0,0,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-white/35 hover:bg-[#000131]/38 hover:shadow-[0_34px_90px_rgba(0,0,0,0.38)]"
+                className="why-advantage-card group relative min-h-[260px] overflow-hidden rounded-[22px] border border-white/20 bg-[#000131]/45 shadow-[0_20px_60px_rgba(0,0,0,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-white/35 hover:bg-[#000131]/38 hover:shadow-[0_34px_90px_rgba(0,0,0,0.38)]"
               >
                 {/* Individual card hover image */}
                 <img
@@ -6922,7 +6932,7 @@ Because of Ideas.`}
                   style={{ background: gradients.primary }}
                 />
 
-                <div className="relative z-10 flex min-h-[294px] flex-col p-5 sm:p-6">
+                <div className="relative z-10 flex min-h-[260px] flex-col p-4 sm:p-5">
                   {/* Card header */}
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/20 bg-white/[0.10] text-white shadow-lg backdrop-blur-xl transition-all duration-300 group-hover:scale-105 group-hover:bg-white/[0.18]">
@@ -6935,19 +6945,19 @@ Because of Ideas.`}
                   </div>
 
                   {/* Main content */}
-                  <div className="mt-6">
+                  <div className="mt-4">
                     <h3 className="text-base font-bold tracking-[-0.015em] text-white sm:text-lg">
                       {item.title}
                     </h3>
 
-                    <p className="mt-3 text-sm leading-[1.72] text-white/[0.62] transition-colors duration-300 group-hover:text-white/[0.82]">
+                    <p className="mt-2.5 text-sm leading-[1.72] text-white/[0.62] transition-colors duration-300 group-hover:text-white/[0.82]">
                       {item.desc}
                     </p>
                   </div>
 
                   {/* Insight */}
-                  <div className="mt-auto pt-5">
-                    <div className="flex items-center gap-2 border-t border-white/12 pt-4">
+                  <div className="mt-auto pt-4">
+                    <div className="flex items-center gap-2 border-t border-white/12 pt-3">
                       <ArrowRight
                         className="h-3.5 w-3.5 -translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
                         style={{ color: colors.brand.accent }}
@@ -6968,9 +6978,9 @@ Because of Ideas.`}
             CLOSING STATEMENT AND CTA
         ============================================ */}
         <ScrollReveal delay={0.22}>
-          <div className="mt-7 overflow-hidden rounded-2xl border border-white/20 bg-white/[0.10] shadow-[0_22px_70px_rgba(0,0,0,0.22)] backdrop-blur-2xl">
+          <div className="mt-5 overflow-hidden rounded-2xl border border-white/20 bg-white/[0.10] shadow-[0_22px_70px_rgba(0,0,0,0.22)] backdrop-blur-2xl">
             <div className="grid items-center lg:grid-cols-[1fr_auto]">
-              <div className="flex items-start gap-4 px-5 py-5 sm:px-7">
+              <div className="flex items-start gap-4 px-5 py-4 sm:px-7">
                 <div
                   className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/12"
                   style={{
@@ -7000,7 +7010,7 @@ Because of Ideas.`}
 
               <Link
                 to="/about"
-                className="group flex h-full items-center justify-center gap-2 border-t border-white/12 px-7 py-5 text-sm font-bold text-white transition-all duration-300 hover:bg-white/[0.08] lg:border-l lg:border-t-0"
+                className="group flex h-full items-center justify-center gap-2 border-t border-white/12 px-7 py-4 text-sm font-bold text-white transition-all duration-300 hover:bg-white/[0.08] lg:border-l lg:border-t-0"
               >
                 Discover Our Approach
 
@@ -7017,7 +7027,7 @@ Because of Ideas.`}
             SLIDER PROGRESS INDICATOR
         ============================================ */}
         <ScrollReveal delay={0.3}>
-          <div className="mt-6 flex items-center justify-center gap-2">
+          <div className="mt-4 flex items-center justify-center gap-2">
             {[0, 1, 2, 3].map((item) => (
               <span
                 key={item}
@@ -7046,8 +7056,6 @@ Because of Ideas.`}
     </Container>
   </Section>
 </ModernSectionBackground>
-
-
 
 
 
