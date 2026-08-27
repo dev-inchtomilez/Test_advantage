@@ -44,6 +44,7 @@ import {
 } from '../../components/ScrollReveal';
 
 import { MagneticButton } from '../../components/MagneticButton';
+import { Accordion } from '../../components/Accordion';
 
 import {
   colors,
@@ -1272,152 +1273,99 @@ export function AnalyticsOptimizationPage() {
                 </div>
               </ScrollReveal>
 
-              {/* INDUSTRIES */}
+              {/* INDUSTRIES + FAQ */}
 
-              <ScrollReveal delay={0.08}>
-                <div className="mt-6 rounded-[22px] border border-gray-200 bg-white/78 p-5 shadow-[0_14px_44px_rgba(0,1,49,0.045)] backdrop-blur-xl sm:p-6">
+              <div className="mt-6 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+                {/* Industries */}
 
-                  <div className="flex flex-col gap-4 border-b border-gray-200 pb-5 sm:flex-row sm:items-center sm:justify-between">
+                <ScrollReveal delay={0.08}>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <Globe
+                        className="h-4 w-4"
+                        style={{ color: colors.brand.accent }}
+                      />
 
-                    <div>
-                      <p
-                        className="text-[9px] font-bold uppercase tracking-[0.17em]"
-                        style={{
-                          color: colors.brand.secondary,
-                        }}
+                      <span
+                        className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                        style={{ color: colors.brand.secondary }}
                       >
                         Industry Expertise
-                      </p>
-
-                      <h3
-                        className="mt-1.5 text-base font-bold"
-                        style={{
-                          color: colors.brand.primary,
-                        }}
-                      >
-                        Industries We Serve
-                      </h3>
+                      </span>
                     </div>
 
-                    <p className="max-w-md text-[11px] leading-[1.7] text-gray-500 sm:text-right">
+                    <h2
+                      className="mt-3 text-xl font-bold sm:text-2xl"
+                      style={{ color: colors.brand.primary }}
+                    >
+                      Industries We Serve
+                    </h2>
+
+                    <p className="mt-2 text-sm text-gray-600">
                       Analytics expertise across sectors.
                     </p>
-                  </div>
 
-                  <div className="mt-5 grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-6">
-
-                    {industries.map((industry) => (
-                      <motion.div
-                        key={industry.name}
-                        whileHover={{
-                          y: -2,
-                        }}
-                        className="rounded-xl border border-gray-200/80 bg-white/82 px-3 py-4 text-center"
-                      >
-                        <div
-                          className="mx-auto flex h-8 w-8 items-center justify-center rounded-lg"
-                          style={{
-                            color: colors.brand.secondary,
-                            backgroundColor: `${colors.brand.secondary}0D`,
-                          }}
+                    <div className="mt-5 grid grid-cols-2 gap-3">
+                      {industries.map((industry) => (
+                        <motion.div
+                          key={industry.name}
+                          whileHover={{ y: -3 }}
+                          className="rounded-[16px] border border-gray-200 bg-white/85 p-4 shadow-[0_10px_30px_rgba(0,1,49,0.04)]"
                         >
-                          {industry.icon}
-                        </div>
+                          <div
+                            className="flex h-8 w-8 items-center justify-center rounded-lg"
+                            style={{
+                              color: colors.brand.secondary,
+                              backgroundColor: `${colors.brand.secondary}0D`,
+                            }}
+                          >
+                            {industry.icon}
+                          </div>
 
-                        <p className="mt-2 text-[9px] font-semibold text-gray-600">
-                          {industry.name}
-                        </p>
-                      </motion.div>
-                    ))}
-
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
-          </Container>
-        </Section>
-      </ModernSectionBackground>
-
-      {/* ============================================
-          7. FAQ
-          ============================================ */}
-
-      <ModernSectionBackground
-        variant="gradient-soft"
-        className="relative overflow-hidden"
-      >
-        <Section
-          spacing="base"
-          animate
-          background="transparent"
-        >
-          <Container size="lg">
-
-            <div className="mx-auto max-w-5xl">
-
-              <ScrollReveal>
-                <div className="mx-auto max-w-3xl text-center">
-
-                  <SectionLabel
-                    icon={<Eye className="h-3.5 w-3.5" />}
-                  >
-                    Common Questions
-                  </SectionLabel>
-
-                  <h2
-                    className="mt-5 text-2xl font-bold tracking-[-0.035em] sm:text-3xl"
-                    style={{
-                      color: colors.brand.primary,
-                    }}
-                  >
-                    Frequently Asked Questions
-                  </h2>
-
-                  <p className="mx-auto mt-3 max-w-xl text-sm leading-[1.75] text-gray-600">
-                    Common questions about analytics and optimization.
-                  </p>
-                </div>
-              </ScrollReveal>
-
-              <StaggerContainer className="mt-8 space-y-3">
-
-                {faqs.map((faq, index) => (
-                  <motion.div
-                    key={faq.id}
-                    variants={staggerItemVariants}
-                    className="rounded-[18px] border border-gray-200 bg-white/88 p-5 shadow-[0_10px_32px_rgba(0,1,49,0.035)] backdrop-blur-xl sm:p-6"
-                  >
-                    <div className="flex items-start gap-4">
-
-                      <div
-                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[9px] font-bold"
-                        style={{
-                          color: colors.brand.secondary,
-                          backgroundColor: `${colors.brand.secondary}0D`,
-                        }}
-                      >
-                        {String(index + 1).padStart(2, '0')}
-                      </div>
-
-                      <div>
-                        <h3
-                          className="text-sm font-bold"
-                          style={{
-                            color: colors.brand.primary,
-                          }}
-                        >
-                          {faq.title}
-                        </h3>
-
-                        <p className="mt-2 text-[11px] leading-[1.75] text-gray-600">
-                          {faq.content}
-                        </p>
-                      </div>
+                          <p className="mt-3 text-[10px] font-bold leading-relaxed text-gray-700">
+                            {industry.name}
+                          </p>
+                        </motion.div>
+                      ))}
                     </div>
-                  </motion.div>
-                ))}
+                  </div>
+                </ScrollReveal>
 
-              </StaggerContainer>
+                {/* FAQ */}
+
+                <ScrollReveal delay={0.12}>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <Eye
+                        className="h-4 w-4"
+                        style={{ color: colors.brand.accent }}
+                      />
+
+                      <span
+                        className="text-[9px] font-bold uppercase tracking-[0.16em]"
+                        style={{ color: colors.brand.secondary }}
+                      >
+                        Common Questions
+                      </span>
+                    </div>
+
+                    <h2
+                      className="mt-3 text-xl font-bold sm:text-2xl"
+                      style={{ color: colors.brand.primary }}
+                    >
+                      Frequently Asked Questions
+                    </h2>
+
+                    <p className="mt-2 text-sm text-gray-600">
+                      Common questions about analytics and optimization.
+                    </p>
+
+                    <div className="mt-5 rounded-[20px] border border-gray-200 bg-white/85 p-3 shadow-[0_14px_40px_rgba(0,1,49,0.05)]">
+                      <Accordion items={faqs} />
+                    </div>
+                  </div>
+                </ScrollReveal>
+              </div>
             </div>
           </Container>
         </Section>
@@ -1496,18 +1444,4 @@ export function AnalyticsOptimizationPage() {
                   >
                     Start Optimizing Today
 
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </Link>
-                </MagneticButton>
-
-              </div>
-            </div>
-          </ScrollReveal>
-
-        </Container>
-      </section>
-    </PageBackground>
-  );
-}
-
-export default AnalyticsOptimizationPage;
+                    
