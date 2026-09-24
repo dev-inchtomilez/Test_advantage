@@ -7,6 +7,7 @@
 
 import { Link } from 'react-router';
 import { motion } from 'motion/react';
+import { useState } from 'react';
 
 import {
   ArrowRight,
@@ -342,10 +343,7 @@ const businessOutcomes = [
 ];
 
 
-const faqs = [
-  // ============================================
-  // GENERAL SALES REINVENTION FAQs
-  // ============================================
+const generalFaqs = [
   {
     id: 'faq-general-1',
     title: 'What is Sales Reinvention?',
@@ -412,10 +410,9 @@ const faqs = [
     content:
       'It is designed to support the journey from the first interaction through qualification or product discovery, recommendations, follow-up, conversion, re-engagement and retention.',
   },
+];
 
-  // ============================================
-  // B2B SALES REINVENTION FAQs
-  // ============================================
+const b2bFaqs = [
   {
     id: 'faq-b2b-1',
     title: 'What is B2B Sales Reinvention?',
@@ -504,10 +501,9 @@ const faqs = [
     title: 'Can B2B Sales Reinvention support longer sales cycles?',
     content: 'Yes.',
   },
+];
 
-  // ============================================
-  // B2C SALES REINVENTION FAQs
-  // ============================================
+const b2cFaqs = [
   {
     id: 'faq-b2c-1',
     title: 'What is B2C Sales Reinvention?',
@@ -576,11 +572,23 @@ const faqs = [
   },
 ];
 
+const faqTabs = [
+  { id: 'general', label: 'General', items: generalFaqs },
+  { id: 'b2b', label: 'B2B', items: b2bFaqs },
+  { id: 'b2c', label: 'B2C', items: b2cFaqs },
+] as const;
+
 /* ============================================
    PAGE
    ============================================ */
 
 export function B2BSalesReinventionPage() {
+  const [activeFaqTab, setActiveFaqTab] = useState<'general' | 'b2b' | 'b2c'>('general');
+  const activeFaqs = faqTabs.find((tab) => tab.id === activeFaqTab)?.items ?? generalFaqs;
+  const faqMidpoint = Math.ceil(activeFaqs.length / 2);
+  const leftFaqs = activeFaqs.slice(0, faqMidpoint);
+  const rightFaqs = activeFaqs.slice(faqMidpoint);
+
   return (
     <PageBackground>
       <PageSEO
@@ -1474,7 +1482,7 @@ export function B2BSalesReinventionPage() {
             </div>
 
             {/* Frequently Asked Questions */}
-            <div className="mx-auto mt-10 max-w-5xl">
+            <div className="mx-auto mt-10 max-w-6xl">
               <ScrollReveal>
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-2">
@@ -1497,12 +1505,47 @@ export function B2BSalesReinventionPage() {
                   >
                     Sales Reinvention FAQs
                   </h2>
+
+                  <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
+                    {faqTabs.map((tab) => {
+                      const isActive = activeFaqTab === tab.id;
+
+                      return (
+                        <button
+                          key={tab.id}
+                          type="button"
+                          onClick={() => setActiveFaqTab(tab.id)}
+                          className="rounded-xl border px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.14em] transition-all duration-300"
+                          style={{
+                            color: isActive ? '#ffffff' : colors.brand.primary,
+                            borderColor: isActive
+                              ? colors.brand.secondary
+                              : `${colors.brand.secondary}25`,
+                            background: isActive
+                              ? gradients.primary
+                              : 'rgba(255,255,255,0.82)',
+                            boxShadow: isActive
+                              ? '0 10px 28px rgba(0, 0, 170, 0.18)'
+                              : '0 8px 22px rgba(0, 1, 49, 0.04)',
+                          }}
+                        >
+                          {tab.label}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
               </ScrollReveal>
 
               <ScrollReveal delay={0.08}>
-                <div className="mt-5 rounded-[20px] border border-gray-200 bg-white/85 p-3 shadow-[0_14px_40px_rgba(0,1,49,0.05)]">
-                  <Accordion items={faqs} />
+                <div className="mt-5 grid items-start gap-4 md:grid-cols-2">
+                  <div className="rounded-[20px] border border-gray-200 bg-white/85 p-3 shadow-[0_14px_40px_rgba(0,1,49,0.05)]">
+                    <Accordion items={leftFaqs} />
+                  </div>
+
+                  <div className="rounded-[20px] border border-gray-200 bg-white/85 p-3 shadow-[0_14px_40px_rgba(0,1,49,0.05)]">
+                    <Accordion items={rightFaqs} />
+                  </div>
                 </div>
               </ScrollReveal>
             </div>
