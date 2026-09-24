@@ -916,9 +916,8 @@ export function HomePage() {
 </section>;
 
 
-
 {/* ============================================
-    2. CLIENT LOGO STRIP
+    2. CLIENT LOGO STRIP — VISUALLY NORMALIZED
 ============================================ */}
 
 <section
@@ -929,23 +928,34 @@ export function HomePage() {
     {`
       @keyframes clientLogoMarquee {
         from {
-          transform: translateX(0);
+          transform: translate3d(0, 0, 0);
         }
 
         to {
-          transform: translateX(-50%);
+          transform: translate3d(-50%, 0, 0);
         }
       }
 
       .client-logo-track {
         display: flex;
         width: max-content;
-        animation: clientLogoMarquee 28s linear infinite;
+        animation: clientLogoMarquee 32s linear infinite;
         will-change: transform;
       }
 
       .client-logo-track:hover {
         animation-play-state: paused;
+      }
+
+      .client-logo-image {
+        display: block;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        object-position: center;
+        transform-origin: center;
+        backface-visibility: hidden;
+        -webkit-font-smoothing: antialiased;
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -957,146 +967,303 @@ export function HomePage() {
     `}
   </style>
 
-  {/* Background details */}
+  {/* Background */}
   <div
     aria-hidden="true"
     className="pointer-events-none absolute inset-0"
   >
-    <div className="absolute left-1/2 top-0 h-px w-[75%] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#0000aa]/20 to-transparent" />
+    <div className="absolute left-1/2 top-0 h-px w-[75%] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#0000aa]/15 to-transparent" />
 
-    <div className="absolute -left-24 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-[#0000aa]/[0.035] blur-[85px]" />
+    <div className="absolute -left-24 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-[#0000aa]/[0.025] blur-[85px]" />
 
-    <div className="absolute -right-24 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-[#ffb300]/[0.05] blur-[85px]" />
+    <div className="absolute -right-24 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-[#ffb300]/[0.035] blur-[85px]" />
   </div>
 
-  <div className="relative z-10 py-8 sm:py-9 lg:py-10">
+  <div className="relative z-10 py-7 sm:py-8">
 
-    {/* Small heading */}
+    {/* ============================================
+        HEADING
+    ============================================ */}
+
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={{ opacity: 0, y: 8 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.6 }}
       transition={{ duration: 0.5 }}
-      className="mb-6 px-4 text-center sm:px-6"
+      className="mb-6 px-4 text-center"
     >
       <div className="flex items-center justify-center gap-3">
-        <span className="h-px w-7 bg-[#ffb300]" />
+
+        <span className="h-px w-8 bg-[#ffb300]" />
 
         <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#0000aa] sm:text-[11px]">
           Trusted By
         </span>
 
-        <span className="h-px w-7 bg-[#ffb300]" />
+        <span className="h-px w-8 bg-[#ffb300]" />
+
       </div>
 
       <h2
         id="client-logo-strip-title"
-        className="mt-2 text-sm font-semibold text-[#000131] sm:text-base"
+        className="mt-2 text-sm font-semibold tracking-[-0.01em] text-[#000131] sm:text-[15px]"
       >
-        Brands that have trusted our work
+        Brands that trust our work
       </h2>
     </motion.div>
 
-    {/* Logo strip */}
-    <div className="relative overflow-hidden">
 
-      {/* Left fade */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-14 bg-gradient-to-r from-white via-white/90 to-transparent sm:w-24 lg:w-32" />
+    {/* ============================================
+        LOGO MARQUEE
+    ============================================ */}
 
-      {/* Right fade */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-14 bg-gradient-to-l from-white via-white/90 to-transparent sm:w-24 lg:w-32" />
+    {(() => {
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-      >
-        <div className="client-logo-track">
+      /*
+       * IMPORTANT:
+       *
+       * scale = visual correction
+       *
+       * Different source images contain different
+       * amounts of whitespace. These values normalize
+       * the perceived logo size.
+       */
 
-          {[
-            "/Altus Logo.png",
-            "/Amatech Logo.webp",
-            "/Asha Logo.png",
-            "/Holoflex Logo.jpg.jpeg",
-            "/Kataline Logo.png",
-            "/TriStar Logo.jpg.jpeg",
+      const clientLogos = [
+        {
+          name: "Altus",
+          src: "/Altus Logo.png",
+          scale: 1.0,
+        },
 
-            // Duplicate set for seamless infinite scrolling
-            "/Altus Logo.png",
-            "/Amatech Logo.webp",
-            "/Asha Logo.png",
-            "/Holoflex Logo.jpg.jpeg",
-            "/Kataline Logo.png",
-            "/TriStar Logo.jpg.jpeg",
-          ].map((logo, index) => (
-            <div
-              key={`${logo}-${index}`}
-              className="
-                group
-                flex
-                h-[86px]
-                w-[175px]
-                shrink-0
-                items-center
-                justify-center
-                border-r
-                border-slate-100
-                px-6
-                sm:h-[96px]
-                sm:w-[205px]
-                sm:px-8
-                lg:w-[230px]
-              "
-            >
-              <img
-                src={logo}
-                alt=""
-                loading="lazy"
-                decoding="async"
-                draggable="false"
-                className="
-                  max-h-[46px]
-                  max-w-[135px]
-                  select-none
-                  object-contain
-                  grayscale
-                  opacity-55
-                  transition-all
-                  duration-300
-                  ease-out
-                  group-hover:scale-[1.05]
-                  group-hover:grayscale-0
-                  group-hover:opacity-100
-                  sm:max-h-[52px]
-                  sm:max-w-[155px]
-                "
-              />
+        {
+          name: "Amatech",
+          src: "/Amatech Logo.webp",
+          scale: 1.0,
+        },
+
+        {
+          name: "Asha Cellulose",
+          src: "/Asha Logo.png",
+          scale: 0.92,
+        },
+
+        {
+          name: "Holoflex",
+          src: "/Holoflex Logo.jpg.jpeg",
+
+          // Source artwork is visually much smaller
+          scale: 1.75,
+        },
+
+        {
+          name: "Kataline",
+          src: "/Kataline Logo.png",
+
+          // Large whitespace around source logo
+          scale: 1.85,
+        },
+
+        {
+          name: "TriStar",
+          src: "/TriStar Logo.jpg.jpeg",
+          scale: 0.88,
+        },
+      ];
+
+
+      /*
+       * Two identical sets create
+       * the seamless marquee loop.
+       */
+
+      const marqueeLogos = [
+        ...clientLogos,
+        ...clientLogos,
+      ];
+
+
+      return (
+
+        <div className="relative w-full overflow-hidden">
+
+          {/* LEFT FADE */}
+
+          <div
+            aria-hidden="true"
+            className="
+              pointer-events-none
+              absolute
+              inset-y-0
+              left-0
+              z-20
+              w-12
+              bg-gradient-to-r
+              from-white
+              via-white/95
+              to-transparent
+              sm:w-20
+              lg:w-28
+            "
+          />
+
+
+          {/* RIGHT FADE */}
+
+          <div
+            aria-hidden="true"
+            className="
+              pointer-events-none
+              absolute
+              inset-y-0
+              right-0
+              z-20
+              w-12
+              bg-gradient-to-l
+              from-white
+              via-white/95
+              to-transparent
+              sm:w-20
+              lg:w-28
+            "
+          />
+
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65 }}
+          >
+
+            <div className="client-logo-track">
+
+              {marqueeLogos.map((logo, index) => (
+
+                /*
+                 * Every logo gets exactly the
+                 * same physical slot.
+                 */
+
+                <div
+                  key={`${logo.name}-${index}`}
+                  className="
+                    group
+                    relative
+                    flex
+                    h-[92px]
+                    w-[190px]
+                    shrink-0
+                    items-center
+                    justify-center
+                    border-r
+                    border-slate-100/90
+
+                    sm:h-[100px]
+                    sm:w-[220px]
+
+                    lg:h-[104px]
+                    lg:w-[235px]
+                  "
+                >
+
+                  {/* Fixed visual logo stage */}
+
+                  <div
+                    className="
+                      relative
+                      flex
+                      h-[56px]
+                      w-[145px]
+                      items-center
+                      justify-center
+                      overflow-visible
+
+                      sm:h-[60px]
+                      sm:w-[160px]
+
+                      lg:w-[170px]
+                    "
+                  >
+
+                    <img
+                      src={logo.src}
+                      alt={`${logo.name} client logo`}
+                      loading="lazy"
+                      decoding="async"
+                      draggable="false"
+
+                      style={{
+                        transform: `scale(${logo.scale})`,
+                      }}
+
+                      className="
+                        client-logo-image
+
+                        max-h-[50px]
+                        max-w-[145px]
+
+                        select-none
+
+                        grayscale
+                        opacity-[0.58]
+
+                        transition-[filter,opacity,transform]
+                        duration-300
+                        ease-out
+
+                        group-hover:grayscale-0
+                        group-hover:opacity-100
+
+                        sm:max-h-[54px]
+                        sm:max-w-[155px]
+
+                        lg:max-h-[56px]
+                        lg:max-w-[165px]
+                      "
+                    />
+
+                  </div>
+
+                </div>
+
+              ))}
+
             </div>
-          ))}
+
+          </motion.div>
 
         </div>
-      </motion.div>
-    </div>
 
-    {/* Bottom micro-trust line */}
+      );
+
+    })()}
+
+
+    {/* ============================================
+        BOTTOM TRUST DETAIL
+    ============================================ */}
+
     <motion.div
-      initial={{ opacity: 0, y: 8 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.15 }}
-      className="mt-5 flex items-center justify-center gap-2 px-4"
+      className="mt-5 flex items-center justify-center gap-3 px-4"
     >
-      <span className="h-1.5 w-1.5 rounded-full bg-[#ffb300]" />
 
-      <p className="text-center text-[9px] font-bold uppercase tracking-[0.14em] text-slate-400 sm:text-[10px]">
-        Strategic partnerships across industries
+      <span className="h-1 w-1 rounded-full bg-[#ffb300]" />
+
+      <p className="text-center text-[9px] font-bold uppercase tracking-[0.15em] text-slate-400 sm:text-[10px]">
+        Partnerships built across industries
       </p>
 
-      <span className="h-1.5 w-1.5 rounded-full bg-[#ffb300]" />
+      <span className="h-1 w-1 rounded-full bg-[#ffb300]" />
+
     </motion.div>
 
   </div>
+
 </section>
 
 
