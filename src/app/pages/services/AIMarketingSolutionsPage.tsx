@@ -341,6 +341,98 @@ const businessOutcomes = [
   'Scale revenue without proportionally increasing headcount',
 ];
 
+
+const faqs = [
+  {
+    id: 'faq-1',
+    title: 'What is B2B Sales Reinvention?',
+    content:
+      'B2B Sales Reinvention helps B2B businesses engage prospects immediately, qualify leads automatically, prepare salespeople with relevant context, manage follow-ups, revive inactive opportunities, and improve pipeline visibility.',
+  },
+  {
+    id: 'faq-2',
+    title: 'What happens when a new B2B enquiry arrives?',
+    content:
+      "The solution is designed to respond immediately, gather relevant information, understand the prospect's needs, and begin qualification rather than leaving the prospect waiting for a salesperson.",
+  },
+  {
+    id: 'faq-3',
+    title: 'Can it qualify B2B leads automatically?',
+    content:
+      'Yes. The solution gathers the right information, understands customer needs, and identifies prospects who are ready for a sales conversation.',
+  },
+  {
+    id: 'faq-4',
+    title: 'What information does the sales representative receive?',
+    content:
+      'When a lead is ready, the sales representative receives the conversation history, qualification details, customer requirements, and relevant context.',
+  },
+  {
+    id: 'faq-5',
+    title: 'Can B2B Sales Reinvention book meetings?',
+    content:
+      'Yes. The AI Sales Representative can schedule meetings with the appropriate person when appropriate.',
+  },
+  {
+    id: 'faq-6',
+    title: 'Can it update the CRM?',
+    content: 'Yes',
+  },
+  {
+    id: 'faq-7',
+    title: 'How does it help sales teams spend less time on administration?',
+    content:
+      'It can handle repetitive activities such as responding to basic enquiries, gathering information, qualifying leads, scheduling meetings, supporting follow-ups, and maintaining CRM information.',
+  },
+  {
+    id: 'faq-8',
+    title: 'What is Lead Revival?',
+    content:
+      'Lead Revival is the part of the solution designed to reconnect with inactive or dormant opportunities using personalised follow-ups across email, SMS, chat, and other digital channels.',
+  },
+  {
+    id: 'faq-9',
+    title: 'Can Lead Revival recover old leads?',
+    content:
+      'Yes. It is specifically positioned to recover dormant opportunities and generate more sales from existing leads rather than allowing inactive opportunities to disappear.',
+  },
+  {
+    id: 'faq-10',
+    title: 'What is the Sales Orchestrator?',
+    content:
+      'The Sales Orchestrator is a central workspace that brings together sales activities, customer conversations, pipeline information, CRM information, and performance metrics.',
+  },
+  {
+    id: 'faq-11',
+    title: 'What does the Sales Orchestrator help sales leaders see?',
+    content:
+      'It is designed to improve pipeline visibility, monitor team performance, support forecasting, and provide a clearer view of opportunities and sales activity.',
+  },
+  {
+    id: 'faq-12',
+    title: 'How does B2B Sales Reinvention help sales leaders?',
+    content:
+      'It captures conversations, activities, and opportunities so leaders can better understand pipeline health, team performance, conversion rates, and areas requiring attention.',
+  },
+  {
+    id: 'faq-13',
+    title: 'Can it help prevent leads from falling through the cracks?',
+    content:
+      'Yes. The solution is designed to manage follow-ups, reminders, customer communications, and sales activities so opportunities continue progressing without relying entirely on manual tracking.',
+  },
+  {
+    id: 'faq-14',
+    title: 'What happens to prospects who are not ready to buy?',
+    content:
+      'Rather than treating them as lost, Lead Revival can reconnect and nurture inactive prospects through personalised follow-ups and bring them back into the sales pipeline when the timing is right.',
+  },
+  {
+    id: 'faq-15',
+    title: 'Can B2B Sales Reinvention support longer sales cycles?',
+    content: 'Yes.',
+  },
+];
+
 /* ============================================
    PAGE
    ============================================ */
@@ -1241,8 +1333,61 @@ export function B2BSalesReinventionPage() {
         </Section>
       </ModernSectionBackground>
 
+
       {/* ============================================
-          7. FINAL CTA
+          7. FREQUENTLY ASKED QUESTIONS
+          ============================================ */}
+
+      <ModernSectionBackground
+        variant="glass-blur"
+        className="relative overflow-hidden"
+      >
+        <Section spacing="base" animate background="transparent">
+          <Container size="xl">
+            <div className="mx-auto max-w-5xl">
+              <ScrollReveal>
+                <div className="text-center">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/80 px-4 py-2 shadow-[0_10px_30px_rgba(0,1,49,0.04)]">
+                    <FileText
+                      className="h-3.5 w-3.5"
+                      style={{ color: colors.brand.accent }}
+                    />
+
+                    <span
+                      className="text-[10px] font-bold uppercase tracking-[0.18em]"
+                      style={{ color: colors.brand.secondary }}
+                    >
+                      Frequently Asked Questions
+                    </span>
+                  </div>
+
+                  <h2
+                    className="mx-auto mt-5 max-w-3xl text-2xl font-bold leading-[1.1] tracking-[-0.03em] sm:text-3xl"
+                    style={{ color: colors.brand.primary }}
+                  >
+                    B2B Sales Reinvention FAQs
+                  </h2>
+
+                  <p className="mx-auto mt-3 max-w-2xl text-sm leading-[1.8] text-gray-600 sm:text-base">
+                    Answers to common questions about how B2B Sales Reinvention
+                    supports prospect engagement, qualification, follow-up,
+                    pipeline visibility, and sales execution.
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.06}>
+                <div className="mt-8 rounded-[24px] border border-gray-200 bg-white/85 p-3 shadow-[0_18px_55px_rgba(0,1,49,0.06)] backdrop-blur-xl sm:p-4">
+                  <Accordion items={faqs} />
+                </div>
+              </ScrollReveal>
+            </div>
+          </Container>
+        </Section>
+      </ModernSectionBackground>
+
+      {/* ============================================
+          8. FINAL CTA
           ============================================ */}
 
       <ModernSectionBackground
