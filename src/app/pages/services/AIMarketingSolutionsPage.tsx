@@ -343,93 +343,236 @@ const businessOutcomes = [
 
 
 const faqs = [
+  // ============================================
+  // GENERAL SALES REINVENTION FAQs
+  // ============================================
   {
-    id: 'faq-1',
+    id: 'faq-general-1',
+    title: 'What is Sales Reinvention?',
+    content:
+      'Sales Reinvention is a sales transformation solution designed to help B2B and B2C businesses engage customers faster, qualify opportunities automatically, reduce manual work, maintain consistent sales journeys, and convert more opportunities. It combines intelligent AI with a sales process built around each business.',
+  },
+  {
+    id: 'faq-general-2',
+    title: 'Who is Sales Reinvention designed for?',
+    content:
+      'Sales Reinvention is designed for both B2B and B2C organisations. It can support businesses selling complex solutions with longer sales cycles as well as businesses selling products or services directly to consumers.',
+  },
+  {
+    id: 'faq-general-3',
+    title: 'What problems does Sales Reinvention solve?',
+    content:
+      'It is designed to address missed enquiries, slow responses, inconsistent follow-ups, excessive administrative work, disconnected sales tools, inconsistent customer experiences, abandoned opportunities, and the rising cost of scaling sales operations.',
+  },
+  {
+    id: 'faq-general-4',
+    title: 'How is Sales Reinvention different from ordinary sales automation?',
+    content:
+      'The approach goes beyond automating individual tasks. It focuses on reinventing the entire sales process by combining AI with redesigned workflows and customer journeys.',
+  },
+  {
+    id: 'faq-general-5',
+    title: 'Does Sales Reinvention replace salespeople?',
+    content:
+      'No. The solution is positioned as support for sales teams, removing repetitive work and giving people better information, processes, and visibility so they can spend more time building relationships and closing business.',
+  },
+  {
+    id: 'faq-general-6',
+    title: 'Does Sales Reinvention require us to replace our existing sales process?',
+    content:
+      "No. The approach is to understand the existing process first, redesign it around business objectives, and configure the solution around the organisation's products, customers, teams, and existing systems.",
+  },
+  {
+    id: 'faq-general-7',
+    title: 'Is Sales Reinvention a one-size-fits-all platform?',
+    content:
+      "No. The solution is configured to each organisation's products, customers, sales process, goals, and existing systems.",
+  },
+  {
+    id: 'faq-general-8',
+    title: 'What does Sales Reinvention aim to improve?',
+    content:
+      'The stated business outcomes include more qualified opportunities, higher conversion rates, faster sales, improved productivity, recovered lost opportunities, and growth without proportionally increasing headcount.',
+  },
+  {
+    id: 'faq-general-9',
+    title: 'Does Sales Reinvention work around the clock?',
+    content:
+      'Yes. The AI Sales Representative is described as available around the clock, providing immediate support whenever customers or prospects engage.',
+  },
+  {
+    id: 'faq-general-10',
+    title: 'What happens when a customer is not ready to buy?',
+    content:
+      'Sales Reinvention can continue the conversation through personalised follow-ups and consistent nurturing. Lead Revival is designed to reconnect with inactive visitors, abandoned-cart users, and dormant leads so that opportunities can return to the pipeline when the timing is right.',
+  },
+  {
+    id: 'faq-general-11',
+    title: 'How does Sales Reinvention support the customer journey?',
+    content:
+      'It is designed to support the journey from the first interaction through qualification or product discovery, recommendations, follow-up, conversion, re-engagement and retention.',
+  },
+
+  // ============================================
+  // B2B SALES REINVENTION FAQs
+  // ============================================
+  {
+    id: 'faq-b2b-1',
     title: 'What is B2B Sales Reinvention?',
     content:
       'B2B Sales Reinvention helps B2B businesses engage prospects immediately, qualify leads automatically, prepare salespeople with relevant context, manage follow-ups, revive inactive opportunities, and improve pipeline visibility.',
   },
   {
-    id: 'faq-2',
+    id: 'faq-b2b-2',
     title: 'What happens when a new B2B enquiry arrives?',
     content:
       "The solution is designed to respond immediately, gather relevant information, understand the prospect's needs, and begin qualification rather than leaving the prospect waiting for a salesperson.",
   },
   {
-    id: 'faq-3',
+    id: 'faq-b2b-3',
     title: 'Can it qualify B2B leads automatically?',
     content:
       'Yes. The solution gathers the right information, understands customer needs, and identifies prospects who are ready for a sales conversation.',
   },
   {
-    id: 'faq-4',
+    id: 'faq-b2b-4',
     title: 'What information does the sales representative receive?',
     content:
       'When a lead is ready, the sales representative receives the conversation history, qualification details, customer requirements, and relevant context.',
   },
   {
-    id: 'faq-5',
+    id: 'faq-b2b-5',
     title: 'Can B2B Sales Reinvention book meetings?',
     content:
       'Yes. The AI Sales Representative can schedule meetings with the appropriate person when appropriate.',
   },
   {
-    id: 'faq-6',
+    id: 'faq-b2b-6',
     title: 'Can it update the CRM?',
-    content: 'Yes',
+    content: 'Yes.',
   },
   {
-    id: 'faq-7',
+    id: 'faq-b2b-7',
     title: 'How does it help sales teams spend less time on administration?',
     content:
       'It can handle repetitive activities such as responding to basic enquiries, gathering information, qualifying leads, scheduling meetings, supporting follow-ups, and maintaining CRM information.',
   },
   {
-    id: 'faq-8',
+    id: 'faq-b2b-8',
     title: 'What is Lead Revival?',
     content:
       'Lead Revival is the part of the solution designed to reconnect with inactive or dormant opportunities using personalised follow-ups across email, SMS, chat, and other digital channels.',
   },
   {
-    id: 'faq-9',
+    id: 'faq-b2b-9',
     title: 'Can Lead Revival recover old leads?',
     content:
       'Yes. It is specifically positioned to recover dormant opportunities and generate more sales from existing leads rather than allowing inactive opportunities to disappear.',
   },
   {
-    id: 'faq-10',
+    id: 'faq-b2b-10',
     title: 'What is the Sales Orchestrator?',
     content:
       'The Sales Orchestrator is a central workspace that brings together sales activities, customer conversations, pipeline information, CRM information, and performance metrics.',
   },
   {
-    id: 'faq-11',
+    id: 'faq-b2b-11',
     title: 'What does the Sales Orchestrator help sales leaders see?',
     content:
       'It is designed to improve pipeline visibility, monitor team performance, support forecasting, and provide a clearer view of opportunities and sales activity.',
   },
   {
-    id: 'faq-12',
+    id: 'faq-b2b-12',
     title: 'How does B2B Sales Reinvention help sales leaders?',
     content:
       'It captures conversations, activities, and opportunities so leaders can better understand pipeline health, team performance, conversion rates, and areas requiring attention.',
   },
   {
-    id: 'faq-13',
+    id: 'faq-b2b-13',
     title: 'Can it help prevent leads from falling through the cracks?',
     content:
       'Yes. The solution is designed to manage follow-ups, reminders, customer communications, and sales activities so opportunities continue progressing without relying entirely on manual tracking.',
   },
   {
-    id: 'faq-14',
+    id: 'faq-b2b-14',
     title: 'What happens to prospects who are not ready to buy?',
     content:
       'Rather than treating them as lost, Lead Revival can reconnect and nurture inactive prospects through personalised follow-ups and bring them back into the sales pipeline when the timing is right.',
   },
   {
-    id: 'faq-15',
+    id: 'faq-b2b-15',
     title: 'Can B2B Sales Reinvention support longer sales cycles?',
     content: 'Yes.',
+  },
+
+  // ============================================
+  // B2C SALES REINVENTION FAQs
+  // ============================================
+  {
+    id: 'faq-b2c-1',
+    title: 'What is B2C Sales Reinvention?',
+    content:
+      'B2C Sales Reinvention is designed to turn a website or digital channel into a sales engine that engages visitors, answers questions, recommends products or services, upsells, cross-sells, negotiates within limits, helps customers complete purchases, and re-engages visitors who leave without buying.',
+  },
+  {
+    id: 'faq-b2c-2',
+    title: 'How does B2C Sales Reinvention help website visitors?',
+    content:
+      'It greets visitors, answers questions immediately, understands their intent, recommends relevant products or services, and guides them toward purchase.',
+  },
+  {
+    id: 'faq-b2c-3',
+    title: 'Can it answer customer questions about products?',
+    content:
+      'Yes. The AI Sales Representative is designed to answer customer questions instantly and provide guidance based on what the customer is trying to achieve.',
+  },
+  {
+    id: 'faq-b2c-4',
+    title: 'Can it recommend products or services?',
+    content:
+      'Yes. Recommendations are intended to be personalised based on customer needs and preferences rather than being generic suggestions.',
+  },
+  {
+    id: 'faq-b2c-5',
+    title: 'Can it help reduce abandoned carts?',
+    content:
+      'Yes. The solution is designed to provide instant support during the buying process and to reconnect with visitors who leave without completing their purchase.',
+  },
+  {
+    id: 'faq-b2c-6',
+    title: 'What is the Process Engine in the B2C solution?',
+    content:
+      'The Process Engine is designed to create consistency across customer interactions by following the sales approach that works best for the business and continuously measuring what drives conversions.',
+  },
+  {
+    id: 'faq-b2c-7',
+    title: 'Can B2C Sales Reinvention increase average order value?',
+    content:
+      'Yes, increasing average order value is one of the outcomes of personalised up-selling, cross-selling, and customer retention.',
+  },
+  {
+    id: 'faq-b2c-8',
+    title: 'What happens when someone visits but does not purchase?',
+    content:
+      'The system can automatically follow up through email, SMS, chat, or other digital channels, encouraging the customer to return when they are ready.',
+  },
+  {
+    id: 'faq-b2c-9',
+    title: 'Can it recover abandoned sales?',
+    content:
+      'Yes. Lead Revival is specifically positioned to recover abandoned carts and re-engage interested visitors.',
+  },
+  {
+    id: 'faq-b2c-10',
+    title: 'Does it support customers outside normal business hours?',
+    content:
+      'Yes. The AI Sales Representative is described as providing support around the clock, including when customers engage outside normal working hours.',
+  },
+  {
+    id: 'faq-b2c-11',
+    title: 'How does B2C Sales Reinvention improve the customer experience?',
+    content:
+      'It aims to make purchasing easier by providing immediate answers, personalised recommendations, guided buying journeys, and support when customers encounter uncertainty or friction.',
   },
 ];
 
@@ -1352,7 +1495,7 @@ export function B2BSalesReinventionPage() {
                     className="mt-3 text-xl font-bold sm:text-2xl"
                     style={{ color: colors.brand.primary }}
                   >
-                    B2B Sales Reinvention FAQs
+                    Sales Reinvention FAQs
                   </h2>
                 </div>
               </ScrollReveal>
