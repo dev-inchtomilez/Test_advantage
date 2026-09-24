@@ -2,142 +2,116 @@
  * ============================================
  * CONTACT CONFIGURATION
  * ============================================
- * Centralized configuration for all contact
- * information across the website.
- * 
- * UPDATE THESE VALUES with your actual:
- * - WhatsApp number (with country code)
- * - Business email
- * - Phone numbers
- * - Social media links
+ *
+ * Centralized configuration for all confirmed
+ * AdvantEdge contact information.
+ *
+ * IMPORTANT:
+ * Only verified contact details are included here.
+ * Do not add placeholder phone numbers, addresses,
+ * WhatsApp numbers, or business hours.
+ *
+ * Confirmed email setup:
+ *
+ * Primary inbox:
+ * contact@advantedge-partners.com
+ *
+ * Dwight Jordan alias:
+ * djordan@advantedge-partners.com
+ *
+ * Both addresses may route to the same underlying
+ * mailbox depending on the final email configuration.
+ *
  * ============================================
  */
 
 export const contactConfig = {
   // ============================================
-  // PRIMARY CONTACT
+  // EMAIL
   // ============================================
-  
-  /**
-   * WhatsApp Business Number
-   * Format: Country code + number (no spaces, dashes, or + symbol)
-   * Example: For +1 (234) 567-8900 → use "12345678900"
-   * 
-   * TODO: Replace with your actual WhatsApp number
-   */
-  whatsapp: {
-    number: '1234567890', // ⚠️ UPDATE THIS
-    displayNumber: '+1 (234) 567-8900', // For display purposes
-    message: 'Hello, I would like to know more about AdvantEdge services.', // Default message
-  },
 
-  /**
-   * Business Email
-   * TODO: Replace with your actual business email
-   */
   email: {
-    primary: 'hello@onemen.in', // ⚠️ UPDATE IF NEEDED
-    support: 'support@onemen.in',
-    sales: 'sales@onemen.in',
-  },
+    /**
+     * Main public contact inbox
+     */
+    primary: 'contact@advantedge-partners.com',
 
-  /**
-   * Phone Numbers
-   * TODO: Replace with your actual phone numbers
-   */
-  phone: {
-    main: '+1 (234) 567-8900', // ⚠️ UPDATE THIS
-    toll_free: '1-800-ADVANTAGE',
-    international: '+91 12345 67890',
-  },
-
-  // ============================================
-  // BUSINESS ADDRESS
-  // ============================================
-  address: {
-    street: '123 Business Avenue',
-    city: 'New York',
-    state: 'NY',
-    zip: '10001',
-    country: 'United States',
-    full: '123 Business Avenue, New York, NY 10001, United States',
+    /**
+     * Dwight Jordan email alias
+     */
+    dwight: 'djordan@advantedge-partners.com',
   },
 
   // ============================================
   // SOCIAL MEDIA
   // ============================================
+  //
+  // Replace these URLs once the confirmed
+  // AdvantEdge social profiles are available.
+  //
+  // Keeping empty strings prevents the website
+  // from linking visitors to incorrect profiles.
+  // ============================================
+
   social: {
-    linkedin: 'https://www.linkedin.com/company/advantedge',
-    twitter: 'https://twitter.com/advantedge',
-    facebook: 'https://www.facebook.com/advantedge',
-    instagram: 'https://www.instagram.com/advantedge',
-    youtube: 'https://www.youtube.com/c/advantedge',
-  },
-
-  // ============================================
-  // BUSINESS HOURS
-  // ============================================
-  hours: {
-    weekdays: 'Monday - Friday: 9:00 AM - 6:00 PM EST',
-    weekend: 'Saturday - Sunday: Closed',
-    timezone: 'EST (GMT-5)',
-  },
-
-  // ============================================
-  // RESPONSE TIME
-  // ============================================
-  responseTime: {
-    whatsapp: 'Usually within 30 minutes',
-    email: 'Within 24 hours',
-    phone: 'Immediate',
+    linkedin: '',
+    twitter: '',
+    facebook: '',
+    instagram: '',
+    youtube: '',
   },
 } as const;
+
+
+// ============================================
+// TYPES
+// ============================================
+
+export type ContactEmailType =
+  keyof typeof contactConfig.email;
+
 
 // ============================================
 // HELPER FUNCTIONS
 // ============================================
 
 /**
- * Get WhatsApp URL for opening chat
- */
-export function getWhatsAppUrl(customMessage?: string): string {
-  const message = encodeURIComponent(customMessage || contactConfig.whatsapp.message);
-  return `https://wa.me/${contactConfig.whatsapp.number}?text=${message}`;
-}
-
-/**
- * Get mailto link
+ * Generate a mailto URL.
+ *
+ * Examples:
+ *
+ * getMailtoUrl()
+ * → contact@advantedge-partners.com
+ *
+ * getMailtoUrl('dwight')
+ * → djordan@advantedge-partners.com
+ *
+ * getMailtoUrl(
+ *   'primary',
+ *   'Marketing Consultation',
+ *   'Hello, I would like to discuss...'
+ * )
  */
 export function getMailtoUrl(
-  email: keyof typeof contactConfig.email = 'primary',
+  email: ContactEmailType = 'primary',
   subject?: string,
   body?: string
 ): string {
-  let url = `mailto:${contactConfig.email[email]}`;
-  const params: string[] = [];
-  
-  if (subject) params.push(`subject=${encodeURIComponent(subject)}`);
-  if (body) params.push(`body=${encodeURIComponent(body)}`);
-  
-  if (params.length > 0) {
-    url += `?${params.join('&')}`;
+  const emailAddress = contactConfig.email[email];
+
+  const params = new URLSearchParams();
+
+  if (subject) {
+    params.set('subject', subject);
   }
-  
-  return url;
-}
 
-/**
- * Get tel link
- */
-export function getTelUrl(phoneType: keyof typeof contactConfig.phone = 'main'): string {
-  const phone = contactConfig.phone[phoneType].replace(/[^0-9+]/g, '');
-  return `tel:${phone}`;
-}
+  if (body) {
+    params.set('body', body);
+  }
 
-/**
- * Get Google Maps URL
- */
-export function getMapsUrl(): string {
-  const address = encodeURIComponent(contactConfig.address.full);
-  return `https://www.google.com/maps/search/?api=1&query=${address}`;
+  const query = params.toString();
+
+  return query
+    ? `mailto:${emailAddress}?${query}`
+    : `mailto:${emailAddress}`;
 }
