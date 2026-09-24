@@ -12,7 +12,6 @@ import { useState, FormEvent } from 'react';
 import { submitContactForm } from '../utils/emailService';
 import { 
   Mail, 
-  Phone, 
   MapPin, 
   Send,
   Clock,
@@ -32,6 +31,7 @@ import { ModernSectionBackground } from '../components/ModernSectionBackground';
 // SEO Components
 import { PageSEO } from '../components/seo';
 import { PAGE_SEO } from '../utils/seo-config';
+import { contactConfig, getMailtoUrl, getMapsUrl } from '../config/contact.config';
 
 // UI Components
 import { ScrollReveal, StaggerContainer, staggerItemVariants } from '../components/ScrollReveal';
@@ -48,19 +48,13 @@ const contactInfo = [
   {
     icon: <Mail className="w-6 h-6" />,
     title: 'Email Us',
-    detail: 'info@advantedge.com',
+    detail: contactConfig.email.primary,
     description: 'We respond within 24 hours',
-  },
-  {
-    icon: <Phone className="w-6 h-6" />,
-    title: 'Call Us',
-    detail: '+1 (555) 123-4567',
-    description: 'Mon-Fri, 9AM-6PM EST',
   },
   {
     icon: <MapPin className="w-6 h-6" />,
     title: 'Visit Us',
-    detail: 'New York, NY',
+    detail: contactConfig.address.full,
     description: 'Office by appointment',
   },
 ];
@@ -435,7 +429,7 @@ export function ContactPage() {
             </MagneticButton>
 
             <a
-              href="mailto:info@advantedge.com"
+              href={getMailtoUrl()}
               className="group inline-flex items-center justify-center rounded-xl border border-white/24 bg-black/20 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/[0.08]"
             >
               Email Our Team
@@ -612,27 +606,20 @@ export function ContactPage() {
         }}
         className="mt-10 overflow-hidden rounded-2xl border border-white/18 bg-black/20 shadow-[0_20px_65px_rgba(0,0,0,0.22)] backdrop-blur-xl"
       >
-        <div className="grid md:grid-cols-3">
+        <div className="grid md:grid-cols-2">
           {[
             {
               title: "Email",
-              detail: "info@advantedge.com",
+              detail: contactConfig.email.primary,
               description: "For enquiries and project discussions",
-              href: "mailto:info@advantedge.com",
+              href: getMailtoUrl(),
               icon: <Mail className="h-4 w-4" />,
             },
             {
-              title: "Phone",
-              detail: "+1 (555) 123-4567",
-              description: "Monday–Friday, 9 AM–6 PM EST",
-              href: "tel:+15551234567",
-              icon: <Phone className="h-4 w-4" />,
-            },
-            {
               title: "Office",
-              detail: "New York, NY",
+              detail: contactConfig.address.full,
               description: "Meetings available by appointment",
-              href: "#contact-form",
+              href: getMapsUrl(),
               icon: <MapPin className="h-4 w-4" />,
             },
           ].map((item, index) => (
@@ -641,7 +628,7 @@ export function ContactPage() {
               href={item.href}
               className={[
                 "contact-quick-card group flex items-start gap-4 px-5 py-5 sm:px-6",
-                index < 2
+                index === 0
                   ? "border-b border-white/15 md:border-b-0 md:border-r"
                   : "",
               ].join(" ")}
