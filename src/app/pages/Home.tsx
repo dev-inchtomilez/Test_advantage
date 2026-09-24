@@ -917,7 +917,187 @@ export function HomePage() {
 
 
 
+{/* ============================================
+    2. CLIENT LOGO STRIP
+============================================ */}
 
+<section
+  aria-labelledby="client-logo-strip-title"
+  className="relative overflow-hidden border-y border-slate-200/70 bg-white"
+>
+  <style>
+    {`
+      @keyframes clientLogoMarquee {
+        from {
+          transform: translateX(0);
+        }
+
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      .client-logo-track {
+        display: flex;
+        width: max-content;
+        animation: clientLogoMarquee 28s linear infinite;
+        will-change: transform;
+      }
+
+      .client-logo-track:hover {
+        animation-play-state: paused;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .client-logo-track {
+          animation: none !important;
+          transform: none !important;
+        }
+      }
+    `}
+  </style>
+
+  {/* Background details */}
+  <div
+    aria-hidden="true"
+    className="pointer-events-none absolute inset-0"
+  >
+    <div className="absolute left-1/2 top-0 h-px w-[75%] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#0000aa]/20 to-transparent" />
+
+    <div className="absolute -left-24 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-[#0000aa]/[0.035] blur-[85px]" />
+
+    <div className="absolute -right-24 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-[#ffb300]/[0.05] blur-[85px]" />
+  </div>
+
+  <div className="relative z-10 py-8 sm:py-9 lg:py-10">
+
+    {/* Small heading */}
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.6 }}
+      transition={{ duration: 0.5 }}
+      className="mb-6 px-4 text-center sm:px-6"
+    >
+      <div className="flex items-center justify-center gap-3">
+        <span className="h-px w-7 bg-[#ffb300]" />
+
+        <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#0000aa] sm:text-[11px]">
+          Trusted By
+        </span>
+
+        <span className="h-px w-7 bg-[#ffb300]" />
+      </div>
+
+      <h2
+        id="client-logo-strip-title"
+        className="mt-2 text-sm font-semibold text-[#000131] sm:text-base"
+      >
+        Brands that have trusted our work
+      </h2>
+    </motion.div>
+
+    {/* Logo strip */}
+    <div className="relative overflow-hidden">
+
+      {/* Left fade */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-14 bg-gradient-to-r from-white via-white/90 to-transparent sm:w-24 lg:w-32" />
+
+      {/* Right fade */}
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-14 bg-gradient-to-l from-white via-white/90 to-transparent sm:w-24 lg:w-32" />
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
+        <div className="client-logo-track">
+
+          {[
+            "/Altus Logo.png",
+            "/Amatech Logo.webp",
+            "/Asha Logo.png",
+            "/Holoflex Logo.jpg.jpeg",
+            "/Kataline Logo.png",
+            "/TriStar Logo.jpg.jpeg",
+
+            // Duplicate set for seamless infinite scrolling
+            "/Altus Logo.png",
+            "/Amatech Logo.webp",
+            "/Asha Logo.png",
+            "/Holoflex Logo.jpg.jpeg",
+            "/Kataline Logo.png",
+            "/TriStar Logo.jpg.jpeg",
+          ].map((logo, index) => (
+            <div
+              key={`${logo}-${index}`}
+              className="
+                group
+                flex
+                h-[86px]
+                w-[175px]
+                shrink-0
+                items-center
+                justify-center
+                border-r
+                border-slate-100
+                px-6
+                sm:h-[96px]
+                sm:w-[205px]
+                sm:px-8
+                lg:w-[230px]
+              "
+            >
+              <img
+                src={logo}
+                alt=""
+                loading="lazy"
+                decoding="async"
+                draggable="false"
+                className="
+                  max-h-[46px]
+                  max-w-[135px]
+                  select-none
+                  object-contain
+                  grayscale
+                  opacity-55
+                  transition-all
+                  duration-300
+                  ease-out
+                  group-hover:scale-[1.05]
+                  group-hover:grayscale-0
+                  group-hover:opacity-100
+                  sm:max-h-[52px]
+                  sm:max-w-[155px]
+                "
+              />
+            </div>
+          ))}
+
+        </div>
+      </motion.div>
+    </div>
+
+    {/* Bottom micro-trust line */}
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.15 }}
+      className="mt-5 flex items-center justify-center gap-2 px-4"
+    >
+      <span className="h-1.5 w-1.5 rounded-full bg-[#ffb300]" />
+
+      <p className="text-center text-[9px] font-bold uppercase tracking-[0.14em] text-slate-400 sm:text-[10px]">
+        Strategic partnerships across industries
+      </p>
+
+      <span className="h-1.5 w-1.5 rounded-full bg-[#ffb300]" />
+    </motion.div>
+
+  </div>
+</section>
 
 
 
